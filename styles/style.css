@@ -103,7 +103,7 @@
   --color-text-secondary: #333;
   --color-accent-primary: #5200ff;
   --color-accent-secondary: #ff057c;
-  --color-overlay-primary: #000000;
+  --color-overlay-primary: #F26F6C;
   --color-highlight: lemonchiffon;
   --color-fallback: #ff057c; /* Fallback color for glitch effect on 404 page */
   /* Backgrounds */
@@ -112,7 +112,7 @@
   --color-bg-footer: #f5f5f5;
   --color-bg-holding-page: rgba(82, 0, 255, 0.6);
   /* Headings */
-  --h1-color: #5200ff;
+  --h1-color: #605039;
   --h2-color: #5200ff;
   --h3-color: #5200ff;
   --h4-color: #5200ff;
@@ -386,7 +386,7 @@ svg {
 /* Heading Styles (h1 - h6) */
 
 h1 {
-  font-size: 2.2rem;
+  font-size: 1 rem;
   font-family: var(--font-family-heading);
   line-height: 1.2;
   margin-bottom: 1rem;
@@ -455,8 +455,9 @@ em {
 
 /* Main hero headline — usually sits in the intro section */
 .hero-headline {
-  color: var(--color-overlay-primary); /* Uses your brand's dominant color */
-  max-width: 40ch; /* Optimal line length for readability (~40 characters) */
+  font-size: 2rem;
+  color: var(--h1-color); /* Uses your brand's dominant color */
+  max-width: 60ch; /* Optimal line length for readability (~40 characters) */
   text-wrap: balance; /* Prevents awkward line breaks (like elegant typography) */
   margin-inline: auto; /* Horizontally centers the text in its container */
 }
@@ -807,7 +808,11 @@ a.nav-link-primary:hover {
 /* Hover effect on work page grid items */
 .work-page-grid-item:hover .overlay {
   visibility: visible; /* Make overlay visible on hover */
-  opacity: 0.8; /* Set opacity on hover */
+  opacity: 0.8; 
+  /* Set opacity on hover */
+}
+.work-grid-project-title {
+  opacity: 100%;
 }
 
 /* Optional container for future overlay customization */
@@ -1320,7 +1325,7 @@ to keep your styles reusable and consistent.
     padding: var(--padding-jumbo);
   }
   .nav-branding-logo {
-    width: 5rem;
+    width: 100rem;
     /* TODO: Adjust the width of the logo on large devices here. */
   }
 
