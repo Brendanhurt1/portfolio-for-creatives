@@ -104,7 +104,7 @@
   --color-text-secondary: #333;
   --color-accent-primary: #5200ff;
   --color-accent-secondary: #ff057c;
-  --color-overlay-primary: #F26F6C;
+  --color-overlay-primary: rgb(242, 111, 108,0.925);
   --color-highlight: lemonchiffon;
   --color-fallback: #ff057c; /* Fallback color for glitch effect on 404 page */
   /* Backgrounds */
@@ -504,6 +504,7 @@ em {
 .work-grid-project-title {
   font-size: 2.875rem;
   color: var(--color-text-work-grid-title);
+  text-transform: uppercase;
 }
 
 /* 🏷️ Project category label — displays the type or role of the project */
@@ -622,12 +623,14 @@ a.nav-link-primary:hover {
   flex-direction: column;
 }
 .hero-header {
-  min-height: 6rem; /* Space reserved for logo + nav */
+  min-height: 20vh; /* Space reserved for logo + nav */
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 6rem;
+  border: 1px solid yellow;
+  justify-content: center;
+  background: lightblue;
 }
 
 .nav-branding {
@@ -647,7 +650,8 @@ a.nav-link-primary:hover {
 }
 
 .nav-branding-logo {
-  width: 3rem;
+  width: 18rem;
+  border: 1px solid red;
   /* TODO: Adjust the width of the logo on mobile devices here */
 }
 
@@ -816,7 +820,7 @@ a.nav-link-primary:hover {
 /* Hover effect on work page grid items */
 .work-page-grid-item:hover .overlay {
   visibility: visible; /* Make overlay visible on hover */
-  opacity: 0.8; 
+  opacity: 1; 
   /* Set opacity on hover */
 }
 .work-grid-project-title {
@@ -1334,11 +1338,15 @@ to keep your styles reusable and consistent.
     padding: var(--padding-jumbo);
   }
   .nav-branding-logo {
-    width: 100rem;
+    width: 80%;
+    text-align: center;
     /* TODO: Adjust the width of the logo on large devices here. */
   }
 
+.hero-header {
+  min-height: 45vh; /* Space reserved for logo + nav */
 
+}
 
   .hero {
     min-height: 100vh;
