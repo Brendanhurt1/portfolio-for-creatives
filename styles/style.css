@@ -108,9 +108,9 @@
   --color-highlight: lemonchiffon;
   --color-fallback: #ff057c; /* Fallback color for glitch effect on 404 page */
   /* Backgrounds */
-  --color-bg: #fdfdfd;
-  --color-bg-about: #f5f5f5;
-  --color-bg-footer: #f5f5f5;
+  --color-bg: #ffffff;
+  --color-bg-about: #ffffff;
+  --color-bg-footer: #ffffff;
   --color-bg-holding-page: rgba(82, 0, 255, 0.6);
   /* Headings */
   --h1-color: #605039;
@@ -628,9 +628,7 @@ a.nav-link-primary:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid yellow;
   justify-content: center;
-  background: lightblue;
 }
 
 .nav-branding {
@@ -651,7 +649,6 @@ a.nav-link-primary:hover {
 
 .nav-branding-logo {
   width: 18rem;
-  border: 1px solid red;
   /* TODO: Adjust the width of the logo on mobile devices here */
 }
 
