@@ -210,6 +210,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-size: 1rem;
 }
 
 /* ------------------------------- */
@@ -232,7 +233,8 @@ svg {
   max-width: 100%; /* Keeps the image from getting too big */
   height: auto; /* Keeps the image’s original proportions */
   vertical-align: top; /* Removes little gaps under images (from line-height) */
-  object-fit: contain; /* Optional: Makes sure the whole image fits inside its box */
+  object-fit: contain;
+   /* Optional: Makes sure the whole image fits inside its box */
   /* Try 'cover' if you want it to fill the space, or remove this line if not needed */
 }
 
@@ -270,7 +272,7 @@ svg {
 
 /* Adds a dashed border to help you see the box while you're designing */
 .border {
-  border: 1px dashed var(--color-accent-primary); /* This uses your custom accent color */
+  border: 0px dashed var(--color-accent-primary); /* This uses your custom accent color */
   /* TODO: Delete this later – it’s just here to help you see the box while you work */
 }
 
@@ -358,6 +360,8 @@ svg {
   height: 100%;
 }
 
+
+
 /* ---------------------------------------- */
 /* 🧭 Responsive Navigation (Coming Soon)   */
 /* This section is in progress — you'll build a mobile-friendly nav bar here */
@@ -440,6 +444,7 @@ p {
   font-size: 1rem;
   line-height: 1.3;
   margin-bottom: 1rem;
+  font-weight: 200;
 }
 
 strong {
@@ -466,7 +471,7 @@ em {
 
 /* Large project title — appears on individual project pages */
 .project-title {
-  font-size: 3.625rem;
+  font-size: 2.5rem;
   text-transform: uppercase;
   font-weight: 800;
   font-family: var(--font-family-project-title);
@@ -474,7 +479,7 @@ em {
   margin-bottom: 1rem;
 }
 
-/* Project description text — pairs with the project title */
+/* THIS IS WHERE YOU CHANGE BODY FONT SIZE, ETC. */
 .project-description {
   font-size: 1.225rem;
   line-height: 1.2;
@@ -494,12 +499,6 @@ em {
   color: var(--color-accent-secondary);
 }
 
-.highlight-gradient {
-  background: var(--color-gradient-hero);
-  -webkit-background-clip: text;
-  color: transparent;
-  font-weight: bold;
-}
 
 /* 📂 Project grid title — used in grid view (like a portfolio gallery) */
 .work-grid-project-title {
@@ -553,7 +552,7 @@ a:focus {
 /* Active — when the link is actively being clicked or tapped */
 a:active {
   color: var(--color-link-hover);
-  /* Useful for mobile tap interactions */
+  /* Useful for mobile tap interactions *//* Space reserved for logo + nav */
 }
 
 /* -------------------------------------------------------------------------- */
@@ -619,10 +618,10 @@ a.nav-link-primary:hover {
 /* Great place for first impression and personal branding                    */
 /* -------------------------------------------------------------------------- */
 
+
 .hero {
   width: 100%;
   min-height: 80vh; /* Takes up most of the screen height */
-  display: flex;
   flex-direction: column;
 }
 .hero-header {
@@ -651,35 +650,51 @@ html, body {
   box-sizing: border-box;
 }
 
+
 #background-video {
-  position: absolute;
-  display: flex;
-  top: -50rem;
-  left: -20rem;
-  width: 150%;
-  height: 250%;
-  z-index: -1;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
 }
 
-#background-video iframe {
+#myVideo {
+  object-fit: cover;
+  
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}
+
+/* #background-video iframe {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;        /* fill hero width */
-  height: 100%;       /* fill hero height */
+  width: 100%;        
+  height: 100%;       
   border: none;
-}
+} */
 
-.hero-overlay {
+/* .hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* gradient from white at top to transparent at bottom */
+
   background: linear-gradient(to bottom, rgba(255,255,255,0),rgba(255,255,255,0), rgba(255,255,255,1));
-  z-index: -1;   /* behind content, above video */
-}
+  z-index: -1;   
+} */
 
 .nav-branding {
   display: flex;
@@ -719,13 +734,6 @@ html, body {
   font-size: 4rem;
 }
 
-.hero-footer {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-}
-
 .hero-footer-navigation {
   display: flex;
   flex-direction: row;
@@ -748,6 +756,141 @@ html, body {
 /* These components create flexible, full-screen sections for your portfolio   */
 /* Perfect for highlighting key information and projects                      */
 /* -------------------------------------------------------------------------- */
+
+.project-description:last-of-type {
+  position: relative;          
+  display: inline-block;       
+  padding-bottom: 0.5rem;      
+}
+
+.project-description:last-of-type::after {
+  content: "";
+  display: block;
+  width: 100%;                 
+  height: 3px;                
+  background-color: #F26F6C;   
+  margin-top: 1.5rem;          
+}
+
+.video-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px; /* adjust height of gradient */
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 1), /* solid white at bottom */
+    rgba(255, 255, 255, 0) /* transparent at top */
+  );
+  pointer-events: none; /* clicks pass through */
+  z-index: 1; /* above video, below content */
+}
+
+
+
+.qr-block {
+  display: flex !important;        /* Force flex layout just for this block */
+  flex-direction: column !important; /* Stack items vertically */
+  align-items: center;              /* Center both QR and text */
+  justify-content: flex-start;
+}
+
+.qr-block .project-description {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+
+.project-video-container {
+  position: relative;
+  width: 100%;
+  padding-top: 177.78%; /* 9:16 vertical aspect ratio for phone reels */
+  overflow: hidden;
+}
+
+.project-video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.project-tags {
+  display: flex;
+  justify-content: center;    /* center the whole row */
+  align-items: center;        /* keeps height consistent */
+  gap: 2px;                  /* space between rectangles */
+  margin-top: 20px;
+  flex-wrap: wrap;            /* allows wrapping if too many */
+}
+
+.tag {
+  display: inline-block;
+  padding: 8px 8px; /* spacing inside the rectangle */
+  border: 2px solid #F26F6C; /* 2px outline in your color */
+  border-radius: 20px; /* controls how rounded the corners are */
+  color: #F26F6C; /* text color matches the border */
+  background-color: transparent; /* transparent middle */
+  text-transform: uppercase; /* all caps text */
+   font-size: 12px; /* controls font size */
+  font-weight: 600; /* adjust text weight */
+  text-align: center;
+  margin: 0 8px; /* spacing between tags */
+}
+
+
+.project-video-container {
+  display: flex;
+  justify-content: center; /* keeps video centered */
+  margin: 20px 0;
+}
+
+/* Common styles for all videos */
+.responsive-iframe {
+  border: none;
+  border-radius: 12px;
+}
+
+/* Phone-sized vertical video */
+.video-phone {
+  width: 300px;    /* fixed phone width */
+  height: 533px;   /* fixed phone height for 9:16 ratio */
+  max-width: 100%; /* prevents overflow on tiny screens */
+}
+
+
+
+
+.project-description {
+  padding: 20px;        /* inner spacing */
+  box-sizing: border-box; /* keeps padding inside width */
+}
+
+
+.padding-20 {
+  padding: 20px;
+  box-sizing: border-box; /* Ensures padding doesn't break the layout */
+}
+.padding-40 {
+  padding: 40px;
+  box-sizing: border-box; /* Ensures padding doesn't break the layout */
+}
+.padding-60 {
+  padding: 60px;
+  box-sizing: border-box; /* Ensures padding doesn't break the layout */
+}
+.padding-80 {
+  padding: 80px;
+  box-sizing: border-box; /* Ensures padding doesn't break the layout */
+}
+.padding-100 {
+  padding: 100-px;
+  box-sizing: border-box; /* Ensures padding doesn't break the layout */
+}
+
 
 .full-width-section {
   width: 100%;
@@ -782,7 +925,7 @@ html, body {
 }
 .section-item {
   padding: var(--padding-small);
-  margin: 1rem;
+  margin: 0rem;
 }
 
 /* 
@@ -875,10 +1018,6 @@ html, body {
   opacity: 100%;
 }
 
-/* Optional container for future overlay customization */
-.project-details-overlay {
-  /* Placeholder: no custom styles yet */
-}
 
 /*
 
@@ -1304,9 +1443,6 @@ For common layout or effects, continue using the base utility classes
 to keep your styles reusable and consistent.
 */
 
-.play-page {
-  /* Add page-specific layout or container styles here */
-}
 
 /*
 
@@ -1339,6 +1475,61 @@ to keep your styles reusable and consistent.
 
 /* Medium devices (tablets, 768px and up) */
 
+@media (min-width: 360px) {
+  .hero-headline {
+    font-size: 1.25rem;}
+    
+  /* TODO: Adjust  layout for tablets */
+}
+.divider {
+  display: flex;
+  flex-direction: column;   /* Stack text on top, line below */
+  align-items: flex-start;  /* Left-align everything */
+  gap: 0.75px;                 /* Space between text and line */
+  width: 100%;
+  position: relative;
+}
+
+.divider::before {
+  content: attr(data-title);
+  font-size: 1.25rem;                         /* Desktop size */
+  font-weight: 400;                         /* Weight 400 */
+  line-height: 1.2;
+  text-transform: uppercase;               /* Uppercase text */
+  color: var(--color-text-project-description); /* Use project description color */
+}
+
+.divider::after {
+  content: "";
+  display: block;
+  width: 100%;                               /* Full width line */
+  border-top: 0.65rem solid var(--color-text-project-description); /* Thickness & color */
+}
+
+/* Mobile adjustment for screens 360px wide or smaller */
+@media (max-width: 360px) {
+  .divider::before {
+    font-size: 1.5rem;      /* Slightly smaller text on mobile */
+  }
+  .divider::after {
+    border-top: 0.65rem solid var(--color-text-project-description); /* Thinner line on mobile */
+  }
+}
+
+  /* Any other mobile-specific tweaks */
+
+@media (min-width: 600px) {
+  .hero-headline {
+    font-size: 1.5rem;}
+  /* TODO: Adjust  layout for tablets */
+}
+@media (max-width: 360px) {
+  .hero {
+    min-height: 85vh; 
+  }
+}
+
+
 @media (min-width: 768px) {
   /* TODO: Adjust  layout for tablets */
 }
@@ -1348,7 +1539,13 @@ to keep your styles reusable and consistent.
 /* Switch from mobile to desktop navigation */
 
 @media (min-width: 992px) {
+
+  .hero-headline {
+  font-size: 2rem;}
+
   /* TODO: Add or adjust styles here for large devices. */
+
+
 
   .flex-row {
     flex-direction: row; /* Changes to row layout on larger screens */
@@ -1386,18 +1583,19 @@ to keep your styles reusable and consistent.
     padding: var(--padding-jumbo);
   }
   .nav-branding-logo {
-    width: 80%;
+    width: 60%;
     text-align: center;
     /* TODO: Adjust the width of the logo on large devices here. */
   }
 
 .hero-header {
-  min-height: 45vh; /* Space reserved for logo + nav */
+  min-height: 30vh; /* Space reserved for logo + nav */
 
 }
 
   .hero {
-    min-height: 100vh;
+    min-height: 85vh;  
+    /* HEIGHT OF HERO */
   }
 
   .hero-headline-wrapper {
@@ -1478,9 +1676,51 @@ to keep your styles reusable and consistent.
     flex-direction: row;
   }
 
+.divider {
+  position: relative;
+  border-top: 0.2rem solid var(--color-text-project-description);
+  width: 100%;
+  box-sizing: border-box;
+  margin: 3rem 0 2rem; /* space above & below the line */
+}
+
+/* Text sits above the line, left-aligned */
+.divider::before {
+  content: attr(data-title);
+  position: absolute;
+  bottom: 100%;            /* places text above the line */
+  left: -0.14rem;
+  margin-bottom: 0.43rem;     /* increase this to move text higher above line */
+  background: rgba(255, 255, 255, 0);
+  padding: 0 rem;
+  font-weight: 400;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  color: var(--color-text-project-description);
+  text-transform: uppercase;
+}
+
+
+
+
+
+.border-right{
+  border-right: 0.1rem solid var(--color-text-project-description);
+  width: 100%;            /* Ensure full width */
+  box-sizing: border-box;
+  display: block;         /* So width applies properly */
+
+}
+
   .section-container {
-    width: 80%; /* Adjust this width for larger screens if needed */
+    width: 100%; /* Adjust this width for larger screens if needed */
     flex-direction: row;
+  
+
+    /* background: url(../assets/brown-line.png);
+    background-repeat: no-repeat;
+    background-position-x: -140%;
+    background-position-y: top; */
   }
   .col-2 {
     width: 50%;
@@ -1570,18 +1810,26 @@ to keep your styles reusable and consistent.
 /* X-Large devices (large desktops, 1200px and up)*/
 
 @media (min-width: 1200px) {
-  /* TODO: Add styles here for X-large devices. */
+  /* TODO: Add styles here for EXTRA LARGE DEVICES!!!. */
 
+      .project-title {
+  font-size: 3.225rem;
+
+}
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
   }
 }
 
-/* XX-Large devices (larger desktops, 1400px and up) */
+/* XX-Large devices (LARGER DESKTOPS!!!, 1400px and up) */
 
 @media (min-width: 1400px) {
   /* TODO: Add styles here for XX-large devices. */
 
+    .project-title {
+  font-size: 3.625rem;
+
+}
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   }
