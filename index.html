@@ -458,17 +458,19 @@
       document.addEventListener("DOMContentLoaded", function () {
         const video = document.getElementById("myVideo");
 
-        // Try autoplay immediately
-        video.play().catch(() => {
-          // If autoplay is blocked, let user tap anywhere to start
-          const startVideo = () => {
-            video.play();
-            document.removeEventListener("touchstart", startVideo);
-            document.removeEventListener("click", startVideo);
-          };
-          document.addEventListener("touchstart", startVideo);
-          document.addEventListener("click", startVideo);
-        });
+        function tryPlay() {
+          video.muted = true; // force mute just in case
+          video.play().catch(() => {
+            // If autoplay blocked, try again after a short delay
+            setTimeout(() => video.play(), 500);
+          });
+        }
+
+        tryPlay(); // initial try
+
+        // Fallback: user tap anywhere if autoplay blocked
+        document.addEventListener("click", tryPlay, { once: true });
+        document.addEventListener("touchstart", tryPlay, { once: true });
       });
     </script>
   </body>
