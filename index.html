@@ -32,17 +32,27 @@
 
   <body class="work-page" id="top">
     <section class="hero">
-      <video
-        id="myVideo"
-        autoplay
-        muted
-        loop
-        playsinline
-        webkit-playsinline
-        preload="auto"
-      >
-        <source src="assets/Website Background_2.mp4" type="video/mp4" />
-      </video>
+      <div class="video-container">
+        <video
+          id="myVideo"
+          autoplay
+          muted
+          loop
+          playsinline
+          webkit-playsinline
+          preload="auto"
+        >
+          <source src="assets/Website Background_2.mp4" type="video/mp4" />
+        </video>
+
+        <!-- GIF/WebP fallback hidden by default -->
+        <img
+          id="videoFallback"
+          src="assets/Website Background_2.gif"
+          alt="Background"
+          style="display: none; width: 100%; height: 100%; object-fit: cover"
+        />
+      </div>
 
       <div class="video-gradient"></div>
 
@@ -464,25 +474,24 @@
     <script>
       window.addEventListener("load", () => {
         const video = document.getElementById("myVideo");
+        const fallback = document.getElementById("videoFallback");
 
-        // Force the right attributes for iOS
-        video.muted = true;
-        video.setAttribute("muted", "true");
-        video.setAttribute("playsinline", "true");
-        video.setAttribute("webkit-playsinline", "true");
+        // Detect iOS/iPadOS
+        const isIOS =
+          /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+          (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 
-        // Try to autoplay after the page finishes loading
-        const tryPlay = () => {
-          video.play().catch(() => {
-            // If autoplay is blocked, retry on first interaction
-            document.addEventListener("touchstart", () => video.play(), {
-              once: true,
-            });
-          });
-        };
-
-        // Give iOS a moment to finish loading before trying
-        setTimeout(tryPlay, 200);
+        if (isIOS) {
+          // Show GIF/WebP fallback for iOS devices
+          video.style.display = "none";
+          fallback.style.display = "block";
+        } else {
+          // Play video normally for everything else
+          video.muted = true;
+          video.setAttribute("playsinline", "");
+          video.setAttribute("webkit-playsinline", "");
+          video.play().catch((err) => console.log("Autoplay failed:", err));
+        }
       });
     </script>
   </body>
