@@ -493,25 +493,22 @@
             console.log("Autoplay failed, user interaction required.");
           });
 
-          // Try to resume playback on all possible events
-          const tryResume = () => {
-            if (video.paused) {
+          // Auto-restart video when returning to the browser
+          const restartVideo = () => {
+            if (video) {
+              video.currentTime = 0; // restart from beginning
               video.play().catch(() => {
-                console.log("Couldn't auto-resume video");
+                console.log("Couldn't restart video automatically");
               });
             }
           };
 
-          // Visibility change
           document.addEventListener("visibilitychange", () => {
-            if (!document.hidden) tryResume();
+            if (!document.hidden) restartVideo();
           });
 
-          // When page comes back from bfcache or reload
-          window.addEventListener("pageshow", tryResume);
-
-          // When window regains focus
-          window.addEventListener("focus", tryResume);
+          window.addEventListener("pageshow", restartVideo);
+          window.addEventListener("focus", restartVideo);
         }
       });
     </script>
