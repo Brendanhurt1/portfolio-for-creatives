@@ -484,25 +484,34 @@
           // Show GIF fallback for iPads
           if (video) video.style.display = "none";
           if (fallback) fallback.style.display = "block";
-        } else {
+        } else if (video) {
           // Normal autoplay for all other devices
-          if (video) {
-            video.muted = true;
-            video.setAttribute("playsinline", "");
-            video.setAttribute("webkit-playsinline", "");
-            video.play().catch(() => {
-              console.log("Autoplay failed, user interaction required.");
-            });
+          video.muted = true;
+          video.setAttribute("playsinline", "");
+          video.setAttribute("webkit-playsinline", "");
+          video.play().catch(() => {
+            console.log("Autoplay failed, user interaction required.");
+          });
 
-            // Auto-resume video when returning to the browser
-            document.addEventListener("visibilitychange", () => {
-              if (!document.hidden && video.paused) {
-                video.play().catch(() => {
-                  console.log("Couldn't auto-resume video");
-                });
-              }
-            });
-          }
+          // Try to resume playback on all possible events
+          const tryResume = () => {
+            if (video.paused) {
+              video.play().catch(() => {
+                console.log("Couldn't auto-resume video");
+              });
+            }
+          };
+
+          // Visibility change
+          document.addEventListener("visibilitychange", () => {
+            if (!document.hidden) tryResume();
+          });
+
+          // When page comes back from bfcache or reload
+          window.addEventListener("pageshow", tryResume);
+
+          // When window regains focus
+          window.addEventListener("focus", tryResume);
         }
       });
     </script>
