@@ -190,7 +190,7 @@
 html {
   box-sizing: border-box; /* Makes sure padding and borders don't add extra width to elements */
   scroll-behavior: smooth; /* Adds smooth scrolling between sections */
-  cursor: url("../assets/temp/up-cursor.png"), auto !important; /* Custom cursor (change the URL below to use your own) */
+  cursor: url("../assets/cursor/cursor-mouse-arrow.png"), auto !important; /* Custom cursor (change the URL below to use your own) */
 
   /* TODO: Replace the URL above to add a custom cursor. 
      If you want to use the default browser cursor, just delete this line. */
@@ -634,6 +634,9 @@ a.nav-link-primary:hover {
 }
 
 
+
+
+
 /* Remove all default spacing */
 html, body {
   margin: 0;
@@ -675,6 +678,7 @@ html, body {
   width: 100%;
   padding: 20px;
 }
+
 
 /* #background-video iframe {
   position: absolute;
@@ -1834,6 +1838,13 @@ to keep your styles reusable and consistent.
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   }
 }
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: 55vh !important;
+  }
+}
+
 
 /*
 
