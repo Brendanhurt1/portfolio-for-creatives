@@ -1841,7 +1841,7 @@ to keep your styles reusable and consistent.
 
 @media (max-width: 767px) {
   .hero {
-    min-height: 55vh !important;
+    min-height: 65vh !important;
   }
 }
 
