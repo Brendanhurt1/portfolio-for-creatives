@@ -32,15 +32,7 @@
 
   <body class="work-page" id="top">
     <section class="hero">
-      <video
-        autoplay
-        muted
-        loop
-        playsinline
-        webkit-playsinline
-        preload="auto"
-        id="myVideo"
-      >
+      <video autoplay muted loop playsinline id="myVideo">
         <source src="assets/Website Background_2.mp4" type="video/mp4" />
       </video>
 
@@ -463,30 +455,35 @@
     </div>
 
     <script>
-      myID = document.getElementById("myID");
+            myID = document.getElementById("myID");
 
-      var myScrollFunc = function () {
-        var y = window.scrollY;
-        if (y >= 800) {
-          myID.className = "bottomMenu show";
-        } else {
-          myID.className = "bottomMenu hide";
-        }
-      };
+            var myScrollFunc = function () {
+              var y = window.scrollY;
+              if (y >= 800) {
+                myID.className = "bottomMenu show";
+              } else {
+                myID.className = "bottomMenu hide";
+              }
+            };
 
-      window.addEventListener("scroll", myScrollFunc);
-    </script>
-    <script>
-      document.addEventListener(
-        "touchstart",
-        function () {
-          const vid = document.getElementById("myVideo");
-          if (vid && vid.paused) {
-            vid.play();
-          }
-        },
-        { once: true }
-      );
+            window.addEventListener("scroll", myScrollFunc);
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const video = document.getElementById("myVideo");
+
+          // Try to autoplay
+          video.play().catch(() => {
+            // If autoplay is blocked, wait for first interaction
+            const startVideo = () => {
+              video.play();
+              document.removeEventListener("touchstart", startVideo);
+              document.removeEventListener("click", startVideo);
+            };
+
+            document.addEventListener("touchstart", startVideo);
+            document.addEventListener("click", startVideo);
+          });
+        });
     </script>
   </body>
 </html>
