@@ -476,5 +476,17 @@
 
       window.addEventListener("scroll", myScrollFunc);
     </script>
+    <script>
+      document.addEventListener(
+        "touchstart",
+        function () {
+          const vid = document.getElementById("myVideo");
+          if (vid && vid.paused) {
+            vid.play();
+          }
+        },
+        { once: true }
+      );
+    </script>
   </body>
 </html>
