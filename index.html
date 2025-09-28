@@ -32,7 +32,15 @@
 
   <body class="work-page" id="top">
     <section class="hero">
-      <video id="myVideo" autoplay muted loop playsinline webkit-playsinline>
+      <video
+        id="myVideo"
+        autoplay
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+        preload="auto"
+      >
         <source src="assets/Website Background_2.mp4" type="video/mp4" />
       </video>
 
@@ -454,26 +462,25 @@
       />
     </div>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      window.addEventListener("load", function () {
         const video = document.getElementById("myVideo");
 
-        // Force mute for autoplay rules
+        // Ensure video is muted first
         video.muted = true;
-        video.setAttribute("playsinline", "");
-        video.setAttribute("webkit-playsinline", "");
+        video.setAttribute("muted", ""); // Some iOS versions need the attribute itself
 
-        // Try playing until successful
-        function tryPlay() {
-          const promise = video.play();
-          if (promise !== undefined) {
-            promise.catch(() => {
-              // Retry after small delay if blocked
-              setTimeout(tryPlay, 200);
+        // Try to play the video
+        const tryPlay = () => {
+          video.play().catch(() => {
+            // If autoplay fails, try again on first interaction
+            document.addEventListener("touchstart", () => video.play(), {
+              once: true,
             });
-          }
-        }
+          });
+        };
 
-        tryPlay();
+        // Try after a tiny delay to let the browser settle
+        setTimeout(tryPlay, 100);
       });
     </script>
   </body>
