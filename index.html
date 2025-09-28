@@ -45,12 +45,11 @@
           <source src="assets/Website Background_2.mp4" type="video/mp4" />
         </video>
 
-        <!-- GIF/WebP fallback hidden by default -->
         <img
           id="videoFallback"
           src="assets/Website Background_2.gif"
           alt="Background"
-          style="display: none; width: 100%; height: 100%; object-fit: cover"
+          style="display: none"
         />
       </div>
 
@@ -476,17 +475,15 @@
         const video = document.getElementById("myVideo");
         const fallback = document.getElementById("videoFallback");
 
-        // Detect iOS/iPadOS
-        const isIOS =
-          /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+        // Detect iPad only
+        const isIPad =
+          /iPad/.test(navigator.userAgent) ||
           (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 
-        if (isIOS) {
-          // Show GIF/WebP fallback for iOS devices
+        if (isIPad) {
           video.style.display = "none";
           fallback.style.display = "block";
         } else {
-          // Play video normally for everything else
           video.muted = true;
           video.setAttribute("playsinline", "");
           video.setAttribute("webkit-playsinline", "");
