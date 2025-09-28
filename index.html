@@ -41,7 +41,7 @@
         webkit-playsinline
         preload="auto"
       >
-        <source src="assets/Beach Selfie.mp4" type="video/mp4" />
+        <source src="assets/Website Background_2.mp4" type="video/mp4" />
       </video>
 
       <div class="video-gradient"></div>
@@ -462,25 +462,27 @@
       />
     </div>
     <script>
-      window.addEventListener("load", function () {
+      window.addEventListener("load", () => {
         const video = document.getElementById("myVideo");
 
-        // Ensure video is muted first
+        // Force the right attributes for iOS
         video.muted = true;
-        video.setAttribute("muted", ""); // Some iOS versions need the attribute itself
+        video.setAttribute("muted", "true");
+        video.setAttribute("playsinline", "true");
+        video.setAttribute("webkit-playsinline", "true");
 
-        // Try to play the video
+        // Try to autoplay after the page finishes loading
         const tryPlay = () => {
           video.play().catch(() => {
-            // If autoplay fails, try again on first interaction
+            // If autoplay is blocked, retry on first interaction
             document.addEventListener("touchstart", () => video.play(), {
               once: true,
             });
           });
         };
 
-        // Try after a tiny delay to let the browser settle
-        setTimeout(tryPlay, 100);
+        // Give iOS a moment to finish loading before trying
+        setTimeout(tryPlay, 200);
       });
     </script>
   </body>
