@@ -475,19 +475,34 @@
         const video = document.getElementById("myVideo");
         const fallback = document.getElementById("videoFallback");
 
-        // Detect iPad only
+        // Detect iPad only (not iPhone)
         const isIPad =
           /iPad/.test(navigator.userAgent) ||
           (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 
         if (isIPad) {
-          video.style.display = "none";
-          fallback.style.display = "block";
+          // Show GIF fallback for iPads
+          if (video) video.style.display = "none";
+          if (fallback) fallback.style.display = "block";
         } else {
-          video.muted = true;
-          video.setAttribute("playsinline", "");
-          video.setAttribute("webkit-playsinline", "");
-          video.play().catch((err) => console.log("Autoplay failed:", err));
+          // Normal autoplay for all other devices
+          if (video) {
+            video.muted = true;
+            video.setAttribute("playsinline", "");
+            video.setAttribute("webkit-playsinline", "");
+            video.play().catch(() => {
+              console.log("Autoplay failed, user interaction required.");
+            });
+
+            // Auto-resume video when returning to the browser
+            document.addEventListener("visibilitychange", () => {
+              if (!document.hidden && video.paused) {
+                video.play().catch(() => {
+                  console.log("Couldn't auto-resume video");
+                });
+              }
+            });
+          }
         }
       });
     </script>
