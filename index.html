@@ -457,27 +457,23 @@
       document.addEventListener("DOMContentLoaded", function () {
         const video = document.getElementById("myVideo");
 
-        function forceAutoplay() {
-          video.muted = true; // required for autoplay
-          video.play().catch(() => {
-            // Try again if autoplay fails
-            setTimeout(forceAutoplay, 200);
-          });
+        // Force mute for autoplay rules
+        video.muted = true;
+        video.setAttribute("playsinline", "");
+        video.setAttribute("webkit-playsinline", "");
+
+        // Try playing until successful
+        function tryPlay() {
+          const promise = video.play();
+          if (promise !== undefined) {
+            promise.catch(() => {
+              // Retry after small delay if blocked
+              setTimeout(tryPlay, 200);
+            });
+          }
         }
 
-        // Initial attempt
-        forceAutoplay();
-
-        // Fallback for any browser that still blocks autoplay
-        ["touchstart", "click"].forEach((event) => {
-          document.addEventListener(
-            event,
-            () => {
-              forceAutoplay();
-            },
-            { once: true }
-          );
-        });
+        tryPlay();
       });
     </script>
   </body>
