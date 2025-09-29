@@ -131,8 +131,8 @@
   --color-link-hover: #111;
   --color-link-visited: #5200ff;
   /* Navigation */
-  --color-nav-link: #5200ff;
-  --color-nav-link-hover: #321575;
+  --color-nav-link: #605039;
+  --color-nav-link-hover: #FFEFE1;
   --color-nav-arrow: #5200ff;
   --color-nav-arrow-hover: #000;
   --color-nav-arrow-stroke: #5200ff;
@@ -441,7 +441,7 @@ h6 {
 /* ------------------------------------------------------------------ */
 
 p {
-  font-size: 1rem;
+  font-size: 1.225rem;
   line-height: 1.3;
   margin-bottom: 1rem;
   font-weight: 200;
@@ -477,15 +477,33 @@ em {
   font-family: var(--font-family-project-title);
   color: var(--color-text-project-title);
   margin-bottom: 1rem;
+    line-height: 1;
+
 }
+
 
 /* THIS IS WHERE YOU CHANGE BODY FONT SIZE, ETC. */
 .project-description {
   font-size: 1.225rem;
   line-height: 1.2;
   color: var(--color-text-project-description);
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
+
+.project-description-bold {
+  font-size: 1.225rem;
+  line-height: 1.2;
+  color: var(--color-text-project-description);
+  margin-bottom: 1rem;
+  font-weight: 400;
+    padding-right: 20px; 
+   padding-left: 20px;  
+}
+.project-description {
+  line-height: 1.4;           /* keep text readable */
+    margin: 0.5rem auto;
+}
+
 
 /* 🧱 Full-width headings — useful in layouts that span edge-to-edge */
 .h1-full-width,
@@ -512,6 +530,92 @@ em {
   color: var(--color-text-project-category);
 }
 
+.project-image {
+  display: flex;
+  flex-direction: column; /* stack image & caption vertically */
+  align-items: center;    /* center both horizontally */
+  margin: 1rem;           /* spacing around each figure */
+}
+
+.project-image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.project-caption {
+  text-align: center;
+  margin-top: 1rem;     /* space above caption */
+  font-size: 1.25rem;
+  color: var(--color-text-project-description);
+  text-transform: uppercase;
+  font-family: "poppins", sans-serif;
+  font-weight: 600;
+}
+
+.project-caption:last-of-type::after {
+  content: "";
+  display: block;
+  width: 100%;                 
+  height: 3px;                
+  background-color: #F26F6C;   
+  margin-top: 0.5rem;          
+}
+
+.project-description-one-column {
+  font-family: var(--font-family-body);   /* same as project-description */
+  font-size: 1.225rem;
+  line-height: 1.6;
+  color: var(--color-text-project-description);
+  max-width: 800px;                       /* keeps text narrow for one-column layout */
+  margin: 1rem auto;                       /* centers it horizontally */
+  padding: 3rem 2rem;                         /* inner left/right padding */
+  position: relative;                      /* needed for underline */
+  text-align: left;                        /* or center if you prefer */
+}
+
+.project-description-one-column::after {
+  content: "";
+  display: block;
+  width: 100%;                             /* underline matches text width */
+  height: 3px;                             /* thickness of underline */
+  background-color: #F26F6C;               /* same as project-caption underline */
+  margin-top: 0.5rem;                      /* space between text and line */
+}
+
+.project-description-one-column {
+  font-family: var(--font-family-body);
+  font-size: 1.225rem;
+  line-height: 1.6;
+  color: var(--color-text-project-description);
+  max-width: 800px;
+  margin: 1rem auto;
+  padding: 0 2rem;
+  position: relative; /* for underline */
+  text-align: left;
+}
+
+.project-description-one-column::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #F26F6C;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .project-description {
+    font-size: 1rem;   /* Smaller size for mobile */
+    line-height: 1.4;    /* Keeps text readable */
+  }
+
+  .project-description-bold {
+    font-size: 1rem;     /* Slightly bigger since it’s bold */
+    line-height: 1.4;
+    font-weight: 400;
+  }
+}
 /*
 
 ██   ██ ██    ██ ██████  ███████ ██████  ██      ██ ███    ██ ██   ██ ███████ 
@@ -535,9 +639,7 @@ a:link {
 }
 
 /* Visited link — after a user clicks and returns */
-a:visited {
-  color: var(--color-link-visited);
-}
+
 
 /* Hover — when a user hovers their mouse over the link */
 a:hover {
@@ -713,7 +815,6 @@ html, body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  -webkit-transform: translateZ(0); /* fixes Safari stuttering/pausing */
 }
 
 
@@ -753,8 +854,42 @@ html, body {
   flex-direction: row;
 }
 .nav-branding-item {
-  padding: var(--padding-tiny);
+  display: inline-block;
+  width: 350px;                 /* fixed width for all buttons */
+  padding: 1rem 0;              /* vertical padding only, no horizontal since width is fixed */
+  margin: 1.5rem;
+  text-transform: uppercase;
+  font-family: var(--font-family-heading);
+  font-weight: 800;
+  font-size: 1.5rem;
+  background-color: #F26F6C;
+  border: 5px solid #605039;
+  color: #605039;
+  border-radius: 0;
+  text-decoration: none;
+  text-align: center;           /* center text inside fixed width */
+  cursor: pointer;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
+
+.nav-branding-item:hover {
+  background-color: #B8A88E;
+  color: #FFEFE1;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {  /* adjust breakpoint as needed */
+  .nav-branding-item {
+    font-size: 0.8rem;      /* smaller text */
+    padding: 0.5rem 0.75rem; /* smaller padding */
+    margin: 0.75rem; 
+     width: 175px;  
+       border: 3px solid #605039;      /* tighter spacing between buttons */
+  }
+}
+
+
+
 
 .nav-branding-logo {
   width: 18rem;
@@ -806,6 +941,7 @@ html, body {
   padding-bottom: 0.5rem;      
 }
 
+
 .project-description:last-of-type::after {
   content: "";
   display: block;
@@ -814,6 +950,7 @@ html, body {
   background-color: #F26F6C;   
   margin-top: 1.5rem;          
 }
+/* CONTROLS LINE BENEATH PROJECT DESCRIPTION */
 
 .video-gradient {
   position: absolute;
@@ -881,7 +1018,7 @@ html, body {
    font-size: 12px; /* controls font size */
   font-weight: 600; /* adjust text weight */
   text-align: center;
-  margin: 0 8px; /* spacing between tags */
+  margin: 4px 8px; /* spacing between tags */
 }
 
 
@@ -908,7 +1045,8 @@ html, body {
 
 
 .project-description {
-  padding: 20px;        /* inner spacing */
+  padding-right: 20px; 
+   padding-left: 20px;       /* inner spacing */
   box-sizing: border-box; /* keeps padding inside width */
 }
 
@@ -1366,6 +1504,63 @@ html, body {
   padding: 0;
 }
 
+.project-1-milianos .nav-branding {
+  display: flex !important;          /* force flexbox */
+  justify-content: flex-start !important; /* push content right */
+  width: 100%;                       /* make ul span full width */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.project-2-progrock .nav-branding {
+  display: flex !important;          /* force flexbox */
+  justify-content: flex-start !important; /* push content right */
+  width: 100%;                       /* make ul span full width */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.project-3-zokusha .nav-branding {
+  display: flex !important;          /* force flexbox */
+  justify-content: flex-start !important; /* push content right */
+  width: 100%;                       /* make ul span full width */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.project-4-franks .nav-branding {
+  display: flex !important;          /* force flexbox */
+  justify-content: flex-start !important; /* push content right */
+  width: 100%;                       /* make ul span full width */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.project-5-brewery .nav-branding {
+  display: flex !important;          /* force flexbox */
+  justify-content: flex-start !important; /* push content right */
+  width: 100%;                       /* make ul span full width */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.project-6-strathcona .nav-branding {
+  display: flex !important;          /* force flexbox */
+  justify-content: flex-start !important; /* push content right */
+  width: 100%;                       /* make ul span full width */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.project-7-spudbuds .nav-branding {
+  display: flex !important;          /* force flexbox */
+  justify-content: flex-start !important; /* push content right */
+  width: 100%;                       /* make ul span full width */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
 /*
 
 ██████  ██       ██████   ██████      ██ ██████  ███████ ███████ ██    ██ ███    ███ ███████ 
@@ -1632,7 +1827,7 @@ to keep your styles reusable and consistent.
   }
 
 .hero-header {
-  min-height: 30vh; /* Space reserved for logo + nav */
+  min-height: 1vh; /* Space reserved for logo + nav */
 
 }
 
@@ -1871,6 +2066,7 @@ to keep your styles reusable and consistent.
 
     .project-title {
   font-size: 3.625rem;
+  padding-left: 20px;
 
 }
   .grid {
@@ -1883,6 +2079,115 @@ to keep your styles reusable and consistent.
     min-height: 65vh !important;
   }
 }
+body, ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* container that holds the pair and the shared caption */
+.project-image-pair {
+  display: flex;
+  flex-wrap: wrap;            /* allows stacking on small screens */
+  gap: 20px;                  /* space between the two figures */
+  align-items: flex-start;
+  justify-content: center;    /* center the two images inside the container */
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* make each figure share the available width and stay inside the container */
+.project-image-pair .project-image {
+  flex: 1 1 calc(50% - 10px); /* two columns with gap accounted for */
+  max-width: calc(50% - 10px);
+  box-sizing: border-box;
+  margin: 0;                  /* remove default figure margins that can push layout */
+}
+
+/* ensure the images never overflow and keep correct aspect ratio */
+.project-image-pair .project-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;        /* keeps the whole image visible */
+  box-sizing: border-box;
+}
+
+/* caption spans full width under both images and is centered */
+.project-image-pair .project-caption-shared {
+  width: 100%;
+  text-align: center;
+  margin: 1rem 0 0;
+  color: #605039;
+  font-style: italic;         /* optional */
+}
+
+/* responsive: stack images on small screens */
+@media (max-width: 700px) {
+  .project-image-pair {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .project-image-pair .project-image {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+.project-image-pair .project-caption {
+  display: inline-block;       /* caption shrinks to text width */
+  text-align: center;
+  margin-top: 1rem;
+  position: relative;          /* for pseudo-element positioning */
+}
+
+.project-image-pair .project-caption::after {
+  content: "";
+  display: block;
+  height: 3px;
+  background-color: #F26F6C;
+  width: 100%;                 /* match caption width exactly */
+  margin-top: 0.5rem;
+}
+
+.project-navigation {
+  display: flex;
+  justify-content: space-between; /* arrows at left and right ends of container */
+  align-items: center;
+  max-width: 400px;   /* optional: controls overall width */
+  margin: 2rem auto;  /* centers the nav row */
+  padding: 0;
+  list-style: none;
+}
+
+.project-navigation .arrow a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .project-navigation {
+    max-width: 300px;  /* smaller row on mobile */
+    margin: 1.5rem auto;
+  }
+}
+/* Give the whole project area breathing room above the footer */
+/* Applies to all project pages */
+.project-wrapper {
+  box-sizing: border-box;
+  padding-bottom: 10rem; /* Consistent bottom space for all pages */
+}
+
+@media (max-width: 768px) {
+  .project-wrapper {
+    padding-bottom: 4rem; /* Smaller gap for mobile */
+  }
+}
+
+
+
+
+
 
 
 /*

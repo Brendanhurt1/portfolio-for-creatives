@@ -22,15 +22,20 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="./styles/style.css" />
+    <link
+      rel="icon"
+      type="images/svg+xml"
+      href="assets/branding-images/favicon-bh-brand-brown.svg"
+    />
   </head>
 
-  <body class="project-1">
+  <body class="project-1-milianos">
     <header class="hero-header">
       <ul class="nav-branding">
-        <li><a href="index.html" class="custom-navigation">Home</a></li>
-        <li><a href="about.html" class="custom-navigation">About</a></li>
+        <li><a href="index.html" class="nav-branding-item">Home</a></li>
       </ul>
     </header>
+
     <div class="project-wrapper">
       <aside class="project-aside">
         <div class="project-info border-right">
@@ -165,21 +170,24 @@
         <div class="project-image-container">
           <figure class="project-image padding-20">
             <img
-              src="assets/milianos-restaurant-rgd-award-winner-honorable mention/milianos-menu-mockups/milianos-menu-food-folded-back.jpg"
-              width="1920"
-              height="1080"
-              loading="lazy"
-              alt="Describe your project"
-            />
-          </figure>
-          <figure class="project-image padding-20">
-            <img
               src="assets/milianos-restaurant-rgd-award-winner-honorable mention/milianos-menu-mockups/milianos-menu-food-folded.jpg"
               width="1920"
               height="1080"
               loading="lazy"
               alt="Describe your project"
             />
+            <figcaption class="project-caption">Food cover front</figcaption>
+          </figure>
+
+          <figure class="project-image padding-20">
+            <img
+              src="assets/milianos-restaurant-rgd-award-winner-honorable mention/milianos-menu-mockups/milianos-menu-food-folded-back.jpg"
+              width="1920"
+              height="1080"
+              loading="lazy"
+              alt="Describe your project"
+            />
+            <figcaption class="project-caption">food cover back</figcaption>
           </figure>
         </div>
         <div class="divider" data-title="beverages menu"></div>
@@ -257,6 +265,7 @@
             loading="lazy"
             alt="Describe your project"
           />
+          <figcaption class="project-caption">sauce jar front</figcaption>
         </figure>
         <figure class="project-image border padding-20">
           <img
@@ -266,6 +275,7 @@
             loading="lazy"
             alt="Describe your project"
           />
+          <figcaption class="project-caption">sauce jar back</figcaption>
         </figure>
       </main>
     </div>
@@ -308,11 +318,6 @@
 
       <li class="footer-full-width">
         <p><a href="#top">Smooth scroll to the top</a></p>
-        <p class="footer-fineprint">
-          &copy; <span id="copyright-years">2020-</span>. Hand crafted with
-          <span class="heart">❤</span>
-          by James Neufeld.
-        </p>
         <script>
           document.getElementById("copyright-years").textContent +=
             new Date().getFullYear();

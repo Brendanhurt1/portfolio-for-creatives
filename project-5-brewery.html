@@ -22,42 +22,47 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="./styles/style.css" />
+    <!-- FAVICON INSERT RIGHT AFTER STYLE CSS -->
+    <link
+      rel="icon"
+      type="images/svg+xml"
+      href="assets/branding-images/favicon-bh-brand-brown.svg"
+    />
+    <!-- END OF FAVICON STUFF BEFORE </HEAD> -->
   </head>
 
-  <body class="project-1">
+  <body class="project-5-brewery">
     <header class="hero-header">
       <ul class="nav-branding">
-        <li><a href="index.html" class="custom-navigation">Home</a></li>
-        <li class="nav-branding-logo">
-          <a href="index.html"
-            ><img
-              src="assets/branding-images/logo.svg"
-              alt="Your portfolio logo"
-          /></a>
-        </li>
-        <li><a href="about.html" class="custom-navigation">About</a></li>
+        <li><a href="index.html" class="nav-branding-item">Home</a></li>
       </ul>
     </header>
+
     <div class="project-wrapper">
       <aside class="project-aside">
         <div class="project-info border-right">
           <h1 class="project-title">West Point Brewing</h1>
           <p class="project-description">
-West Point Brewing is a brewery based in Vancouver with the
-unique selling point being a brewery that sells beer, sours, and
-cider infused with locally sourced ingredients such as blackberries,
-cedar, etc.
+            West Point Brewing is a brewery based in Vancouver with the unique
+            selling point being a brewery that sells beer, sours, and cider
+            infused with locally sourced ingredients such as blackberries,
+            cedar, etc.
           </p>
           <p class="project-description">
-My task was to create a logo as well as associated packaging.
-My solution for it was to represent the act of people harvesting
-the local ingredients and the following process of the ingredients
-getting infused into the beverage in a fun, illustrative way.
+            My task was to create a logo as well as associated packaging. My
+            solution for it was to represent the act of people harvesting the
+            local ingredients and the following process of the ingredients
+            getting infused into the beverage in a fun, illustrative way.
           </p>
-            <a href="project-full-width.html"
-            >
-          </p>
+
+          <div class="project-tags">
+            <div class="tag">Brand Identity</div>
+            <div class="tag">Packaging</div>
+            <div class="tag">Logo Development</div>
+            <div class="tag">Social Media Motion Reel</div>
+          </div>
         </div>
+
         <ul class="project-navigation">
           <li class="arrow">
             <a href="project-4-franks.html" class="navigation-arrow"
@@ -71,41 +76,57 @@ getting infused into the beverage in a fun, illustrative way.
           </li>
         </ul>
       </aside>
+
       <main class="project-details">
-        <figure class="project-image border">
-          <img
-            src="assets/west-point-brewing/logo/west-point-brewing-logo.png"
-            width="1920"
-            height="1080"
-            loading="lazy"
-            alt="Describe your project"
-          />
-        </figure>
-        <div class="project-description-container">
-          <div class="project-title col-2">
-            <h2>Optional Text Block</h2>
-            <h3>
-              Easily modify responsive components like this text block to suit
-              your needs.
-            </h3>
+        <div class="divider" data-title="logo development"></div>
+        <div class="section-container border top">
+          <div class="section-item col-2">
+            <p class="project-description">
+              The logo takes the imagery of a beer tap and creates a text-based
+              logo with hand-done type. This creates imagery that could also
+              work as a physical beer tap to be implemented in other breweries.
+            </p>
           </div>
-          <div class="project-description col-2">
-            <p>
-              To create additional project pages, copy this file and rename it
-              to something else. Adjust the hyperlinks on the arrows to go to
-              the right pages.
+          <div class="section-item col-2">
+            <figure class="project-image border">
+              <img
+                src="assets/west-point-brewing/logo/west-point-brewing-logo.png"
+                width="1920"
+                height="1080"
+                loading="lazy"
+                alt="Describe your project"
+              />
+            </figure>
+          </div>
+        </div>
+
+        <div class="divider" data-title="packaging"></div>
+        <div class="section-container">
+          <div class="section-item col-2">
+            <figure class="project-image border">
+              <img
+                src="assets/west-point-brewing/packaging/west-point-brewing-packaging-corner-top.png"
+                width="1920"
+                height="1080"
+                loading="lazy"
+                alt="Describe your project"
+              />
+            </figure>
+          </div>
+          <div class="section-item col-2">
+            <p class="project-description">
+              With the unique process West Point Brewing employs to create its
+              beverages. My favourite concept to bring to full fidelity was to
+              make the process and the packaging be one and the same.
+            </p>
+            <p class="project-description">
+              All food items are named after streets on ‘The Drive,’ celebrating
+              the area’s people, homes, and community spirit.
             </p>
           </div>
         </div>
-        <figure class="project-image">
-          <img
-            src="assets/west-point-brewing/packaging/west-point-brewing-packaging-corner-top.png"
-            width="1920"
-            height="1080"
-            loading="lazy"
-            alt="Describe your project"
-          />
-        </figure>
+
+        <!-- IMAGE GROUPS -->
         <div class="project-image-container">
           <figure class="project-image">
             <img
@@ -115,6 +136,7 @@ getting infused into the beverage in a fun, illustrative way.
               loading="lazy"
               alt="Describe your project"
             />
+            <figcaption class="project-caption">front</figcaption>
           </figure>
           <figure class="project-image">
             <img
@@ -124,7 +146,11 @@ getting infused into the beverage in a fun, illustrative way.
               loading="lazy"
               alt="Describe your project"
             />
+            <figcaption class="project-caption">side one</figcaption>
           </figure>
+        </div>
+
+        <div class="project-image-container">
           <figure class="project-image">
             <img
               src="assets/west-point-brewing/packaging/west-point-brewing-packaging-back.jpg"
@@ -133,6 +159,7 @@ getting infused into the beverage in a fun, illustrative way.
               loading="lazy"
               alt="Describe your project"
             />
+            <figcaption class="project-caption">back</figcaption>
           </figure>
           <figure class="project-image">
             <img
@@ -142,37 +169,48 @@ getting infused into the beverage in a fun, illustrative way.
               loading="lazy"
               alt="Describe your project"
             />
+            <figcaption class="project-caption">side two</figcaption>
           </figure>
         </div>
-        <div class="project-description-container">
-          <div class="project-title col-2">
-            <h2>Embed Video!</h2>
-            <h3>
-              Faster loading time is an advantage that’s impossible to overlook.
-            </h3>
-          </div>
-          <div class="project-description col-2">
-            <p>
-              Embedded videos from platforms like Vimeo boost your site’s speed
-              and SEO, keeping visitors engaged without extra load. When hosted
-              on powerful platforms like YouTube or Vimeo, your embedded videos
-              load much faster than if self-hosted.
+
+        <div class="divider" data-title="social media motion reel"></div>
+        <div class="section-container border top">
+          <div class="section-item col-2">
+            <p class="project-description">
+              To tie it all together, I created a social media reel to present
+              the unique process and advertise the locations of the brewery. The
+              video is sized for Instagram, TikTok, and YouTube shorts and
+              allows space for margins of text that are automatically displayed
+              on social media accounts to not get in front of the video.
+            </p>
+            <p class="project-description">
+              Social media these days is by far the most effective way to reach
+              a targeted, but massive audience easily and get the most eyes on
+              an expanding business.
             </p>
           </div>
+          <div class="section-item col-2">
+            <div class="project-video-container">
+              <iframe
+                src="https://www.youtube.com/embed/XbdYF4SDeDU"
+                class="responsive-iframe video-phone"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
         </div>
-        <div class="project-video-container">
-          <iframe
-            src="https://www.youtube.com/embed/XbdYF4SDeDU"
-            width="640"
-            height="480"
-            frameborder="0"
-            allow="autoplay; fullscreen"
-            allowfullscreen
-            class="responsive-iframe"
-          ></iframe>
+
+        <div class="divider" data-title="Three flavours"></div>
+        <div class="project-description-one-column">
+          <p>
+            I made a series of three different beverage packaging sets, but the
+            front cover varies in order to have distinct front-facing packaging
+            to distinguish between the different beverages.
+          </p>
         </div>
+
         <div class="project-image-container">
-          <figure class="project-image">
+          <figure class="project-image border top">
             <img
               src="assets/west-point-brewing/cutouts-flat-designs/west-point-brewing-packaging-flat-wheat-ale.png"
               width="1920"
@@ -180,7 +218,13 @@ getting infused into the beverage in a fun, illustrative way.
               loading="lazy"
               alt="Describe your project"
             />
+            <figcaption class="project-caption">
+              blackberry cedar wheat ale
+            </figcaption>
           </figure>
+        </div>
+
+        <div class="project-image-container">
           <figure class="project-image">
             <img
               src="assets/west-point-brewing/cutouts-flat-designs/west-point-brewing-packaging-flat-ipa.png"
@@ -189,7 +233,11 @@ getting infused into the beverage in a fun, illustrative way.
               loading="lazy"
               alt="Describe your project"
             />
+            <figcaption class="project-caption">hazelnut pine ipa</figcaption>
           </figure>
+        </div>
+
+        <div class="project-image-container">
           <figure class="project-image">
             <img
               src="assets/west-point-brewing/cutouts-flat-designs/west-point-brewing-packaging-flat-sour.png"
@@ -198,10 +246,15 @@ getting infused into the beverage in a fun, illustrative way.
               loading="lazy"
               alt="Describe your project"
             />
+            <figcaption class="project-caption">
+              Huckleberry Blueberry sour
+            </figcaption>
           </figure>
         </div>
+
+        <div class="divider" data-title="bottles and labels"></div>
         <div class="project-image-container">
-          <figure class="project-image">
+          <figure class="project-image border top">
             <img
               src="assets/west-point-brewing/bottles/west-point-brewing-bottle-wheat-beer.jpg"
               width="1920"
@@ -229,18 +282,35 @@ getting infused into the beverage in a fun, illustrative way.
             />
           </figure>
         </div>
-                <figure class="project-image border">
-          <img
-            src="assets/west-point-brewing/bottles/west-point-brewing-bottle-labels.png"
-            width="1920"
-            height="1080"
-            loading="lazy"
-            alt="Describe your project"
-          />
-        </figure>
-      </div>
+
+        <div class="section-container">
+          <div class="section-item col-2">
+            <p class="project-description">
+              For the bottles, I wanted to keep the labels consistent with the
+              appearance of the packaging, consistent in style, but distinct by
+              a range of colours that could be applied to a myriad of drinks.
+            </p>
+            <p class="project-description">
+              Social media these days is by far the most effective way to reach
+              a targeted, but massive audience easily and get the most eyes on
+              an expanding business.
+            </p>
+          </div>
+          <div class="section-item col-2">
+            <figure class="project-image border">
+              <img
+                src="assets/west-point-brewing/bottles/west-point-brewing-bottle-labels.png"
+                width="1920"
+                height="1080"
+                loading="lazy"
+                alt="Describe your project"
+              />
+            </figure>
+          </div>
+        </div>
       </main>
     </div>
+
     <ul class="footer-global">
       <li class="footer-tagline">
         <h2>Let's Connect!</h2>
@@ -279,15 +349,6 @@ getting infused into the beverage in a fun, illustrative way.
 
       <li class="footer-full-width">
         <p><a href="#top">Smooth scroll to the top</a></p>
-        <p class="footer-fineprint">
-          &copy; <span id="copyright-years">2020-</span>. Hand crafted with
-          <span class="heart">❤</span>
-          by James Neufeld.
-        </p>
-        <script>
-          document.getElementById("copyright-years").textContent +=
-            new Date().getFullYear();
-        </script>
       </li>
     </ul>
 
@@ -296,18 +357,11 @@ getting infused into the beverage in a fun, illustrative way.
     </div>
 
     <script>
-      myID = document.getElementById("myID");
-
-      var myScrollFunc = function () {
-        var y = window.scrollY;
-        if (y >= 800) {
-          myID.className = "bottomMenu show";
-        } else {
-          myID.className = "bottomMenu hide";
-        }
-      };
-
-      window.addEventListener("scroll", myScrollFunc);
+      const myID = document.getElementById("myID");
+      window.addEventListener("scroll", () => {
+        myID.className =
+          window.scrollY >= 800 ? "bottomMenu show" : "bottomMenu hide";
+      });
     </script>
   </body>
 </html>
