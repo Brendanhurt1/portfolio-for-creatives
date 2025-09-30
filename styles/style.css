@@ -824,6 +824,15 @@ html, body {
     display: block !important;
   }
 }
+/* On small screens, shrink it slightly */
+@media (max-width: 768px) {
+  #videoFallback {
+    width: 75%;         /* shrink width */
+    height: auto;       /* let height scale naturally */
+    left: 5%;           /* center horizontally */
+    top: 10%;           /* push down a bit if needed */
+  }
+}
 
 
 
