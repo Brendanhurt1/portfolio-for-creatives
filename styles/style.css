@@ -127,7 +127,7 @@
   --color-text-project-title: #F37A71;
   --color-text-work-grid-title: #ffffff;
   /* Link States */
-  --color-link: #605039;
+  --color-link: #1e00ff;
   --color-link-hover: #111;
   --color-link-visited: #605039;
   /* Navigation */
@@ -791,14 +791,14 @@ html, body {
 
 /* Default: show video, hide gif */
 #myVideo {
-  display: block;
+  display: block !important;
   width: 100%;
   height: auto;
-  object-fit: cover; /* keeps it full background style */
+  object-fit: cover;
 }
 
 #videoFallback {
-  display: none;
+  display: none !important;
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -807,11 +807,11 @@ html, body {
 /* Mobile + tablet: hide video, show gif */
 @media (max-width: 1024px) {
   #myVideo {
-    display: none;
+    display: none !important;
   }
 
   #videoFallback {
-    display: block;
+    display: block !important;
   }
 }
 
