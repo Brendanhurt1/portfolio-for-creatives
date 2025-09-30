@@ -923,6 +923,9 @@ html, body {
   cursor: pointer;
   transition: background-color 0.5s ease, color 0.5s ease;
 }
+.nav-branding .nav-branding-item a {
+  color: var(#605039) !important;
+}
 
 .nav-branding-item:hover {
   background-color: #B8A88E;
