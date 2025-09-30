@@ -127,9 +127,9 @@
   --color-text-project-title: #F37A71;
   --color-text-work-grid-title: #ffffff;
   /* Link States */
-  --color-link: #1e00ff;
-  --color-link-hover: #111;
-  --color-link-visited: #605039;
+  --color-link: #1100aa;
+  --color-link-hover: #F37A71;
+  --color-link-visited: #1100aa;
   /* Navigation */
   --color-nav-link: #605039;
   --color-nav-link-hover: #FFEFE1;
@@ -824,15 +824,7 @@ html, body {
     display: block !important;
   }
 }
-/* On small screens, shrink it slightly */
-@media (max-width: 768px) {
-  #videoFallback {
-    width: 75%;         /* shrink width */
-    height: auto;       /* let height scale naturally */
-    left: 5%;           /* center horizontally */
-    top: 10%;           /* push down a bit if needed */
-  }
-}
+
 
 
 
@@ -914,6 +906,7 @@ html, body {
 }
 .nav-branding-item {
   display: inline-block;
+    color: var(#605039) !important;
   width: 350px;                 /* fixed width for all buttons */
   padding: 1rem 0;              /* vertical padding only, no horizontal since width is fixed */
   margin: 1.5rem;
