@@ -127,9 +127,9 @@
   --color-text-project-title: #F37A71;
   --color-text-work-grid-title: #ffffff;
   /* Link States */
-  --color-link: #1100aa;
+  --color-link: #605039;
   --color-link-hover: #F37A71;
-  --color-link-visited: #1100aa;
+  --color-link-visited: #605039;
   /* Navigation */
   --color-nav-link: #605039;
   --color-nav-link-hover: #FFEFE1;
@@ -467,6 +467,7 @@ em {
   max-width: 60ch; /* Optimal line length for readability (~40 characters) */
   text-wrap: balance; /* Prevents awkward line breaks (like elegant typography) */
   margin-inline: auto; /* Horizontally centers the text in its container */
+  font-weight: 400;
 }
 
 /* Large project title — appears on individual project pages */
@@ -2242,6 +2243,17 @@ body, ul {
 @media (max-width: 768px) {
   .hero-header {
     min-height: 5vh;
+  }
+}
+
+.hero-headline a {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .hero-headline {
+    font-size: 1.1rem;   /* adjust this size smaller than your desktop */
+    line-height: 1.4;  /* optional: tweak line height so text stays readable */
   }
 }
 
