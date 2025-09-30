@@ -789,6 +789,33 @@ html, body {
     z-index: -1;
   }
 
+/* Default: show video, hide gif */
+#myVideo {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* keeps it full background style */
+}
+
+#videoFallback {
+  display: none;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Mobile + tablet: hide video, show gif */
+@media (max-width: 1024px) {
+  #myVideo {
+    display: none;
+  }
+
+  #videoFallback {
+    display: block;
+  }
+}
+
+
 
 .content {
   position: absolute;
