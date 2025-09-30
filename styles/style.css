@@ -790,21 +790,31 @@ html, body {
   }
 
 /* Default: show video, hide gif */
+/* Video default */
 #myVideo {
   display: block !important;
   width: 100%;
-  height: auto;
+  height: 100vh; /* full viewport height */
   object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* stays behind content */
 }
 
+/* Gif default (hidden) */
 #videoFallback {
   display: none !important;
   width: 100%;
-  height: auto;
+  height: 100vh; /* full viewport height */
   object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* stays behind content */
 }
 
-/* Mobile + tablet: hide video, show gif */
+/* On tablet/phone: swap */
 @media (max-width: 1024px) {
   #myVideo {
     display: none !important;
