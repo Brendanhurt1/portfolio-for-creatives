@@ -190,7 +190,14 @@
 html {
   box-sizing: border-box; /* Makes sure padding and borders don't add extra width to elements */
   scroll-behavior: smooth; /* Adds smooth scrolling between sections */
-  cursor: url("/assets/cursor/2x/Asset\ 52.png"), auto !important; /* Custom cursor (change the URL below to use your own) */
+body {
+  cursor: url("/assets/cursor/2x/Asset 52.png"), auto !important;
+}
+
+/* Hover cursor for links */
+a:hover {
+  cursor: url("/assets/cursor/2x/Asset\ 42.png"), pointer !important;
+}
 
   /* TODO: Replace the URL above to add a custom cursor. 
      If you want to use the default browser cursor, just delete this line. */
@@ -957,7 +964,7 @@ html, body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 3rem;
+  gap: 1rem;
   align-items: center;
   justify-content: center;
   padding: var(--padding-small);
@@ -1164,6 +1171,141 @@ html, body {
   padding: var(--padding-small);
   margin: 0rem;
 }
+
+/* HEADER BASE */
+.hero-header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between; /* left and right containers */
+  align-items: center;
+  padding: 1rem 2rem;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(3px); /* toned-down blur */
+  z-index: 1000;
+}
+
+/* LEFT SIDE: HOME BUTTON */
+.nav-branding {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.nav-branding-item {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #605039;
+  font-weight: 600;
+}
+
+/* RIGHT SIDE: ARROWS */
+.nav-arrows {
+  display: flex !important;
+  gap: 2rem !important; /* spacing between left and right arrow */
+  padding: 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.nav-arrows li {
+  padding: 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+}
+
+/* Each arrow block */
+.nav-arrows .navigation-arrow,
+.nav-arrows .arrow-link {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  color: #605039 !important;
+  transition: color 0.3s ease !important;
+}
+
+/* Force icon + label centered */
+.nav-arrows i {
+  display: block !important;
+  text-align: center !important;
+  line-height: 1 !important;
+  margin: 0 auto !important;
+}
+
+.arrow-label {
+  display: block !important;
+  margin-top: 0.25rem !important;
+  font-size: 1rem !important; /* match project-description */
+  text-align: center !important;
+  text-transform: uppercase !important;
+  font-weight: 400 !important;
+  color: inherit !important;
+}
+
+/* Hover effect (arrow + label) */
+.nav-arrows .navigation-arrow:hover,
+.nav-arrows .arrow-link:hover {
+  color: #F26F6C !important;
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+  .hero-header {
+    flex-direction: column; /* stack everything */
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-branding {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-arrows {
+    flex-direction: row;  /* arrows still side by side */
+    justify-content: center;
+    gap: 2rem;
+  }
+}
+.nav-arrows a,
+.nav-arrows a:focus,
+.nav-arrows a:active,
+.nav-arrows a:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+@media (max-width: 768px) {
+  .nav-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-arrows {
+    justify-content: center;
+  }
+}
+
+/* Make arrow focus outline white to hide it */
+.arrow-link:focus,
+.arrow-link:active {
+  outline: 2px solid white;
+  outline-offset: 0;
+  box-shadow: none; /* remove any shadow */
+}
+
+
+
+
 
 /* 
 
@@ -1560,10 +1702,10 @@ html, body {
   padding: 0;
 }
 
-.project-1-milianos .nav-branding {
-  display: flex !important;          /* force flexbox */
-  justify-content: flex-start !important; /* push content right */
-  width: 100%;                       /* make ul span full width */
+body.project-1-milianos header.hero-header .nav-branding {
+  display: flex; /* remove !important */
+  justify-content: space-between; /* instead of flex-start */
+  width: 100%;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -1616,6 +1758,26 @@ html, body {
   margin: 0;
   list-style: none;
 }
+
+header.hero-header .nav-wrapper {
+  display: flex;
+  justify-content: space-between; /* Home left, arrows right */
+  align-items: center;            /* vertical alignment */
+  width: 100%;
+}
+
+.nav-arrows {
+  display: flex;
+  gap: 1rem; /* space between arrows */
+}
+
+.arrow-label {
+  display: block;
+  text-align: center;
+  font-size: var(--font-size-project-description);
+  color: #605039;
+}
+
 
 /*
 
@@ -2256,6 +2418,60 @@ body, ul {
     line-height: 1.4;  /* optional: tweak line height so text stays readable */
   }
 }
+
+.hero-headline {
+  margin: 0.25rem 0; /* overrides default h3/p margins */
+}
+
+.flier {
+  display: none !important;
+}
+
+/* Index page header */
+.index-header {
+  position: static;                /* no sticky */
+  background-color: transparent;   /* remove white bar */
+  backdrop-filter: none;           /* remove blur */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--padding-tiny) var(--padding-ultra); /* keep spacing consistent */
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Keep logo size same as main header */
+.index-header .nav-branding-logo img {
+  height: auto;
+  max-height: var(--logo-height); /* same variable used in main header */
+  margin: var(--logo-margin);     /* keeps spacing consistent */
+}
+
+/* Keep nav buttons same style */
+.index-header .nav-branding {
+  display: flex;
+  gap: var(--nav-gap);             /* same gap as main header */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Index header buttons */
+.index-header .nav-branding-item {
+  color: #605039;       /* same as project pages */
+  font-weight: 700;     /* same as project pages */
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.5s;
+}
+
+.index-header .nav-branding-item:hover {
+  background-color: #B8A88E;
+  color: #FFEFE1;
+}
+
+
+
 
 
 
