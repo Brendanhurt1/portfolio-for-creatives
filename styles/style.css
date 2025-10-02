@@ -1376,7 +1376,7 @@ html, body {
 .portfolio,
 .project-wrapper,
 .work-sidebar-wrapper {
-  padding: var(--padding-tiny); /* Padding to keep content from touching edges */
+  padding: var(--padding-medium); /* Padding to keep content from touching edges */
 }
 
 /* Work Sidebar on Mobile */
@@ -1841,7 +1841,7 @@ header.hero-header .nav-wrapper {
 
 .hero-arrow-link:hover {
   color: #F26F6C;
-  transform: scale(2);     /* arrow grows on hover */
+  transform: scale(1.75);     /* arrow grows on hover */
 }
 
 .hero-arrow-link .arrow-label {
@@ -2152,7 +2152,7 @@ to keep your styles reusable and consistent.
 
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    grid-gap: 1rem;
+    grid-gap: 2rem;
   }
 
   /* Grayscale filter with full-colour on hover and tap */
@@ -2171,7 +2171,8 @@ to keep your styles reusable and consistent.
   .portfolio,
   .project-wrapper,
   .work-sidebar-wrapper {
-    padding: var(--padding-small);
+    padding: var(--padding-ultra);
+       padding-top: var(--padding-medium); /* override just the top */
   }
 
   /* Project Page Flex Direction on Large Devices */
@@ -2365,7 +2366,7 @@ to keep your styles reusable and consistent.
 
 }
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   }
 }
 
