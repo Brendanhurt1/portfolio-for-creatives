@@ -1004,7 +1004,7 @@ html, body {
   padding-bottom: 0.5rem;      
 }
 
-
+/*  
 .project-description:last-of-type::after {
   content: "";
   display: block;
@@ -1013,7 +1013,7 @@ html, body {
   background-color: #F26F6C;   
   margin-top: 1.5rem;          
 }
-/* CONTROLS LINE BENEATH PROJECT DESCRIPTION */
+/* LITTLE PINK LINES BENEATH ALL THE PROJECT DESCRIPTIONS */
 
 .video-gradient {
   position: absolute;
@@ -1063,7 +1063,7 @@ html, body {
 
 .project-tags {
   display: flex;
-  justify-content: center;    /* center the whole row */
+  justify-content: flex-start;    /* center the whole row */
   align-items: center;        /* keeps height consistent */
   gap: 2px;                  /* space between rectangles */
   margin-top: 20px;
@@ -1081,7 +1081,8 @@ html, body {
    font-size: 12px; /* controls font size */
   font-weight: 600; /* adjust text weight */
   text-align: center;
-  margin: 4px 8px; /* spacing between tags */
+  margin-right: 12px;
+  margin-top: 4px;
 }
 
 
@@ -1109,7 +1110,6 @@ html, body {
 
 .project-description {
   padding-right: 20px; 
-   padding-left: 20px;       /* inner spacing */
   box-sizing: border-box; /* keeps padding inside width */
 }
 
@@ -1345,6 +1345,25 @@ html, body {
 .arrow-link:hover .arrow-label {
   color: #F26F6C;
 }
+
+/* Home page only */
+.home-page .portfolio,
+.home-page .project-wrapper,
+.home-page .work-sidebar-wrapper {
+  padding: var(--padding-ultra);
+  padding-top: var(--padding-large); /* custom for home */
+}
+
+/* All project pages */
+.project-page .portfolio,
+.project-page .project-wrapper,
+.project-page .work-sidebar-wrapper {
+  padding: var(--padding-medium);
+  padding-top: var(--padding-medium); /* smaller top padding */
+}
+
+
+
 
 
 
@@ -2188,6 +2207,8 @@ to keep your styles reusable and consistent.
     padding: var(--padding-small) var(--padding-jumbo);
   }
 
+
+
   /* Sidebar on Large Devices */
 
   .project-aside {
@@ -2362,8 +2383,6 @@ to keep your styles reusable and consistent.
 
     .project-title {
   font-size: 3.625rem;
-  padding-left: 20px;
-
 }
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -2547,6 +2566,27 @@ body, ul {
   background-color: #B8A88E;
   color: #FFEFE1;
 }
+
+/* Default mobile: stack (full width each) */
+.section-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.section-item {
+  flex: 1 1 100%;
+}
+
+/* Desktop breakpoint: 2/3 image + 1/3 text */
+@media (min-width: 992px) {
+  .section-item.image-col {
+    flex: 2; /* 2 parts */
+  }
+  .section-item.text-col {
+    flex: 1; /* 1 part */
+  }
+}
+
 
 
 
