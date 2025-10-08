@@ -2372,7 +2372,7 @@ to keep your styles reusable and consistent.
 
 @media (max-width: 767px) {
   .hero {
-    min-height: 75vh !important;
+    min-height: 85vh !important;
   }
 }
 body, ul {
@@ -2752,6 +2752,31 @@ body, ul {
     display: block;
   }
 }
+
+.hero-arrow-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #605039;
+  text-decoration: none;
+  transition: transform 0.5s ease, color 0.5s ease;
+  -webkit-tap-highlight-color: transparent; /* removes grey flash */
+}
+
+/* Feedback on press or hover */
+.hero-arrow-link:hover,
+.hero-arrow-link:active {
+  transform: scale(2);
+  color: #F26F6C; /* optional darker tint for feedback */
+}
+
+/* Return to normal smoothly (after tap or click) */
+.hero-arrow-link:focus {
+  transform: scale(1);
+  color: #605039;
+  outline: none;
+}
+
 
 
 
