@@ -2665,8 +2665,8 @@ body, ul {
     display: flex;
     flex-direction: column;       /* stack thumbnails vertically */
     align-items: center;          /* center them horizontally */
-    padding-left: 8px;            /* small left margin */
-    padding-right: 8px;           /* small right margin */
+    padding-left: 1rem;            /* small left margin */
+    padding-right: 1rem;           /* small right margin */
     gap: 12px;                    /* space between thumbnails */
   }
 
@@ -2682,6 +2682,51 @@ body, ul {
     display: block;               /* avoid inline spacing issues */
   }
 }
+/* Keep top padding but remove left/right padding below 500px */
+@media (max-width: 500px) {
+  .home-page .portfolio,
+  .home-page .project-wrapper,
+  .home-page .work-sidebar-wrapper {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    /* Keep top padding */
+    padding-top: var(--padding-large) !important;
+    padding-bottom: 0 !important; /* optional if you want no bottom padding */
+  }
+
+  /* Make thumbnails full width, one column, centered */
+  .home-page .work-page-grid-item {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  .home-page .work-page-grid-item img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
+}
+
+/* Ensure hero section always leaves space for arrow */
+@media (max-width: 500px) {
+  .home-page .hero {
+    min-height: 50vh; /* or a value that keeps arrow visible */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* arrow sticks at bottom of hero */
+  }
+
+  .home-page .hero-arrow-container {
+    margin-bottom: 1rem; /* keep some space from bottom */
+  }
+
+  /* Projects below hero */
+  .home-page .portfolio {
+    padding-top: var(--padding-large); /* projects start below hero */
+  }
+}
+
 
 
 
