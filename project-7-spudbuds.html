@@ -55,7 +55,7 @@
     </header>
     <div class="project-wrapper">
       <aside class="project-aside">
-        <div class="project-info">
+        <div class="project-info border-right">
           <h1 class="project-title">spudbuds</h1>
           <p class="project-description">
             In Canada alone, 2.6 million potatoes are wasted every single day.
@@ -85,8 +85,27 @@
         </div>
       </aside>
       <main class="project-details">
-        <div class="section-container">
-          <div class="section-item col-2">
+        <div class="project-image-container border">
+          <!-- Left side: Video with vertical padding -->
+          <div
+            class="section-item col-2"
+            style="flex: 1; width: auto; margin-right: 1rem"
+          >
+            <div class="section-item image-col">
+              <figure class="project-image no-border">
+                <img
+                  src="assets/spudbuds/spudbuds-potato.png"
+                  width="1920"
+                  height="1080"
+                  loading="lazy"
+                  alt="Describe your project"
+                />
+              </figure>
+            </div>
+          </div>
+
+          <!-- Right side: Text -->
+          <div class="section-item col-2" style="flex: 1.25; width: auto">
             <p class="project-description">
               We saw an opportunity to rethink both food waste and textiles,
               creating something beautiful and functional from a material we
@@ -97,10 +116,24 @@
               solving three problems at once.
             </p>
           </div>
-          <div class="section-item col-2">
-            <figure class="project-image border">
+        </div>
+        <div class="section-container">
+          <div
+            class="section-item text-col"
+            style="margin-right: 2rem; padding-top: 2rem"
+          >
+            <p class="project-description" style="margin-left: 1rem">
+              The logo is friendly and lighthearted, but the roughness of the
+              wordmark also emphasizes the natural component of the brand. The
+              goal was to embody the combination of these factors and appeal to
+              our target audience, as well as hospital distributors who would
+              purchase a bulk of the products.
+            </p>
+          </div>
+          <div class="section-item image-col">
+            <figure class="project-image no-border">
               <img
-                src="assets/spudbuds/spudbuds-potato.png"
+                src="assets/spudbuds/spudbuds-logo.png"
                 width="1920"
                 height="1080"
                 loading="lazy"
@@ -109,32 +142,15 @@
             </figure>
           </div>
         </div>
-        <div class="divider" data-title="logo development"></div>
-        <p class="project-description-one-column padding-40">
-          The logo is friendly and lighthearted, but the roughness of the
-          wordmark also emphasizes the natural component of the brand. The goal
-          was to embody the combination of these factors and appeal to our
-          target audience, as well as hospital distributors who would purchase a
-          bulk of the products.
-        </p>
-        <figure class="project-image top border padding-40">
-          <img
-            src="assets/spudbuds/spudbuds-logo.png"
-            width="1920"
-            height="1080"
-            loading="lazy"
-            alt="Describe your project"
-          />
-        </figure>
-        <div class="divider" data-title="illustration"></div>
-        <p class="project-description-one-column padding-40">
+
+        <p class="project-description-one-column">
           After diving deep into the textile and food waste problem, I brought
           the visuals to life with three bold, nature-inspired themes. Each set
           pairs plants and flowers with a signature plush toy: a garden bunny, a
           forest bear, and a farm sheep — turning hospital bedding into
           something kids actually want to snuggle into.
         </p>
-        <figure class="project-image">
+        <figure class="project-image no-border">
           <img
             src="assets/spudbuds/All Illustrated Assets/spudbuds-illustrations-garden.png"
             width="1920"
@@ -144,7 +160,7 @@
           />
           <figcaption class="project-caption">garden</figcaption>
         </figure>
-        <figure class="project-image">
+        <figure class="project-image no-border">
           <img
             src="assets/spudbuds/All Illustrated Assets/spudbuds-illustrations-forest.png"
             width="1920"
@@ -154,7 +170,7 @@
           />
           <figcaption class="project-caption">forest</figcaption>
         </figure>
-        <figure class="project-image">
+        <figure class="project-image no-border">
           <img
             src="assets/spudbuds/All Illustrated Assets/spudbuds-illustrations-farm.png"
             width="1920"
@@ -164,11 +180,18 @@
           />
           <figcaption class="project-caption">farm</figcaption>
         </figure>
-        <div class="divider" data-title="logo development"></div>
 
         <div class="section-container">
           <div class="section-item col-2">
-            <figure class="project-image border top">
+            <p class="project-description-one-column">
+              We thoroughly researched the newly discovered process of turning
+              potato fibres into textiles, and I made illustrations to
+              demonstrate the step-by-step process of converting food waste into
+              textiles.
+            </p>
+          </div>
+          <div class="section-item col-2">
+            <figure class="project-image no-border">
               <img
                 src="assets/spudbuds/All Illustrated Assets/spudbuds-production-steps.png"
                 width="1920"
@@ -178,25 +201,15 @@
               />
             </figure>
           </div>
-          <div class="section-item col-2">
-            <p class="project-description">
-              We thoroughly researched the newly discovered process of turning
-              potato fibres into textiles, and I made illustrations to
-              demonstrate the step-by-step process of converting food waste into
-              textiles.
-            </p>
-          </div>
         </div>
-
-        <div class="divider" data-title="product design and packaging"></div>
         <p class="project-description-one-column padding-40">
           From the illustrations, I made patterns that were applied to all the
           necessary bedding products. The versatile patterns could be used for
           hospital gowns, apparel, and other products.
         </p>
 
-        <div class="project-image-container">
-          <figure class="project-image top border">
+        <div class="project-image-container no-border">
+          <figure class="project-image">
             <img
               src="assets/spudbuds/Bedding Mockups/spudbuds-mockups-full-bed-sets.png"
               width="1920"
@@ -229,8 +242,7 @@
             </figcaption>
           </figure>
         </div>
-        <div class="divider" data-title="product design and packaging"></div>
-        <div class="project-image-container top border">
+        <div class="project-image-container no-border">
           <figure class="project-image">
             <img
               src="assets/spudbuds/All Illustrated Assets/spudbuds-plush-bunny.png"
@@ -239,7 +251,6 @@
               loading="lazy"
               alt="Describe your project"
             />
-            <figcaption class="project-caption">Poppy</figcaption>
           </figure>
           <figure class="project-image">
             <img
@@ -249,7 +260,7 @@
               loading="lazy"
               alt="Describe your project"
             />
-            <figcaption class="project-caption">Tato</figcaption>
+            <figcaption class="project-caption">stuffed animals</figcaption>
           </figure>
           <figure class="project-image">
             <img
@@ -259,7 +270,6 @@
               loading="lazy"
               alt="Describe your project"
             />
-            <figcaption class="project-caption">Luma</figcaption>
           </figure>
         </div>
         <p class="project-description-one-column padding-40">

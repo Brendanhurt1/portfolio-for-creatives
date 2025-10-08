@@ -505,7 +505,6 @@ em {
   margin-bottom: 1rem;
   font-weight: 400;
     padding-right: 20px; 
-   padding-left: 20px;  
 }
 .project-description {
   line-height: 1.4;           /* keep text readable */
@@ -561,6 +560,7 @@ em {
   font-weight: 600;
 }
 
+/*  
 .project-caption:last-of-type::after {
   content: "";
   display: block;
@@ -568,28 +568,9 @@ em {
   height: 3px;                
   background-color: #F26F6C;   
   margin-top: 0.5rem;          
-}
+}*/
 
-.project-description-one-column {
-  font-family: var(--font-family-body);   /* same as project-description */
-  font-size: 1.225rem;
-  line-height: 1.6;
-  color: var(--color-text-project-description);
-  max-width: 800px;                       /* keeps text narrow for one-column layout */
-  margin: 1rem auto;                       /* centers it horizontally */
-  padding: 3rem 2rem;                         /* inner left/right padding */
-  position: relative;                      /* needed for underline */
-  text-align: left;                        /* or center if you prefer */
-}
 
-.project-description-one-column::after {
-  content: "";
-  display: block;
-  width: 100%;                             /* underline matches text width */
-  height: 3px;                             /* thickness of underline */
-  background-color: #F26F6C;               /* same as project-caption underline */
-  margin-top: 0.5rem;                      /* space between text and line */
-}
 
 .project-description-one-column {
   font-family: var(--font-family-body);
@@ -602,7 +583,7 @@ em {
   position: relative; /* for underline */
   text-align: left;
 }
-
+/* 
 .project-description-one-column::after {
   content: "";
   display: block;
@@ -610,7 +591,7 @@ em {
   height: 3px;
   background-color: #F26F6C;
   margin-top: 0.5rem;
-}
+}*/
 
 @media (max-width: 768px) {
   .project-description {
@@ -625,11 +606,16 @@ em {
   }
 }
 
+
+
 @media (max-width: 900px) {
-  .project-description {
+  .project-description{
     font-size: 1.1rem;   /* Smaller size for mobile */
     line-height: 1.4;    /* Keeps text readable */
   }
+
+
+
 
   .project-description-bold {
     font-size: 1.1rem;     /* Slightly bigger since it’s bold */
@@ -915,15 +901,15 @@ html, body {
 .nav-branding-item {
   display: inline-block;
     color: var(#605039) !important;
-  width: 350px;                 /* fixed width for all buttons */
+  width: 300px;                 /* fixed width for all buttons */
   padding: 1rem 0;              /* vertical padding only, no horizontal since width is fixed */
   margin: 1.5rem;
   text-transform: uppercase;
   font-family: var(--font-family-heading);
   font-weight: 800;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   background-color: #F26F6C;
-  border: 5px solid #605039;
+  border: 4px solid #605039;
   color: #605039;
   border-radius: 0;
   text-decoration: none;
@@ -1113,11 +1099,12 @@ html, body {
   box-sizing: border-box; /* keeps padding inside width */
 }
 
-
 .padding-20 {
   padding: 20px;
   box-sizing: border-box; /* Ensures padding doesn't break the layout */
 }
+
+
 .padding-40 {
   padding: 40px;
   box-sizing: border-box; /* Ensures padding doesn't break the layout */
@@ -1164,13 +1151,9 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--padding-small);
   margin-bottom: 1rem;
 }
-.section-item {
-  padding: var(--padding-small);
-  margin: 0rem;
-}
+
 
 /* HEADER BASE */
 .hero-header {
@@ -1723,7 +1706,6 @@ html, body {
 /* Column styles for two-column layouts */
 .col-2 {
   width: 100%;
-  padding: var(--padding-small);
 }
 
 /* Project image styling */
@@ -1737,7 +1719,6 @@ html, body {
 /* Project details section */
 .project-details {
   width: 100%;
-  padding: var(--padding-small);
   background: var(--color-gradient-project-details); /* TODO: Remove gradient background if you prefer a simpler design */
 }
 
@@ -2217,7 +2198,7 @@ to keep your styles reusable and consistent.
     position: -webkit-sticky;
     position: sticky;
     top: 8rem;
-    padding-right: 2rem;
+    padding-right: 0.5rem;
   }
 
   /* Main Project Image Area on Large Devices */
@@ -2408,6 +2389,7 @@ body, ul {
   justify-content: center;    /* center the two images inside the container */
   box-sizing: border-box;
   width: 100%;
+  margin: 1rem;
 }
 
 /* make each figure share the available width and stay inside the container */
@@ -2453,15 +2435,6 @@ body, ul {
   text-align: center;
   margin-top: 1rem;
   position: relative;          /* for pseudo-element positioning */
-}
-
-.project-image-pair .project-caption::after {
-  content: "";
-  display: block;
-  height: 3px;
-  background-color: #F26F6C;
-  width: 100%;                 /* match caption width exactly */
-  margin-top: 0.5rem;
 }
 
 .project-navigation {
@@ -2586,6 +2559,146 @@ body, ul {
     flex: 1; /* 1 part */
   }
 }
+
+.section-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  flex-direction: column; /* default for mobile */
+}
+
+.col-2 {
+  width: 100%;
+}
+
+/* Two-column layout on larger screens */
+@media (min-width: 768px) {
+  .section-container {
+    flex-direction: row;
+  }
+
+  .col-2 {
+    width: 50%;
+  }
+}
+
+.project-image img,
+.project-video-container iframe {
+  border: 2px solid #F26F6C;
+  display: block; /* ensures the border fits cleanly around the media */
+}
+
+/* optional: if you ever want to disable it */
+.no-border img,
+.no-border iframe {
+  border: none !important;
+}
+/* Screens below 900px */
+@media (max-width: 900px) {
+  .project-description-one-column,
+  .project-description-one-column p,
+  .project-description,
+  .project-description p,
+  .project-description-bold {
+    font-size: 1rem;
+    line-height: 1.2;
+    padding: 0;
+    padding-left: 16px;
+    padding-right: 20px;
+    margin: 0;
+  }
+}
+
+/* Screens below 1400px */
+@media (max-width: 1400px) {
+  .project-description-one-column,
+  .project-description-one-column p,
+  .project-description,
+  .project-description p,
+  .project-description-bold {
+    font-size: 1rem;
+    line-height: 1.2;
+    padding: 0;
+    padding-left: 16px;
+    padding-right: 20px;
+    margin: 0;
+  }
+}
+
+@media (max-width: 900px),
+       (max-width: 1400px) {
+  .project-description-one-column,
+  .project-description-one-column p,
+  .project-description,
+  .project-description p,
+  .project-description-bold {
+    font-size: 1rem;
+    line-height: 1.2;
+    padding: 0;
+    padding-left: 16px;
+    padding-right: 20px;
+
+    /* override inline margin-left */
+    margin-left: 0 !important;
+
+    /* restore vertical gaps between paragraphs */
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Screens below 1400px - project title */
+@media (max-width: 1400px) {
+  .project-title {
+    padding-left: 16px;
+    padding-right: 20px; /* optional if you want symmetry */
+    font-size: 2.35rem;
+  }
+}
+
+/* Very small screens below 500px */
+@media (max-width: 500px) {
+  .home-page .portfolio .grid {
+    display: flex;
+    flex-direction: column;       /* stack thumbnails vertically */
+    align-items: center;          /* center them horizontally */
+    padding-left: 8px;            /* small left margin */
+    padding-right: 8px;           /* small right margin */
+    gap: 12px;                    /* space between thumbnails */
+  }
+
+  .home-page .portfolio .work-page-grid-item {
+    width: 100%;                  /* fill almost full width */
+    max-width: 400px;             /* optional: limit so they don’t get huge on slightly bigger phones */
+    margin: 0;                    /* remove extra margins */
+  }
+
+  .home-page .portfolio .work-page-grid-item img {
+    width: 100%;                  /* image fills container */
+    height: auto;                 /* maintain aspect ratio */
+    display: block;               /* avoid inline spacing issues */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
