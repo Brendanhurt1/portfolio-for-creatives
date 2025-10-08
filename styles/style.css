@@ -1826,7 +1826,7 @@ header.hero-header .nav-wrapper {
 .hero-arrow-container {
   display: flex;
   justify-content: center;   /* center horizontally */
-  margin-top: 6rem;           /* push it towards the bottom */
+  margin-top: 0.5rem;           /* push it towards the bottom */
   margin-bottom: 0rem;        /* space from bottom of hero */
 }
 
@@ -2708,24 +2708,51 @@ body, ul {
   }
 }
 
-/* Ensure hero section always leaves space for arrow */
-@media (max-width: 500px) {
+/* Only target very small screens */
+@media screen and (max-width: 500px) {
+  /* Let hero section grow naturally */
   .home-page .hero {
-    min-height: 50vh; /* or a value that keeps arrow visible */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* arrow sticks at bottom of hero */
+    display: block;       /* remove flex shrink behavior */
+    min-height: auto;     /* don’t force 100vh */
+    padding-bottom: 1rem; /* small bottom padding for spacing */
+    box-sizing: border-box;
   }
 
+  /* Header stays visible */
+  .home-page .hero-header.index-header {
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Headline stays visible */
+  .home-page .hero-headline-wrapper {
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Arrow stays centered and below text */
   .home-page .hero-arrow-container {
-    margin-bottom: 1rem; /* keep some space from bottom */
+    margin: 0 auto 1rem auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
   }
 
-  /* Projects below hero */
-  .home-page .portfolio {
-    padding-top: var(--padding-large); /* projects start below hero */
+  /* Projects grid below hero */
+  .home-page .work-page-grid-item {
+    width: calc(100% - 1rem);  /* full width minus small margin */
+    margin: 0.5rem auto;
+  }
+
+  .home-page .work-page-grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 }
+
 
 
 
