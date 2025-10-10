@@ -114,10 +114,10 @@
   --color-bg-holding-page: rgba(82, 0, 255, 0.6);
   /* Headings */
   --h1-color: #605039;
-  --h2-color: #605039;
+  --h2-color: #FFEFE1;
   --h3-color: #605039;
   --h4-color: #605039;
-  --h5-color: #605039;
+  --h5-color: #ffffff;
   --h6-color: #605039;
   /* Special Text Colours */
   --color-text-holding-title: #ebedf0;
@@ -147,7 +147,7 @@
   /* Special Elements */
   --color-icon-heart: darkred;
   --color-text-holding-footer: #f8f8ff;
-  --color-bg-selection: #F37A71;
+  --color-bg-selection: #ffb973;
   --color-shadow-stroke: rgba(0, 0, 0, 0.4);
   /* Assets */
   --image-noise-texture: url(/assets/temp/noise.svg);
@@ -407,11 +407,13 @@ h1 {
 }
 
 h2 {
-  font-size: 2rem;
-  font-family: var(--font-family-heading);
+   font-size: 1.1rem;
   line-height: 1.2;
   margin-bottom: 1rem;
-  color: var(--h2-color);
+  color: var(--h5-color);
+  font-family: "poppins", sans-serif;
+  font-weight: 400;
+    text-transform: uppercase;
 }
 
 h3 {
@@ -433,6 +435,9 @@ h5 {
   line-height: 1.2;
   margin-bottom: 1rem;
   color: var(--h5-color);
+  font-family: "poppins", sans-serif;
+  font-weight: 400;
+    text-transform: uppercase;
 }
 
 h6 {
@@ -451,7 +456,8 @@ p {
   font-size: 1.225rem;
   line-height: 1.3;
   margin-bottom: 1rem;
-  font-weight: 200;
+  font-weight: 300;
+  color: #ffffff;
 }
 
 strong {
@@ -1162,7 +1168,7 @@ html, body {
   display: flex;
   justify-content: space-between; /* left and right containers */
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0rem 2rem;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(3px); /* toned-down blur */
@@ -1333,7 +1339,6 @@ html, body {
 .home-page .portfolio,
 .home-page .project-wrapper,
 .home-page .work-sidebar-wrapper {
-  padding: var(--padding-ultra);
   padding-top: var(--padding-large); /* custom for home */
 }
 
@@ -1587,6 +1592,9 @@ html, body {
 .footer-item {
   line-height: 1.2; /* Consistent line height for footer items to improve spacing */
   margin-bottom: 0.25rem;
+  font-size: 1.2rem;
+    font-family: "poppins", sans-serif;
+  color: #ffffff;
 }
 
 /* ------------------------------- */
@@ -2036,7 +2044,7 @@ to keep your styles reusable and consistent.
   content: "";
   display: block;
   width: 100%;                               /* Full width line */
-  border-top: 0.65rem solid var(--color-text-project-description); /* Thickness & color */
+  border-top: 0.25rem solid var(--color-text-project-description); /* Thickness & color */
 }
 
 /* Mobile adjustment for screens 360px wide or smaller */
@@ -2214,10 +2222,9 @@ to keep your styles reusable and consistent.
 
 .divider {
   position: relative;
-  border-top: 0.2rem solid var(--color-text-project-description);
   width: 100%;
   box-sizing: border-box;
-  margin: 3rem 0 2rem; /* space above & below the line */
+  margin: 3rem 0 0.5rem; /* space above & below the line */
 }
 
 /* Text sits above the line, left-aligned */
@@ -2668,6 +2675,7 @@ body, ul {
     padding-left: 1rem;            /* small left margin */
     padding-right: 1rem;           /* small right margin */
     gap: 12px;                    /* space between thumbnails */
+     padding-bottom: 2rem;     
   }
 
   .home-page .portfolio .work-page-grid-item {
@@ -2770,11 +2778,430 @@ body, ul {
   }
 }
 
+/* Desktop: default */
+.project-video-container {
+  position: relative;
+  width: 100%;
+  height: auto; /* auto height based on iframe */
+  overflow: hidden;
+}
+
+.responsive-iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  aspect-ratio: 16 / 9; /* maintain desktop aspect ratio */
+}
+
+/* Mobile / single column */
+@media (max-width: 1000px) {
+  .section-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* space between stacked items */
+  }
+
+  .section-item {
+    width: 100% !important;
+    flex: none !important;
+  }
+
+  .project-video-container {
+    min-height: auto; /* let the aspect-ratio control height */
+  }
+
+  .responsive-iframe {
+    width: 100%;
+    height: auto; /* keep the aspect ratio */
+  }
+}
+
+@media (max-width: 1000px) {
+  .project-image {
+    margin: 0 !important;
+  }
+}
+
+/* Default desktop/tablet layout — keep spacing */
+.project-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+}
+
+/* Mobile / single-column layout — remove extra margin */
+@media (max-width: 1000px) {
+  .project-image {
+    margin: 0 !important;
+  }
+
+  /* Optional: ensure the container doesn't add unintended padding */
+  .project-image-container {
+    padding: 0 !important;
+  }
+
+  /* Optional: remove side margins from any text column next to it */
+  .section-item.text-col {
+    margin-left: 0 !important;
+  }
+}
+
+/* Default desktop/tablet — keep current spacing */
+.project-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+}
+
+/* Mobile / single-column layout adjustments */
+@media (max-width: 1000px) {
+  .project-image {
+    margin: 0 0 1.5rem 0 !important; /* adds vertical spacing only between stacked images */
+  }
+
+  .project-image:last-child {
+    margin-bottom: 0 !important; /* removes extra space after the last image */
+  }
+
+  .project-image-container {
+    padding: 0 !important;
+  }
+}
+
+/* Normal (desktop) – captions visible */
+.project-caption {
+  display: block;
+}
+
+/* Mobile / single-column – allow selective hiding */
+@media (max-width: 1000px) {
+  .project-caption.hide-on-mobile {
+    display: none !important;
+  }
+}
+
+.footer-global {
+  background-color: #605039; /* replace with your desired color */
+  padding: 2rem 0; /* optional – adds vertical space */
+  list-style: none;
+  margin: 0;
+}
+
+.footer-global {
+  background-color: #605039;
+  list-style: none;
+  margin: 0;
+  padding: 2rem 0; /* only vertical padding on the full-width background */
+  width: 100%;
+}
+
+.footer-global > li {
+  padding: 0 2rem; /* left/right padding for internal content */
+}
+
+.footer-global a {
+  color: white;
+  text-decoration: none; /* optional */
+}
+
+.footer-global a:hover {
+  color: #ddd; /* optional: lighter shade on hover */
+}
+
+.footer-global h2 {
+  font-size: 1.75rem; /* or whatever your desktop size is */
+  font-weight: 700;
+}
+
+@media (max-width: 1000px) {
+  .footer-global h2 {
+    font-size: 1.75rem; /* keep the same size on one column */
+  }
+}
+
+.footer-arrow-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.footer-arrow-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ffffff; /* white for footer */
+  text-decoration: none;
+  transition: transform 0.5s, color 0.5s;
+}
+
+.footer-arrow-link:hover {
+  transform: scale(1.75);
+  color: #FFEFE1; /* soft highlight color */
+}
+
+/* Disable hover/tap effects on mobile */
+@media (max-width: 500px) {
+  .footer-arrow-link {
+    transition: none;
+  }
+
+  .footer-arrow-link:hover,
+  .footer-arrow-link:active,
+  .footer-arrow-link:focus {
+    transform: none;
+    color: #ffffff;
+  }
+}
+
+
+
+.about-grid .divider {
+  display: block;
+  grid-column: 1 / -1;
+}
 
 
 
 
+.about-image {
+  position: relative; /* enables absolute positioning for children */
+  display: inline-block; /* keeps figure tight to image size */
+}
 
+.portrait-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.about-overlay {
+  position: absolute;
+  bottom: -5%;   /* move below image edge (increase for more overlap) */
+  right: -5%;    /* move beyond right edge (increase for more overlap) */
+  width: 160px;  /* control size */
+  height: auto;
+  z-index: 5;    /* ensures overlay is above */
+  pointer-events: none; /* prevent blocking interactions */
+}
+
+/* Base: desktop layout (above 1550px) */
+.about-overlay {
+  position: absolute;
+  bottom: -2rem;
+  right: -2rem;
+  width: 120px;
+  z-index: 5;
+}
+
+/* Between 1550px and 1000px → make overlay smaller */
+@media (max-width: 1550px) and (min-width: 1001px) {
+  .about-overlay {
+    width: 90px;
+    bottom: -1.5rem;
+    right: -1.5rem;
+  }
+}
+
+/* Single column (1000px and below) → make overlay larger */
+@media (max-width: 1000px) {
+  .about-overlay {
+    width: 160px;
+    bottom: -1.5rem;
+    right: -1.5rem;
+  }
+
+  .about-grid-image {
+    position: relative;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Small mobile (≤500px) → reduce again for tiny screens */
+@media (max-width: 500px) {
+  .about-overlay {
+    width: 100px;
+    bottom: -1rem;
+    right: -1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .about-overlay {
+    width: 85px;
+    bottom: -1rem;
+    right: -1rem;
+  }
+}
+
+@media (min-width: 1550px) {
+  .about-overlay {
+    width: 180px;
+    bottom: -2rem;
+    right: -2rem;
+  }
+}
+
+
+.project-description-title {
+    text-transform: uppercase;
+    font-size: 2.5rem;   /* override any h2 rules */
+    font-family: 'Poppins', sans-serif;
+    color: #605039;
+    font-weight: 500;
+}
+
+.project-description-title {
+    text-transform: uppercase;
+    font-size: 2.5rem; /* default desktop size */
+    font-family: 'Poppins', sans-serif;
+    color: #605039;
+    font-weight: 500;
+}
+
+/* Single-column / mobile layout */
+@media (max-width: 1000px) {
+    .project-description-title {
+        font-size: 1.5rem; /* smaller for mobile */
+    }
+}
+
+.border-right {
+  position: relative;
+  border-right: none; /* disable old border line */
+}
+.project-info {
+  position: relative;
+  padding-right: 1rem; /* adds space between text and scroll bar */
+}
+
+/* Scroll Progress Container */
+.scroll-progress {
+  position: absolute;
+  top: 1rem;      /* outer top margin */
+  bottom: 1rem;   /* outer bottom margin */
+  right: 0;       /* stay at edge of sidebar */
+  width: 32px;    /* slightly wider to give horizontal spacing */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Track of the Scroll Progress */
+.scroll-track {
+  position: relative;
+  width: 22px;        /* slightly wider for left/right spacing */
+  height: 92%;        /* internal top/bottom margin */
+  border: 2px solid #605039;
+  border-radius: 30px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  padding: 4%;        /* inner spacing so circle never touches edges */
+}
+
+/* Scroll Indicator Circle */
+.scroll-indicator {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 12px;
+  height: 12px;
+  background-color: #605039;
+  border-radius: 50%;
+  transition: top 0.15s ease-out, background-color 0.3s ease;
+  cursor: url("/assets/cursor/2x/Asset 42.png"), pointer !important;
+}
+
+/* Hover Effect for Circle */
+.scroll-indicator:hover {
+  background-color: #F26F6C;
+  cursor: url("/assets/cursor/2x/Asset 42.png"), pointer !important;
+}
+
+/* Disable scroll bar and custom cursor on smaller screens */
+@media (max-width: 999px) {
+  .scroll-progress {
+    display: none;
+  }
+  
+  .scroll-indicator {
+    cursor: default !important;
+  }
+}
+
+.video-margin {
+  margin: 1rem; /* adds spacing around the video */
+  box-sizing: border-box; /* ensures margin doesn’t break responsive layout */
+}
+
+@media (max-width: 1025px) {
+  .masonry-grid {
+    column-count: unset;
+    column-gap: unset;
+    display: block; /* optional, ensures normal flow */
+  }
+
+  .masonry-item {
+    break-inside: auto;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+/* Only for this project page */
+body.more-of-my-workk .project-wrapper-fullwidth {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding-left: 12rem;
+  padding-right: 12rem;
+}
+
+body.more-of-my-workk .project-wrapper-fullwidth .project-details {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 1024px) {
+  body.more-of-my-workk .project-wrapper-fullwidth {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 1025px) {
+  .footer-item {
+    font-size: 0.9rem;
+    line-height: 1rem;   /* smaller text */
+    margin-bottom: 0.4rem;  /* tighter spacing */
+  }
+
+  .footer-socials-list,
+  .footer-awards-list {
+    gap: 0.4rem; /* reduces space between list items */
+  }
+}
+
+@media (max-width: 1025px) {
+  .footer-global {
+    display: grid;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 1025px) {
+  p {
+    font-size: 0.9rem;
+    line-height: 1rem;
+  }
+}
 
 
 

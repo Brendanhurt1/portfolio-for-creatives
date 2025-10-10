@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>
-      Free Creative Portfolio Template: April 2025 Version | About Page
-    </title>
+    <title>Brendan Hurt | About Me | Graphic Design</title>
     <meta
-      name="description"
-      content="When writing a meta description, keep it between 140 and 160 characters so Google can display your entire message. Don’t forget to include your keyword!"
+      name="Brendan Hurt | About Me | Graphic Design"
+      content="Brendan Hurt is a graphic designer based in Vancouver British Columbia. Focused on branding and digital illustration, Brendan has studied in BCIT's Certificate of Design, and Cap U's Bachelor of Design IDEA program."
     />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,13 +24,11 @@
 
   <body class="about-page">
     <header class="hero-header">
-      <ul class="nav-branding">
-        <li><a href="work.html" class="custom-navigation">Work</a></li>
-        <li class="nav-branding-logo">
-          <a href="index.html"><img src="assets/branding-images/logo.svg" /></a>
-        </li>
-        <li><a href="about.html" class="custom-navigation">About</a></li>
-      </ul>
+      <div class="nav-wrapper">
+        <ul class="nav-branding">
+          <li><a href="index.html" class="nav-branding-item">Home</a></li>
+        </ul>
+      </div>
     </header>
     <ul class="about-grid">
       <li class="about-grid-image">
@@ -42,21 +38,27 @@
             width="1500"
             height="1500"
             alt="Your Photo"
+            class="portrait-img"
+          />
+          <img
+            src="assets/about-me/about-me-graphic-character.png"
+            alt="Overlay graphic"
+            class="about-overlay"
           />
         </figure>
       </li>
       <li class="about-grid-text">
         <h1 class="project-title">hello!</h1>
 
-        <p>
+        <p class="project-description">
           My name is Brendan Hurt, and I'm a graphic designer proficient in
           branding, digital illustration and motion design, born and raised in
-          Vancouver. I started my design journey earning a certificate in design
+          Vancouver. I started my design journey earning a Certificate of Design
           from BCIT and went on to study at Capilano University as part of the
           IDEA program.
         </p>
 
-        <p>
+        <p class="project-description">
           I certainly would describe myself as a pop culture nerd, and I'm
           endlessly inspired by the themes and imagery of film and music. What I
           love about graphic design is that every variation of the creative
@@ -64,7 +66,23 @@
           boundaries while solving problems we all face every day.
         </p>
       </li>
+
+      <li class="divider"></li>
+
+      <!-- NEW: Additional section beneath divider -->
+      <li class="about-extra">
+        <div class="about-extra-inner">
+          <h2 class="project-description-title">Skills / services</h2>
+          <p class="project-description">Competitive Analysis</p>
+          <p class="project-description">Brand Development</p>
+          <p class="project-description">Motion Design</p>
+          <p class="project-description">Digitial Illustration</p>
+          <p class="project-description">Layout Design</p>
+          <p class="project-description">And Much More!</p>
+        </div>
+      </li>
     </ul>
+
     <ul class="footer-global">
       <li class="footer-tagline">
         <h2>Let's Connect!</h2>
@@ -100,18 +118,13 @@
           <li class="footer-item"><a href="#">Behance</a></li>
         </ul>
       </li>
-
       <li class="footer-full-width">
-        <p><a href="#top">Smooth scroll to the top</a></p>
-        <p class="footer-fineprint">
-          &copy; <span id="copyright-years">2020-</span>. Hand crafted with
-          <span class="heart">❤</span>
-          by James Neufeld.
-        </p>
-        <script>
-          document.getElementById("copyright-years").textContent +=
-            new Date().getFullYear();
-        </script>
+        <div class="footer-arrow-container">
+          <a href="#top" class="footer-arrow-link">
+            <i class="fa-sharp fa-solid fa-arrow-up fa-2x"></i>
+            <span class="arrow-label">Back to Top</span>
+          </a>
+        </div>
       </li>
     </ul>
   </body>
