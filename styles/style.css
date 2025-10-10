@@ -3203,6 +3203,13 @@ body.more-of-my-workk .project-wrapper-fullwidth .project-details {
   }
 }
 
+@media (max-width: 1025px) {
+  .project-aside {
+    padding: 0;
+  }
+}
+
+
 
 
 
