@@ -3209,6 +3209,10 @@ body.more-of-my-workk .project-wrapper-fullwidth .project-details {
   }
 }
 
+.project-description-one-column p {
+  color: #605039; /* or whatever color you want */
+}
+
 
 
 
