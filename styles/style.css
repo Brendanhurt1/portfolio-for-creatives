@@ -3219,6 +3219,11 @@ body.more-of-my-workk .project-wrapper-fullwidth .project-details {
   }
 }
 
+@media (min-width: 1025px) {
+  .strathcona-section > div:first-child {
+    margin-left: 1rem;
+  }
+}
 
 
 
