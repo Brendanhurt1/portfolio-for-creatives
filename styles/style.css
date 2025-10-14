@@ -3213,6 +3213,12 @@ body.more-of-my-workk .project-wrapper-fullwidth .project-details {
   color: #605039; /* or whatever color you want */
 }
 
+@media (min-width: 1025px) {
+  .project-image-container .section-item.col-2:first-child {
+    margin-left: 1rem;
+  }
+}
+
 
 
 
