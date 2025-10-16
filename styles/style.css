@@ -509,7 +509,7 @@ em {
   line-height: 1.2;
   color: var(--color-text-project-description);
   margin-bottom: 1rem;
-  font-weight: 400;
+  font-weight: 500;
     padding-right: 20px; 
 }
 .project-description {
@@ -626,7 +626,7 @@ em {
   .project-description-bold {
     font-size: 1.1rem;     /* Slightly bigger since it’s bold */
     line-height: 1.4;
-    font-weight: 400;
+    font-weight: 500;
   }
 }
 /*
