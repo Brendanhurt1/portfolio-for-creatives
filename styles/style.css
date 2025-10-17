@@ -3225,46 +3225,15 @@ body.more-of-my-workk .project-wrapper-fullwidth .project-details {
   }
 }
 
-.video-container {
-  position: relative;
-  width: 100%;
-  max-width: 400px;             /* adjust as needed */
-  aspect-ratio: 9 / 16;         /* vertical format */
-  border: 4px solid #fff;       /* outer border */
+/* Custom tall video */
+body:not(.home-page) .custom-tall-video {
+  aspect-ratio: 946 / 2000; /* actual width / height of video */
+  max-width: 500px;          /* adjust as needed */
+  border: 4px solid #fff;
   border-radius: 12px;
   overflow: hidden;
   background-color: #000;
-  cursor: pointer;
 }
-
-/* Thumbnail fills the vertical container */
-.video-thumb {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;           /* keeps vertical aspect ratio */
-}
-
-/* Hidden iframe wrapper, fills same container */
-.video-iframe-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;               /* only shown on click */
-}
-
-.project-video-iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  object-fit: cover;           /* preserves vertical display */
-}
- 
-
 
 
 
