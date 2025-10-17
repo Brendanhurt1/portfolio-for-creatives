@@ -2573,7 +2573,7 @@ body, ul {
   width: 100%;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   flex-direction: column; /* default for mobile */
 }
 
@@ -3224,6 +3224,8 @@ body.more-of-my-workk .project-wrapper-fullwidth .project-details {
     margin-left: 1rem;
   }
 }
+
+
 
 
 
