@@ -1,10 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
 
 <!-- 
   
@@ -19,30 +12,64 @@
 -->
 
 
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+	http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
 <url>
-  <loc>https://portfolio-2022.netlify.app/</loc>
-  <lastmod>2021-11-18T08:55:17+00:00</lastmod>
+  <loc>https://brendanhurt.com/</loc>
+  <lastmod>2025-10-23T21:42:25+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://portfolio-2022.netlify.app/index.html</loc>
-  <lastmod>2021-11-18T08:55:17+00:00</lastmod>
+  <loc>https://brendanhurt.com/more-of-my-workk</loc>
+  <lastmod>2025-10-23T21:42:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://portfolio-2022.netlify.app/about.html</loc>
-  <lastmod>2021-11-18T08:55:17+00:00</lastmod>
+  <loc>https://brendanhurt.com/about</loc>
+  <lastmod>2025-10-23T21:42:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://portfolio-2022.netlify.app/project-1.html</loc>
-  <lastmod>2021-11-18T08:55:17+00:00</lastmod>
+  <loc>https://brendanhurt.com/project-1-milianos</loc>
+  <lastmod>2025-10-23T21:42:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://portfolio-2022.netlify.app/project-2.html</loc>
-  <lastmod>2021-11-18T08:55:17+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://brendanhurt.com/project-2-progrock</loc>
+  <lastmod>2025-10-23T21:42:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brendanhurt.com/project-3-zokusha</loc>
+  <lastmod>2025-10-23T21:42:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brendanhurt.com/project-4-franks</loc>
+  <lastmod>2025-10-23T21:42:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brendanhurt.com/project-5-brewery</loc>
+  <lastmod>2025-10-23T21:42:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brendanhurt.com/project-6-strathcona</loc>
+  <lastmod>2025-10-23T21:42:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brendanhurt.com/project-7-spudbuds</loc>
+  <lastmod>2025-10-23T21:42:25+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 
 
