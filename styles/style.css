@@ -3154,7 +3154,7 @@ body, ul {
   }
 }
 /* Only for this project page */
-body.more-of-my-workk .project-wrapper-fullwidth {
+body.more-of-my-work .project-wrapper-fullwidth {
   width: 100%;
   max-width: 100%;
   margin: 0;
@@ -3162,7 +3162,7 @@ body.more-of-my-workk .project-wrapper-fullwidth {
   padding-right: 12rem;
 }
 
-body.more-of-my-workk .project-wrapper-fullwidth .project-details {
+body.more-of-my-work .project-wrapper-fullwidth .project-details {
   width: 100%;
   max-width: 100%;
   margin: 0;
@@ -3170,7 +3170,7 @@ body.more-of-my-workk .project-wrapper-fullwidth .project-details {
 }
 
 @media (max-width: 1024px) {
-  body.more-of-my-workk .project-wrapper-fullwidth {
+  body.more-of-my-work .project-wrapper-fullwidth {
     padding-left: 1rem;
     padding-right: 1rem;
   }
