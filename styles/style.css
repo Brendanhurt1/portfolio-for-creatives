@@ -3236,6 +3236,16 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
   border-radius: 0 !important; /* ensures edges stay square */
 }
 
+.footer-awards-list .footer-item,
+.footer-socials-list .footer-item {
+  margin-bottom: 1rem;
+}
+
+.footer-awards-list .footer-item:last-child,
+.footer-socials-list .footer-item:last-child {
+  margin-bottom: 0; /* Removes extra space after the last item */
+}
+
 
 
 
