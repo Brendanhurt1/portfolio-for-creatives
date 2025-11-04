@@ -3193,31 +3193,6 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
   margin-bottom: 0; /* Removes extra space after the last item */
 }
 
-.logo-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-/* The SVG logo */
-.logo-base {
-  display: block;
-  position: relative;
-  z-index: 2; /* stays on top */
-  width: 150px; /* adjust to your logo’s actual size */
-  height: auto;
-}
-
-/* The GIF underneath */
-.logo-overlay {
-  position: absolute;
-  inset: 0; /* fills the same space as SVG */
-  width: 100%;
-  height: 100%;
-  z-index: 1; /* sits below */
-  pointer-events: none;
-  object-fit: contain;
-}
-
 /*
 
 ███████ ██ ███    ██
