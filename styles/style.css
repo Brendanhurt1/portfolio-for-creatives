@@ -107,7 +107,7 @@
   --color-highlight: lemonchiffon;
   --color-fallback: #ff057c; /* Fallback color for glitch effect on 404 page */
   /* Backgrounds */
-  --color-bg: #ffffff;
+  --color-bg: #fdf1e3;
   --color-bg-about: #ffffff;
   --color-bg-footer: #ffffff;
   --color-bg-holding-page: rgba(82, 0, 255, 0.6);
@@ -116,7 +116,7 @@
   --h2-color: #ffefe1;
   --h3-color: #605039;
   --h4-color: #605039;
-  --h5-color: #ffffff;
+  --h5-color: #fdf2e4;
   --h6-color: #605039;
   /* Special Text Colours */
   --color-text-holding-title: #ebedf0;
@@ -986,8 +986,8 @@ body {
   height: 200px; /* adjust height of gradient */
   background: linear-gradient(
     to top,
-    rgba(255, 255, 255, 1),
-    /* solid white at bottom */ rgba(255, 255, 255, 0) /* transparent at top */
+    rgba(253, 241, 227, 1),
+    /* solid white at bottom */ rgba(253, 241, 227, 0) /* transparent at top */
   );
   pointer-events: none; /* clicks pass through */
   z-index: 1; /* above video, below content */
@@ -1133,7 +1133,7 @@ body {
   align-items: center;
   padding: 0rem 2rem;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(253, 241, 227, 0.5);
   backdrop-filter: blur(3px); /* toned-down blur */
   z-index: 1000;
 }
@@ -2862,7 +2862,7 @@ ul {
 }
 
 .footer-global a {
-  color: white;
+  color: #fdf2e4;
   text-decoration: none; /* optional */
 }
 
@@ -3191,6 +3191,31 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
 .footer-awards-list .footer-item:last-child,
 .footer-socials-list .footer-item:last-child {
   margin-bottom: 0; /* Removes extra space after the last item */
+}
+
+.logo-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* The SVG logo */
+.logo-base {
+  display: block;
+  position: relative;
+  z-index: 2; /* stays on top */
+  width: 150px; /* adjust to your logo’s actual size */
+  height: auto;
+}
+
+/* The GIF underneath */
+.logo-overlay {
+  position: absolute;
+  inset: 0; /* fills the same space as SVG */
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* sits below */
+  pointer-events: none;
+  object-fit: contain;
 }
 
 /*
