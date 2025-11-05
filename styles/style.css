@@ -108,8 +108,8 @@
   --color-fallback: #ff057c; /* Fallback color for glitch effect on 404 page */
   /* Backgrounds */
   --color-bg: #fdf1e3;
-  --color-bg-about: #ffffff;
-  --color-bg-footer: #ffffff;
+  --color-bg-about: #fdf1e3;
+  --color-bg-footer: #605039;
   --color-bg-holding-page: rgba(82, 0, 255, 0.6);
   /* Headings */
   --h1-color: #605039;
@@ -3153,6 +3153,57 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
 .footer-awards-list .footer-item:last-child,
 .footer-socials-list .footer-item:last-child {
   margin-bottom: 0; /* Removes extra space after the last item */
+}
+
+/* This class mimics the old button box size and layout */
+.nav-logo-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13rem;
+  height: 50px;
+  text-decoration: none;
+  margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.nav-logo {
+  width: 15rem;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  transition: opacity 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.nav-logo-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../assets/branding-images/logo-hover.svg") center/contain
+    no-repeat;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.nav-logo-link:hover .nav-logo {
+  opacity: 0;
+}
+
+.nav-logo-link:hover::after {
+  opacity: 1;
+}
+
+.hero-header,
+.nav-wrapper,
+.nav-branding {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 /*
