@@ -189,14 +189,7 @@
 html {
   box-sizing: border-box; /* Makes sure padding and borders don't add extra width to elements */
   scroll-behavior: smooth; /* Adds smooth scrolling between sections */
-  body {
-    cursor: url("/assets/cursor/2x/Asset 52.png"), auto !important;
-  }
-
-  /* Hover cursor for links */
-  a:hover {
-    cursor: url("/assets/cursor/2x/Asset\ 42.png"), pointer !important;
-  }
+  cursor: url("assets/cursor/2x/Asset 52.png"), auto !important; /* Custom cursor (change the URL below to use your own) */
 
   /* TODO: Replace the URL above to add a custom cursor. 
      If you want to use the default browser cursor, just delete this line. */
@@ -582,15 +575,6 @@ em {
   position: relative; /* for underline */
   text-align: left;
 }
-/* 
-.project-description-one-column::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 3px;
-  background-color: #F26F6C;
-  margin-top: 0.5rem;
-}*/
 
 @media (max-width: 768px) {
   .project-description {
@@ -644,6 +628,10 @@ a:link {
 /* Hover — when a user hovers their mouse over the link */
 a:hover {
   color: var(--color-link-hover);
+}
+
+a:hover {
+  cursor: url("/assets/cursor/2x/Asset\ 42.png"), pointer !important;
 }
 
 /* Focus — when a link is focused (keyboard navigation) */
@@ -2774,9 +2762,7 @@ ul {
     width: 100%;
     height: auto; /* keep the aspect ratio */
   }
-}
 
-@media (max-width: 1000px) {
   .project-image {
     margin: 0 !important;
   }
@@ -2847,13 +2833,6 @@ ul {
   padding: 2rem 0; /* optional – adds vertical space */
   list-style: none;
   margin: 0;
-}
-
-.footer-global {
-  background-color: #605039;
-  list-style: none;
-  margin: 0;
-  padding: 2rem 0; /* only vertical padding on the full-width background */
   width: 100%;
 }
 
@@ -2935,21 +2914,12 @@ ul {
 
 .about-overlay {
   position: absolute;
-  bottom: -5%; /* move below image edge (increase for more overlap) */
-  right: -5%; /* move beyond right edge (increase for more overlap) */
-  width: 160px; /* control size */
+  bottom: -2rem; /* move below image edge (increase for more overlap) */
+  right: -2rem; /* move beyond right edge (increase for more overlap) */
+  width: 120px; /* control size */
   height: auto;
   z-index: 5; /* ensures overlay is above */
   pointer-events: none; /* prevent blocking interactions */
-}
-
-/* Base: desktop layout (above 1550px) */
-.about-overlay {
-  position: absolute;
-  bottom: -2rem;
-  right: -2rem;
-  width: 120px;
-  z-index: 5;
 }
 
 /* Between 1550px and 1000px → make overlay smaller */
@@ -3004,14 +2974,6 @@ ul {
 .project-description-title {
   text-transform: uppercase;
   font-size: 2.5rem; /* override any h2 rules */
-  font-family: "Poppins", sans-serif;
-  color: #605039;
-  font-weight: 500;
-}
-
-.project-description-title {
-  text-transform: uppercase;
-  font-size: 2.5rem; /* default desktop size */
   font-family: "Poppins", sans-serif;
   color: #605039;
   font-weight: 500;
