@@ -576,29 +576,33 @@ em {
   text-align: left;
 }
 
-@media (max-width: 768px) {
-  .project-description {
-    font-size: 1rem; /* Smaller size for mobile */
-    line-height: 1.4; /* Keeps text readable */
-  }
+/* Base (mobile-first) */
+.project-description {
+  font-size: 1rem;
+  line-height: 1.4;
+  /* font-weight stays as-is */
+}
 
+.project-description-bold {
+  font-size: 1rem;
+  line-height: 1.4;
+  font-weight: 500; /* bold weight for all screens */
+}
+
+/* Tablet / small desktop */
+@media (min-width: 769px) and (max-width: 900px) {
+  .project-description,
   .project-description-bold {
-    font-size: 1rem; /* Slightly bigger since it’s bold */
-    line-height: 1.4;
-    font-weight: 400;
+    font-size: 1.1rem; /* scale up for both */
   }
 }
 
-@media (max-width: 900px) {
-  .project-description {
-    font-size: 1.1rem; /* Smaller size for mobile */
-    line-height: 1.4; /* Keeps text readable */
-  }
-
+/* Desktop */
+@media (min-width: 901px) {
+  .project-description,
   .project-description-bold {
-    font-size: 1.1rem; /* Slightly bigger since it’s bold */
-    line-height: 1.4;
-    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 1.5; /* slightly larger line-height on desktop */
   }
 }
 /*
@@ -1016,6 +1020,8 @@ body {
   gap: 2px; /* space between rectangles */
   margin-top: 20px;
   flex-wrap: wrap; /* allows wrapping if too many */
+  margin-right: 1.5rem;
+  margin-left: 16px;
 }
 
 .tag {
@@ -2039,7 +2045,7 @@ to keep your styles reusable and consistent.
 
 /* Switch from mobile to desktop navigation */
 
-@media (min-width: 992px) {
+@media (min-width: 1001px) {
   .hero-headline {
     font-size: 2rem;
   }
@@ -2507,7 +2513,7 @@ ul {
 }
 
 /* Desktop breakpoint: 2/3 image + 1/3 text */
-@media (min-width: 992px) {
+@media (min-width: 1001px) {
   .section-item.image-col {
     flex: 2; /* 2 parts */
   }
@@ -2553,7 +2559,7 @@ ul {
   border: none !important;
 }
 /* Screens below 900px */
-@media (max-width: 900px) {
+@media (min-width: 901px) {
   .project-description-one-column,
   .project-description-one-column p,
   .project-description,
@@ -2992,7 +2998,7 @@ ul {
 }
 .project-info {
   position: relative;
-  padding-right: 1rem; /* adds space between text and scroll bar */
+  padding-right: 1.5rem; /* adds space between text and scroll bar */
 }
 
 /* Scroll Progress Container */
