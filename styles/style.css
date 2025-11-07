@@ -1640,7 +1640,6 @@ body {
 /* Sidebar Styles */
 .project-aside {
   width: 100%;
-  padding: var(--padding-small);
   display: flex;
   flex-direction: column;
   color: var(--color-text-project-sidebar);
@@ -2527,7 +2526,6 @@ ul {
   width: 100%;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2rem;
   flex-direction: column; /* default for mobile */
 }
 
@@ -3221,6 +3219,17 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
   .project-title {
     margin-left: 16px;
   }
+}
+
+.project-description,
+.project-description-one-column {
+  margin-bottom: 1.5rem; /* space between paragraphs */
+}
+
+/* Remove the extra space after the last paragraph in a group */
+.project-description:last-child,
+.project-description-one-column:last-child {
+  margin-bottom: 0;
 }
 
 /*
