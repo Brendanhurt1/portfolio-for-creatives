@@ -186,13 +186,23 @@
 /* ------------------------------- */
 
 /* Add border-box sizing to make layout easier and enable smooth scrolling behavior */
-html {
-  box-sizing: border-box; /* Makes sure padding and borders don't add extra width to elements */
-  scroll-behavior: smooth; /* Adds smooth scrolling between sections */
-  cursor: url("assets/cursor/2x/Asset 52.png"), auto !important; /* Custom cursor (change the URL below to use your own) */
+/* Apply default cursor to both html AND body */
+html,
+body/* Default pointer cursor everywhere */
+html, body, * /* Default pointer cursor for everything */
 
-  /* TODO: Replace the URL above to add a custom cursor. 
-     If you want to use the default browser cursor, just delete this line. */
+/* Default cursor for the page */
+html, body /* Default cursor for the page */
+html, body 
+
+/* Default cursor for the whole page */
+body {
+  cursor: url("/assets/pointer.png"), auto;
+}
+
+a:hover,
+button:hover {
+  cursor: url("/assets/hover-hand.png"), pointer;
 }
 
 /* Ensure all elements, including pseudo-elements, follow border-box sizing */
@@ -521,7 +531,7 @@ em {
 
 /* 📂 Project grid title — used in grid view (like a portfolio gallery) */
 .work-grid-project-title {
-  font-size: 2.875rem;
+  font-size: 2.5rem;
   color: var(--color-text-work-grid-title);
   text-transform: uppercase;
 }
@@ -632,10 +642,6 @@ a:link {
 /* Hover — when a user hovers their mouse over the link */
 a:hover {
   color: var(--color-link-hover);
-}
-
-a:hover {
-  cursor: url("/assets/cursor/2x/Asset\ 42.png"), pointer !important;
 }
 
 /* Focus — when a link is focused (keyboard navigation) */
@@ -1389,7 +1395,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: var(--padding-small);
   background-color: var(
     --color-overlay-primary
   ); /* Background color of the overlay */
@@ -3034,23 +3039,22 @@ ul {
   background-color: #605039;
   border-radius: 50%;
   transition: top 0.15s ease-out, background-color 0.3s ease;
-  cursor: url("/assets/cursor/2x/Asset 42.png"), pointer !important;
 }
 
 /* Hover Effect for Circle */
 .scroll-indicator:hover {
   background-color: #f26f6c;
-  cursor: url("/assets/cursor/2x/Asset 42.png"), pointer !important;
+}
+a:hover,
+button:hover,
+.scroll-indicator:hover {
+  cursor: url("../assets/hover-hand.png"), pointer;
 }
 
 /* Disable scroll bar and custom cursor on smaller screens */
 @media (max-width: 999px) {
   .scroll-progress {
     display: none;
-  }
-
-  .scroll-indicator {
-    cursor: default !important;
   }
 }
 
@@ -3232,7 +3236,68 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
   margin-bottom: 0;
 }
 
-/*
+/* Mobile-first base for project-description-about */
+.project-description-about {
+  font-size: 1rem; /* base mobile size */
+  line-height: 1.2;
+  color: #605039;
+  margin: 0;
+  padding: 0 20px 16px 0; /* shorthand: top/right/bottom/left */
+}
+
+/* Larger screens (1000px and above) */
+@media screen and (min-width: 1000px) {
+  .project-description-about {
+    font-size: 1.2rem;
+  }
+}
+
+/* Project title specific for about section */
+.project-title-about {
+  font-family: var(--font-family-project-title);
+  font-size: 3.625rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--color-text-project-title);
+  margin-bottom: 1rem;
+  padding-left: 0; /* remove left padding */
+}
+
+.main-wrapper,
+/* Make all main containers fit the screen */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit; /* ensures padding/borders don’t break layout */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Example content wrapper */
+.container {
+  width: 100%;
+  max-width: 100%; /* never exceeds viewport */
+  overflow-x: hidden; /* optional extra safety */
+} /*
+
+
+
+
+
+
+
+
 
 ███████ ██ ███    ██
 ██      ██ ████   ██
