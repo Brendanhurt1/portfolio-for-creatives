@@ -3289,6 +3289,16 @@ html {
   width: 100%;
   max-width: 100%; /* never exceeds viewport */
   overflow-x: hidden; /* optional extra safety */
+}
+
+.nav-logo-link {
+  outline: none;
+}
+
+.nav-logo-link:focus,
+.nav-logo-link:active {
+  outline: none;
+  box-shadow: none;
 } /*
 
 
