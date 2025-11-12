@@ -169,15 +169,17 @@
             </p>
           </div>
           <div class="section-item image-col">
-            <figure class="project-image no-border">
-              <img
-                src="assets/spudbuds/spudbuds-logo.png"
-                width="1920"
-                height="1080"
-                loading="lazy"
-                alt="spudbuds brand logo"
-              />
-            </figure>
+            <div class="project-image-container">
+              <figure class="project-image no-border">
+                <img
+                  src="assets/spudbuds/spudbuds-logo.png"
+                  width="1920"
+                  height="1080"
+                  loading="lazy"
+                  alt="spudbuds brand logo"
+                />
+              </figure>
+            </div>
           </div>
         </div>
         <figure class="project-image no-border">
@@ -220,15 +222,17 @@
 
         <div class="section-container">
           <div class="section-item col-2">
-            <figure class="project-image no-border">
-              <img
-                src="assets/spudbuds/All Illustrated Assets/spudbuds-production-steps.png"
-                width="1920"
-                height="1080"
-                loading="lazy"
-                alt="spudbuds production steps graphic"
-              />
-            </figure>
+            <div class="project-image-container">
+              <figure class="project-image no-border">
+                <img
+                  src="assets/spudbuds/All Illustrated Assets/spudbuds-production-steps.png"
+                  width="1920"
+                  height="1080"
+                  loading="lazy"
+                  alt="spudbuds production steps graphic"
+                />
+              </figure>
+            </div>
           </div>
         </div>
         <p class="project-description-one-column">
@@ -405,11 +409,18 @@
         window.addEventListener("resize", updateIndicator);
         updateIndicator();
 
+        // When the mouse enters the indicator, show your custom hover cursor
+        scrollIndicator.addEventListener("mouseenter", () => {
+          scrollIndicator.style.cursor =
+            'url("assets/hover-hand.png"), pointer';
+        });
+
         // Drag start
         scrollIndicator.addEventListener("mousedown", (e) => {
           if (window.innerWidth < 1000) return; // disable on mobile
           isDragging = true;
-          scrollIndicator.style.cursor = "grabbing";
+          scrollIndicator.style.cursor =
+            'url("assets/hover-hand.png"), pointer';
           scrollIndicator.style.transition = "top 0.05s ease-out";
           e.preventDefault();
         });
@@ -440,9 +451,16 @@
         document.addEventListener("mouseup", () => {
           if (isDragging) {
             isDragging = false;
-            scrollIndicator.style.cursor = "grab";
+            scrollIndicator.style.cursor =
+              'url("assets/hover-hand.png"), pointer';
             scrollIndicator.style.transition = "top 0.15s ease-out";
           }
+        });
+
+        // When the mouse leaves, reset the cursor if needed
+        scrollIndicator.addEventListener("mouseleave", () => {
+          scrollIndicator.style.cursor =
+            'url("assets/hover-hand.png"), pointer';
         });
       });
     </script>

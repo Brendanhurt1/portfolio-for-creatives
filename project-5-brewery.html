@@ -153,15 +153,17 @@
 
         <div class="section-container">
           <div class="section-item col-2">
-            <figure class="project-image border">
-              <img
-                src="assets/west-point-brewing/packaging/west-point-brewing-packaging-corner-top.jpg"
-                width="1920"
-                height="1080"
-                loading="lazy"
-                alt="west point brewing packaging top corner view"
-              />
-            </figure>
+            <div class="project-image-container">
+              <figure class="project-image border">
+                <img
+                  src="assets/west-point-brewing/packaging/west-point-brewing-packaging-corner-top.jpg"
+                  width="1920"
+                  height="1080"
+                  loading="lazy"
+                  alt="west point brewing packaging top corner view"
+                />
+              </figure>
+            </div>
           </div>
           <div class="section-item col-2">
             <p class="project-description" style="margin-left: 1rem">
@@ -460,11 +462,18 @@
         window.addEventListener("resize", updateIndicator);
         updateIndicator();
 
+        // When the mouse enters the indicator, show your custom hover cursor
+        scrollIndicator.addEventListener("mouseenter", () => {
+          scrollIndicator.style.cursor =
+            'url("assets/hover-hand.png"), pointer';
+        });
+
         // Drag start
         scrollIndicator.addEventListener("mousedown", (e) => {
           if (window.innerWidth < 1000) return; // disable on mobile
           isDragging = true;
-          scrollIndicator.style.cursor = "grabbing";
+          scrollIndicator.style.cursor =
+            'url("assets/hover-hand.png"), pointer';
           scrollIndicator.style.transition = "top 0.05s ease-out";
           e.preventDefault();
         });
@@ -495,9 +504,16 @@
         document.addEventListener("mouseup", () => {
           if (isDragging) {
             isDragging = false;
-            scrollIndicator.style.cursor = "grab";
+            scrollIndicator.style.cursor =
+              'url("assets/hover-hand.png"), pointer';
             scrollIndicator.style.transition = "top 0.15s ease-out";
           }
+        });
+
+        // When the mouse leaves, reset the cursor if needed
+        scrollIndicator.addEventListener("mouseleave", () => {
+          scrollIndicator.style.cursor =
+            'url("assets/hover-hand.png"), pointer';
         });
       });
     </script>

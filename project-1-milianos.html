@@ -438,11 +438,18 @@
         window.addEventListener("resize", updateIndicator);
         updateIndicator();
 
+        // When the mouse enters the indicator, show your custom hover cursor
+        scrollIndicator.addEventListener("mouseenter", () => {
+          scrollIndicator.style.cursor =
+            'url("assets/hover-hand.png"), pointer';
+        });
+
         // Drag start
         scrollIndicator.addEventListener("mousedown", (e) => {
           if (window.innerWidth < 1000) return; // disable on mobile
           isDragging = true;
-          scrollIndicator.style.cursor = "grabbing";
+          scrollIndicator.style.cursor =
+            'url("assets/hover-hand.png"), pointer';
           scrollIndicator.style.transition = "top 0.05s ease-out";
           e.preventDefault();
         });
@@ -473,9 +480,16 @@
         document.addEventListener("mouseup", () => {
           if (isDragging) {
             isDragging = false;
-            scrollIndicator.style.cursor = "grab";
+            scrollIndicator.style.cursor =
+              'url("assets/hover-hand.png"), pointer';
             scrollIndicator.style.transition = "top 0.15s ease-out";
           }
+        });
+
+        // When the mouse leaves, reset the cursor if needed
+        scrollIndicator.addEventListener("mouseleave", () => {
+          scrollIndicator.style.cursor =
+            'url("assets/hover-hand.png"), pointer';
         });
       });
     </script>

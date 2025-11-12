@@ -166,8 +166,8 @@
 
           <!-- Right column: QR code -->
           <div class="section-item text-col" style="flex: 1; margin-left: 2rem">
-            <div class="project-image-container padding-40 qr-block">
-              <figure class="project-image">
+            <div class="project-image-container qr-block">
+              <figure class="project-image padding-20">
                 <img
                   src="assets/prog-rock-odyssey/prog-rock-odyssey-qr-code.PNG"
                   width="1920"
@@ -314,11 +314,18 @@
         window.addEventListener("resize", updateIndicator);
         updateIndicator();
 
+        // When the mouse enters the indicator, show your custom hover cursor
+        scrollIndicator.addEventListener("mouseenter", () => {
+          scrollIndicator.style.cursor =
+            'url("assets/hover-hand.png"), pointer';
+        });
+
         // Drag start
         scrollIndicator.addEventListener("mousedown", (e) => {
           if (window.innerWidth < 1000) return; // disable on mobile
           isDragging = true;
-          scrollIndicator.style.cursor = "grabbing";
+          scrollIndicator.style.cursor =
+            'url("assets/hover-hand.png"), pointer';
           scrollIndicator.style.transition = "top 0.05s ease-out";
           e.preventDefault();
         });
@@ -349,9 +356,16 @@
         document.addEventListener("mouseup", () => {
           if (isDragging) {
             isDragging = false;
-            scrollIndicator.style.cursor = "grab";
+            scrollIndicator.style.cursor =
+              'url("assets/hover-hand.png"), pointer';
             scrollIndicator.style.transition = "top 0.15s ease-out";
           }
+        });
+
+        // When the mouse leaves, reset the cursor if needed
+        scrollIndicator.addEventListener("mouseleave", () => {
+          scrollIndicator.style.cursor =
+            'url("assets/hover-hand.png"), pointer';
         });
       });
     </script>

@@ -3045,10 +3045,9 @@ ul {
 .scroll-indicator:hover {
   background-color: #f26f6c;
 }
-a:hover,
-button:hover,
-.scroll-indicator:hover {
-  cursor: url("../assets/hover-hand.png"), pointer;
+
+.scroll-indicator:hover img {
+  cursor: url("assets/hover-hand.png"), pointer !important;
 }
 
 /* Disable scroll bar and custom cursor on smaller screens */
