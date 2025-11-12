@@ -3300,6 +3300,11 @@ html {
   box-shadow: none;
 }
 
+.project-details-overlay.overlay.centered-text {
+  padding: 2rem; /* adds space inside the overlay */
+  box-sizing: border-box; /* ensures padding is included in width */
+}
+
 /*
 
 
