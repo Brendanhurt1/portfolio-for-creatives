@@ -916,7 +916,7 @@ body {
 }
 
 .nav-branding-logo {
-  width: clamp(15rem, 60vw, 60rem);
+  width: clamp(15rem, 60vw, 41rem);
   /* TODO: Adjust the width of the logo on mobile devices here */
 }
 
@@ -2946,12 +2946,6 @@ ul {
     bottom: -1.5rem;
     right: -1.5rem;
   }
-
-  .about-grid-image {
-    position: relative;
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
 }
 
 /* Small mobile (≤500px) → reduce again for tiny screens */
@@ -3303,6 +3297,18 @@ html {
 .project-details-overlay.overlay.centered-text {
   padding: 2rem; /* adds space inside the overlay */
   box-sizing: border-box; /* ensures padding is included in width */
+}
+
+.about-grid-text {
+  width: 70%;
+  max-width: 70%;
+}
+
+@media (max-width: 1000px) {
+  .about-text-70 {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }
 
 /*
