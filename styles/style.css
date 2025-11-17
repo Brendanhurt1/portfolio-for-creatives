@@ -2551,7 +2551,7 @@ ul {
 
 .project-image img,
 .project-video-container iframe {
-  border: 2px solid #f26f6c;
+  border: 0px solid #5d513b;
   display: block; /* ensures the border fits cleanly around the media */
 }
 
@@ -3140,7 +3140,7 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
 }
 
 .project-video-container iframe {
-  border: 2px solid #f26f6c;
+  border: 0px solid #5d513b;
   display: block;
   border-radius: 0 !important; /* ensures edges stay square */
 }
@@ -3309,6 +3309,14 @@ html {
     width: 100% !important;
     max-width: 100% !important;
   }
+}
+
+.divider {
+  border: none; /* remove default hr border */
+  height: 2px; /* line thickness */
+  background-color: #605139; /* or whatever color you want */
+  margin: 1rem 0; /* 1 rem on top and bottom */
+  width: 100%; /* span the full width of your container */
 }
 
 /*
