@@ -36,41 +36,8 @@
 
 /*
 
-/* 
-██ ███    ███ ██████   ██████  ██████  ████████      ██████ ███████ ███████ 
-██ ████  ████ ██   ██ ██    ██ ██   ██    ██        ██      ██      ██      
-██ ██ ████ ██ ██████  ██    ██ ██████     ██        ██      ███████ ███████ 
-██ ██  ██  ██ ██      ██    ██ ██   ██    ██        ██           ██      ██ 
-██ ██      ██ ██       ██████  ██   ██    ██         ██████ ███████ ███████ 
-*/
 
-/* ------------------------------- */
-/* 🔗 Imported Stylesheets */
-/* These are external CSS files that add extra effects to your site. */
-/* ------------------------------- */
 
-/* TODO: Delete any stylesheets you don't plan to use on your site. */
-
-/* File for animation effects that make elements move (e.g., flying) */
-@import url("make-something-fly.css");
-
-/* File for animation effects that make elements blink */
-@import url("make-something-blink.css");
-
-/* File for adding a smooth animated gradient background */
-@import url("animated-gradient.css");
-
-/* File for adding a glitch animation to your 404 error page */
-@import url("error.css");
-
-/* File for adding text stroke (outline) effect */
-@import url("text-stroke.css");
-
-/* File for adding stroke shadow effect around text */
-@import url("stroke-shadow.css");
-
-/* File with extra experimental styles (e.g., fun animations or effects) */
-@import url("experiments.css");
 
 /* File for adding a scroll-to-top button or effect */
 @import url("scroll-to-top.css");
