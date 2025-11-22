@@ -3309,17 +3309,18 @@ html {
   transition: opacity 0.1s ease;
 }
 
-/* MOBILE: disable GIF swap */
 @media (hover: none) {
   .hover-swap .thumb-gif {
-    display: none;
+    opacity: 0 !important;
+    visibility: hidden; /* hides it without unloading the image */
+    pointer-events: none; /* keeps click behavior normal */
   }
 
   .hover-swap .thumb-static {
-    opacity: 1 !important; /* ensure static always shows */
+    opacity: 1 !important;
+    visibility: visible;
   }
 }
-
 /*
 
 
