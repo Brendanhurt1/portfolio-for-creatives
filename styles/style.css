@@ -882,6 +882,7 @@ body {
   }
 }
 
+/*END OF MEDIA QUERY */
 .nav-branding-logo {
   width: clamp(15rem, 60vw, 41rem);
   /* TODO: Adjust the width of the logo on mobile devices here */
@@ -1328,7 +1329,7 @@ body {
   display: grid;
   grid-template-columns: repeat(
     auto-fit,
-    minmax(300px, 1fr)
+    minmax(350px, 1fr)
   ); /* Creates a responsive grid */
   grid-gap: 1rem; /* Space between grid items */
   /* The auto-fit and minmax() function help ensure responsiveness across screen sizes */
@@ -2068,7 +2069,7 @@ to keep your styles reusable and consistent.
   }
 
   .hero {
-    min-height: 85vh;
+    min-height: 90vh;
     /* HEIGHT OF HERO */
   }
 
@@ -2092,7 +2093,7 @@ to keep your styles reusable and consistent.
   /* Work Page Grid for Large Devices */
 
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     grid-gap: 2rem;
   }
 
@@ -2284,7 +2285,7 @@ to keep your styles reusable and consistent.
     font-size: 3.225rem;
   }
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   }
 }
 
@@ -2297,7 +2298,7 @@ to keep your styles reusable and consistent.
     font-size: 3.625rem;
   }
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   }
 }
 
@@ -3247,21 +3248,21 @@ html {
   overflow-x: hidden; /* optional extra safety */
 }
 
-.nav-logo-link {
-  outline: none;
-}
-
+/* Navigation logo link — remove outlines/shadows in all states */
+.nav-logo-link,
 .nav-logo-link:focus,
 .nav-logo-link:active {
   outline: none;
   box-shadow: none;
 }
 
+/* Project overlay padding & sizing */
 .project-details-overlay.overlay.centered-text {
-  padding: 2rem; /* adds space inside the overlay */
-  box-sizing: border-box; /* ensures padding is included in width */
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
+/* About grid text sizing */
 .about-grid-text {
   width: 70%;
   max-width: 70%;
