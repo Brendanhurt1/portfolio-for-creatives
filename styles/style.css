@@ -3276,7 +3276,7 @@ html {
 
 .divider {
   border: none; /* remove default hr border */
-  height: 2px; /* line thickness */
+  height: 4px; /* line thickness */
   background-color: #605139; /* or whatever color you want */
   margin: 1rem 0; /* 1 rem on top and bottom */
   width: 100%; /* span the full width of your container */
