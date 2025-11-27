@@ -1373,7 +1373,6 @@ body {
 .work-page-grid-item:hover .overlay {
   visibility: visible; /* Make overlay visible on hover */
   opacity: 1;
-  display: none;
   /* Set opacity on hover */
 }
 .work-grid-project-title {
@@ -2019,33 +2018,6 @@ to keep your styles reusable and consistent.
 /* Switch from mobile to desktop navigation */
 
 @media (min-width: 1001px) {
-  .work-page-grid-item:hover .overlay {
-    visibility: visible; /* Make overlay visible on hover */
-    opacity: 1;
-    display: flex;
-    /* Set opacity on hover */
-  }
-  /* Overlay (appears on hover) */
-  .overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0; /* Initially invisible */
-    transition: var(--duration-slow) ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: var(
-      --color-overlay-primary
-    ); /* Background color of the overlay */
-    transition: opacity var(--duration-normal),
-      visibility var(--duration-normal);
-  }
   .hero-headline {
     font-size: 2rem;
   }
