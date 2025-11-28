@@ -100,7 +100,7 @@
         <!-- <div class="hero-overlay"></div> -->
         <!-- overlay added -->
 
-        <header class="hero-header-a index-header">
+        <header class="hero-header index-header">
           <div class="nav-branding-logo">
             <a href="index.html">
               <object
@@ -488,6 +488,33 @@
 
       // Start animation only after content is fully duplicated
       track.classList.add("ready");
+    </script>
+    <script>
+      document.querySelectorAll(".hover-swap").forEach((figure) => {
+        const staticImg = figure.querySelector(".thumb-static");
+        const gifImg = figure.querySelector(".thumb-gif");
+
+        figure.addEventListener("mouseenter", () => {
+          // Hide static image
+          staticImg.style.display = "none";
+
+          // Clone GIF and reset src to force reload
+          const newGif = gifImg.cloneNode(true);
+          const currentSrc = gifImg.getAttribute("src");
+          newGif.src = currentSrc + "?t=" + new Date().getTime(); // append timestamp to reload
+
+          newGif.style.display = "block";
+
+          // Replace old gif element
+          gifImg.replaceWith(newGif);
+        });
+
+        figure.addEventListener("mouseleave", () => {
+          // Reset back to static image
+          figure.querySelector(".thumb-static").style.display = "block";
+          figure.querySelector(".thumb-gif").style.display = "none";
+        });
+      });
     </script>
   </body>
 </html>

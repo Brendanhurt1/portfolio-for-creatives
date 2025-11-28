@@ -2300,161 +2300,75 @@ to keep your styles reusable and consistent.
 
 /* X-Large devices (large desktops, 1200px and up)*/
 
+@media (min-width: 1200px) {
+  /* TODO: Add styles here for EXTRA LARGE DEVICES!!!. */
+
+  .project-title {
+    font-size: 3.225rem;
+  }
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}
+
+/* XX-Large devices (LARGER DESKTOPS!!!, 1400px and up) */
+
+@media (min-width: 1400px) {
+  /* TODO: Add styles here for XX-large devices. */
+
+  .project-title {
+    font-size: 3.625rem;
+  }
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}
+
 body,
 ul {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-.section-container {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.section-item {
-  flex: 1 1 100%;
-}
-
-.border-right {
-  border-right: 0.1rem solid var(--color-text-project-description);
-  width: 100%;
-  box-sizing: border-box;
-  display: block;
-}
-
-.col-2 {
-  width: 50%;
-}
-
-.project-navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 400px;
-  margin: 2rem auto;
-  padding: 0;
-  list-style: none;
-}
-
-.project-navigation .arrow a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.project-wrapper {
-  padding-bottom: 10rem;
-}
-
+/* container that holds the pair and the shared caption */
 .project-image-pair {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  flex-wrap: wrap; /* allows stacking on small screens */
+  gap: 20px; /* space between the two figures */
   align-items: flex-start;
-  justify-content: center;
+  justify-content: center; /* center the two images inside the container */
+  box-sizing: border-box;
   width: 100%;
   margin: 1rem;
 }
 
+/* make each figure share the available width and stay inside the container */
 .project-image-pair .project-image {
-  flex: 1 1 calc(50% - 10px);
+  flex: 1 1 calc(50% - 10px); /* two columns with gap accounted for */
   max-width: calc(50% - 10px);
-  margin: 0;
+  box-sizing: border-box;
+  margin: 0; /* remove default figure margins that can push layout */
 }
 
+/* ensure the images never overflow and keep correct aspect ratio */
 .project-image-pair .project-image img {
   display: block;
   width: 100%;
   height: auto;
-  object-fit: contain;
+  object-fit: contain; /* keeps the whole image visible */
+  box-sizing: border-box;
 }
 
+/* caption spans full width under both images and is centered */
 .project-image-pair .project-caption-shared {
   width: 100%;
   text-align: center;
   margin: 1rem 0 0;
   color: #605039;
-  font-style: italic;
+  font-style: italic; /* optional */
 }
 
-.project-image-pair .project-caption {
-  display: inline-block;
-  text-align: center;
-  margin-top: 1rem;
-  position: relative;
-}
-
-.hero-headline a {
-  text-decoration: underline;
-}
-
-.hero-headline {
-  margin: 0.25rem 0;
-}
-
-.flier {
-  display: none !important;
-}
-
-.index-header {
-  position: static;
-  background-color: transparent;
-  backdrop-filter: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--padding-tiny) var(--padding-ultra);
-  width: 100%;
-  z-index: 1000;
-}
-
-.index-header .nav-branding-logo img {
-  height: auto;
-  max-height: var(--logo-height);
-  margin: var(--logo-margin);
-}
-
-.index-header .nav-branding {
-  display: flex;
-  gap: var(--nav-gap);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.index-header .nav-branding-item {
-  color: #605039;
-  font-weight: 700;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: color 0.5s;
-}
-
-.index-header .nav-branding-item:hover {
-  background-color: #b8a88e;
-  color: #ffefe1;
-}
-
-/* Mobile-first adjustments */
-@media (max-width: 768px) {
-  .project-navigation {
-    max-width: 300px;
-    margin: 1.5rem auto;
-  }
-  .project-wrapper {
-    padding-bottom: 4rem;
-  }
-  .hero-header {
-    min-height: 5vh;
-  }
-  .hero-headline {
-    font-size: 0.9rem;
-    line-height: 1.4;
-  }
-}
-
+/* responsive: stack images on small screens */
 @media (max-width: 700px) {
   .project-image-pair {
     flex-direction: column;
@@ -2466,30 +2380,133 @@ ul {
   }
 }
 
+.project-image-pair .project-caption {
+  display: inline-block; /* caption shrinks to text width */
+  text-align: center;
+  margin-top: 1rem;
+  position: relative; /* for pseudo-element positioning */
+}
+
+.project-navigation {
+  display: flex;
+  justify-content: space-between; /* arrows at left and right ends of container */
+  align-items: center;
+  max-width: 400px; /* optional: controls overall width */
+  margin: 2rem auto; /* centers the nav row */
+  padding: 0;
+  list-style: none;
+}
+
+.project-navigation .arrow a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .project-navigation {
+    max-width: 300px; /* smaller row on mobile */
+    margin: 1.5rem auto;
+  }
+}
+/* Give the whole project area breathing room above the footer */
+/* Applies to all project pages */
+.project-wrapper {
+  box-sizing: border-box;
+  padding-bottom: 10rem; /* Consistent bottom space for all pages */
+}
+
+@media (max-width: 768px) {
+  .project-wrapper {
+    padding-bottom: 4rem; /* Smaller gap for mobile */
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-header {
+    min-height: 5vh;
+  }
+}
+
+.hero-headline a {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .hero-headline {
+    font-size: 0.9rem; /* adjust this size smaller than your desktop */
+    line-height: 1.4; /* optional: tweak line height so text stays readable */
+  }
+}
+
+.hero-headline {
+  margin: 0.25rem 0; /* overrides default h3/p margins */
+}
+
+.flier {
+  display: none !important;
+}
+
+/* Index page header */
+.index-header {
+  position: static; /* no sticky */
+  background-color: transparent; /* remove white bar */
+  backdrop-filter: none; /* remove blur */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--padding-tiny) var(--padding-ultra); /* keep spacing consistent */
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Keep logo size same as main header */
+.index-header .nav-branding-logo img {
+  height: auto;
+  max-height: var(--logo-height); /* same variable used in main header */
+  margin: var(--logo-margin); /* keeps spacing consistent */
+}
+
+/* Keep nav buttons same style */
+.index-header .nav-branding {
+  display: flex;
+  gap: var(--nav-gap); /* same gap as main header */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Index header buttons */
+.index-header .nav-branding-item {
+  color: #605039; /* same as project pages */
+  font-weight: 700; /* same as project pages */
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.5s;
+}
+
+.index-header .nav-branding-item:hover {
+  background-color: #b8a88e;
+  color: #ffefe1;
+}
+
+/* Default mobile: stack (full width each) */
+.section-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.section-item {
+  flex: 1 1 100%;
+}
+
 /* Desktop breakpoint: 2/3 image + 1/3 text */
 @media (min-width: 1001px) {
   .section-item.image-col {
-    flex: 2;
+    flex: 2; /* 2 parts */
   }
   .section-item.text-col {
-    flex: 1;
-  }
-}
-
-/* Extra-large devices */
-@media (min-width: 1200px) {
-  .project-title {
-    font-size: 3.225rem;
-  }
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  }
-}
-
-/* XX-large devices */
-@media (min-width: 1400px) {
-  .project-title {
-    font-size: 3.625rem;
+    flex: 1; /* 1 part */
   }
 }
 
@@ -2499,17 +2516,19 @@ ul {
   width: 100%;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: column; /* default for mobile */
 }
 
 .col-2 {
   width: 100%;
 }
 
+/* Two-column layout on larger screens */
 @media (min-width: 768px) {
   .section-container {
     flex-direction: row;
   }
+
   .col-2 {
     width: 50%;
   }
@@ -2517,33 +2536,16 @@ ul {
 
 .project-image img,
 .project-video-container iframe {
-  border: 0;
-  display: block;
+  border: 0px solid #5d513b;
+  display: block; /* ensures the border fits cleanly around the media */
 }
 
+/* optional: if you ever want to disable it */
 .no-border img,
 .no-border iframe {
   border: none !important;
 }
-
-@media (max-width: 1400px) {
-  .project-description-one-column,
-  .project-description-one-column p,
-  .project-description,
-  .project-description p,
-  .project-description-bold {
-    font-size: 1rem;
-    line-height: 1.2;
-    padding: 0 16px 0 16px;
-    margin: 0.5rem 0;
-    margin-left: 0 !important;
-  }
-  .project-title {
-    padding: 0 16px 0 16px;
-    font-size: 2.15rem;
-  }
-}
-
+/* Screens below 900px */
 @media (min-width: 901px) {
   .project-description-one-column,
   .project-description-one-column p,
@@ -2552,69 +2554,154 @@ ul {
   .project-description-bold {
     font-size: 1.2rem;
     line-height: 1.2;
-    padding: 0 20px 0 16px;
+    padding: 0;
+    padding-left: 16px;
+    padding-right: 20px;
     margin: 0;
   }
 }
 
+/* Screens below 1400px */
+@media (max-width: 1400px) {
+  .project-description-one-column,
+  .project-description-one-column p,
+  .project-description,
+  .project-description p,
+  .project-description-bold {
+    font-size: 1rem;
+    line-height: 1.2;
+    padding: 0;
+    padding-left: 16px;
+    padding-right: 20px;
+    margin: 0;
+  }
+}
+
+@media (max-width: 900px), (max-width: 1400px) {
+  .project-description-one-column,
+  .project-description-one-column p,
+  .project-description,
+  .project-description p,
+  .project-description-bold {
+    font-size: 1rem;
+    line-height: 1.2;
+    padding: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    /* override inline margin-left */
+    margin-left: 0 !important;
+
+    /* restore vertical gaps between paragraphs */
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Screens below 1400px - project title */
+@media (max-width: 1400px) {
+  .project-title {
+    padding-left: 16px;
+    padding-right: 20px; /* optional if you want symmetry */
+    font-size: 2.15rem;
+  }
+}
+
+/* Very small screens below 500px */
 @media (max-width: 500px) {
   .home-page .portfolio .grid {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 1rem 2rem 1rem;
-    gap: 12px;
+    flex-direction: column; /* stack thumbnails vertically */
+    align-items: center; /* center them horizontally */
+    padding-left: 1rem; /* small left margin */
+    padding-right: 1rem; /* small right margin */
+    gap: 12px; /* space between thumbnails */
+    padding-bottom: 2rem;
   }
 
-  .home-page .portfolio .work-page-grid-item,
-  .home-page .work-page-grid-item {
-    width: 100% !important;
-    max-width: 400px;
-    margin: 0 auto !important;
+  .home-page .portfolio .work-page-grid-item {
+    width: 100%; /* fill almost full width */
+    max-width: 400px; /* optional: limit so they don’t get huge on slightly bigger phones */
+    margin: 0; /* remove extra margins */
   }
 
-  .home-page .work-page-grid-item img,
   .home-page .portfolio .work-page-grid-item img {
-    width: 100% !important;
-    height: auto !important;
-    display: block !important;
+    width: 100%; /* image fills container */
+    height: auto; /* maintain aspect ratio */
+    display: block; /* avoid inline spacing issues */
   }
-
+}
+/* Keep top padding but remove left/right padding below 500px */
+@media (max-width: 500px) {
   .home-page .portfolio,
   .home-page .project-wrapper,
   .home-page .work-sidebar-wrapper {
     padding-left: 0 !important;
     padding-right: 0 !important;
+    /* Keep top padding */
     padding-top: var(--padding-large) !important;
-    padding-bottom: 0 !important;
+    padding-bottom: 0 !important; /* optional if you want no bottom padding */
   }
 
+  /* Make thumbnails full width, one column, centered */
+  .home-page .work-page-grid-item {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  .home-page .work-page-grid-item img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
+}
+
+/* Only target very small screens */
+@media screen and (max-width: 500px) {
+  /* Let hero section grow naturally */
   .home-page .hero {
-    display: block;
-    min-height: auto;
-    padding-bottom: 1rem;
+    display: block; /* remove flex shrink behavior */
+    min-height: auto; /* don’t force 100vh */
+    padding-bottom: 1rem; /* small bottom padding for spacing */
     box-sizing: border-box;
   }
 
-  .home-page .hero-header.index-header,
+  /* Header stays visible */
+  .home-page .hero-header.index-header {
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Headline stays visible */
   .home-page .hero-headline-wrapper {
     margin-bottom: 0.5rem;
     position: relative;
     z-index: 2;
   }
 
+  /* Arrow stays centered and below text */
   .home-page .hero-arrow-container {
     text-align: center;
     position: relative;
     z-index: 2;
   }
 
+  /* Projects grid below hero */
   .home-page .work-page-grid-item {
-    width: calc(100% - 1rem);
+    width: calc(100% - 1rem); /* full width minus small margin */
     margin: 0.5rem auto;
+  }
+
+  .home-page .work-page-grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 }
 
+/* Disable highlight + press animation on touch devices only */
 @media (hover: none) and (pointer: coarse) {
   .hero-arrow-link,
   .hero-arrow-link:active,
@@ -2624,25 +2711,31 @@ ul {
     outline: none !important;
     box-shadow: none !important;
     background: none !important;
+  }
+
+  .hero-arrow-link {
     -webkit-tap-highlight-color: transparent !important;
   }
 }
 
+/* Desktop: default */
 .project-video-container {
   position: relative;
   width: 100%;
-  height: auto;
+  height: auto; /* auto height based on iframe */
   overflow: hidden;
-  background-color: #000;
 }
 
 .responsive-iframe {
   width: 100%;
   height: 100%;
   border: 0;
-  aspect-ratio: 16/9;
+  aspect-ratio: 16 / 9; /* maintain desktop aspect ratio */
 }
 
+/* Mobile / single column */
+
+/* Default desktop/tablet layout — keep spacing */
 .project-image {
   display: flex;
   flex-direction: column;
@@ -2650,6 +2743,19 @@ ul {
   margin: 1rem;
 }
 
+/* Mobile / single-column layout — remove extra margin */
+
+/* Default desktop/tablet — keep current spacing */
+.project-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+}
+
+/* Mobile / single-column layout adjustments */
+
+/* Normal (desktop) – captions visible */
 .project-caption {
   display: block;
 }
