@@ -2016,7 +2016,7 @@ to keep your styles reusable and consistent.
 }
 @media (max-width: 250px) {
   .hero {
-    min-height: 85vh;
+    min-height: 70vh;
   }
 }
 
@@ -2030,7 +2030,7 @@ to keep your styles reusable and consistent.
 
 @media (min-width: 1001px) {
   .hero-headline {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   /* TODO: Add or adjust styles here for large devices. */
@@ -2080,12 +2080,11 @@ to keep your styles reusable and consistent.
   }
 
   .hero {
-    min-height: 90vh;
+    min-height: 70vh;
     /* HEIGHT OF HERO */
   }
 
   .hero-headline-wrapper {
-    padding-top: var(--padding-jumbo);
     padding-bottom: var(--padding-jumbo);
     padding-left: var(--padding-ultra);
     padding-right: var(--padding-ultra);
@@ -2313,9 +2312,9 @@ to keep your styles reusable and consistent.
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
   .hero {
-    min-height: 85vh !important;
+    min-height: 65vh !important;
   }
 }
 body,
@@ -2428,7 +2427,7 @@ ul {
 
 @media (max-width: 768px) {
   .hero-headline {
-    font-size: 1.1rem; /* adjust this size smaller than your desktop */
+    font-size: 0.9rem; /* adjust this size smaller than your desktop */
     line-height: 1.4; /* optional: tweak line height so text stays readable */
   }
 }
