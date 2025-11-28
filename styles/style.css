@@ -1011,6 +1011,16 @@ body {
   margin-top: 4px;
 }
 
+@media (max-width: 1400px) {
+  .tag {
+    padding: 8px 8px;
+    font-size: 12px;
+    border-radius: 20px;
+    margin-right: 8px;
+    margin-top: 3px;
+  }
+}
+
 .project-video-container {
   display: flex;
   justify-content: center; /* keeps video centered */
@@ -1774,8 +1784,8 @@ header.hero-header .nav-wrapper {
 .hero-arrow-container {
   display: flex;
   justify-content: center; /* center horizontally */
-  margin-top: 0.5rem; /* push it towards the bottom */
-  margin-bottom: 0rem; /* space from bottom of hero */
+  margin-top: 3rem; /* push it towards the bottom */
+  margin-bottom: 6rem; /* space from bottom of hero */
 }
 
 .hero-arrow-link {
@@ -1789,7 +1799,7 @@ header.hero-header .nav-wrapper {
 
 .hero-arrow-link:hover {
   color: #f26f6c;
-  transform: scale(1.75); /* arrow grows on hover */
+  transform: scale(3); /* arrow grows on hover */
 }
 
 .hero-arrow-link .arrow-label {
@@ -2674,7 +2684,6 @@ ul {
 
   /* Arrow stays centered and below text */
   .home-page .hero-arrow-container {
-    margin: 0 auto 1rem auto;
     text-align: center;
     position: relative;
     z-index: 2;
@@ -3213,7 +3222,7 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
 
 @media (min-width: 1000px) {
   .project-description-about {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 }
 
