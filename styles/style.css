@@ -1391,12 +1391,6 @@ body {
 }
 
 /* Mobile-specific overrides */
-@media (max-width: 1000px) {
-  .overlay {
-    opacity: 0 !important; /* hide visually */
-    background-color: transparent !important; /* no background */
-  }
-}
 
 /* Hover effect on work page grid items */
 .work-page-grid-item:hover .overlay {
@@ -2306,80 +2300,161 @@ to keep your styles reusable and consistent.
 
 /* X-Large devices (large desktops, 1200px and up)*/
 
-@media (min-width: 1200px) {
-  /* TODO: Add styles here for EXTRA LARGE DEVICES!!!. */
-
-  .project-title {
-    font-size: 3.225rem;
-  }
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  }
-}
-
-/* XX-Large devices (LARGER DESKTOPS!!!, 1400px and up) */
-
-@media (min-width: 1400px) {
-  /* TODO: Add styles here for XX-large devices. */
-
-  .project-title {
-    font-size: 3.625rem;
-  }
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  }
-}
-
-@media (max-width: 1000px) {
-  .hero {
-    min-height: 45vh !important;
-  }
-}
 body,
 ul {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* container that holds the pair and the shared caption */
+.section-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.section-item {
+  flex: 1 1 100%;
+}
+
+.border-right {
+  border-right: 0.1rem solid var(--color-text-project-description);
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+}
+
+.col-2 {
+  width: 50%;
+}
+
+.project-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 0;
+  list-style: none;
+}
+
+.project-navigation .arrow a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-wrapper {
+  padding-bottom: 10rem;
+}
+
 .project-image-pair {
   display: flex;
-  flex-wrap: wrap; /* allows stacking on small screens */
-  gap: 20px; /* space between the two figures */
+  flex-wrap: wrap;
+  gap: 20px;
   align-items: flex-start;
-  justify-content: center; /* center the two images inside the container */
-  box-sizing: border-box;
+  justify-content: center;
   width: 100%;
   margin: 1rem;
 }
 
-/* make each figure share the available width and stay inside the container */
 .project-image-pair .project-image {
-  flex: 1 1 calc(50% - 10px); /* two columns with gap accounted for */
+  flex: 1 1 calc(50% - 10px);
   max-width: calc(50% - 10px);
-  box-sizing: border-box;
-  margin: 0; /* remove default figure margins that can push layout */
+  margin: 0;
 }
 
-/* ensure the images never overflow and keep correct aspect ratio */
 .project-image-pair .project-image img {
   display: block;
   width: 100%;
   height: auto;
-  object-fit: contain; /* keeps the whole image visible */
-  box-sizing: border-box;
+  object-fit: contain;
 }
 
-/* caption spans full width under both images and is centered */
 .project-image-pair .project-caption-shared {
   width: 100%;
   text-align: center;
   margin: 1rem 0 0;
   color: #605039;
-  font-style: italic; /* optional */
+  font-style: italic;
 }
 
-/* responsive: stack images on small screens */
+.project-image-pair .project-caption {
+  display: inline-block;
+  text-align: center;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.hero-headline a {
+  text-decoration: underline;
+}
+
+.hero-headline {
+  margin: 0.25rem 0;
+}
+
+.flier {
+  display: none !important;
+}
+
+.index-header {
+  position: static;
+  background-color: transparent;
+  backdrop-filter: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--padding-tiny) var(--padding-ultra);
+  width: 100%;
+  z-index: 1000;
+}
+
+.index-header .nav-branding-logo img {
+  height: auto;
+  max-height: var(--logo-height);
+  margin: var(--logo-margin);
+}
+
+.index-header .nav-branding {
+  display: flex;
+  gap: var(--nav-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.index-header .nav-branding-item {
+  color: #605039;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.5s;
+}
+
+.index-header .nav-branding-item:hover {
+  background-color: #b8a88e;
+  color: #ffefe1;
+}
+
+/* Mobile-first adjustments */
+@media (max-width: 768px) {
+  .project-navigation {
+    max-width: 300px;
+    margin: 1.5rem auto;
+  }
+  .project-wrapper {
+    padding-bottom: 4rem;
+  }
+  .hero-header {
+    min-height: 5vh;
+  }
+  .hero-headline {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+}
+
 @media (max-width: 700px) {
   .project-image-pair {
     flex-direction: column;
@@ -2391,133 +2466,30 @@ ul {
   }
 }
 
-.project-image-pair .project-caption {
-  display: inline-block; /* caption shrinks to text width */
-  text-align: center;
-  margin-top: 1rem;
-  position: relative; /* for pseudo-element positioning */
-}
-
-.project-navigation {
-  display: flex;
-  justify-content: space-between; /* arrows at left and right ends of container */
-  align-items: center;
-  max-width: 400px; /* optional: controls overall width */
-  margin: 2rem auto; /* centers the nav row */
-  padding: 0;
-  list-style: none;
-}
-
-.project-navigation .arrow a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@media (max-width: 768px) {
-  .project-navigation {
-    max-width: 300px; /* smaller row on mobile */
-    margin: 1.5rem auto;
-  }
-}
-/* Give the whole project area breathing room above the footer */
-/* Applies to all project pages */
-.project-wrapper {
-  box-sizing: border-box;
-  padding-bottom: 10rem; /* Consistent bottom space for all pages */
-}
-
-@media (max-width: 768px) {
-  .project-wrapper {
-    padding-bottom: 4rem; /* Smaller gap for mobile */
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-header {
-    min-height: 5vh;
-  }
-}
-
-.hero-headline a {
-  text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-  .hero-headline {
-    font-size: 0.9rem; /* adjust this size smaller than your desktop */
-    line-height: 1.4; /* optional: tweak line height so text stays readable */
-  }
-}
-
-.hero-headline {
-  margin: 0.25rem 0; /* overrides default h3/p margins */
-}
-
-.flier {
-  display: none !important;
-}
-
-/* Index page header */
-.index-header {
-  position: static; /* no sticky */
-  background-color: transparent; /* remove white bar */
-  backdrop-filter: none; /* remove blur */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--padding-tiny) var(--padding-ultra); /* keep spacing consistent */
-  width: 100%;
-  z-index: 1000;
-}
-
-/* Keep logo size same as main header */
-.index-header .nav-branding-logo img {
-  height: auto;
-  max-height: var(--logo-height); /* same variable used in main header */
-  margin: var(--logo-margin); /* keeps spacing consistent */
-}
-
-/* Keep nav buttons same style */
-.index-header .nav-branding {
-  display: flex;
-  gap: var(--nav-gap); /* same gap as main header */
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* Index header buttons */
-.index-header .nav-branding-item {
-  color: #605039; /* same as project pages */
-  font-weight: 700; /* same as project pages */
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: color 0.5s;
-}
-
-.index-header .nav-branding-item:hover {
-  background-color: #b8a88e;
-  color: #ffefe1;
-}
-
-/* Default mobile: stack (full width each) */
-.section-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.section-item {
-  flex: 1 1 100%;
-}
-
 /* Desktop breakpoint: 2/3 image + 1/3 text */
 @media (min-width: 1001px) {
   .section-item.image-col {
-    flex: 2; /* 2 parts */
+    flex: 2;
   }
   .section-item.text-col {
-    flex: 1; /* 1 part */
+    flex: 1;
+  }
+}
+
+/* Extra-large devices */
+@media (min-width: 1200px) {
+  .project-title {
+    font-size: 3.225rem;
+  }
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}
+
+/* XX-large devices */
+@media (min-width: 1400px) {
+  .project-title {
+    font-size: 3.625rem;
   }
 }
 
@@ -2527,19 +2499,17 @@ ul {
   width: 100%;
   align-items: center;
   justify-content: center;
-  flex-direction: column; /* default for mobile */
+  flex-direction: column;
 }
 
 .col-2 {
   width: 100%;
 }
 
-/* Two-column layout on larger screens */
 @media (min-width: 768px) {
   .section-container {
     flex-direction: row;
   }
-
   .col-2 {
     width: 50%;
   }
@@ -2547,16 +2517,33 @@ ul {
 
 .project-image img,
 .project-video-container iframe {
-  border: 0px solid #5d513b;
-  display: block; /* ensures the border fits cleanly around the media */
+  border: 0;
+  display: block;
 }
 
-/* optional: if you ever want to disable it */
 .no-border img,
 .no-border iframe {
   border: none !important;
 }
-/* Screens below 900px */
+
+@media (max-width: 1400px) {
+  .project-description-one-column,
+  .project-description-one-column p,
+  .project-description,
+  .project-description p,
+  .project-description-bold {
+    font-size: 1rem;
+    line-height: 1.2;
+    padding: 0 16px 0 16px;
+    margin: 0.5rem 0;
+    margin-left: 0 !important;
+  }
+  .project-title {
+    padding: 0 16px 0 16px;
+    font-size: 2.15rem;
+  }
+}
+
 @media (min-width: 901px) {
   .project-description-one-column,
   .project-description-one-column p,
@@ -2565,154 +2552,69 @@ ul {
   .project-description-bold {
     font-size: 1.2rem;
     line-height: 1.2;
-    padding: 0;
-    padding-left: 16px;
-    padding-right: 20px;
+    padding: 0 20px 0 16px;
     margin: 0;
   }
 }
 
-/* Screens below 1400px */
-@media (max-width: 1400px) {
-  .project-description-one-column,
-  .project-description-one-column p,
-  .project-description,
-  .project-description p,
-  .project-description-bold {
-    font-size: 1rem;
-    line-height: 1.2;
-    padding: 0;
-    padding-left: 16px;
-    padding-right: 20px;
-    margin: 0;
-  }
-}
-
-@media (max-width: 900px), (max-width: 1400px) {
-  .project-description-one-column,
-  .project-description-one-column p,
-  .project-description,
-  .project-description p,
-  .project-description-bold {
-    font-size: 1rem;
-    line-height: 1.2;
-    padding: 0;
-    padding-left: 20px;
-    padding-right: 20px;
-
-    /* override inline margin-left */
-    margin-left: 0 !important;
-
-    /* restore vertical gaps between paragraphs */
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-}
-
-/* Screens below 1400px - project title */
-@media (max-width: 1400px) {
-  .project-title {
-    padding-left: 16px;
-    padding-right: 20px; /* optional if you want symmetry */
-    font-size: 2.15rem;
-  }
-}
-
-/* Very small screens below 500px */
 @media (max-width: 500px) {
   .home-page .portfolio .grid {
     display: flex;
-    flex-direction: column; /* stack thumbnails vertically */
-    align-items: center; /* center them horizontally */
-    padding-left: 1rem; /* small left margin */
-    padding-right: 1rem; /* small right margin */
-    gap: 12px; /* space between thumbnails */
-    padding-bottom: 2rem;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1rem 2rem 1rem;
+    gap: 12px;
   }
 
-  .home-page .portfolio .work-page-grid-item {
-    width: 100%; /* fill almost full width */
-    max-width: 400px; /* optional: limit so they don’t get huge on slightly bigger phones */
-    margin: 0; /* remove extra margins */
+  .home-page .portfolio .work-page-grid-item,
+  .home-page .work-page-grid-item {
+    width: 100% !important;
+    max-width: 400px;
+    margin: 0 auto !important;
   }
 
+  .home-page .work-page-grid-item img,
   .home-page .portfolio .work-page-grid-item img {
-    width: 100%; /* image fills container */
-    height: auto; /* maintain aspect ratio */
-    display: block; /* avoid inline spacing issues */
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
   }
-}
-/* Keep top padding but remove left/right padding below 500px */
-@media (max-width: 500px) {
+
   .home-page .portfolio,
   .home-page .project-wrapper,
   .home-page .work-sidebar-wrapper {
     padding-left: 0 !important;
     padding-right: 0 !important;
-    /* Keep top padding */
     padding-top: var(--padding-large) !important;
-    padding-bottom: 0 !important; /* optional if you want no bottom padding */
+    padding-bottom: 0 !important;
   }
 
-  /* Make thumbnails full width, one column, centered */
-  .home-page .work-page-grid-item {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto !important;
-  }
-
-  .home-page .work-page-grid-item img {
-    width: 100% !important;
-    height: auto !important;
-    display: block !important;
-  }
-}
-
-/* Only target very small screens */
-@media screen and (max-width: 500px) {
-  /* Let hero section grow naturally */
   .home-page .hero {
-    display: block; /* remove flex shrink behavior */
-    min-height: auto; /* don’t force 100vh */
-    padding-bottom: 1rem; /* small bottom padding for spacing */
+    display: block;
+    min-height: auto;
+    padding-bottom: 1rem;
     box-sizing: border-box;
   }
 
-  /* Header stays visible */
-  .home-page .hero-header.index-header {
-    margin-bottom: 0.5rem;
-    position: relative;
-    z-index: 2;
-  }
-
-  /* Headline stays visible */
+  .home-page .hero-header.index-header,
   .home-page .hero-headline-wrapper {
     margin-bottom: 0.5rem;
     position: relative;
     z-index: 2;
   }
 
-  /* Arrow stays centered and below text */
   .home-page .hero-arrow-container {
     text-align: center;
     position: relative;
     z-index: 2;
   }
 
-  /* Projects grid below hero */
   .home-page .work-page-grid-item {
-    width: calc(100% - 1rem); /* full width minus small margin */
+    width: calc(100% - 1rem);
     margin: 0.5rem auto;
-  }
-
-  .home-page .work-page-grid-item img {
-    width: 100%;
-    height: auto;
-    display: block;
   }
 }
 
-/* Disable highlight + press animation on touch devices only */
 @media (hover: none) and (pointer: coarse) {
   .hero-arrow-link,
   .hero-arrow-link:active,
@@ -2722,56 +2624,25 @@ ul {
     outline: none !important;
     box-shadow: none !important;
     background: none !important;
-  }
-
-  .hero-arrow-link {
     -webkit-tap-highlight-color: transparent !important;
   }
 }
 
-/* Desktop: default */
 .project-video-container {
   position: relative;
   width: 100%;
-  height: auto; /* auto height based on iframe */
+  height: auto;
   overflow: hidden;
+  background-color: #000;
 }
 
 .responsive-iframe {
   width: 100%;
   height: 100%;
   border: 0;
-  aspect-ratio: 16 / 9; /* maintain desktop aspect ratio */
+  aspect-ratio: 16/9;
 }
 
-/* Mobile / single column */
-@media (max-width: 1000px) {
-  .section-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem; /* space between stacked items */
-  }
-
-  .section-item {
-    width: 100% !important;
-    flex: none !important;
-  }
-
-  .project-video-container {
-    min-height: auto; /* let the aspect-ratio control height */
-  }
-
-  .responsive-iframe {
-    width: 100%;
-    height: auto; /* keep the aspect ratio */
-  }
-
-  .project-image {
-    margin: 0 !important;
-  }
-}
-
-/* Default desktop/tablet layout — keep spacing */
 .project-image {
   display: flex;
   flex-direction: column;
@@ -2779,56 +2650,8 @@ ul {
   margin: 1rem;
 }
 
-/* Mobile / single-column layout — remove extra margin */
-@media (max-width: 1000px) {
-  .project-image {
-    margin: 0 !important;
-  }
-
-  /* Optional: ensure the container doesn't add unintended padding */
-  .project-image-container {
-    padding: 0 !important;
-  }
-
-  /* Optional: remove side margins from any text column next to it */
-  .section-item.text-col {
-    margin-left: 0 !important;
-  }
-}
-
-/* Default desktop/tablet — keep current spacing */
-.project-image {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 1rem;
-}
-
-/* Mobile / single-column layout adjustments */
-@media (max-width: 1000px) {
-  .project-image {
-    margin: 0 0 1.5rem 0 !important; /* adds vertical spacing only between stacked images */
-  }
-
-  .project-image:last-child {
-    margin-bottom: 0 !important; /* removes extra space after the last image */
-  }
-
-  .project-image-container {
-    padding: 0 !important;
-  }
-}
-
-/* Normal (desktop) – captions visible */
 .project-caption {
   display: block;
-}
-
-/* Mobile / single-column – allow selective hiding */
-@media (max-width: 1000px) {
-  .project-caption.hide-on-mobile {
-    display: none !important;
-  }
 }
 
 .footer-global {
@@ -2857,12 +2680,6 @@ ul {
   font-weight: 700;
 }
 
-@media (max-width: 1000px) {
-  .footer-global h2 {
-    font-size: 1.75rem; /* keep the same size on one column */
-  }
-}
-
 .footer-arrow-container {
   display: flex;
   justify-content: center;
@@ -2875,22 +2692,20 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #ffffff; /* white for footer */
+  color: #ffffff;
   text-decoration: none;
   transition: transform 0.5s, color 0.5s;
 }
 
 .footer-arrow-link:hover {
   transform: scale(1.75);
-  color: #ffefe1; /* soft highlight color */
+  color: #ffefe1;
 }
 
-/* Disable hover/tap effects on mobile */
 @media (max-width: 500px) {
   .footer-arrow-link {
     transition: none;
   }
-
   .footer-arrow-link:hover,
   .footer-arrow-link:active,
   .footer-arrow-link:focus {
@@ -2905,8 +2720,8 @@ ul {
 }
 
 .about-image {
-  position: relative; /* enables absolute positioning for children */
-  display: inline-block; /* keeps figure tight to image size */
+  position: relative;
+  display: inline-block;
 }
 
 .portrait-img {
@@ -2917,15 +2732,14 @@ ul {
 
 .about-overlay {
   position: absolute;
-  bottom: -2rem; /* move below image edge (increase for more overlap) */
-  right: -2rem; /* move beyond right edge (increase for more overlap) */
-  width: 120px; /* control size */
+  bottom: -2rem;
+  right: -2rem;
+  width: 120px;
   height: auto;
-  z-index: 5; /* ensures overlay is above */
-  pointer-events: none; /* prevent blocking interactions */
+  z-index: 5;
+  pointer-events: none;
 }
 
-/* Between 1550px and 1000px → make overlay smaller */
 @media (max-width: 1550px) and (min-width: 1001px) {
   .about-overlay {
     width: 90px;
@@ -2934,16 +2748,14 @@ ul {
   }
 }
 
-/* Single column (1000px and below) → make overlay larger */
 @media (max-width: 1000px) {
   .about-overlay {
-    width: 160px;
+    width: 90px;
     bottom: -1.5rem;
     right: -1.5rem;
   }
 }
 
-/* Small mobile (≤500px) → reduce again for tiny screens */
 @media (max-width: 500px) {
   .about-overlay {
     width: 100px;
@@ -2952,72 +2764,89 @@ ul {
   }
 }
 
-@media (max-width: 500px) {
-  .about-overlay {
-    width: 85px;
-    bottom: -1rem;
-    right: -1rem;
-  }
+html,
+body,
+.main-wrapper {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-@media (min-width: 1550px) {
-  .about-overlay {
-    width: 180px;
-    bottom: -2rem;
-    right: -2rem;
-  }
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.nav-logo-link,
+.nav-logo-link:focus,
+.nav-logo-link:active {
+  outline: none;
+  box-shadow: none;
+}
+
+.project-details-overlay.overlay.centered-text {
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.about-grid-text {
+  width: 70%;
+  max-width: 70%;
 }
 
 .project-description-title {
   text-transform: uppercase;
-  font-size: 2.5rem; /* override any h2 rules */
+  font-size: 2.5rem;
   font-family: "Poppins", sans-serif;
   color: #605039;
   font-weight: 500;
 }
 
-/* Single-column / mobile layout */
-@media (max-width: 1000px) {
-  .project-description-title {
-    font-size: 1.5rem; /* smaller for mobile */
-  }
-}
-
 .border-right {
   position: relative;
-  border-right: none; /* disable old border line */
-}
-.project-info {
-  position: relative;
-  padding-right: 1.5rem; /* adds space between text and scroll bar */
+  border-right: none;
 }
 
-/* Scroll Progress Container */
+.project-info {
+  position: relative;
+  padding-right: 1.5rem;
+}
+
 .scroll-progress {
   position: absolute;
-  top: 1rem; /* outer top margin */
-  bottom: 1rem; /* outer bottom margin */
-  right: 0; /* stay at edge of sidebar */
-  width: 32px; /* slightly wider to give horizontal spacing */
+  top: 1rem;
+  bottom: 1rem;
+  right: 0;
+  width: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Track of the Scroll Progress */
 .scroll-track {
   position: relative;
-  width: 22px; /* slightly wider for left/right spacing */
-  height: 92%; /* internal top/bottom margin */
+  width: 22px;
+  height: 92%;
   border: 2px solid #605039;
   border-radius: 30px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  padding: 4%; /* inner spacing so circle never touches edges */
+  padding: 4%;
 }
 
-/* Scroll Indicator Circle */
 .scroll-indicator {
   position: absolute;
   top: 0;
@@ -3030,7 +2859,6 @@ ul {
   transition: top 0.15s ease-out, background-color 0.3s ease;
 }
 
-/* Hover Effect for Circle */
 .scroll-indicator:hover {
   background-color: #f26f6c;
 }
@@ -3039,32 +2867,11 @@ ul {
   cursor: url("assets/hover-hand.png"), pointer !important;
 }
 
-/* Disable scroll bar and custom cursor on smaller screens */
-@media (max-width: 999px) {
-  .scroll-progress {
-    display: none;
-  }
-}
-
 .video-margin {
-  margin: 1rem; /* adds spacing around the video */
-  box-sizing: border-box; /* ensures margin doesn’t break responsive layout */
+  margin: 1rem;
+  box-sizing: border-box;
 }
 
-@media (max-width: 1025px) {
-  .masonry-grid {
-    column-count: unset;
-    column-gap: unset;
-    display: block; /* optional, ensures normal flow */
-  }
-
-  .masonry-item {
-    break-inside: auto;
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-}
-/* Only for this project page */
 body.more-of-my-work .project-wrapper-fullwidth {
   width: 100%;
   max-width: 100%;
@@ -3080,56 +2887,6 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
   padding: 0;
 }
 
-@media (max-width: 1024px) {
-  body.more-of-my-work .project-wrapper-fullwidth {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-}
-
-@media (max-width: 1025px) {
-  .footer-item {
-    font-size: 0.9rem;
-    line-height: 1rem; /* smaller text */
-    margin-bottom: 0.4rem; /* tighter spacing */
-  }
-
-  .footer-socials-list,
-  .footer-awards-list {
-    gap: 0.4rem; /* reduces space between list items */
-  }
-}
-
-@media (max-width: 1025px) {
-  .footer-global {
-    display: grid;
-    gap: 1rem;
-  }
-
-  p {
-    font-size: 0.9rem;
-    line-height: 1rem;
-  }
-
-  .project-aside {
-    padding: 0;
-  }
-}
-
-.project-description-one-column p {
-  color: #605039; /* or whatever color you want */
-}
-
-@media (min-width: 1025px) {
-  .project-image-container .section-item.col-2:first-child {
-    margin-left: 1rem;
-  }
-
-  .strathcona-section > div:first-child {
-    margin-left: 1rem;
-  }
-}
-
 .project-video-container {
   background-color: #000;
 }
@@ -3137,7 +2894,7 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
 .project-video-container iframe {
   border: 0px solid #5d513b;
   display: block;
-  border-radius: 0 !important; /* ensures edges stay square */
+  border-radius: 0 !important;
 }
 
 .footer-awards-list .footer-item,
@@ -3147,10 +2904,9 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
 
 .footer-awards-list .footer-item:last-child,
 .footer-socials-list .footer-item:last-child {
-  margin-bottom: 0; /* Removes extra space after the last item */
+  margin-bottom: 0;
 }
 
-/* This class mimics the old button box size and layout */
 .nav-logo-link {
   display: inline-flex;
   align-items: center;
@@ -3188,6 +2944,7 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
 .nav-logo-link:hover .nav-logo {
   opacity: 0;
 }
+
 .nav-logo-link:hover::after {
   opacity: 1;
 }
@@ -3204,6 +2961,52 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
   width: fit-content;
 }
 
+@media (max-width: 1025px) {
+  .masonry-grid {
+    column-count: unset;
+    column-gap: unset;
+    display: block;
+  }
+  .masonry-item {
+    break-inside: auto;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .footer-item {
+    font-size: 0.9rem;
+    line-height: 1rem;
+    margin-bottom: 0.4rem;
+  }
+  .footer-socials-list,
+  .footer-awards-list {
+    gap: 0.4rem;
+  }
+  .footer-global {
+    display: grid;
+    gap: 1rem;
+  }
+  p {
+    font-size: 0.9rem;
+    line-height: 1rem;
+  }
+  .project-aside {
+    padding: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  body.more-of-my-work .project-wrapper-fullwidth {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 999px) {
+  .scroll-progress {
+    display: none;
+  }
+}
+
 .project-description,
 .project-description-one-column {
   margin-bottom: 1.5rem;
@@ -3214,14 +3017,12 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
   margin-bottom: 0;
 }
 
-/* project title spacing */
 @media (min-width: 1400px) {
   .project-title {
     margin-left: 16px;
   }
 }
 
-/* project-description-about (mobile first) */
 .project-description-about {
   margin: 0;
   padding: 0 20px 16px 0;
@@ -3236,7 +3037,6 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
   }
 }
 
-/* Project title specific for about section */
 .project-title-about {
   font-family: var(--font-family-project-title);
   font-size: 3.625rem;
@@ -3245,37 +3045,48 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
   line-height: 1;
   color: var(--color-text-project-title);
   margin-bottom: 1rem;
-  padding-left: 0; /* remove left padding */
+  padding-left: 0;
 }
 
-.main-wrapper,
-/* Make all main containers fit the screen */
-body,
-html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  box-sizing: border-box;
+@media (max-width: 500px) {
+  .about-overlay {
+    width: 85px;
+    bottom: -1rem;
+    right: -1rem;
+  }
+}
+
+@media (min-width: 1550px) {
+  .about-overlay {
+    width: 180px;
+    bottom: -2rem;
+    right: -2rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .project-image-container .section-item.col-2:first-child,
+  .strathcona-section > div:first-child {
+    margin-left: 1rem;
+  }
 }
 
 *,
-*:before,
-*:after {
-  box-sizing: inherit; /* ensures padding/borders don’t break layout */
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Example content wrapper */
 .container {
   width: 100%;
-  max-width: 100%; /* never exceeds viewport */
-  overflow-x: hidden; /* optional extra safety */
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
-/* Navigation logo link — remove outlines/shadows in all states */
 .nav-logo-link,
 .nav-logo-link:focus,
 .nav-logo-link:active {
@@ -3283,13 +3094,11 @@ html {
   box-shadow: none;
 }
 
-/* Project overlay padding & sizing */
 .project-details-overlay.overlay.centered-text {
   padding: 2rem;
   box-sizing: border-box;
 }
 
-/* About grid text sizing */
 .about-grid-text {
   width: 70%;
   max-width: 70%;
@@ -3300,14 +3109,66 @@ html {
     width: 100% !important;
     max-width: 100% !important;
   }
+  .hero-header-a {
+    margin-top: 4rem;
+  }
+  .project-description-title {
+    font-size: 1.5rem;
+  }
+  .about-overlay {
+    width: 160px;
+    bottom: -1.5rem;
+    right: -1.5rem;
+  }
+  .footer-global h2 {
+    font-size: 1.75rem;
+  }
+  .project-caption.hide-on-mobile {
+    display: none !important;
+  }
+  .project-image {
+    margin: 0 !important;
+  }
+  .project-image:last-child {
+    margin-bottom: 0 !important;
+  }
+  .project-image-container {
+    padding: 0 !important;
+  }
+  .overlay {
+    opacity: 0 !important;
+    background-color: transparent !important;
+  }
+  .hero {
+    min-height: 45vh !important;
+  }
+  .section-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .section-item {
+    width: 100% !important;
+    flex: none !important;
+  }
+  .section-item.text-col {
+    margin-left: 0 !important;
+  }
+  .project-video-container {
+    min-height: auto;
+  }
+  .responsive-iframe {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .divider {
-  border: none; /* remove default hr border */
-  height: 4px; /* line thickness */
-  background-color: #605139; /* or whatever color you want */
-  margin: 1rem 0; /* 1 rem on top and bottom */
-  width: 100%; /* span the full width of your container */
+  border: none;
+  height: 4px;
+  background-color: #605139;
+  margin: 1rem 0;
+  width: 100%;
 }
 
 .hover-swap {
@@ -3325,7 +3186,7 @@ html {
   inset: 0;
   opacity: 0;
   transition: opacity 0.1s ease;
-  pointer-events: none; /* so it doesn't block hover */
+  pointer-events: none;
 }
 
 .work-page-grid-item:hover .thumb-gif {
@@ -3340,10 +3201,9 @@ html {
 @media (hover: none) {
   .hover-swap .thumb-gif {
     opacity: 0 !important;
-    visibility: hidden; /* hides it without unloading the image */
-    pointer-events: none; /* keeps click behavior normal */
+    visibility: hidden;
+    pointer-events: none;
   }
-
   .hover-swap .thumb-static {
     opacity: 1 !important;
     visibility: visible;
@@ -3358,12 +3218,19 @@ html {
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-  margin-top: 2rem; /* <-- your spacing */
+  margin-top: 2rem;
 }
 
 .tag-track {
   display: inline-flex;
   animation: scroll 25s linear infinite;
+  animation-play-state: paused;
+  opacity: 0;
+}
+
+.tag-track.ready {
+  animation-play-state: running;
+  opacity: 1;
 }
 
 @keyframes scroll {
@@ -3372,24 +3239,6 @@ html {
   }
   to {
     transform: translateX(-50%);
-  }
-}
-
-.tag-track {
-  display: inline-flex;
-  animation: scroll 25s linear infinite;
-  animation-play-state: paused; /* Prevent early start */
-  opacity: 0; /* Optional: fade in when ready */
-}
-
-.tag-track.ready {
-  animation-play-state: running;
-  opacity: 1;
-}
-
-@media (max-width: 1000px) {
-  .hero-header-a {
-    margin-top: 4rem;
   }
 }
 
