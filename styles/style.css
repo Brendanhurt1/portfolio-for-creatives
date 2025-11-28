@@ -3383,6 +3383,37 @@ html {
   font-family: "Slackey", cursive;
 }
 
+/* Desktop */
+.index-logo-wrapper {
+  margin-top: 6rem;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .index-logo-wrapper {
+    margin-top: 4rem;
+  }
+}
+
+.tag-scroll-bar {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.tag-track {
+  display: inline-flex;
+  animation: scrollTags 25s linear infinite;
+}
+
+@keyframes scrollTags {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /*
 
 
