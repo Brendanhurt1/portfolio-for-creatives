@@ -125,11 +125,7 @@
         </header>
 
         <div class="hero-headline-wrapper">
-          <h3 class="hero-headline">
-            Blending bold branding concepts and illustration into designs that
-            truly stand out. Reach out, and we'll make something happen.
-          </h3>
-
+          <h3 class="hero-headline" id="typed-output"></h3>
           <p class="hero-headline">
             Contact Email:
             <a href="mailto:brendanhurtt@gmail.com">brendanhurtt@gmail.com</a>
@@ -253,14 +249,14 @@
                 width="1500"
                 height="1500"
                 loading="lazy"
-                alt="Background with geometric shapes floating"
+                alt="Static image"
               />
               <img
                 class="thumb-gif"
                 src="assets/home-page/west-point-brewing-thumbnail-moving.gif"
                 width="1000"
                 height="1000"
-                alt=""
+                alt="GIF"
               />
             </figure>
 
@@ -513,6 +509,75 @@
           // Reset back to static image
           figure.querySelector(".thumb-static").style.display = "block";
           figure.querySelector(".thumb-gif").style.display = "none";
+        });
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const fullText =
+          "Blending bold branding concepts and illustration into designs that truly stand out . Reach out, and we'll make something happen.";
+
+        const target = document.getElementById("typed-output");
+
+        // Define words with styles
+        const styledWords = {
+          bold: "bold-word",
+          "stand out": "standout-word",
+        };
+
+        // Convert fullText into an array of characters with spans applied
+        const charArray = [];
+        let i = 0;
+
+        while (i < fullText.length) {
+          let matched = false;
+          for (const word in styledWords) {
+            if (fullText.slice(i, i + word.length) === word) {
+              // Push each character of the word wrapped in span
+              for (const char of word) {
+                charArray.push(
+                  `<span class="${styledWords[word]}">${char}</span>`
+                );
+              }
+              i += word.length;
+              matched = true;
+              break;
+            }
+          }
+          if (!matched) {
+            charArray.push(fullText[i]);
+            i++;
+          }
+        }
+
+        let index = 0;
+
+        function type() {
+          if (index < charArray.length) {
+            target.innerHTML += charArray[index];
+            index++;
+            setTimeout(type, 45); // typing speed
+          }
+        }
+
+        type();
+      });
+    </script>
+    <script>
+      document.querySelectorAll(".hover-swap").forEach((figure) => {
+        const gif = figure.querySelector(".thumb-gif");
+        const src = gif.src;
+
+        figure.addEventListener("mouseenter", () => {
+          // Trick to restart GIF: temporarily remove src, then reset it
+          gif.style.opacity = 1; // show GIF
+          gif.src = "";
+          gif.offsetHeight; // force reflow
+          gif.src = src; // restart GIF
+        });
+
+        figure.addEventListener("mouseleave", () => {
+          gif.style.opacity = 0; // hide GIF
         });
       });
     </script>

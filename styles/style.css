@@ -33,6 +33,7 @@
 /* Remember, the more fonts you load, the longer it can take for your page to load. */
 
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Slackey&display=swap");
 
 /*
 
@@ -3346,6 +3347,40 @@ html {
   to {
     transform: translateX(-50%);
   }
+}
+
+.hero-headline-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hero-headline {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem; /* mobile default */
+  line-height: 1.35;
+  font-weight: 400;
+  max-width: 34rem;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--color-text-project-description, #605039);
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .hero-headline {
+    font-size: 1.2rem;
+  }
+}
+
+/* Bold word styling */
+.bold-word {
+  font-weight: 800;
+}
+
+/* Standout word styling */
+.standout-word {
+  font-family: "Slackey", cursive;
 }
 
 /*
