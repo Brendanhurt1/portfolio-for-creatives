@@ -422,7 +422,7 @@ h6 {
 /* ------------------------------------------------------------------ */
 
 p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   line-height: 1.3;
   margin-bottom: 1rem;
   font-weight: 300;
@@ -707,7 +707,6 @@ body {
 .hero {
   position: relative;
   width: 100%;
-  height: 30vh; /* hero height */
   overflow: hidden;
   margin: 0;
   padding: 0;
@@ -991,8 +990,7 @@ body {
   display: flex;
   justify-content: flex-start; /* center the whole row */
   align-items: center; /* keeps height consistent */
-  gap: 2px; /* space between rectangles */
-  margin-top: 20px;
+  gap: 8px; /* space between rectangles */
   flex-wrap: wrap; /* allows wrapping if too many */
   margin-right: 1.5rem;
   margin-left: 16px;
@@ -1000,13 +998,13 @@ body {
 
 .tag {
   display: inline-block;
-  padding: 8px 8px; /* spacing inside the rectangle */
+  padding: 8px 16px; /* spacing inside the rectangle */
   border: 2px solid #f26f6c; /* 2px outline in your color */
-  border-radius: 20px; /* controls how rounded the corners are */
+  border-radius: 28px; /* controls how rounded the corners are */
   color: #f26f6c; /* text color matches the border */
   background-color: transparent; /* transparent middle */
   text-transform: uppercase; /* all caps text */
-  font-size: 12px; /* controls font size */
+  font-size: 16px; /* controls font size */
   font-weight: 600; /* adjust text weight */
   text-align: center;
   margin-right: 12px;
@@ -1533,7 +1531,7 @@ body {
 .footer-item {
   line-height: 1.2; /* Consistent line height for footer items to improve spacing */
   margin-bottom: 0.25rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-family: "poppins", sans-serif;
   color: #ffffff;
 }
@@ -2144,7 +2142,7 @@ to keep your styles reusable and consistent.
 
   .project-aside {
     width: 35%;
-    height: 80vh;
+    height: 100vh;
     position: -webkit-sticky;
     position: sticky;
     top: 8rem;
@@ -2314,7 +2312,7 @@ to keep your styles reusable and consistent.
 
 @media (max-width: 1000px) {
   .hero {
-    min-height: 65vh !important;
+    min-height: 45vh !important;
   }
 }
 body,
@@ -2545,7 +2543,7 @@ ul {
   .project-description,
   .project-description p,
   .project-description-bold {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.2;
     padding: 0;
     padding-left: 16px;
@@ -2576,7 +2574,7 @@ ul {
   .project-description,
   .project-description p,
   .project-description-bold {
-    font-size: 0.9rem;
+    font-size: 1rem;
     line-height: 1.2;
     padding: 0;
     padding-left: 20px;
@@ -3335,6 +3333,39 @@ html {
 
 .project-tags.no-left-margin {
   margin-left: 0;
+}
+
+.tag-scroll-bar {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-top: 2rem; /* <-- your spacing */
+}
+
+.tag-track {
+  display: inline-flex;
+  animation: scroll 25s linear infinite;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.tag-track {
+  display: inline-flex;
+  animation: scroll 25s linear infinite;
+  animation-play-state: paused; /* Prevent early start */
+  opacity: 0; /* Optional: fade in when ready */
+}
+
+.tag-track.ready {
+  animation-play-state: running;
+  opacity: 1;
 }
 
 /*

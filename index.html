@@ -135,14 +135,37 @@
             <a href="mailto:brendanhurtt@gmail.com">brendanhurtt@gmail.com</a>
           </p>
         </div>
+
         <div class="hero-arrow-container">
           <a href="#next-section" class="hero-arrow-link">
             <i class="fa-sharp fa-solid fa-arrow-down fa-2x"></i>
             <span class="arrow-label">take a look around</span>
           </a>
         </div>
+
+        <!-- ⭐ NEW: CSS-ONLY SCROLLING TAG BAR BELOW THE ARROW ⭐ -->
+        <div class="tag-scroll-bar">
+          <div class="tag-track" id="tagTrack">
+            <span class="tag">Packaging Design</span>
+            <span class="tag">Brand Development</span>
+            <span class="tag">Digital Illustration</span>
+            <span class="tag">Brand Identity</span>
+            <span class="tag">Copywriting</span>
+            <span class="tag">Art Direction</span>
+            <span class="tag">Layout Design</span>
+            <span class="tag">Illustration</span>
+            <span class="tag">Moodboarding</span>
+            <span class="tag">Print Design</span>
+            <span class="tag">Storytelling</span>
+            <span class="tag">Concepting</span>
+            <span class="tag">Ideation</span>
+            <span class="tag">Traditional Illustration</span>
+          </div>
+        </div>
+        <!-- ⭐ END TAG BAR ⭐ -->
       </div>
     </section>
+
     <main id="next-section" class="main-work-section">
       <section class="portfolio">
         <ul class="grid">
@@ -454,16 +477,17 @@
       });
     </script>
     <script>
-      document.querySelectorAll(".work-page-grid-item").forEach((item) => {
-        const gif = item.querySelector(".thumb-gif");
-        item.addEventListener("mouseenter", () => {
-          gif.style.opacity = 1;
-          gif.src = gif.src; // forces GIF to restart
-        });
-        item.addEventListener("mouseleave", () => {
-          gif.style.opacity = 0;
-        });
-      });
+      const track = document.getElementById("tagTrack");
+
+      // Clone content until track is > 2× screen width
+      let trackWidth = track.scrollWidth;
+      while (trackWidth < window.innerWidth * 2) {
+        track.innerHTML += track.innerHTML;
+        trackWidth = track.scrollWidth;
+      }
+
+      // Start animation only after content is fully duplicated
+      track.classList.add("ready");
     </script>
   </body>
 </html>
