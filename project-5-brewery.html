@@ -436,7 +436,7 @@
             <i class="fa-sharp fa-solid fa-arrow-up fa-2x"></i>
             <span class="arrow-label">Back to Top</span>
           </a>
-          <p style="margin-top: 1.5rem">2025 © Brendan Hurt</p>
+          <p id="copyright" style="margin-top: 1.5rem">2025 © Brendan Hurt</p>
         </div>
       </li>
     </ul>
@@ -527,6 +527,11 @@
             'url("assets/hover-hand.png"), pointer';
         });
       });
+    </script>
+    <script>
+      const yearSpan = document.getElementById("copyright");
+      const currentYear = new Date().getFullYear();
+      yearSpan.textContent = `${currentYear} © Brendan Hurt`;
     </script>
   </body>
 </html>
