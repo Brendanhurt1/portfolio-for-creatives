@@ -697,6 +697,16 @@ a.nav-link-primary:hover {
   justify-content: center;
 }
 
+.hero-header-a {
+  min-height: 20vh; /* Space reserved for logo + nav */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6rem;
+}
+
 /* Remove all default spacing */
 html,
 body {
@@ -3185,7 +3195,7 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
 .hero-header,
 .nav-wrapper,
 .nav-branding {
-  margin: 6rem 0 1rem;
+  margin: 1rem 0 1rem;
 }
 
 .project-description-one-column {
