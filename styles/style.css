@@ -3414,6 +3414,25 @@ html {
   }
 }
 
+.program-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* spacing between icons */
+  align-items: center;
+}
+
+.program-icon {
+  width: 75px; /* modest size */
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .program-icon {
+    width: 50px; /* slightly smaller on mobile */
+  }
+}
+
 /*
 
 
