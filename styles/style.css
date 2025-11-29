@@ -1780,7 +1780,7 @@ header.hero-header .nav-wrapper {
   display: flex;
   justify-content: center; /* center horizontally */
   margin-top: 3rem; /* push it towards the bottom */
-  margin-bottom: 6rem; /* space from bottom of hero */
+  margin-bottom: 1rem; /* space from bottom of hero */
 }
 
 .hero-arrow-link {
@@ -3049,7 +3049,7 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
 .hero-header,
 .nav-wrapper,
 .nav-branding {
-  margin: 6rem 0 1rem;
+  margin: 1rem 0 1rem;
 }
 
 .project-description-one-column {
@@ -3375,7 +3375,7 @@ html {
 
 /* Desktop */
 .index-logo-wrapper {
-  margin-top: 6rem;
+  margin-top: 1rem;
 }
 
 /* Mobile */
@@ -3420,6 +3420,16 @@ html {
 @media (max-width: 768px) {
   .program-icon {
     width: 50px; /* slightly smaller on mobile */
+  }
+}
+
+.index-hero-header {
+  margin-top: 8rem;
+}
+
+@media (max-width: 768px) {
+  .index-hero-header {
+    margin-top: 4rem;
   }
 }
 
