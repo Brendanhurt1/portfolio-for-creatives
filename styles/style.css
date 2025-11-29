@@ -70,10 +70,10 @@
   --color-text-primary: #222;
   --color-text-secondary: #333;
   --color-accent-primary: #605039;
-  --color-accent-secondary: #ff057c;
+  --color-accent-secondary: #f37a71;
   --color-overlay-primary: rgb(242, 111, 108, 0.4);
   --color-highlight: lemonchiffon;
-  --color-fallback: #ff057c; /* Fallback color for glitch effect on 404 page */
+  --color-fallback: #f37a71; /* Fallback color for glitch effect on 404 page */
   /* Backgrounds */
   --color-bg: #fdf1e3;
   --color-bg-about: #fdf1e3;
@@ -2917,7 +2917,7 @@ html {
   text-transform: uppercase;
   font-size: 2.5rem;
   font-family: "Poppins", sans-serif;
-  color: #605039;
+  color: #f37a71;
   font-weight: 500;
 }
 
