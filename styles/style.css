@@ -1780,7 +1780,7 @@ header.hero-header .nav-wrapper {
   display: flex;
   justify-content: center; /* center horizontally */
   margin-top: 3rem; /* push it towards the bottom */
-  margin-bottom: 1rem; /* space from bottom of hero */
+  margin-bottom: 5rem; /* space from bottom of hero */
 }
 
 .hero-arrow-link {
