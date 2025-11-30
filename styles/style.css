@@ -3433,6 +3433,77 @@ html {
   }
 }
 
+.program-icon {
+  position: relative;
+}
+
+/* Tooltip */
+.program-icon:hover::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: -1.8rem; /* distance below icon */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* Start hidden */
+.program-icon::after {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.program-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.icon-wrap {
+  position: relative;
+  display: inline-block; /* behaves like the <img> normally would */
+}
+
+.program-icon {
+  width: 75px; /* KEEP YOUR ORIGINAL SIZE */
+  height: auto;
+}
+
+/* Tooltip */
+.icon-wrap::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: -1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #5a4319;
+  color: #fdf2e4;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.icon-wrap:hover::after {
+  opacity: 1;
+}
+
+.program-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem 1rem; /* 3rem row gap, 1rem column gap */
+}
+
 /*
 
 
