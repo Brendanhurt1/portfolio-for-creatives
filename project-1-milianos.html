@@ -539,5 +539,19 @@
         icon.addEventListener("mouseleave", () => (icon.src = original));
       });
     </script>
+    <script>
+      const aside = document.querySelector(".project-aside");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            aside.classList.add("visible");
+            observer.unobserve(aside); // only animate once
+          }
+        });
+      });
+
+      observer.observe(aside);
+    </script>
   </body>
 </html>

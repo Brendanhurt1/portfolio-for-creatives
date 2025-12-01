@@ -3538,6 +3538,42 @@ html {
   filter: brightness(1.2);
 }
 
+.project-aside {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+
+.project-aside.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* initial state — hidden and moved down a bit */
+.about-extra {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+
+/* when in-view — visible and in-place */
+.about-extra.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.project-title-about {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+
+/* when JS adds .visible, it becomes visible + slides into place */
+.project-title-about.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 /*
 
 

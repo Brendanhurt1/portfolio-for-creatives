@@ -92,13 +92,14 @@
         <div class="project-info border-right">
           <h1 class="project-title">doze</h1>
           <p class="project-description">Coming soon...</p>
-        </div>
-        <!-- Scroll progress bar -->
-        <div class="scroll-progress">
-          <div class="scroll-track">
-            <div class="scroll-indicator"></div>
+          <div class="scroll-progress">
+            <div class="scroll-track">
+              <div class="scroll-indicator"></div>
+            </div>
           </div>
         </div>
+        <!-- Scroll progress bar -->
+
         <div class="project-tags">
           <div class="tag">Brand Identity</div>
           <div class="tag">Social Good Campaign</div>
@@ -324,6 +325,20 @@
         icon.addEventListener("mouseenter", () => (icon.src = hover));
         icon.addEventListener("mouseleave", () => (icon.src = original));
       });
+    </script>
+    <script>
+      const aside = document.querySelector(".project-aside");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            aside.classList.add("visible");
+            observer.unobserve(aside); // only animate once
+          }
+        });
+      });
+
+      observer.observe(aside);
     </script>
   </body>
 </html>
