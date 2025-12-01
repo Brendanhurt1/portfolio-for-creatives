@@ -613,25 +613,40 @@
         const container = document.getElementById("introVideoContainer");
         const video = document.getElementById("introVideo");
 
-        video.muted = true; // required for mobile autoplay
+        // Ensure these for mobile playback
+        video.muted = true;
         video.playsinline = true;
+        video.loop = false;
 
-        // Try to autoplay
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => {
-              // Autoplay worked
-            })
-            .catch(() => {
-              // Autoplay blocked → hide container immediately
+        // Attempt autoplay
+        const attemptPlay = () => {
+          const playPromise = video.play();
+          if (playPromise && playPromise.then) {
+            playPromise.catch(() => {
+              // Autoplay blocked → hide container
               container.style.display = "none";
             });
-        }
+          }
+        };
 
-        // When video finishes, hide it
+        attemptPlay();
+
+        // Hide when finished
         video.addEventListener("ended", () => {
           container.style.display = "none";
+        });
+
+        // Resume playback if user returns to the app
+        document.addEventListener("visibilitychange", () => {
+          if (!document.hidden && video.paused && !video.ended) {
+            const resumePromise = video.play();
+            if (resumePromise && resumePromise.catch) {
+              resumePromise.catch(() => {
+                // If resume is blocked, hide container
+                container.style.display = "none";
+              });
+            }
+          }
         });
       });
     </script>
