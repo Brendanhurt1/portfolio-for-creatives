@@ -613,17 +613,17 @@
         const container = document.getElementById("introVideoContainer");
         const video = document.getElementById("introVideo");
 
-        // Ensure these for mobile playback
+        // Required for reliable mobile autoplay
         video.muted = true;
         video.playsinline = true;
         video.loop = false;
 
-        // Attempt autoplay
+        // --- Attempt autoplay ---
         const attemptPlay = () => {
           const playPromise = video.play();
           if (playPromise && playPromise.then) {
             playPromise.catch(() => {
-              // Autoplay blocked → hide container
+              // Autoplay blocked → hide container immediately
               container.style.display = "none";
             });
           }
@@ -631,20 +631,18 @@
 
         attemptPlay();
 
-        // Hide when finished
+        // --- Hide when video ends ---
         video.addEventListener("ended", () => {
           container.style.display = "none";
         });
 
-        // Resume playback if user returns to the app
+        // --- Hide if user leaves the app and comes back before video finishes ---
         document.addEventListener("visibilitychange", () => {
-          if (!document.hidden && video.paused && !video.ended) {
-            const resumePromise = video.play();
-            if (resumePromise && resumePromise.catch) {
-              resumePromise.catch(() => {
-                // If resume is blocked, hide container
-                container.style.display = "none";
-              });
+          // Page becomes visible again (user returned)
+          if (!document.hidden) {
+            // If video is paused AND not finished, hide the intro
+            if (video.paused && !video.ended) {
+              container.style.display = "none";
             }
           }
         });
