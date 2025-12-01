@@ -413,19 +413,39 @@
       </li>
 
       <li class="footer-contact-social">
-        <h2>Contact & Social</h2>
+        <h2>Socials</h2>
         <ul class="footer-socials-list">
           <li class="footer-item">
-            <a href="https://www.instagram.com/brendanhurtart/">Insta</a>
+            <a href="https://www.instagram.com/brendanhurtart/">
+              <img
+                src="assets/socials/instagram-icon.svg"
+                data-hover="assets/socials/instagram-icon-hover.svg"
+                alt="Instagram"
+                class="social-icon"
+              />
+            </a>
           </li>
           <li class="footer-item">
             <a
               href="https://www.linkedin.com/in/brendan-hurt-728262200/?originalSubdomain=ca"
-              >LinkedIn</a
             >
+              <img
+                src="assets/socials/linkedin-icon.svg"
+                data-hover="assets/socials/linkedin-icon-hover.svg"
+                alt="LinkedIn"
+                class="social-icon"
+              />
+            </a>
           </li>
           <li class="footer-item">
-            <a href="https://www.behance.net/brendanhurt">Behance</a>
+            <a href="https://www.behance.net/brendanhurt">
+              <img
+                src="assets/socials/behance-icon.svg"
+                data-hover="assets/socials/behance-icon-hover.svg"
+                alt="Behance"
+                class="social-icon"
+              />
+            </a>
           </li>
         </ul>
       </li>
@@ -532,6 +552,15 @@
       const yearSpan = document.getElementById("copyright");
       const currentYear = new Date().getFullYear();
       yearSpan.textContent = `${currentYear} © Brendan Hurt`;
+    </script>
+    <script>
+      document.querySelectorAll(".social-icon").forEach((icon) => {
+        const original = icon.src;
+        const hover = icon.dataset.hover;
+
+        icon.addEventListener("mouseenter", () => (icon.src = hover));
+        icon.addEventListener("mouseleave", () => (icon.src = original));
+      });
     </script>
   </body>
 </html>

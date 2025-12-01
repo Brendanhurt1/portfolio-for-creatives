@@ -3513,6 +3513,30 @@ html {
   width: 100%;
 }
 
+.footer-socials-list {
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  align-items: baseline; /* or flex-end/baseline — whichever aligns nicely */
+}
+
+.footer-socials-list .footer-item img {
+  width: 50px;
+  height: auto;
+  transition: opacity 1s ease, filter 1s ease;
+  /* Optional: start a bit dimmed */
+  opacity: 1;
+}
+
+/* On hover — lighten or brighten */
+.footer-socials-list .footer-item a:hover img {
+  opacity: 1;
+  /* Example filter — you can adjust or remove if you just want opacity */
+  filter: brightness(1.2);
+}
+
 /*
 
 
