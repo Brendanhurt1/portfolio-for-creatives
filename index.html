@@ -77,7 +77,7 @@
       </style>
 
       <div class="video-container" id="introVideoContainer">
-        <video id="introVideo" autoplay muted playsinline preload="auto">
+        <video id="introVideo" muted playsinline preload="auto" autoplay>
           <source src="assets/opening-video.mp4" type="video/mp4" />
         </video>
       </div>
@@ -613,25 +613,49 @@
         const container = document.getElementById("introVideoContainer");
         const video = document.getElementById("introVideo");
 
+        // Only attempt to autoplay on first load / reload (or your condition)
         const hasPlayed = sessionStorage.getItem("homepageVideoPlayed");
         const isReload =
           performance.getEntriesByType("navigation")[0].type === "reload";
 
         if (!hasPlayed || isReload) {
           sessionStorage.setItem("homepageVideoPlayed", "true");
-
           video.loop = false;
 
-          video.addEventListener("ended", () => {
-            container.style.transition = "none"; // make sure no CSS transitions interfere
-            container.style.display = "none"; // instantly hide
-          });
+          // Try to play
+          const promise = video.play();
+          if (promise !== undefined) {
+            promise
+              .then(() => {
+                // Autoplay worked — do nothing
+                video.addEventListener("ended", () => {
+                  container.style.display = "none"; // or fade-out
+                });
+              })
+              .catch((error) => {
+                // Autoplay failed — fallback: hide video container
+                console.warn("Autoplay failed:", error);
+                container.style.display = "none";
+              });
+          } else {
+            // If play() doesn’t return a promise — best guess: treat as success, but also set fallback
+            video.addEventListener("loadeddata", () => {
+              if (video.paused) {
+                container.style.display = "none";
+              } else {
+                video.addEventListener("ended", () => {
+                  container.style.display = "none";
+                });
+              }
+            });
+          }
         } else {
-          container.style.transition = "none";
-          container.style.display = "none"; // hide immediately when returning
+          // Not first visit — keep video hidden
+          container.style.display = "none";
         }
       });
     </script>
+
     <script>
       document.querySelectorAll(".social-icon").forEach((icon) => {
         const original = icon.src;
