@@ -619,31 +619,25 @@
         video.loop = false;
 
         // --- Attempt autoplay ---
-        const attemptPlay = () => {
-          const playPromise = video.play();
-          if (playPromise && playPromise.then) {
-            playPromise.catch(() => {
-              // Autoplay blocked → hide container immediately
-              container.style.display = "none";
-            });
-          }
-        };
+        const playPromise = video.play();
+        if (playPromise && playPromise.catch) {
+          playPromise.catch(() => {
+            // Autoplay blocked → hide intro
+            container.style.display = "none";
+          });
+        }
 
-        attemptPlay();
-
-        // --- Hide when video ends ---
+        // --- Hide when video fully ends ---
         video.addEventListener("ended", () => {
           container.style.display = "none";
         });
 
-        // --- Hide if user leaves the app and comes back before video finishes ---
+        // --- Hide IMMEDIATELY when user leaves the app ---
         document.addEventListener("visibilitychange", () => {
-          // Page becomes visible again (user returned)
-          if (!document.hidden) {
-            // If video is paused AND not finished, hide the intro
-            if (video.paused && !video.ended) {
-              container.style.display = "none";
-            }
+          if (document.hidden) {
+            // User left the app or switched tabs → kill the intro
+            container.style.display = "none";
+            video.pause();
           }
         });
       });
