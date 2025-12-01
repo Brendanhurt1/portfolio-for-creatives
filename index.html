@@ -63,42 +63,29 @@
 
   <body class="home-page" id="top">
     <section class="hero">
-      <div class="video-container">
-        <!-- <video
-          id="myVideo"
-          autoplay
-          muted
-          loop
-          playsinline
-          webkit-playsinline
-          preload="auto"
-        >
-          <source src="assets/Website Background_2.mp4" type="video/mp4" />
-        </video> -->
+      <style>
+        .video-container {
+          width: 100%;
+          opacity: 1; /* visible by default */
+          transition: opacity 1s ease;
+        }
 
-        <!-- <img
-          id="videoFallback"
-          src="assets/Website-Background_2.gif"
-          alt="Background"
-        /> -->
-        <!-- </div>
+        .video-container.hide {
+          opacity: 0;
+          pointer-events: none;
+        }
+      </style>
+
+      <div class="video-container" id="introVideoContainer">
+        <video id="introVideo" autoplay muted playsinline preload="auto">
+          <source src="assets/opening-video.mp4" type="video/mp4" />
+        </video>
+      </div>
 
       <div class="video-gradient"></div>
 
-      <div class="content"> -->
-        <!-- your page content here -->
-
-        <!-- <div id="background-video">
-        <iframe
-          src="https://player.vimeo.com/video/1120927651?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
-          frameborder="0"
-          allow="autoplay; fullscreen"
-          allowfullscreen
-        >
-        </iframe>
-      </div> -->
-        <!-- <div class="hero-overlay"></div> -->
-        <!-- overlay added -->
+      <div class="content">
+        <div class="hero-overlay"></div>
 
         <header class="hero-header index-header index-hero-header">
           <div class="nav-branding-logo index-logo-wrapper">
@@ -139,7 +126,6 @@
           </a>
         </div>
 
-        <!-- ⭐ NEW: CSS-ONLY SCROLLING TAG BAR BELOW THE ARROW ⭐ -->
         <div class="tag-scroll-bar">
           <div class="tag-track" id="tagTrack">
             <span class="tag">Packaging Design</span>
@@ -601,6 +587,30 @@
       const yearSpan = document.getElementById("copyright");
       const currentYear = new Date().getFullYear();
       yearSpan.textContent = `${currentYear} © Brendan Hurt`;
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const container = document.getElementById("introVideoContainer");
+        const video = document.getElementById("introVideo");
+
+        const hasPlayed = sessionStorage.getItem("homepageVideoPlayed");
+        const isReload =
+          performance.getEntriesByType("navigation")[0].type === "reload";
+
+        if (!hasPlayed || isReload) {
+          sessionStorage.setItem("homepageVideoPlayed", "true");
+
+          video.loop = false;
+
+          video.addEventListener("ended", () => {
+            container.style.transition = "none"; // make sure no CSS transitions interfere
+            container.style.display = "none"; // instantly hide
+          });
+        } else {
+          container.style.transition = "none";
+          container.style.display = "none"; // hide immediately when returning
+        }
+      });
     </script>
   </body>
 </html>

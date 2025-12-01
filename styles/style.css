@@ -760,7 +760,7 @@ body {
 }
 
 /* On tablet/phone: swap */
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
   #myVideo {
     display: none !important;
   }
@@ -768,7 +768,7 @@ body {
   #videoFallback {
     display: block !important;
   }
-}
+} */
 
 .content {
   position: absolute;
@@ -949,13 +949,15 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 200px; /* adjust height of gradient */
+  height: 300px; /* increase height to cover more of the hero section */
   background: linear-gradient(
     to top,
-    rgba(253, 241, 227, 1),
-    /* solid white at bottom */ rgba(253, 241, 227, 0) /* transparent at top */
+    rgba(253, 241, 227, 1) 0%,
+    /* fully solid at the bottom */ rgba(253, 241, 227, 1) 40%,
+    /* keep bottom portion fully solid */ rgba(253, 241, 227, 0) 100%
+      /* fade to transparent at top */
   );
-  pointer-events: none; /* clicks pass through */
+  pointer-events: none;
   z-index: 1; /* above video, below content */
 }
 
@@ -3502,6 +3504,14 @@ html {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem 1rem; /* 3rem row gap, 1rem column gap */
+}
+
+.video-container {
+  width: 100%;
+}
+
+.video-container video {
+  width: 100%;
 }
 
 /*
