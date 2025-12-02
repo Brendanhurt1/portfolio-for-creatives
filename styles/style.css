@@ -3654,6 +3654,13 @@ html {
   opacity: 1;
   transform: translateX(0);
 }
+
+@media (orientation: landscape) and (max-width: 1000px) {
+  .sidebar,
+  .main {
+    font-size: 1rem; /* or whatever uniform size */
+  }
+}
 /*
 
 
