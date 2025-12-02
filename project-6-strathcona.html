@@ -250,34 +250,25 @@
           </p>
           <div class="section-item col-2"></div>
         </div>
-        <div
-          class="section-container strathcona-section"
-          style="display: flex; gap: 2rem; flex-wrap: wrap"
-        >
-          <!-- Left column: video -->
-          <figure style="flex: 1; display: flex">
-            <div class="project-video-container" style="width: 100%">
+        <div class="project-image-container">
+          <!-- Left side: Video with vertical padding -->
+          <figure
+            class="project-image border section-item col-2"
+            style="flex: 1; width: auto; margin-right: 1rem"
+          >
+            <div class="project-video-container">
               <iframe
                 src="https://player.vimeo.com/video/1128288099?h=share&autoplay=0&title=0&byline=0&portrait=0"
                 class="responsive-iframe video-phone"
                 allow="autoplay; fullscreen; picture-in-picture"
-                title="Strathcona Post Social Media promotional motion Reel"
                 allowfullscreen
-                style="width: 100%; height: 100%"
+                title="West Point Brewing Social Media promotional motion Reel"
               ></iframe>
             </div>
           </figure>
 
-          <!-- Right column: gif -->
-          <div
-            style="flex: 1; display: flex; flex-direction: column; gap: 1rem"
-          >
-            <img
-              src="assets/strathcona/character-walking-gif-brendan-hurt-reduced.gif"
-              style="max-width: 100%; height: auto"
-              alt="strathcona post walking character gif"
-            />
-          </div>
+          <!-- Right side: Text -->
+          <div class="section-item col-2" style="flex: 1.25; width: auto"></div>
         </div>
         <p class="project-description-one-column project-description-subtitle">
           v. Booths
@@ -514,6 +505,53 @@
       });
 
       observer.observe(aside);
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const subtitles = document.querySelectorAll(
+          ".project-description-subtitle"
+        );
+
+        subtitles.forEach((subtitle) => {
+          const wrapper = document.createElement("div");
+          wrapper.classList.add("animated-text-group");
+
+          // Add the subtitle itself
+          wrapper.appendChild(subtitle.cloneNode(true));
+
+          // Include only following <p> elements until the next subtitle or non-paragraph
+          let next = subtitle.nextElementSibling;
+          while (
+            next &&
+            next.tagName.toLowerCase() === "p" &&
+            !next.classList.contains("project-description-subtitle")
+          ) {
+            wrapper.appendChild(next.cloneNode(true));
+            const toRemove = next;
+            next = next.nextElementSibling;
+            toRemove.remove();
+          }
+
+          // Replace the original subtitle with the wrapper
+          subtitle.replaceWith(wrapper);
+        });
+
+        // Intersection Observer to trigger animation
+        const groups = document.querySelectorAll(".animated-text-group");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+
+        groups.forEach((group) => observer.observe(group));
+      });
     </script>
   </body>
 </html>

@@ -512,5 +512,52 @@
 
       observer.observe(aside);
     </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const subtitles = document.querySelectorAll(
+          ".project-description-subtitle"
+        );
+
+        subtitles.forEach((subtitle) => {
+          const wrapper = document.createElement("div");
+          wrapper.classList.add("animated-text-group");
+
+          // Add the subtitle itself
+          wrapper.appendChild(subtitle.cloneNode(true));
+
+          // Include only following <p> elements until the next subtitle or non-paragraph
+          let next = subtitle.nextElementSibling;
+          while (
+            next &&
+            next.tagName.toLowerCase() === "p" &&
+            !next.classList.contains("project-description-subtitle")
+          ) {
+            wrapper.appendChild(next.cloneNode(true));
+            const toRemove = next;
+            next = next.nextElementSibling;
+            toRemove.remove();
+          }
+
+          // Replace the original subtitle with the wrapper
+          subtitle.replaceWith(wrapper);
+        });
+
+        // Intersection Observer to trigger animation
+        const groups = document.querySelectorAll(".animated-text-group");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+
+        groups.forEach((group) => observer.observe(group));
+      });
+    </script>
   </body>
 </html>

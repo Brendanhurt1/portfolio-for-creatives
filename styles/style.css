@@ -3644,6 +3644,16 @@ html {
   margin-top: 60px !important;
 }
 
+.animated-text-group {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.animated-text-group.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
 /*
 
 
