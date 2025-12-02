@@ -485,5 +485,54 @@
         groups.forEach((group) => observer.observe(group));
       });
     </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const header = document.querySelector(".hero-header");
+        if (!header) return;
+
+        let lastScroll = window.pageYOffset || 0;
+        const threshold = 10;
+        let animating = false;
+
+        const slide = (show) => {
+          if (animating) return;
+          animating = true;
+
+          const start = header.getBoundingClientRect().top;
+          const end = show ? 0 : -header.offsetHeight;
+          const duration = 200; // 0.2 seconds
+          const startTime = performance.now();
+
+          const animate = (time) => {
+            const elapsed = time - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const value = start + (end - start) * progress;
+            header.style.transform = `translateY(${value}px)`;
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            } else {
+              animating = false;
+            }
+          };
+
+          requestAnimationFrame(animate);
+        };
+
+        window.addEventListener("scroll", () => {
+          const currentScroll = window.pageYOffset;
+          if (Math.abs(currentScroll - lastScroll) < threshold) return;
+
+          if (currentScroll > lastScroll) {
+            // scroll down → slide out
+            slide(false);
+          } else {
+            // scroll up → slide in
+            slide(true);
+          }
+
+          lastScroll = currentScroll <= 0 ? 0 : currentScroll;
+        });
+      });
+    </script>
   </body>
 </html>
