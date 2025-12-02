@@ -3655,12 +3655,6 @@ html {
   transform: translateX(0);
 }
 
-@media (orientation: landscape) and (max-width: 1000px) {
-  .project-description-one-column {
-    font-size: 1rem; /* reset */
-    line-height: 1.4; /* ensure consistency */
-  }
-}
 /*
 
 
