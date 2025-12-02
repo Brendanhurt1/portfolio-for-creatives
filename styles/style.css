@@ -3655,6 +3655,15 @@ html {
   transform: translateX(0);
 }
 
+@media (orientation: landscape) and (max-width: 900px) {
+  .project-description,
+  .project-description-one-column,
+  .project-description-bold {
+    -webkit-text-size-adjust: 100% !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+  }
+}
 /*
 
 
