@@ -3112,7 +3112,7 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
 
 .project-description:last-child,
 .project-description-one-column:last-child {
-  margin-bottom: 0;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 1400px) {
@@ -3632,6 +3632,16 @@ html {
     padding-right: 16rem; /* spacing inside the column */
     box-sizing: border-box; /* ensures padding doesn't expand the column */
   }
+}
+
+@media (max-width: 1000px) {
+  .project-image-container {
+    gap: 1rem !important; /* override desktop gap and add vertical spacing */
+  }
+}
+
+.project-description-subtitle:not(:first-child) {
+  margin-top: 60px;
 }
 
 /*
