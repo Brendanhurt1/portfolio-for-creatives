@@ -3658,7 +3658,10 @@ html {
 @media (orientation: landscape) and (max-width: 900px) {
   .project-description,
   .project-description-one-column,
-  .project-description-bold {
+  .project-description-bold,
+  .project-description-about,
+  .footer-tagline,
+  .footer-item {
     -webkit-text-size-adjust: 100% !important;
     font-size: inherit !important;
     line-height: inherit !important;
