@@ -3270,6 +3270,28 @@ html {
   width: 100%;
 }
 
+/* Animated dividers */
+.divider {
+  height: 4px;
+  background-color: #605139;
+  margin: 1rem 0;
+  width: 0; /* start collapsed */
+  transition: width 1s ease-out;
+  transform-origin: left center;
+}
+
+/* When scrolled into view */
+.divider.visible {
+  width: 100%;
+}
+
+/* Thick static divider */
+.divider-thick {
+  height: 4px; /* only override height */
+  width: 100%; /* full width immediately */
+  transition: none; /* no animation for thick one */
+}
+
 .hover-swap {
   position: relative;
 }

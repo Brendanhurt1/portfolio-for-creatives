@@ -195,7 +195,7 @@
         </div>
       </li>
 
-      <li class="divider"></li>
+      <li class="divider divider-thick"></li>
 
       <!-- NEW: Additional section beneath divider -->
       <li class="about-extra">
@@ -361,6 +361,25 @@
           // trigger the animation by adding class
           title.classList.add("visible");
         }
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const dividers = document.querySelectorAll(".divider");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target); // animate once
+              }
+            });
+          },
+          { threshold: 0.1 } // triggers early
+        );
+
+        dividers.forEach((divider) => observer.observe(divider));
       });
     </script>
   </body>
