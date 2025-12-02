@@ -3640,8 +3640,8 @@ html {
   }
 }
 
-.project-description-subtitle:not(:first-child) {
-  margin-top: 60px;
+.project-description-subtitle {
+  margin-top: 60px !important;
 }
 
 /*
