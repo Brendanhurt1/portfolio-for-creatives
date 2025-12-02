@@ -547,7 +547,6 @@ em {
   font-size: 1.225rem;
   line-height: 1.6;
   color: var(--color-text-project-description);
-  max-width: 800px;
   margin: 1rem auto;
   padding: 0 2rem;
   position: relative; /* for underline */
@@ -3594,6 +3593,45 @@ html {
 .project-title-about.visible {
   opacity: 1;
   transform: translateX(0);
+}
+
+.project-description-subtitle {
+  font-family: inherit; /* same font as paragraph */
+  color: #5d513b; /* same color as paragraph */
+  text-transform: uppercase; /* all caps */
+  font-weight: 500; /* requested */
+  font-size: 1.6rem; /* matches paragraph size if needed */
+  line-height: 1.6; /* desktop */
+  margin-bottom: 0.25rem; /* small spacing to paragraph */
+}
+
+@media (max-width: 768px) {
+  .project-description-subtitle {
+    line-height: 1.2; /* mobile */
+  }
+}
+
+.project-description-subtitle {
+  display: inline-block; /* ensures it aligns with paragraph text block */
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 1.6;
+  margin-bottom: 0.25rem;
+  text-align: left; /* align left inside the text block */
+  width: 100%; /* match paragraph text width */
+}
+
+@media (max-width: 768px) {
+  .project-description-subtitle {
+    line-height: 1.2;
+  }
+}
+
+@media (min-width: 1000px) {
+  .project-description-one-column {
+    padding-right: 16rem; /* spacing inside the column */
+    box-sizing: border-box; /* ensures padding doesn't expand the column */
+  }
 }
 
 /*
