@@ -599,14 +599,16 @@
         let lastScroll = window.pageYOffset || 0;
         const threshold = 10;
         let animating = false;
+        let targetY = 0;
 
         const slide = (show) => {
           if (animating) return;
           animating = true;
 
-          const start = header.getBoundingClientRect().top;
+          const start =
+            parseFloat(header.style.transform.replace("translateY(", "")) || 0;
           const end = show ? 0 : -header.offsetHeight;
-          const duration = 200; // 0.2 seconds
+          const duration = 200;
           const startTime = performance.now();
 
           const animate = (time) => {
@@ -614,6 +616,7 @@
             const progress = Math.min(elapsed / duration, 1);
             const value = start + (end - start) * progress;
             header.style.transform = `translateY(${value}px)`;
+
             if (progress < 1) {
               requestAnimationFrame(animate);
             } else {
@@ -629,14 +632,12 @@
           if (Math.abs(currentScroll - lastScroll) < threshold) return;
 
           if (currentScroll > lastScroll) {
-            // scroll down → slide out
-            slide(false);
+            slide(false); // scroll down → hide
           } else {
-            // scroll up → slide in
-            slide(true);
+            slide(true); // scroll up → show
           }
 
-          lastScroll = currentScroll <= 0 ? 0 : currentScroll;
+          lastScroll = Math.max(currentScroll, 0);
         });
       });
     </script>
