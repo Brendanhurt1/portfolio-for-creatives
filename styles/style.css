@@ -1025,7 +1025,6 @@ body {
 .project-video-container {
   display: flex;
   justify-content: center; /* keeps video centered */
-  margin: 20px 0;
 }
 
 /* Common styles for all videos */
@@ -1098,7 +1097,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
 }
 
 /* HEADER BASE */
@@ -1639,7 +1637,6 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 1rem; /* Space below the image */
 }
 
 /* Container for project description */
@@ -1779,7 +1776,7 @@ header.hero-header .nav-wrapper {
 .hero-arrow-container {
   display: flex;
   justify-content: center; /* center horizontally */
-  margin-top: 3rem; /* push it towards the bottom */
+  margin-top: 4rem; /* push it towards the bottom */
   margin-bottom: 5rem; /* space from bottom of hero */
 }
 
@@ -3228,7 +3225,7 @@ html {
     margin: 0 !important;
   }
   .project-image:last-child {
-    margin-bottom: 0 !important;
+    margin-bottom: 1rem !important;
   }
   .project-image-container {
     padding: 0 !important;
@@ -3243,7 +3240,6 @@ html {
   .section-container {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
   }
   .section-item {
     width: 100% !important;
