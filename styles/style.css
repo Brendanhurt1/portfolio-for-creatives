@@ -3712,17 +3712,13 @@ html {
 /* Screen mask behind, scrollable */
 .screen-mask {
   position: absolute;
-  top: 2.3%;
+  top: 2.6%;
   left: 10.34%;
   width: 79.31%;
-  height: 81.41%;
+  height: 84.41%;
   overflow-y: scroll;
   overflow-x: hidden;
   z-index: 1; /* behind the frame */
-  .screen-mask {
-    overscroll-behavior-y: contain; /* stops the bounce */
-    -webkit-overflow-scrolling: touch; /* keeps smooth scrolling */
-  }
 
   /* Optional shadow inside the screen area */
   box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.1);
