@@ -110,6 +110,11 @@
         </div>
         <!-- Text below logos -->
         <div class="project-text-below" style="width: 100%; margin-top: 1rem">
+          <p
+            class="project-description-one-column project-description-subtitle"
+          >
+            i. Movie Posters
+          </p>
           <p class="project-description-one-column">
             In my freetime, I love to create movie posters for some of my
             favourite films. The art of illustrators like Bob Peak and Drew
@@ -206,6 +211,11 @@
           </figure>
         </div>
         <div class="project-text-below" style="width: 100%; margin-top: 1rem">
+          <p
+            class="project-description-one-column project-description-subtitle"
+          >
+            ii. portrait illustrations
+          </p>
           <p class="project-description-one-column">
             I started falling in love with the bold colours you can get by
             combining alcohol markers with pencil crayons, and since then has
@@ -252,6 +262,11 @@
           </figure>
         </div>
         <div class="project-text-below" style="width: 100%; margin-top: 1rem">
+          <p
+            class="project-description-one-column project-description-subtitle"
+          >
+            iii. architecture illustrations
+          </p>
           <p class="project-description-one-column">
             I love illustration and have done a few commissions. When it comes
             to branding design, I can work quickly without getting hung up on
@@ -317,7 +332,12 @@
               loading="lazy"
               alt="more of my work self portrait digital illustration"
             />
-            <p class="project-description" style="padding-top: 20px">
+            <p
+              class="project-description-one-column project-description-subtitle"
+            >
+              iv. digital illustration
+            </p>
+            <p class="project-description">
               Digital illustration informs so much of my work, whether it’s a
               purely illustrative project or a branding project that could
               utilize an illustrative touch.
@@ -363,6 +383,11 @@
           </figure>
         </div>
         <div class="project-text-below" style="width: 100%; margin-top: 1rem">
+          <p
+            class="project-description-one-column project-description-subtitle"
+          >
+            v. Copywriting
+          </p>
           <p class="project-description-one-column">
             I devised a hypothetical French Canadian beer with a campaign aimed
             at uniting both English and French Canadians. I created multiple
@@ -423,9 +448,11 @@
         </div>
         <div class="project-text-below" style="width: 100%; margin-top: 1rem">
           <p
-            class="project-description-one-column"
-            style="padding-bottom: 5rem"
+            class="project-description-one-column project-description-subtitle"
           >
+            vi. Layout design
+          </p>
+          <p class="project-description-one-column">
             I designed a hypothetical magazine as an exercise in layout design,
             combining illustration, photography and long-form text. The magazine
             details film and music intertwining from a specific decade, in this
@@ -603,6 +630,53 @@
 
           lastScroll = Math.max(currentScroll, 0);
         });
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const subtitles = document.querySelectorAll(
+          ".project-description-subtitle"
+        );
+
+        subtitles.forEach((subtitle) => {
+          const wrapper = document.createElement("div");
+          wrapper.classList.add("animated-text-group");
+
+          // Add the subtitle itself
+          wrapper.appendChild(subtitle.cloneNode(true));
+
+          // Include only following <p> elements until the next subtitle or non-paragraph
+          let next = subtitle.nextElementSibling;
+          while (
+            next &&
+            next.tagName.toLowerCase() === "p" &&
+            !next.classList.contains("project-description-subtitle")
+          ) {
+            wrapper.appendChild(next.cloneNode(true));
+            const toRemove = next;
+            next = next.nextElementSibling;
+            toRemove.remove();
+          }
+
+          // Replace the original subtitle with the wrapper
+          subtitle.replaceWith(wrapper);
+        });
+
+        // Intersection Observer to trigger animation
+        const groups = document.querySelectorAll(".animated-text-group");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+
+        groups.forEach((group) => observer.observe(group));
       });
     </script>
   </body>

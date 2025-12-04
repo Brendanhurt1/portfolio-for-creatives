@@ -524,7 +524,6 @@ em {
 
 .project-caption {
   text-align: center;
-  margin-top: 1rem; /* space above caption */
   font-size: 1.25rem;
   color: var(--color-text-project-description);
   text-transform: uppercase;
@@ -3215,9 +3214,7 @@ html {
   .project-image {
     margin: 0 !important;
   }
-  .project-image:last-child {
-    margin-bottom: 1rem !important;
-  }
+
   .project-image-container {
     padding: 0 !important;
   }
@@ -3758,10 +3755,6 @@ html {
   pointer-events: auto; /* scroll works */
 }
 
-.project-details figure:first-of-type {
-  margin-top: 2rem;
-}
-
 .project-details .section-container + .project-image-container {
   margin-top: 2rem !important;
 }
@@ -3773,6 +3766,41 @@ html {
 
 .project-image figcaption {
   margin-bottom: 1rem; /* ensures spacing after caption */
+}
+
+@media (max-width: 1000px) {
+  /* For stacked (single‑column) layout, each container gets bottom margin */
+  .project-image-container {
+    margin-bottom: 1rem;
+  }
+
+  /* But don’t double‑space if container already had bottom margin or is followed by caption etc. */
+  .project-image-container:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Keep gap between figures when images are in same container (row of 2) */
+  .project-image-container {
+    gap: 1rem; /* this affects only items inside the same container */
+  }
+}
+
+@media (max-width: 1000px) {
+  .project-aside .project-tags {
+    position: relative;
+    margin-bottom: 2rem; /* space before the line + content below */
+    padding-bottom: 2rem; /* extra padding to separate content below */
+  }
+
+  .project-aside .project-tags::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    background-color: #605039;
+  }
 }
 
 /*
