@@ -3813,13 +3813,9 @@ html {
   top: -1rem; /* moves all instances upward */
 }
 
-.animated-text-group {
+.more-of-my-work .animated-text-group {
   position: relative;
   top: -1rem;
-}
-
-.no-shift-subtitle {
-  top: 0 !important;
 }
 
 /*
