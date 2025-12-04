@@ -3576,7 +3576,7 @@ html {
   text-transform: uppercase; /* all caps */
   font-weight: 500; /* requested */
   font-size: 1.6rem; /* matches paragraph size if needed */
-  line-height: 1.6; /* desktop */
+  line-height: 1.2; /* desktop */
   margin-bottom: 0.25rem; /* small spacing to paragraph */
 }
 
@@ -3590,7 +3590,7 @@ html {
   display: inline-block; /* ensures it aligns with paragraph text block */
   text-transform: uppercase;
   font-weight: 500;
-  line-height: 1.6;
+  line-height: 1.2;
   margin-bottom: 0.25rem;
   text-align: left; /* align left inside the text block */
   width: 100%; /* match paragraph text width */
@@ -3811,6 +3811,15 @@ html {
 .project-description-one-column {
   position: relative;
   top: -1rem; /* moves all instances upward */
+}
+
+.animated-text-group {
+  position: relative;
+  top: -1rem;
+}
+
+.no-shift-subtitle {
+  top: 0 !important;
 }
 
 /*
