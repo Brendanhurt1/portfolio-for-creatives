@@ -3807,6 +3807,12 @@ html {
   padding-top: 0.5rem; /* optional: small spacing for readability */
 }
 
+.project-description-subtitle,
+.project-description-one-column {
+  position: relative;
+  top: -1rem; /* moves all instances upward */
+}
+
 /*
 
 
