@@ -3740,6 +3740,22 @@ html {
   pointer-events: auto; /* scroll works */
 }
 
+.screen-mask {
+  position: absolute;
+  top: 2.3%;
+  left: 10.34%;
+  width: 79.31%;
+  height: 84.41%;
+  overflow: hidden; /* important */
+}
+
+.screen-content {
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
 .project-details .section-container + .project-image-container {
   margin-top: 2rem !important;
 }
