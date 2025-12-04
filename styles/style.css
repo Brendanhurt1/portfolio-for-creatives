@@ -513,7 +513,7 @@ em {
   display: flex;
   flex-direction: column; /* stack image & caption vertically */
   align-items: center; /* center both horizontally */
-  margin: 1rem; /* spacing around each figure */
+  margin: 1rem 1rem 0 1rem; /* top, right, bottom, left */
 }
 
 .project-image img {
@@ -1663,7 +1663,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
 }
 /* Project details section */
 .project-details {
@@ -2730,7 +2729,6 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1rem;
 }
 
 /* Mobile / single-column layout — remove extra margin */
@@ -2740,7 +2738,6 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1rem;
 }
 
 /* Mobile / single-column layout adjustments */
@@ -3108,11 +3105,6 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
   margin-bottom: 1.5rem;
 }
 
-.project-description:last-child,
-.project-description-one-column:last-child {
-  margin-bottom: 1rem;
-}
-
 @media (min-width: 1400px) {
   .project-title {
     margin-left: 16px;
@@ -3219,9 +3211,7 @@ html {
   .footer-global h2 {
     font-size: 1.75rem;
   }
-  .project-caption.hide-on-mobile {
-    display: none !important;
-  }
+
   .project-image {
     margin: 0 !important;
   }
@@ -3637,8 +3627,18 @@ html {
   }
 }
 
+/* Default: space between all paragraphs */
+.project-description-one-column {
+  margin-bottom: 1rem !important;
+}
+
+/* Only the LAST paragraph in the sequence gets extra space */
+.project-description-one-column:last-of-type {
+  margin-bottom: 60px !important;
+}
+
 .project-description-subtitle {
-  margin-top: 60px !important;
+  margin-bottom: 0px !important;
 }
 
 .animated-text-group {
@@ -3756,6 +3756,23 @@ html {
   height: auto;
   display: block;
   pointer-events: auto; /* scroll works */
+}
+
+.project-details figure:first-of-type {
+  margin-top: 2rem;
+}
+
+.project-details .section-container + .project-image-container {
+  margin-top: 2rem !important;
+}
+
+.project-image-container img {
+  display: block; /* ensures margin behaves predictably */
+  margin-bottom: 1rem;
+}
+
+.project-image figcaption {
+  margin-bottom: 1rem; /* ensures spacing after caption */
 }
 
 /*
