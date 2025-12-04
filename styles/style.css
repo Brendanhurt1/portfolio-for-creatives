@@ -3819,36 +3819,38 @@ html {
 }
 
 /* Spotify Embed Styling */
-#spotify-embed {
+/* Only apply styles on the 404 page */
+body.error-page #spotify-embed {
   width: 260px; /* smaller width */
   margin: 1.5rem auto 0; /* center horizontally with spacing from above */
   text-align: center;
 }
 
-#spotify-embed iframe {
+body.error-page #spotify-embed iframe {
   width: 100%;
   height: 200px; /* smaller height */
   border-radius: 12px; /* match your previous style */
 }
 
-@media (min-width: 768px) {
-  #spotify-embed {
+@media (min-width: 300px) {
+  body.error-page #spotify-embed {
     width: 320px; /* slightly larger on bigger screens */
   }
 }
-.project-image-container {
+
+body.error-page .project-image-container {
   display: flex; /* arrange figures in a row */
   justify-content: space-between; /* space them nicely */
   width: 60%; /* the whole container takes 60% of screen width */
   margin: 0 auto; /* center the container horizontally */
 }
 
-.project-image {
+body.error-page .project-image {
   flex: 1; /* each figure takes equal space */
   margin: 0 0.5rem; /* small gap between figures */
 }
 
-.project-image img {
+body.error-page .project-image img {
   width: 100%; /* fill the figure */
   height: auto; /* maintain aspect ratio */
   display: block;
