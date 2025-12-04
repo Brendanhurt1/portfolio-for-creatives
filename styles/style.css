@@ -3836,6 +3836,23 @@ html {
     width: 320px; /* slightly larger on bigger screens */
   }
 }
+.project-image-container {
+  display: flex; /* arrange figures in a row */
+  justify-content: space-between; /* space them nicely */
+  width: 60%; /* the whole container takes 60% of screen width */
+  margin: 0 auto; /* center the container horizontally */
+}
+
+.project-image {
+  flex: 1; /* each figure takes equal space */
+  margin: 0 0.5rem; /* small gap between figures */
+}
+
+.project-image img {
+  width: 100%; /* fill the figure */
+  height: auto; /* maintain aspect ratio */
+  display: block;
+}
 
 /*
 
