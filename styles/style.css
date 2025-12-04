@@ -3725,7 +3725,7 @@ html {
 /* MOBILE FIX: prevent bottom overflow */
 @media (max-width: 1000px) {
   .screen-mask {
-    height: 82.5%; /* Try 82.5% first; adjust slightly if needed */
+    height: 82.2%; /* slightly smaller to fully contain the site */
   }
 }
 /* Hide scrollbars */
