@@ -3818,6 +3818,25 @@ html {
   top: -1rem;
 }
 
+/* Spotify Embed Styling */
+#spotify-embed {
+  width: 260px; /* smaller width */
+  margin: 1.5rem auto 0; /* center horizontally with spacing from above */
+  text-align: center;
+}
+
+#spotify-embed iframe {
+  width: 100%;
+  height: 200px; /* smaller height */
+  border-radius: 12px; /* match your previous style */
+}
+
+@media (min-width: 768px) {
+  #spotify-embed {
+    width: 320px; /* slightly larger on bigger screens */
+  }
+}
+
 /*
 
 
