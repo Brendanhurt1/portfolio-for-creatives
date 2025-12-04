@@ -511,9 +511,9 @@ em {
 
 .project-image {
   display: flex;
-  flex-direction: column; /* stack image & caption vertically */
-  align-items: center; /* center both horizontally */
-  margin: 1rem 1rem 0 1rem; /* top, right, bottom, left */
+  flex-direction: column;
+  align-items: center;
+  margin: 0 1rem; /* top/bottom = 0, left/right = 1rem */
 }
 
 .project-image img {
@@ -2522,17 +2522,8 @@ ul {
   }
 }
 
-.project-image img,
-.project-video-container iframe {
-  border: 0px solid #5d513b;
-  display: block; /* ensures the border fits cleanly around the media */
-}
-
 /* optional: if you ever want to disable it */
-.no-border img,
-.no-border iframe {
-  border: none !important;
-}
+
 /* Screens below 900px */
 @media (min-width: 901px) {
   .project-description-one-column,
@@ -3618,12 +3609,6 @@ html {
   }
 }
 
-@media (max-width: 1000px) {
-  .project-image-container {
-    gap: 1rem !important; /* override desktop gap and add vertical spacing */
-  }
-}
-
 /* Default: space between all paragraphs */
 .project-description-one-column {
   margin-bottom: 1rem !important;
@@ -3631,7 +3616,7 @@ html {
 
 /* Only the LAST paragraph in the sequence gets extra space */
 .project-description-one-column:last-of-type {
-  margin-bottom: 60px !important;
+  margin-bottom: 80px !important;
 }
 
 .project-description-subtitle {
@@ -3727,7 +3712,7 @@ html {
 /* Screen mask behind, scrollable */
 .screen-mask {
   position: absolute;
-  top: 2.71%;
+  top: 2.3%;
   left: 10.34%;
   width: 79.31%;
   height: 84.41%;
@@ -3761,18 +3746,11 @@ html {
 
 .project-image-container img {
   display: block; /* ensures margin behaves predictably */
-  margin-bottom: 1rem;
-}
-
-.project-image figcaption {
-  margin-bottom: 1rem; /* ensures spacing after caption */
+  margin-bottom: 2rem;
 }
 
 @media (max-width: 1000px) {
   /* For stacked (single‑column) layout, each container gets bottom margin */
-  .project-image-container {
-    margin-bottom: 1rem;
-  }
 
   /* But don’t double‑space if container already had bottom margin or is followed by caption etc. */
   .project-image-container:last-child {
@@ -3781,7 +3759,7 @@ html {
 
   /* Keep gap between figures when images are in same container (row of 2) */
   .project-image-container {
-    gap: 1rem; /* this affects only items inside the same container */
+    gap: 0em; /* this affects only items inside the same container */
   }
 }
 
@@ -3801,6 +3779,28 @@ html {
     height: 4px;
     background-color: #605039;
   }
+}
+
+.project-video-container {
+  /* add bottom padding or margin to ensure spacing under video blocks */
+  margin-bottom: 2rem;
+}
+
+/* If you want caption immediately below image, minimizing gap */
+
+.project-image.tight-caption {
+  margin: 0; /* remove extra outside margins */
+  padding: 0;
+}
+
+.project-image.tight-caption img {
+  display: block;
+  margin: 0; /* no extra bottom margin */
+}
+
+.project-image.tight-caption figcaption {
+  margin-bottom: 1rem; /* no extra top or bottom margin */
+  padding-top: 0.5rem; /* optional: small spacing for readability */
 }
 
 /*
