@@ -3142,13 +3142,6 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
   }
 }
 
-@media (min-width: 1025px) {
-  .project-image-container .section-item.col-2:first-child,
-  .strathcona-section > div:first-child {
-    margin-left: 1rem;
-  }
-}
-
 *,
 *::before,
 *::after {
