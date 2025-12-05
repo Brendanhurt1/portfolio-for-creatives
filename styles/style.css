@@ -3705,10 +3705,10 @@ html {
 /* Screen mask behind, scrollable */
 .screen-mask {
   position: absolute;
-  top: 2.6%;
+  top: 2.5%;
   left: 10.34%;
   width: 79.31%;
-  height: 84.9%; /* perfect for desktop */
+  height: 81.9%; /* perfect for desktop */
   overflow-y: scroll;
   overflow-x: hidden;
   z-index: 1;
@@ -3718,7 +3718,7 @@ html {
 /* MOBILE OVERRIDE – tighter fit */
 @media (max-width: 1000px) {
   .screen-mask {
-    height: 85.11%; /* reduced slightly to prevent bottom overflow */
+    height: 83%; /* reduced slightly to prevent bottom overflow */
   }
 }
 
