@@ -3699,7 +3699,7 @@ html {
   display: block;
   position: relative;
   z-index: 2; /* frame on top */
-  pointer-events: none; /* allows scroll below */
+  pointer-events: none;
 }
 
 /* Screen mask behind, scrollable */
@@ -3708,25 +3708,26 @@ html {
   top: 2.6%;
   left: 10.34%;
   width: 79.31%;
-  height: 84.41%;
+  height: 84.9%; /* perfect for desktop */
   overflow-y: scroll;
   overflow-x: hidden;
   z-index: 1;
   box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.1);
 }
 
-/* MOBILE FIX: prevent bottom overflow */
+/* MOBILE OVERRIDE – tighter fit */
 @media (max-width: 1000px) {
   .screen-mask {
-    height: 82%; /* slightly smaller to fully contain the site */
+    height: 85.11%; /* reduced slightly to prevent bottom overflow */
   }
 }
+
 /* Hide scrollbars */
 .screen-mask::-webkit-scrollbar {
   display: none;
 }
 .screen-mask {
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
 }
 
 /* Scrolling JPG */
@@ -3734,7 +3735,7 @@ html {
   width: 100%;
   height: auto;
   display: block;
-  pointer-events: auto; /* scroll works */
+  pointer-events: auto;
 }
 
 .project-details .section-container + .project-image-container {
