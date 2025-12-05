@@ -641,5 +641,18 @@
         });
       });
     </script>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+
+    <script>
+      document.querySelectorAll(".video-overlay").forEach((overlay) => {
+        overlay.addEventListener("click", () => {
+          const iframe = overlay.parentElement.querySelector(".video-iframe");
+          const videoURL = overlay.getAttribute("data-video");
+
+          iframe.src = videoURL; // loads + autoplay
+          overlay.style.display = "none"; // hides play overlay
+        });
+      });
+    </script>
   </body>
 </html>
