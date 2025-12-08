@@ -978,11 +978,7 @@ body {
   .nav-arrows {
     justify-content: center;
   }
-  .nav-wrapper {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
+
   .hero-header {
     flex-direction: column; /* stack everything */
     align-items: center;
@@ -1032,6 +1028,15 @@ body {
     opacity: 1 !important; /* ensure static shows */
   }
 }
+
+@media (max-width: 1000px) {
+  .nav-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
 .nav-arrows a,
 .nav-arrows a:focus,
 .nav-arrows a:active,
@@ -2018,7 +2023,7 @@ to keep your styles reusable and consistent.
   /* About Page Grid for Large Devices */
 
   .about-grid {
-    padding: var(--padding-jumbo);
+    padding: 3.25rem;
     grid-template-columns: 2fr 3fr;
     padding-top: 0.5rem;
   }
@@ -2945,13 +2950,6 @@ html {
   background-color: #605139;
   margin: 1rem 0;
   width: 100%;
-}
-
-/* Animated dividers */
-.divider {
-  height: 4px;
-  background-color: #605139;
-  margin: 1rem 0;
   width: 0; /* start collapsed */
   transition: width 1s ease-out;
   transform-origin: left center;
@@ -3268,16 +3266,8 @@ html {
   font-size: 1.6rem; /* matches paragraph size if needed */
   line-height: 1.2; /* desktop */
   margin-bottom: 0.25rem; /* small spacing to paragraph */
-}
-
-.project-description-subtitle {
-  display: inline-block; /* ensures it aligns with paragraph text block */
-  text-transform: uppercase;
-  font-weight: 500;
-  line-height: 1.2;
-  margin-bottom: 0.25rem;
-  text-align: left; /* align left inside the text block */
   width: 100%; /* match paragraph text width */
+  display: inline-block; /* ensures it aligns with paragraph text block */
 }
 
 @media (min-width: 1000px) {
@@ -3483,6 +3473,27 @@ body.error-page .project-image img {
 
 .work-page-grid-item .overlay {
   transition: opacity 0.7s ease;
+}
+
+@media (max-width: 1400px) {
+  .project-description-about {
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
+}
+
+@media (max-width: 1400px) {
+  .about-grid-text {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .about-grid {
+    padding-left: var(--padding-medium);
+    padding-right: var(--padding-medium);
+  }
 }
 
 /*
