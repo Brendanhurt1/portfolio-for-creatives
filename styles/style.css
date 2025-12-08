@@ -841,7 +841,7 @@ body {
 /* RIGHT SIDE: ARROWS */
 .nav-arrows {
   display: flex !important;
-  gap: 2rem !important;
+  gap: 2rem !important; /* spacing between left and right arrow */
   padding: 0 !important;
   margin: 0 !important;
   list-style: none !important;
@@ -878,30 +878,17 @@ body {
 .arrow-label {
   display: block !important;
   margin-top: 0.25rem !important;
-  font-size: 1rem !important;
+  font-size: 1rem !important; /* match project-description */
   text-align: center !important;
   text-transform: uppercase !important;
   font-weight: 400 !important;
   color: inherit !important;
 }
 
-/* Hover effect */
+/* Hover effect (arrow + label) */
 .nav-arrows .navigation-arrow:hover,
 .nav-arrows .arrow-link:hover {
   color: #f26f6c !important;
-}
-
-/* -------------------------------------------- */
-/* ❗ DISABLE ALL TRANSITIONS AT 1000PX AND BELOW */
-/* -------------------------------------------- */
-@media (max-width: 1000px) {
-  .nav-arrows .navigation-arrow,
-  .nav-arrows .arrow-link,
-  .nav-arrows i,
-  .arrow-label,
-  .nav-arrows {
-    transition: none !important;
-  }
 }
 
 /* --- MOBILE RESPONSIVE --- */
@@ -3506,6 +3493,24 @@ body.error-page .project-image img {
   .about-grid {
     padding-left: var(--padding-medium);
     padding-right: var(--padding-medium);
+  }
+}
+
+@media (max-width: 1000px) {
+  /* Stop all transitions */
+  .nav-arrows * {
+    transition: none !important;
+  }
+
+  /* Prevent icon grow/shrink */
+  .nav-arrows i {
+    font-size: 2rem !important; /* locks size instead of fa-2x auto-scaling */
+  }
+
+  /* Kill hover colour change */
+  .nav-arrows .navigation-arrow:hover,
+  .nav-arrows .arrow-link:hover {
+    color: #605039 !important;
   }
 }
 
