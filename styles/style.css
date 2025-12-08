@@ -2023,7 +2023,7 @@ to keep your styles reusable and consistent.
   /* About Page Grid for Large Devices */
 
   .about-grid {
-    padding: 3.25rem;
+    padding: 3rem;
     grid-template-columns: 2fr 3fr;
     padding-top: 0.5rem;
   }
@@ -3493,6 +3493,21 @@ body.error-page .project-image img {
   .about-grid {
     padding-left: var(--padding-medium);
     padding-right: var(--padding-medium);
+  }
+}
+
+@media (max-width: 1000px) {
+  .nav-arrows .arrow-link {
+    transition: none !important;
+    transform: none !important;
+    color: #605039 !important; /* keep normal colour */
+  }
+
+  .nav-arrows .arrow-link:hover,
+  .nav-arrows .arrow-link:active,
+  .nav-arrows .arrow-link:focus {
+    transform: none !important;
+    color: #605039 !important; /* no colour change */
   }
 }
 
