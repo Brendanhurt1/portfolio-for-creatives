@@ -435,48 +435,6 @@
     </div>
 
     <script>
-      window.addEventListener("load", () => {
-        const video = document.getElementById("myVideo");
-        const fallback = document.getElementById("videoFallback");
-
-        // Detect iPad only (not iPhone)
-        const isIPad =
-          /iPad/.test(navigator.userAgent) ||
-          (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-
-        if (isIPad) {
-          // Show GIF fallback for iPads
-          if (video) video.style.display = "none";
-          if (fallback) fallback.style.display = "block";
-        } else if (video) {
-          // Normal autoplay for all other devices
-          video.muted = true;
-          video.setAttribute("playsinline", "");
-          video.setAttribute("webkit-playsinline", "");
-          video.play().catch(() => {
-            console.log("Autoplay failed, user interaction required.");
-          });
-
-          // Auto-restart video when returning to the browser
-          const restartVideo = () => {
-            if (video) {
-              video.currentTime = 0; // restart from beginning
-              video.play().catch(() => {
-                console.log("Couldn't restart video automatically");
-              });
-            }
-          };
-
-          document.addEventListener("visibilitychange", () => {
-            if (!document.hidden) restartVideo();
-          });
-
-          window.addEventListener("pageshow", restartVideo);
-          window.addEventListener("focus", restartVideo);
-        }
-      });
-    </script>
-    <script>
       document.addEventListener("DOMContentLoaded", function () {
         const heroArrow = document.querySelector(".hero-arrow-link");
         if (heroArrow) {

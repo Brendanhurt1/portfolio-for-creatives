@@ -1,171 +1,102 @@
-/*
- * =============================================
- * PORTFOLIO FOR CREATIVES – MAIN STYLESHEET
- * =============================================
- * Author: James Neufeld
- * Version: 2.1 | Last Updated: April 13, 2025
- * License: GNU General Public License v3.0 (GPL-3.0)
- * https://www.gnu.org/licenses/gpl-3.0.en.html
- * 
- * CONTENTS:                    DESIGN SYSTEM:
- * 1. Base Styles               - Comprehensive color & font theming 🎨
- * 2. Typography                - Mobile-first responsive architecture 📱
- * 3. Layout Components
- * 4. Page Templates
- * 5. Responsive Breakpoints
- * =============================================
- */
-
-/* 
-███████  ██████  ███    ██ ████████ ███████ 
-██      ██    ██ ████   ██    ██    ██      
-█████   ██    ██ ██ ██  ██    ██    ███████ 
-██      ██    ██ ██  ██ ██    ██         ██ 
-██       ██████  ██   ████    ██    ███████ 
-*/
-
-/* ------------------------------- */
-/* 🌐 Google Fonts - Customize Your Site's Typography */
-/* You can add your own fonts here, but be mindful of performance */
-/* ------------------------------- */
-
-/* TODO: Replace these Google Fonts with the ones you want to use on your site. */
-/* Remember, the more fonts you load, the longer it can take for your page to load. */
-
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Slackey&display=swap");
 
-/*
-
-
-
-
-/* File for adding a scroll-to-top button or effect */
+/* Scroll button */
 @import url("scroll-to-top.css");
 
-/* 
-██    ██  █████  ██████  ██  █████  ██████  ██      ███████ ███████ 
-██    ██ ██   ██ ██   ██ ██ ██   ██ ██   ██ ██      ██      ██      
-██    ██ ███████ ██████  ██ ███████ ██████  ██      █████   ███████ 
- ██  ██  ██   ██ ██   ██ ██ ██   ██ ██   ██ ██      ██           ██ 
-  ████   ██   ██ ██   ██ ██ ██   ██ ██████  ███████ ███████ ███████ 
-*/
-
 /* ------------------------------- */
-/* 🎨 Theme Design Variables */
-/* Use CSS variables to quickly change your site's color scheme and typography */
+/* 🎨 THEME VARIABLES              */
 /* ------------------------------- */
-
-/* These design variables store important elements like colours and fonts.
-   You can easily change the look and feel of your site by adjusting these values. */
-
-/* TODO: Customize these variables to fit your design. You can add new ones or delete ones you don’t need. */
 
 :root {
-  /* Typography */
   --font-family-body: "Poppins", sans-serif;
   --font-family-heading: "JetBrains Mono", monospace;
   --font-family-project-title: "Poppins", sans-serif;
-  /* Core Colours */
+
   --color-text-primary: #222;
   --color-text-secondary: #333;
   --color-accent-primary: #605039;
   --color-accent-secondary: #f37a71;
-  --color-overlay-primary: rgb(242, 111, 108, 0.4);
+  --color-overlay-primary: rgba(242, 111, 108, 0.4);
   --color-highlight: lemonchiffon;
-  --color-fallback: #f37a71; /* Fallback color for glitch effect on 404 page */
-  /* Backgrounds */
+  --color-fallback: #f37a71;
+
   --color-bg: #fdf1e3;
   --color-bg-about: #fdf1e3;
   --color-bg-footer: #605039;
   --color-bg-holding-page: rgba(82, 0, 255, 0.6);
-  /* Headings */
+
   --h1-color: #605039;
   --h2-color: #ffefe1;
   --h3-color: #605039;
   --h4-color: #605039;
   --h5-color: #fdf2e4;
   --h6-color: #605039;
-  /* Special Text Colours */
+
   --color-text-holding-title: #ebedf0;
-  --color-text-project-category: #ffffff;
+  --color-text-project-category: #fff;
   --color-text-project-description: #605039;
   --color-text-project-sidebar: #222;
   --color-text-project-title: #f37a71;
-  --color-text-work-grid-title: #ffffff;
-  /* Link States */
+  --color-text-work-grid-title: #fff;
+
   --color-link: #605039;
   --color-link-hover: #f37a71;
   --color-link-visited: #605039;
-  /* Navigation */
+
   --color-nav-link: #605039;
   --color-nav-link-hover: #ffefe1;
   --color-nav-arrow: #605039;
   --color-nav-arrow-hover: #000;
   --color-nav-arrow-stroke: #605039;
   --color-nav-arrow-stroke-hover: #000;
-  /* Components */
+
   --color-bg-full-width: #f5f5f5;
   --color-bg-project-description: #f5f5f5;
   --color-bg-sidebar-project: transparent;
   --color-bg-sidebar-work: lemonchiffon;
+
   --color-gradient-hero: linear-gradient(90deg, #ff00ff, #00ffff);
-  --color-gradient-project-details: transparent;
-  /* Special Elements */
+
   --color-icon-heart: darkred;
   --color-text-holding-footer: #f8f8ff;
   --color-bg-selection: #ffb973;
   --color-shadow-stroke: rgba(0, 0, 0, 0.4);
-  /* Assets */
+
   --image-noise-texture: url(/assets/temp/noise.svg);
-  /* Animation Durations */
-  --duration-fast: 0.15s; /* Quick interactions (hover states) */
-  --duration-normal: 0.3s; /* Standard transitions (button clicks) */
-  --duration-slow: 0.75s; /* Prominent animations (page transitions) */
-  /* Rounded Corners */
-  --radius-sm: 0.5rem; /* Small interactive elements */
-  --radius-md: 1rem; /* Cards/containers */
-  --radius-lg: 2rem; /* Large decorative elements */
-  --radius-full: 50%; /* Circles/pills */
-  /* Padding Scale */
-  --padding-tiny: 0.5rem; /* Micro-spacing: icon padding, toggle switches */
-  --padding-small: 1rem; /* Compact spacing: mobile buttons, form tags */
-  --padding-medium: 2rem; /* Standard spacing: desktop buttons, card content */
-  --padding-large: 3rem; /* Section spacing: content blocks, banner padding */
-  --padding-jumbo: 4rem; /* Hero elements: full-width containers, page headers */
-  --padding-ultra: 8rem; /* Full-bleed spacing: edge-to-edge layouts, super-sized headers */
+
+  --duration-fast: 0.15s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.75s;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 2rem;
+  --radius-full: 50%;
+
+  --padding-tiny: 0.5rem;
+  --padding-small: 1rem;
+  --padding-medium: 2rem;
+  --padding-large: 3rem;
+  --padding-jumbo: 4rem;
+  --padding-ultra: 8rem;
 }
 
-/* ======================
-   #BASE STYLES
-   ====================== */
-
-/* 
-███    ███  ██████  ██████  ██ ██      ███████     ███████ ██ ██████  ███████ ████████ 
-████  ████ ██    ██ ██   ██ ██ ██      ██          ██      ██ ██   ██ ██         ██    
-██ ████ ██ ██    ██ ██████  ██ ██      █████       █████   ██ ██████  ███████    ██    
-██  ██  ██ ██    ██ ██   ██ ██ ██      ██          ██      ██ ██   ██      ██    ██    
-██      ██  ██████  ██████  ██ ███████ ███████     ██      ██ ██   ██ ███████    ██    
-*/
-
 /* ------------------------------- */
-/* 📱 Responsive Design for Small Devices (Portrait Phones) */
-/* No media query needed for small devices like phones under 576px. This is the default in Bootstrap. */
+/* BASE STYLES                     */
 /* ------------------------------- */
 
-/* Add border-box sizing to make layout easier and enable smooth scrolling behavior */
-/* Apply default cursor to both html AND body */
 html,
-body/* Default pointer cursor everywhere */
-html, body, * /* Default pointer cursor for everything */
-
-/* Default cursor for the page */
-html, body /* Default cursor for the page */
-html, body 
-
-/* Default cursor for the whole page */
 body {
   cursor: url("/assets/pointer.png"), auto;
+  font-family: var(--font-family-body);
+  color: var(--color-text-primary);
+  background: var(--color-bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
 }
 
 a:hover,
@@ -173,75 +104,37 @@ button:hover {
   cursor: url("/assets/hover-hand.png"), pointer;
 }
 
-/* Ensure all elements, including pseudo-elements, follow border-box sizing */
 *,
-*:before,
-*:after {
-  box-sizing: inherit; /* Inherits the border-box setting from the html tag */
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-
-body {
-  font-family: var(--font-family-body);
-  color: var(--color-text-primary);
-  background: var(--color-bg);
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  font-size: 1rem;
-}
-
-/* ------------------------------- */
-/* 🖍️ Text Highlight Styles */
-/* This changes the background color when you highlight text (like when you click and drag to select it) */
-/* ------------------------------- */
 
 ::selection {
-  background: var(
-    --color-bg-selection
-  ); /* Uses your custom color for highlighted text */
+  background: var(--color-bg-selection);
 }
 
-/* ---------------------------------------- */
-/* 🖼️ Responsive Image Styles */
-/* These styles make your images and icons look good on any screen size */
-/* ---------------------------------------- */
-
-/* Make all images and SVGs scale nicely */
 img,
 svg {
-  max-width: 100%; /* Keeps the image from getting too big */
-  height: auto; /* Keeps the image’s original proportions */
-  vertical-align: top; /* Removes little gaps under images (from line-height) */
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
   object-fit: contain;
-  /* Optional: Makes sure the whole image fits inside its box */
-  /* Try 'cover' if you want it to fill the space, or remove this line if not needed */
 }
 
-/* ---------------------------------------- */
-/* 🎨 Utility Classes for Styling Elements  */
-/* Use these helper classes to quickly apply 
-   common styles across your portfolio site */
-/* ---------------------------------------- */
+/* ------------------------------- */
+/* UTILITIES                       */
+/* ------------------------------- */
 
-/* ------------------------ */
-/* 📐 Layout & Spacing Tools */
-/* ------------------------ */
-
-/* Horizontally centers a block element (must have a defined width) */
 .centered-block {
   margin: 0 auto;
 }
-
-/* Vertical layout – stacks items in a column (mobile-first) */
 .flex-row {
   display: flex;
   flex-direction: column;
 }
-
-/* Puts the box on its own line and adds space underneath */
 .margin-bottom {
-  display: block; /* Makes it a block so it stacks nicely */
-  margin-bottom: 1rem; /* Adds space below – helps with layout breathing room */
+  margin-bottom: 1rem;
 }
 
 .width-third,
@@ -249,131 +142,82 @@ svg {
   width: 100%;
 }
 
-/* Adds a dashed border to help you see the box while you're designing */
 .border {
-  border: 0px dashed var(--color-accent-primary); /* This uses your custom accent color */
-  /* TODO: Delete this later – it’s just here to help you see the box while you work */
+  border: 0 dashed var(--color-accent-primary);
 }
 
-/* ---------------------- */
-/* ✍️  Typography Helpers */
-/* ---------------------- */
-
-/* Optimal line length for readability (~60 characters) */
 .max-text-width {
   max-width: 60ch;
 }
-
-/* Centers your text (great for headings or buttons) */
 .centered-text {
   text-align: center;
 }
 
-/* ------------------------------ */
-/* 🌀 Animation & Interaction Tools */
-/* ------------------------------ */
-
-/* Smooth transition when applying transformations – improves hover experience */
 .rotate {
   transition: transform 0.3s ease;
 }
-
-/* Rotates the element slightly on hover – adds a playful effect */
 .rotate:hover {
   transform: rotate(4deg);
 }
 
-/* ----------------------------- */
-/* 📦 Padding Utilities */
-/* ----------------------------- */
-
 .padding-jumbo {
-  padding: var(--padding-small); /* Adjusted for mobile use */
+  padding: var(--padding-small);
 }
 
-/* ------------------------------ */
-/* 🧱 Border Radius Shortcuts */
-/* ------------------------------ */
-
-/* Small interactive elements (buttons, inputs) */
 .rounded-small {
   border-radius: var(--radius-sm);
 }
-
-/* Default containers (cards, dropdowns) */
 .rounded-medium {
   border-radius: var(--radius-md);
 }
-
-/* Large decorative elements (modals, banners) */
 .rounded-large {
   border-radius: var(--radius-lg);
 }
-
-/* Perfect circles (avatars, icons) */
 .rounded-full {
   border-radius: var(--radius-full);
 }
 
-/* ---------------------------------------- */
-/* 🎥 Responsive Embedded Video Styles      */
-/* These styles keep your videos looking sharp and correctly sized on any device */
-/* ---------------------------------------- */
+/* ------------------------------- */
+/* VIDEO                           */
+/* ------------------------------- */
 
-/* The container holds the video and maintains a 16:9 aspect ratio */
 .project-video-container {
   position: relative;
   overflow: hidden;
   width: 100%;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio (because 9 ÷ 16 = 0.5625) */
+  padding-top: 56.25%;
   margin-bottom: 1rem;
 }
-/* The iframe is absolutely positioned to fill the container */
+
 .responsive-iframe {
   position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
 }
 
-/* ---------------------------------------- */
-/* 🧭 Responsive Navigation (Coming Soon)   */
-/* This section is in progress — you'll build a mobile-friendly nav bar here */
-/* ---------------------------------------- */
+/* ------------------------------- */
+/* NAV TEMP                        */
+/* ------------------------------- */
 
 .responsive-nav {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   background: lightblue;
   padding: var(--padding-small);
 }
 
-/* ------------------------------------------------------------------ */
-/* 🔤 Global & Mobile Typography                                      */
-/* Heading styles that scale nicely for mobile-first, responsive sites */
-/* ------------------------------------------------------------------ */
-
-/* 
-████████ ██    ██ ██████   ██████   ██████  ██████   █████  ██████  ██   ██ ██    ██ 
-   ██     ██  ██  ██   ██ ██    ██ ██       ██   ██ ██   ██ ██   ██ ██   ██  ██  ██  
-   ██      ████   ██████  ██    ██ ██   ███ ██████  ███████ ██████  ███████   ████   
-   ██       ██    ██      ██    ██ ██    ██ ██   ██ ██   ██ ██      ██   ██    ██    
-   ██       ██    ██       ██████   ██████  ██   ██ ██   ██ ██      ██   ██    ██    
-*/
-
-/* Heading Styles (h1 - h6) */
+/* ------------------------------- */
+/* TYPOGRAPHY                      */
+/* ------------------------------- */
 
 h1 {
-  font-size: 1 rem;
+  font-size: 1rem;
   font-family: var(--font-family-heading);
   line-height: 1.2;
   margin-bottom: 1rem;
-  color: var(--h1-color);
   font-weight: 800;
+  color: var(--h1-color);
 }
 
 h2 {
@@ -381,7 +225,7 @@ h2 {
   line-height: 1.2;
   margin-bottom: 1rem;
   color: var(--h5-color);
-  font-family: "poppins", sans-serif;
+  font-family: var(--font-family-body);
   font-weight: 400;
   text-transform: uppercase;
 }
@@ -392,35 +236,26 @@ h3 {
   line-height: 1.2;
   color: var(--h3-color);
 }
-
 h4 {
   font-size: 1.2rem;
-  line-height: 1.2;
   margin-bottom: 1rem;
+  line-height: 1.2;
   color: var(--h4-color);
 }
-
 h5 {
   font-size: 1.1rem;
-  line-height: 1.2;
   margin-bottom: 1rem;
+  line-height: 1.2;
   color: var(--h5-color);
-  font-family: "poppins", sans-serif;
-  font-weight: 400;
   text-transform: uppercase;
+  font-weight: 400;
 }
-
 h6 {
   font-size: 1rem;
-  line-height: 1.2;
   margin-bottom: 1rem;
+  line-height: 1.2;
   color: var(--h6-color);
 }
-
-/* ------------------------------------------------------------------ */
-/* 📝 Paragraph and Text Styles                                       */
-/* Base text styles for body copy, bold, italic, and fine print       */
-/* ------------------------------------------------------------------ */
 
 p {
   font-size: 1.2rem;
@@ -431,29 +266,25 @@ p {
 }
 
 strong {
-  font-weight: 700; /* Makes text bold */
+  font-weight: 700;
 }
-
 em {
-  font-style: italic; /* Adds emphasis with italic style */
+  font-style: italic;
 }
 
-/* ------------------------------------------------------------------ */
-/* 🎨 Custom Class Styles for Headlines, Projects, and Highlights     */
-/* Use these utility classes to style key text elements across pages  */
-/* ------------------------------------------------------------------ */
+/* ------------------------------- */
+/* PROJECT TEXT                    */
+/* ------------------------------- */
 
-/* Main hero headline — usually sits in the intro section */
 .hero-headline {
   font-size: 2rem;
-  color: var(--h1-color); /* Uses your brand's dominant color */
-  max-width: 60ch; /* Optimal line length for readability (~40 characters) */
-  text-wrap: balance; /* Prevents awkward line breaks (like elegant typography) */
-  margin-inline: auto; /* Horizontally centers the text in its container */
+  color: var(--h1-color);
+  max-width: 60ch;
+  text-wrap: balance;
+  margin-inline: auto;
   font-weight: 400;
 }
 
-/* Large project title — appears on individual project pages */
 .project-title {
   font-size: 2.5rem;
   text-transform: uppercase;
@@ -464,12 +295,12 @@ em {
   line-height: 1;
 }
 
-/* THIS IS WHERE YOU CHANGE BODY FONT SIZE, ETC. */
+/* merged duplicates */
 .project-description {
   font-size: 1.225rem;
-  line-height: 1.2;
+  line-height: 1.4;
   color: var(--color-text-project-description);
-  margin-bottom: 0.5rem;
+  margin: 0.5rem auto;
 }
 
 .project-description-bold {
@@ -480,24 +311,17 @@ em {
   font-weight: 500;
   padding-right: 20px;
 }
-.project-description {
-  line-height: 1.4; /* keep text readable */
-  margin: 0.5rem auto;
-}
 
-/* 🧱 Full-width headings — useful in layouts that span edge-to-edge */
 .h1-full-width,
 .h2-full-width {
   width: 100%;
   padding: var(--padding-small);
 }
 
-/* ✨ Highlighted text — great for emphasis */
 .highlight-primary {
   color: var(--color-accent-secondary);
 }
 
-/* 📂 Project grid title — used in grid view (like a portfolio gallery) */
 .work-grid-project-title {
   font-size: 2.5rem;
   color: var(--color-text-work-grid-title);
@@ -721,8 +545,7 @@ body {
 }
 
 /* Apply same CSS to video and fallback */
-#myVideo,
-#videoFallback {
+#myVideo {
   position: absolute;
   top: 0;
   left: 0;
@@ -929,17 +752,6 @@ body {
   display: inline-block;
   padding-bottom: 0.5rem;
 }
-
-/*  
-.project-description:last-of-type::after {
-  content: "";
-  display: block;
-  width: 100%;                 
-  height: 3px;                
-  background-color: #F26F6C;   
-  margin-top: 1.5rem;          
-}
-/* LITTLE PINK LINES BENEATH ALL THE PROJECT DESCRIPTIONS */
 
 .video-gradient {
   position: absolute;
@@ -3866,10 +3678,5 @@ body.error-page .project-image img {
 ██      ██ ██  ██ ██
 ██      ██ ██   ████
                                               
-That’s a wrap, class! 🧑‍🎓✨
 
-*/
-
-/* 🎉 You made it to the end! */
-/* This is a great place to celebrate your progress, add Easter eggs, or leave notes for your future self. */
 /* Happy coding, and don’t forget to take breaks, stay hydrated, and share your work proudly. 💻✨🎨 */
