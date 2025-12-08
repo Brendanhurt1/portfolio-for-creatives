@@ -294,16 +294,6 @@ em {
   font-weight: 600;
 }
 
-/*  
-.project-caption:last-of-type::after {
-  content: "";
-  display: block;
-  width: 100%;                 
-  height: 3px;                
-  background-color: #F26F6C;   
-  margin-top: 0.5rem;          
-}*/
-
 .project-description-one-column {
   font-family: var(--font-family-body);
   font-size: 1.225rem;
@@ -321,14 +311,6 @@ em {
   font-weight: 500; /* bold weight for all screens */
 }
 
-/* Tablet / small desktop */
-@media (min-width: 769px) and (max-width: 900px) {
-  .project-description,
-  .project-description-bold {
-    font-size: 1.1rem; /* scale up for both */
-  }
-}
-
 /* Desktop */
 @media (min-width: 901px) {
   .project-description,
@@ -337,21 +319,6 @@ em {
     line-height: 1.5; /* slightly larger line-height on desktop */
   }
 }
-/*
-
-██   ██ ██    ██ ██████  ███████ ██████  ██      ██ ███    ██ ██   ██ ███████ 
-██   ██  ██  ██  ██   ██ ██      ██   ██ ██      ██ ████   ██ ██  ██  ██      
-███████   ████   ██████  █████   ██████  ██      ██ ██ ██  ██ █████   ███████ 
-██   ██    ██    ██      ██      ██   ██ ██      ██ ██  ██ ██ ██  ██       ██ 
-██   ██    ██    ██      ███████ ██   ██ ███████ ██ ██   ████ ██   ██ ███████ 
-
-*/
-
-/* -------------------------------------------------------------------------- */
-/* 🔗 Hyperlink Styles — LVHFA                                                */
-/* LVHFA = Link, Visited, Hover, Focus, Active                                */
-/* These are the five main states a hyperlink can be in                       */
-/* -------------------------------------------------------------------------- */
 
 /* Unvisited link */
 a:link {
@@ -377,26 +344,6 @@ a:active {
   /* Useful for mobile tap interactions */ /* Space reserved for logo + nav */
 }
 
-/* -------------------------------------------------------------------------- */
-/* 🧭 Hyperlink Class Styles                                                  */
-/* These are custom styles for specific types of navigation links             */
-/* -------------------------------------------------------------------------- */
-
-a.nav-link-primary {
-  color: var(--color-nav-link);
-}
-a.nav-link-primary:hover {
-  color: var(--color-nav-link-hover);
-}
-
-/* -------------------------------------------------------------------------- */
-/* 🧭 Previous & Next Project Navigation Arrows                               */
-/* These styles are for the left and right arrows used to move between       */
-/* individual project pages in your portfolio. Includes stroke effect styles.*/
-/* -------------------------------------------------------------------------- */
-
-/* Default and visited state for navigation arrows */
-
 .navigation-arrow:link,
 .navigation-arrow:visited {
   color: var(--color-nav-arrow);
@@ -407,36 +354,6 @@ a.nav-link-primary:hover {
 .navigation-arrow:hover {
   color: var(--color-nav-arrow-hover);
 }
-
-/* 🖋️ Optional stroke effect for a bold, outlined arrow look */
-
-.stroke:link,
-.stroke:visited {
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: var(--color-nav-arrow-stroke);
-}
-
-.stroke:active,
-.stroke:hover {
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: var(--color-nav-arrow-stroke-hover);
-}
-
-/* 
-
-██   ██ ███████ ██████   ██████  
-██   ██ ██      ██   ██ ██    ██ 
-███████ █████   ██████  ██    ██ 
-██   ██ ██      ██   ██ ██    ██ 
-██   ██ ███████ ██   ██  ██████  
-                                 
-*/
-
-/* -------------------------------------------------------------------------- */
-/* 🦸 Hero Section Layout                                                     */
-/* Full-page intro area with logo, headline, icon, and footer nav            */
-/* Great place for first impression and personal branding                    */
-/* -------------------------------------------------------------------------- */
 
 .hero {
   width: 100%;
@@ -1132,46 +1049,44 @@ body {
   box-shadow: none; /* remove any shadow */
 }
 /* Base style for arrow links */
+/* clickable wrapper */
 .arrow-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* the group that scales + transitions */
+.arrow-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  transform-origin: center;
+  transition: transform 0.5s ease, color 0.5s ease;
+}
+
+/* icon + label base colors */
+.arrow-inner i,
+.arrow-inner .arrow-label {
   color: #605039;
-  text-decoration: none;
-  transition: transform 0.75s ease, color 0.75s ease; /* smooth scaling and color */
+  transition: color 0.5s ease;
 }
 
-/* Base arrow container */
-.arrow-link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-}
-
-/* Arrow icon */
-.arrow-link i {
-  color: #605039;
-  transition: transform 0.5s ease, color 0.5s ease; /* smooth scale + color */
-}
-
-/* Label under the arrow */
+/* spacing between arrow + label */
 .arrow-label {
   margin-top: 1rem;
-  text-align: center;
-  font-weight: 400;
   text-transform: uppercase;
-  color: #605039;
-  transition: color 0.5s ease; /* smooth color change */
+  font-weight: 400;
 }
 
-/* Hover: scale icon and change colors */
-.arrow-link:hover i {
+/* hover = scale the entire group */
+.arrow-link:hover .arrow-inner {
   transform: scale(1.75);
-  color: #f26f6c;
 }
 
-.arrow-link:hover .arrow-label {
+/* hover = color shift */
+.arrow-link:hover .arrow-inner i,
+.arrow-link:hover .arrow-inner .arrow-label {
   color: #f26f6c;
 }
 
@@ -1909,25 +1824,11 @@ to keep your styles reusable and consistent.
 
 /* Any other mobile-specific tweaks */
 
-@media (min-width: 600px) {
-  .hero-headline {
-    font-size: 1.5rem;
-  }
-  /* TODO: Adjust  layout for tablets */
-}
 @media (max-width: 250px) {
   .hero {
     min-height: 70vh;
   }
 }
-
-@media (min-width: 768px) {
-  /* TODO: Adjust  layout for tablets */
-}
-
-/* Large devices (desktops, 992px and up) */
-
-/* Switch from mobile to desktop navigation */
 
 @media (min-width: 1001px) {
   .hero-headline {
@@ -2898,7 +2799,7 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
 }
 
 .nav-wrapper {
-  margin: 0.5rem 0 1rem;
+  margin: 2rem 0 1rem;
 }
 
 .project-description-one-column {
@@ -3212,6 +3113,12 @@ html {
 
 .index-hero-header {
   margin-top: 8rem;
+}
+
+@media (max-width: 1200px) {
+  .index-hero-header {
+    margin-top: 4rem;
+  }
 }
 
 .program-icon {
@@ -3579,14 +3486,6 @@ body.error-page .project-image img {
 }
 
 /*
-
-
-
-
-
-
-
-
 
 ███████ ██ ███    ██
 ██      ██ ████   ██
