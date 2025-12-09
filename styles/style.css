@@ -143,13 +143,6 @@ svg {
   transform: rotate(4deg);
 }
 
-/* ------------------------------ */
-/* 🧱 Border Radius Shortcuts */
-/* ------------------------------ */
-
-/* The container holds the video and maintains a 16:9 aspect ratio */
-
-/* The iframe is absolutely positioned to fill the container */
 .responsive-iframe {
   position: absolute;
   top: 0;
@@ -361,11 +354,6 @@ a:active {
   color: var(--color-nav-arrow-hover);
 }
 
-.hero {
-  width: 100%;
-  min-height: 80vh; /* Takes up most of the screen height */
-  flex-direction: column;
-}
 .hero-header {
   min-height: 20vh; /* Space reserved for logo + nav */
   width: 100%;
@@ -382,32 +370,12 @@ body {
   padding: 0;
 }
 
-.hero {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 #background-video {
   position: fixed;
   right: 0;
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
-}
-
-/* Apply same CSS to video and fallback */
-#myVideo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
 }
 
 /* Default: show video, hide gif */
@@ -449,8 +417,12 @@ body {
 .hero {
   position: relative;
   width: 100%;
-  min-height: 80vh;
   overflow: hidden;
+  min-height: 80vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  flex-direction: column;
 }
 
 .hero video {
@@ -473,26 +445,6 @@ body {
   height: 100%;
   object-fit: cover;
 }
-
-/* #background-video iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;        
-  height: 100%;       
-  border: none;
-} */
-
-/* .hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  background: linear-gradient(to bottom, rgba(255,255,255,0),rgba(255,255,255,0), rgba(255,255,255,1));
-  z-index: -1;   
-} */
 
 .nav-branding {
   display: flex;
@@ -534,12 +486,8 @@ body {
   color: #ffefe1;
 }
 
-/* Mobile adjustments */
-
-/*END OF MEDIA QUERY */
 .nav-branding-logo {
   width: clamp(15rem, 60vw, 41rem);
-  /* TODO: Adjust the width of the logo on mobile devices here */
 }
 
 .hero-headline-wrapper {
@@ -564,22 +512,6 @@ body {
   justify-content: space-between;
   padding: var(--padding-small);
 }
-
-/*
-
- ██████  ██████  ███    ███ ██████   ██████  ███    ██ ███████ ███    ██ ████████ ███████ 
-██      ██    ██ ████  ████ ██   ██ ██    ██ ████   ██ ██      ████   ██    ██    ██      
-██      ██    ██ ██ ████ ██ ██████  ██    ██ ██ ██  ██ █████   ██ ██  ██    ██    ███████ 
-██      ██    ██ ██  ██  ██ ██      ██    ██ ██  ██ ██ ██      ██  ██ ██    ██         ██ 
- ██████  ██████  ██      ██ ██       ██████  ██   ████ ███████ ██   ████    ██    ███████ 
-                                                                                          
-*/
-
-/* -------------------------------------------------------------------------- */
-/* 🔧 Full-Width Section Components                                             */
-/* These components create flexible, full-screen sections for your portfolio   */
-/* Perfect for highlighting key information and projects                      */
-/* -------------------------------------------------------------------------- */
 
 .project-description:last-of-type {
   position: relative;
@@ -734,6 +666,124 @@ body {
     bottom: 0;
     height: 4px;
     background-color: #605039;
+  }
+
+  .footer-global a:hover {
+    color: #f37a71 !important;
+    transition: 0.3s ease;
+    transform: scale(none);
+  }
+
+  .hero-arrow-link:hover {
+    color: #f26f6c;
+    transform: scale(none); /* arrow grows on hover */
+  }
+  .nav-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero-header {
+    flex-direction: column; /* stack everything */
+    align-items: center;
+    gap: 1rem;
+  }
+  .nav-arrows .navigation-arrow:hover,
+  .nav-arrows .arrow-link:hover {
+    color: #f26f6c !important;
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .nav-arrows {
+    flex-direction: row; /* arrows still side by side */
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .hero-header {
+    flex-direction: column; /* stack everything */
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-branding {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-arrows {
+    flex-direction: row; /* arrows still side by side */
+    justify-content: center;
+    gap: 2rem;
+  }
+  .hero-header {
+    flex-direction: column; /* stack everything */
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-branding {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-branding-item {
+    font-size: 0.8rem; /* smaller text */
+    padding: 0.5rem 0.75rem; /* smaller padding */
+    margin: 0.75rem;
+    width: 175px;
+    border: 3px solid #605039; /* tighter spacing between buttons */
+  }
+  .nav-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero-header {
+    flex-direction: column; /* stack everything */
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .project-navigation {
+    max-width: 300px; /* smaller row on mobile */
+    margin: 1.5rem auto;
+  }
+  .project-wrapper {
+    padding-bottom: 4rem; /* Smaller gap for mobile */
+  }
+  .hero-header {
+    min-height: 5vh;
+  }
+  .hero-headline {
+    font-size: 0.9rem; /* adjust this size smaller than your desktop */
+    line-height: 1.4; /* optional: tweak line height so text stays readable */
+  }
+  .index-logo-wrapper {
+    margin-top: 1rem;
+  }
+  .program-icon {
+    width: 50px; /* slightly smaller on mobile */
+  }
+  .index-hero-header {
+    margin-top: 1rem;
+  }
+  .project-description-subtitle {
+    line-height: 1.2; /* mobile */
+  }
+  .project-description-subtitle {
+    line-height: 1.2;
+  }
+  .project-description-subtitle {
+    line-height: 1.2;
+  }
+  .logo.animated {
+    display: none; /* hide animated entirely */
+  }
+
+  .logo.static {
+    opacity: 1 !important; /* ensure static shows */
   }
 }
 
@@ -897,146 +947,6 @@ body {
   color: #f26f6c !important;
 }
 
-/* --- MOBILE RESPONSIVE --- */
-@media (max-width: 768px) {
-  .hero-header {
-    flex-direction: column; /* stack everything */
-    align-items: center;
-    gap: 1rem;
-  }
-  .nav-arrows .navigation-arrow:hover,
-  .nav-arrows .arrow-link:hover {
-    color: #f26f6c !important;
-    transition: none !important;
-    transform: none !important;
-  }
-
-  .nav-branding {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .nav-arrows {
-    flex-direction: row; /* arrows still side by side */
-    justify-content: center;
-    gap: 2rem;
-  }
-  .hero-header {
-    flex-direction: column; /* stack everything */
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .nav-branding {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .nav-arrows {
-    flex-direction: row; /* arrows still side by side */
-    justify-content: center;
-    gap: 2rem;
-  }
-  .hero-header {
-    flex-direction: column; /* stack everything */
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .nav-branding {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .nav-arrows {
-    flex-direction: row; /* arrows still side by side */
-    justify-content: center;
-    gap: 2rem;
-  }
-  .hero-header {
-    flex-direction: column; /* stack everything */
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .nav-branding {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .nav-branding-item {
-    font-size: 0.8rem; /* smaller text */
-    padding: 0.5rem 0.75rem; /* smaller padding */
-    margin: 0.75rem;
-    width: 175px;
-    border: 3px solid #605039; /* tighter spacing between buttons */
-  }
-  .nav-wrapper {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  .hero-header {
-    flex-direction: column; /* stack everything */
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .hero-header {
-    flex-direction: column; /* stack everything */
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .project-navigation {
-    max-width: 300px; /* smaller row on mobile */
-    margin: 1.5rem auto;
-  }
-  .project-wrapper {
-    padding-bottom: 4rem; /* Smaller gap for mobile */
-  }
-  .hero-header {
-    min-height: 5vh;
-  }
-  .hero-headline {
-    font-size: 0.9rem; /* adjust this size smaller than your desktop */
-    line-height: 1.4; /* optional: tweak line height so text stays readable */
-  }
-  .index-logo-wrapper {
-    margin-top: 1rem;
-  }
-  .program-icon {
-    width: 50px; /* slightly smaller on mobile */
-  }
-  .index-hero-header {
-    margin-top: 1rem;
-  }
-  .project-description-subtitle {
-    line-height: 1.2; /* mobile */
-  }
-  .project-description-subtitle {
-    line-height: 1.2;
-  }
-  .project-description-subtitle {
-    line-height: 1.2;
-  }
-  .logo.animated {
-    display: none; /* hide animated entirely */
-  }
-
-  .logo.static {
-    opacity: 1 !important; /* ensure static shows */
-  }
-}
-
-@media (max-width: 1000px) {
-  .nav-wrapper {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-}
-
 .nav-arrows a,
 .nav-arrows a:focus,
 .nav-arrows a:active,
@@ -1046,21 +956,18 @@ body {
   border: none !important;
 }
 
-/* Make arrow focus outline white to hide it */
 .arrow-link:focus,
 .arrow-link:active {
   outline: 2px solid white;
   outline-offset: 0;
   box-shadow: none; /* remove any shadow */
 }
-/* Base style for arrow links */
-/* clickable wrapper */
+
 .arrow-link {
   text-decoration: none;
   color: inherit;
 }
 
-/* the group that scales + transitions */
 .arrow-inner {
   display: flex;
   flex-direction: column;
@@ -1069,34 +976,29 @@ body {
   transition: 0.5s ease, color 0.5s ease;
 }
 
-/* icon + label base colors */
 .arrow-inner i,
 .arrow-inner .arrow-label {
   color: #605039;
   transition: color 0.5s ease;
 }
 
-/* spacing between arrow + label */
 .arrow-label {
   margin-top: 1rem;
   text-transform: uppercase;
   font-weight: 400;
 }
 
-/* hover = color shift */
 .arrow-link:hover .arrow-inner i,
 .arrow-link:hover .arrow-inner .arrow-label {
   color: #f26f6c;
 }
 
-/* Home page only */
 .home-page .portfolio,
 .home-page .project-wrapper,
 .home-page .work-sidebar-wrapper {
   padding-top: var(--padding-large); /* custom for home */
 }
 
-/* All project pages */
 .project-page .portfolio,
 .project-page .project-wrapper,
 .project-page .work-sidebar-wrapper {
@@ -1104,28 +1006,10 @@ body {
   padding-top: var(--padding-medium); /* smaller top padding */
 }
 
-/* 
-
-██     ██  ██████  ██████  ██   ██     ██████   █████   ██████  ███████ 
-██     ██ ██    ██ ██   ██ ██  ██      ██   ██ ██   ██ ██       ██      
-██  █  ██ ██    ██ ██████  █████       ██████  ███████ ██   ███ █████   
-██ ███ ██ ██    ██ ██   ██ ██  ██      ██      ██   ██ ██    ██ ██      
- ███ ███   ██████  ██   ██ ██   ██     ██      ██   ██  ██████  ███████ 
-
-*/
-
-/* -------------------------------------------------------------------------- */
-/* 🔲 Work Page Layout Components                                               */
-/* These styles create the layout for your work portfolio and project pages    */
-/* The goal is to showcase your projects and provide a responsive, clean UI  */
-/* -------------------------------------------------------------------------- */
-
-/* Work wrapper (takes up available space) */
 .main-work-section {
   flex: 1;
 }
 
-/* Padding around work grid and project page */
 .portfolio,
 .project-wrapper,
 .work-sidebar-wrapper {
@@ -1134,7 +1018,6 @@ body {
   ); /* Padding to keep content from touching edges */
 }
 
-/* Work Sidebar on Mobile */
 .work-sidebar {
   width: 100%;
   background: var(
@@ -1142,12 +1025,10 @@ body {
   ); /* Background color for the sidebar */
 }
 
-/* Main Work Area with Sidebar on Mobile */
 .work-details {
   width: 100%;
 }
 
-/* Defining the work page grid */
 .grid {
   display: grid;
   grid-template-columns: repeat(
@@ -1158,21 +1039,17 @@ body {
   /* The auto-fit and minmax() function help ensure responsiveness across screen sizes */
 }
 
-/* Individual Work Grid Item */
 .work-page-grid-item {
   width: 100%;
   height: auto;
   position: relative; /* Needed to position the overlay */
 }
 
-/* Project container for background and padding */
 .project-container {
   background: var(--color-accent-primary); /* Set project background color */
   padding: var(--padding-medium);
 }
 
-/* Overlay (appears on hover) */
-/* Desktop overlay behavior (unchanged) */
 .overlay {
   position: absolute;
   top: 0;
@@ -1195,9 +1072,6 @@ body {
   visibility: visible;
 }
 
-/* Mobile-specific overrides */
-
-/* Hover effect on work page grid items */
 .work-page-grid-item:hover .overlay {
   visibility: visible; /* Make overlay visible on hover */
   opacity: 1;
@@ -1207,50 +1081,14 @@ body {
   opacity: 100%;
 }
 
-/*
-
-███████ ██ ██████  ███████ ██████   █████  ██████  
-██      ██ ██   ██ ██      ██   ██ ██   ██ ██   ██ 
-███████ ██ ██   ██ █████   ██████  ███████ ██████  
-     ██ ██ ██   ██ ██      ██   ██ ██   ██ ██   ██ 
-███████ ██ ██████  ███████ ██████  ██   ██ ██   ██ 
-                                                   
-                                                   
-*/
-
-/* -------------------------------------------------------------------------- */
-/* 🗂️ Sidebar Navigation Styles                                                 */
-/* This section contains styles for the sidebar navigation on the portfolio    */
-/* website. The aim is to create a simple and clean sidebar for better access. */
-/* -------------------------------------------------------------------------- */
-
-/* Sidebar navigation list styles */
 .sidebar-nav-list {
   padding: var(--padding-small); /* Adds padding around the navigation list */
 }
 
-/* Individual navigation item styles */
 .sidebar-nav-item {
   margin-bottom: 1rem; /* Space between each navigation item */
 }
 
-/* 
-
- █████  ██████   ██████  ██    ██ ████████ 
-██   ██ ██   ██ ██    ██ ██    ██    ██    
-███████ ██████  ██    ██ ██    ██    ██    
-██   ██ ██   ██ ██    ██ ██    ██    ██    
-██   ██ ██████   ██████   ██████     ██    
-                                           
-*/
-
-/* -------------------------------------------------------------------------- */
-/* 📚 About Page Grid Styles                                                   */
-/* These styles structure the layout of the "About" page using a grid system.  */
-/* The grid has 3 main sections: an image, text, and footer.                   */
-/* -------------------------------------------------------------------------- */
-
-/* Grid container for the About section */
 .about-grid {
   display: grid; /* Set to grid layout */
   grid-template-columns: 1fr; /* Single column layout for mobile and smaller screens */
@@ -1272,21 +1110,6 @@ body {
   grid-row: 2 / 3; /* Text spans the second row */
 }
 
-/* 
-
-███████  ██████   ██████  ████████ ███████ ██████  
-██      ██    ██ ██    ██    ██    ██      ██   ██ 
-█████   ██    ██ ██    ██    ██    █████   ██████  
-██      ██    ██ ██    ██    ██    ██      ██   ██ 
-██       ██████   ██████     ██    ███████ ██   ██ 
-                                                   
-*/
-
-/* -------------------------------------------------------------------------- */
-/* 📱 MOBILE FOOTER LAYOUT                                                    */
-/* Designed with mobile-first approach using CSS Grid                          */
-/* -------------------------------------------------------------------------- */
-
 .footer-global {
   display: grid;
   grid-template-columns: 1fr; /* Single column layout */
@@ -1294,14 +1117,7 @@ body {
   min-height: auto; /* Allows footer to expand based on content, no fixed height */
   background: var(--color-bg-footer); /* Using CSS variable for theming */
   padding: var(--padding-small); /* Internal spacing */
-
-  /* Note: Using 'fr' units ensures proper scaling across devices */
 }
-
-/* -------------------------------------------------------------------------- */
-/* 🧩 FOOTER SECTION PLACEMENT                                                */
-/* Each component stacks vertically in mobile view                             */
-/* -------------------------------------------------------------------------- */
 
 .footer-tagline {
   grid-column: 1 / 2; /* Full width (single column) */
@@ -1315,10 +1131,7 @@ body {
   grid-column: 1 / 2;
   grid-row: 3 / 4;
 }
-/* -------------------------------------------------------------------------- */
-/* 🌊 FULL-WIDTH BOTTOM SECTION                                               */
-/* Typically used for copyright/legal information                             */
-/* -------------------------------------------------------------------------- */
+
 .footer-full-width {
   grid-column: 1 / 2;
   grid-row: 4 / 5;
@@ -1326,9 +1139,6 @@ body {
   align-self: end; /* Push to bottom */
 }
 
-/* ------------------------------- */
-/* 📜 Reusable footer list styles */
-/* ------------------------------- */
 .footer-list {
   margin-bottom: 2rem;
 }
@@ -1342,11 +1152,6 @@ body {
   margin-bottom: 2rem;
 }
 
-/* -------------------------------------------------------------------------- */
-/* 📏 Footer Item Spacing                                                     */
-/* -------------------------------------------------------------------------- */
-
-/* Apply this class to ALL list items (awards, works, social, bullets) */
 .footer-item {
   line-height: 1.2; /* Consistent line height for footer items to improve spacing */
   margin-bottom: 0.25rem;
@@ -1354,11 +1159,6 @@ body {
   font-family: "poppins", sans-serif;
   color: #ffffff;
 }
-
-/* ------------------------------- */
-/* ▪️ Bullet List Style */
-/* Square bullets with compact spacing */
-/* ------------------------------- */
 
 .footer-bullet-list {
   list-style-type: square;
@@ -1372,11 +1172,6 @@ body {
   text-indent: -0.5rem; /* Pulls text back toward bullet */
 }
 
-/* -------------------------------------------------------------------------- */
-/* ✨ Footer Special Elements                                                 */
-/* -------------------------------------------------------------------------- */
-
-/* Heart icon for copyright/love notes */
 .heart {
   color: var(--color-icon-heart); /* Color for heart icon */
 }
@@ -1394,31 +1189,10 @@ body {
   text-transform: uppercase;
 }
 
-/* -------------------------------------------------------------------------- */
-/* 🌐 MINIMAL FOOTER (ALTERNATIVE VERSION)                                    */
-/* A simpler alternative to the CSS Grid footer - ideal for beginners          */
-/* -------------------------------------------------------------------------- */
-
 .footer-global-wrapper {
   padding: var(--padding-small);
 }
 
-/* 
-
-██████  ██████   ██████       ██ ███████  ██████ ████████     ██████   █████   ██████  ███████ 
-██   ██ ██   ██ ██    ██      ██ ██      ██         ██        ██   ██ ██   ██ ██       ██      
-██████  ██████  ██    ██      ██ █████   ██         ██        ██████  ███████ ██   ███ █████   
-██      ██   ██ ██    ██ ██   ██ ██      ██         ██        ██      ██   ██ ██    ██ ██      
-██      ██   ██  ██████   █████  ███████  ██████    ██        ██      ██   ██  ██████  ███████ 
-                                                                                               
-*/
-
-/* ---------------------------------------------------------------------------------- */
-/* Project Page Layout - This section contains the layout for project pages,         */
-/* including the project image, description, sidebar, and navigation arrows.         */
-/* ---------------------------------------------------------------------------------- */
-
-/* Wrapper for the main project section and sidebar */
 .project-wrapper,
 .work-sidebar-wrapper {
   display: flex;
@@ -1604,11 +1378,6 @@ header.hero-header .nav-wrapper {
   transition: transform 0.5s, color 0.5s; /* smooth hover */
 }
 
-.hero-arrow-link:hover {
-  color: #f26f6c;
-  transform: scale(3); /* arrow grows on hover */
-}
-
 .hero-arrow-link .arrow-label {
   margin-top: 0.25rem;
   text-align: center;
@@ -1618,16 +1387,6 @@ header.hero-header .nav-wrapper {
 .hero-arrow-link:focus {
   outline: none;
 }
-
-/*
-
-██████  ██       ██████   ██████      ██ ██████  ███████ ███████ ██    ██ ███    ███ ███████ 
-██   ██ ██      ██    ██ ██          ██  ██   ██ ██      ██      ██    ██ ████  ████ ██      
-██████  ██      ██    ██ ██   ███   ██   ██████  █████   ███████ ██    ██ ██ ████ ██ █████   
-██   ██ ██      ██    ██ ██    ██  ██    ██   ██ ██           ██ ██    ██ ██  ██  ██ ██      
-██████  ███████  ██████   ██████  ██     ██   ██ ███████ ███████  ██████  ██      ██ ███████ 
-                                                                                             
-*/
 
 /* Blog and Resume page styles */
 
@@ -1641,18 +1400,6 @@ header.hero-header .nav-wrapper {
   list-style-type: disc;
   margin-left: 1.2rem;
 }
-
-/* 
-
-██   ██  ██████  ██      ██████  ██ ███    ██  ██████  
-██   ██ ██    ██ ██      ██   ██ ██ ████   ██ ██       
-███████ ██    ██ ██      ██   ██ ██ ██ ██  ██ ██   ███ 
-██   ██ ██    ██ ██      ██   ██ ██ ██  ██ ██ ██    ██ 
-██   ██  ██████  ███████ ██████  ██ ██   ████  ██████  
-                                                       
-*/
-
-/* Holding page styles */
 
 .holding-page-wrapper {
   display: grid;
@@ -1696,18 +1443,6 @@ header.hero-header .nav-wrapper {
   margin-bottom: 0; /* Removes default margin from the bottom of the copyright text */
 }
 
-/*
-███████ ██████  ██████   ██████  ██████  
-██      ██   ██ ██   ██ ██    ██ ██   ██ 
-█████   ██████  ██████  ██    ██ ██████  
-██      ██   ██ ██   ██ ██    ██ ██   ██ 
-███████ ██   ██ ██   ██  ██████  ██   ██ 
-*/
-
-/* TODO: Customize your 404 Error Page */
-
-/* A great 404 page is a chance to leave a memorable impression when visitors land on a page that doesn't exist. Consider customizing this page to be more engaging, humorous, or on-brand with your site. Check out error.css for the gradient and glitch effect. */
-
 .error-headline-wrapper {
   width: 85%;
   display: flex;
@@ -1724,58 +1459,10 @@ header.hero-header .nav-wrapper {
   width: 25rem;
 }
 
-/*
-
-██████  ██       █████  ██    ██ 
-██   ██ ██      ██   ██  ██  ██  
-██████  ██      ███████   ████   
-██      ██      ██   ██    ██    
-██      ███████ ██   ██    ██    
-*/
-
-/* Play Page Styles
-––––––––––––––––––––––––––––––––––––––––––––––––––
-Custom styles specific to the "Play" page layout and content.
-
-✅ Masonry layout is defined separately in masonry.css  
-✅ Lightbox functionality is handled via Lightbox2 (in /lightbox2 folder)  
-✅ Rotate and other utility classes are already included in the base styles (this file)
-
-Use this section to style elements that are *unique to the Play page*.
-For common layout or effects, continue using the base utility classes
-to keep your styles reusable and consistent.
-*/
-
-/*
-
-███████ ██   ██ ███████ ████████  ██████ ██   ██ ██████   ██████   ██████  ██   ██ 
-██      ██  ██  ██         ██    ██      ██   ██ ██   ██ ██    ██ ██    ██ ██  ██  
-███████ █████   █████      ██    ██      ███████ ██████  ██    ██ ██    ██ █████   
-     ██ ██  ██  ██         ██    ██      ██   ██ ██   ██ ██    ██ ██    ██ ██  ██  
-███████ ██   ██ ███████    ██     ██████ ██   ██ ██████   ██████   ██████  ██   ██ 
-
-*/
-
-/* Sketchbook Page Styles */
-
 .sketchbook-page {
   display: grid;
   place-items: center;
 }
-
-/*
-
-███    ███ ███████ ██████  ██  █████       ██████  ██    ██ ███████ ██████  ██ ███████ ███████ 
-████  ████ ██      ██   ██ ██ ██   ██     ██    ██ ██    ██ ██      ██   ██ ██ ██      ██      
-██ ████ ██ █████   ██   ██ ██ ███████     ██    ██ ██    ██ █████   ██████  ██ █████   ███████ 
-██  ██  ██ ██      ██   ██ ██ ██   ██     ██ ▄▄ ██ ██    ██ ██      ██   ██ ██ ██           ██ 
-██      ██ ███████ ██████  ██ ██   ██      ██████   ██████  ███████ ██   ██ ██ ███████ ███████ 
-
-*/
-
-/* Media Queries for Layout Adjustments */
-
-/* Medium devices (tablets, 768px and up) */
 
 @media (min-width: 360px) {
   .hero-headline {
@@ -1832,6 +1519,11 @@ to keep your styles reusable and consistent.
 @media (min-width: 1001px) {
   .hero-headline {
     font-size: 1.5rem;
+  }
+
+  .hero-arrow-link:hover {
+    color: #f26f6c;
+    transform: scale(3); /* arrow grows on hover */
   }
 
   /* TODO: Add or adjust styles here for large devices. */
@@ -2170,7 +1862,6 @@ ul {
   font-style: italic; /* optional */
 }
 
-/* responsive: stack images on small screens */
 @media (max-width: 700px) {
   .project-image-pair {
     flex-direction: column;
@@ -2265,12 +1956,6 @@ ul {
 .index-header .nav-branding-item:hover {
   background-color: #b8a88e;
   color: #ffefe1;
-}
-
-/* Default mobile: stack (full width each) */
-.section-container {
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .section-item {
@@ -2497,27 +2182,12 @@ ul {
   aspect-ratio: 16 / 9; /* maintain desktop aspect ratio */
 }
 
-/* Mobile / single column */
-
-/* Default desktop/tablet layout — keep spacing */
 .project-image {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Mobile / single-column layout — remove extra margin */
-
-/* Default desktop/tablet — keep current spacing */
-.project-image {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Mobile / single-column layout adjustments */
-
-/* Normal (desktop) – captions visible */
 .project-caption {
   display: block;
 }
@@ -3435,8 +3105,6 @@ html {
   top: -1rem;
 }
 
-/* Spotify Embed Styling */
-/* Only apply styles on the 404 page */
 body.error-page #spotify-embed {
   width: 260px; /* smaller width */
   margin: 1.5rem auto 0; /* center horizontally with spacing from above */
@@ -3482,25 +3150,20 @@ body.error-page .project-image img {
     font-size: 1rem;
     line-height: 1.2rem;
   }
-}
-
-@media (max-width: 1400px) {
   .about-grid-text {
     width: 100%;
     max-width: 100%;
   }
 }
 
-@media (max-width: 1000px) {
-  .about-grid {
-    padding-left: var(--padding-medium);
-    padding-right: var(--padding-medium);
-  }
+.about-grid {
+  padding-left: var(--padding-medium);
+  padding-right: var(--padding-medium);
+}
 
-  .footer-global a:hover {
-    color: #f37a71 !important;
-    transition: 0.3s ease;
-    transform: scale(none);
+@media (min-width: 1000px) {
+  .portrait-img-desktop-shift {
+    margin-left: 0.7rem; /* adjust as needed */
   }
 }
 
@@ -3512,10 +3175,5 @@ body.error-page .project-image img {
 ██      ██ ██  ██ ██
 ██      ██ ██   ████
                                               
-That’s a wrap, class! 🧑‍🎓✨
-
+That’s a wrap! 
 */
-
-/* 🎉 You made it to the end! */
-/* This is a great place to celebrate your progress, add Easter eggs, or leave notes for your future self. */
-/* Happy coding, and don’t forget to take breaks, stay hydrated, and share your work proudly. 💻✨🎨 */
