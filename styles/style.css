@@ -897,7 +897,7 @@ body {
 /* RIGHT SIDE: ARROWS */
 .nav-arrows {
   display: flex !important;
-  gap: 2rem !important; /* spacing between left and right arrow */
+  gap: 3.5rem !important; /* spacing between left and right arrow */
   padding: 0 !important;
   margin: 0 !important;
   list-style: none !important;
@@ -1256,9 +1256,7 @@ body {
 /* Project details section */
 .project-details {
   width: 100%;
-  background: var(
-    --color-gradient-project-details
-  ); /* TODO: Remove gradient background if you prefer a simpler design */
+  background: var(--color-gradient-project-details);
 }
 
 /* Previous/Next Arrow Styles */
@@ -1409,14 +1407,6 @@ header.hero-header .nav-wrapper {
   text-align: center;
   width: 100%;
   min-height: 100vh;
-  /* TODO: Delete the following if you do not want a grainy gradient background on index.html. Be careful not to delete the closing } */
-  background: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 1),
-      var(--color-bg-holding-page)
-    ),
-    var(--image-noise-texture);
-  /* For more on grainy gradients see https://grainy-gradients.vercel.app/ */
 }
 
 .holding-page-animation {
@@ -1468,8 +1458,6 @@ header.hero-header .nav-wrapper {
   .hero-headline {
     font-size: 1.25rem;
   }
-
-  /* TODO: Adjust  layout for tablets */
 }
 .divider {
   display: flex;
@@ -1526,8 +1514,6 @@ header.hero-header .nav-wrapper {
     transform: scale(3); /* arrow grows on hover */
   }
 
-  /* TODO: Add or adjust styles here for large devices. */
-
   .flex-row {
     flex-direction: row; /* Changes to row layout on larger screens */
   }
@@ -1565,7 +1551,6 @@ header.hero-header .nav-wrapper {
   }
   .nav-branding-logo {
     text-align: center;
-    /* TODO: Adjust the width of the logo on large devices here. */
   }
 
   .hero-header {
@@ -1688,11 +1673,6 @@ header.hero-header .nav-wrapper {
   .section-container {
     width: 100%; /* Adjust this width for larger screens if needed */
     flex-direction: row;
-
-    /* background: url(../assets/brown-line.png);
-    background-repeat: no-repeat;
-    background-position-x: -140%;
-    background-position-y: top; */
   }
   .col-2 {
     width: 50%;
@@ -1792,11 +1772,7 @@ header.hero-header .nav-wrapper {
   }
 }
 
-/* X-Large devices (large desktops, 1200px and up)*/
-
 @media (min-width: 1200px) {
-  /* TODO: Add styles here for EXTRA LARGE DEVICES!!!. */
-
   .project-title {
     font-size: 3.225rem;
   }
@@ -1805,11 +1781,7 @@ header.hero-header .nav-wrapper {
   }
 }
 
-/* XX-Large devices (LARGER DESKTOPS!!!, 1400px and up) */
-
 @media (min-width: 1400px) {
-  /* TODO: Add styles here for XX-large devices. */
-
   .project-title {
     font-size: 3.625rem;
   }
