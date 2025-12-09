@@ -318,6 +318,12 @@ em {
     font-size: 1.2rem;
     line-height: 1.5; /* slightly larger line-height on desktop */
   }
+  .nav-arrows .navigation-arrow:hover,
+  .nav-arrows .arrow-link:hover {
+    color: #f26f6c !important;
+    transition: 0.3s ease !important;
+    transform: scale(1.75) !important;
+  }
 }
 
 /* Unvisited link */
@@ -898,21 +904,11 @@ body {
     align-items: center;
     gap: 1rem;
   }
-
-  .nav-branding {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .nav-arrows {
-    flex-direction: row; /* arrows still side by side */
-    justify-content: center;
-    gap: 2rem;
-  }
-  .hero-header {
-    flex-direction: column; /* stack everything */
-    align-items: center;
-    gap: 1rem;
+  .nav-arrows .navigation-arrow:hover,
+  .nav-arrows .arrow-link:hover {
+    color: #f26f6c !important;
+    transition: none !important;
+    transform: none !important;
   }
 
   .nav-branding {
@@ -957,6 +953,17 @@ body {
     justify-content: center;
     gap: 2rem;
   }
+  .hero-header {
+    flex-direction: column; /* stack everything */
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-branding {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .nav-branding-item {
     font-size: 0.8rem; /* smaller text */
     padding: 0.5rem 0.75rem; /* smaller padding */
@@ -975,19 +982,12 @@ body {
     gap: 1rem;
   }
 
-  .nav-arrows {
-    justify-content: center;
-  }
-
   .hero-header {
     flex-direction: column; /* stack everything */
     align-items: center;
     gap: 1rem;
   }
 
-  .nav-arrows {
-    justify-content: center;
-  }
   .project-navigation {
     max-width: 300px; /* smaller row on mobile */
     margin: 1.5rem auto;
@@ -1066,8 +1066,7 @@ body {
   flex-direction: column;
   align-items: center;
 
-  transform-origin: center;
-  transition: transform 0.5s ease, color 0.5s ease;
+  transition: 0.5s ease, color 0.5s ease;
 }
 
 /* icon + label base colors */
@@ -1082,11 +1081,6 @@ body {
   margin-top: 1rem;
   text-transform: uppercase;
   font-weight: 400;
-}
-
-/* hover = scale the entire group */
-.arrow-link:hover .arrow-inner {
-  transform: scale(1.75);
 }
 
 /* hover = color shift */
@@ -2049,6 +2043,12 @@ to keep your styles reusable and consistent.
     grid-template-columns: 1fr 1fr 1fr; /* Three equal columns */
   }
 
+  .footer-global a:hover {
+    color: #f37a71 !important;
+    transition: 0.3s ease;
+    transform: scale(1.75);
+  }
+
   /* Column 1: Tagline/Message */
   .footer-tagline {
     grid-column: 1 / 2;
@@ -2425,6 +2425,12 @@ ul {
     box-sizing: border-box;
   }
 
+  .footer-global a:hover {
+    color: #f37a71 !important;
+    transform: scale(none) !important;
+    /* optional: lighter shade on hover */
+  }
+
   /* Header stays visible */
   .home-page .hero-header.index-header {
     margin-bottom: 0.5rem;
@@ -2533,10 +2539,6 @@ ul {
   text-decoration: none; /* optional */
 }
 
-.footer-global a:hover {
-  color: #ddd; /* optional: lighter shade on hover */
-}
-
 .footer-global h2 {
   font-size: 1.75rem; /* or whatever your desktop size is */
   font-weight: 700;
@@ -2560,7 +2562,7 @@ ul {
 }
 
 .footer-arrow-link:hover {
-  transform: scale(1.75);
+  transform: scale(none) !important;
   color: #ffefe1;
 }
 
@@ -2571,8 +2573,8 @@ ul {
   .footer-arrow-link:hover,
   .footer-arrow-link:active,
   .footer-arrow-link:focus {
-    transform: none;
-    color: #ffffff;
+    transform: scale(none) !important;
+    color: #f37a71 !important;
   }
 }
 
@@ -2804,7 +2806,7 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
 }
 
 .nav-wrapper {
-  margin: 2rem 0 1rem;
+  margin: 2rem 0 2rem;
 }
 
 .project-description-one-column {
@@ -3494,23 +3496,11 @@ body.error-page .project-image img {
     padding-left: var(--padding-medium);
     padding-right: var(--padding-medium);
   }
-}
 
-@media (max-width: 1000px) {
-  /* Stop all transitions */
-  .nav-arrows * {
-    transition: none !important;
-  }
-
-  /* Prevent icon grow/shrink */
-  .nav-arrows i {
-    font-size: 2rem !important; /* locks size instead of fa-2x auto-scaling */
-  }
-
-  /* Kill hover colour change */
-  .nav-arrows .navigation-arrow:hover,
-  .nav-arrows .arrow-link:hover {
-    color: #605039 !important;
+  .footer-global a:hover {
+    color: #f37a71 !important;
+    transition: 0.3s ease;
+    transform: scale(none);
   }
 }
 
