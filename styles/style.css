@@ -2923,7 +2923,7 @@ html {
 
 /* Default: space between all paragraphs */
 .project-description-one-column {
-  margin-bottom: 0.5rem !important;
+  margin-bottom: 1rem !important;
 }
 
 /* Only the LAST paragraph in the sequence gets extra space */
