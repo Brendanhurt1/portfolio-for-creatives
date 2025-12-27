@@ -2505,7 +2505,7 @@ body.more-of-my-work .project-wrapper-fullwidth .project-details {
 
 .project-description,
 .project-description-one-column {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 1400px) {
