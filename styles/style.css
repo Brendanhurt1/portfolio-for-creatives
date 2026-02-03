@@ -3139,6 +3139,26 @@ body.error-page .project-image img {
   }
 }
 
+.vimeo-gif-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Change if your video isn't 16:9 */
+  overflow: hidden;
+}
+
+.vimeo-gif-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+
+}
+
+
+
+
 /*
 
 ███████ ██ ███    ██
