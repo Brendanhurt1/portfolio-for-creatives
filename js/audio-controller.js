@@ -8,6 +8,7 @@
   const MUSIC_VOLUME = 0.14;
   const FADE_DURATION = 850;
   const tracks = [new Audio(MUSIC_SOURCE), new Audio(MUSIC_SOURCE)];
+  const swapSound = new Audio(SWAP_SOURCE);
   let activeTrack = 0;
   let hasStarted = false;
   let isCrossfading = false;
@@ -18,6 +19,7 @@
     track.preload = "auto";
     track.volume = 0;
   });
+  swapSound.preload = "auto";
 
   const safeReadState = () => {
     try {
@@ -137,8 +139,9 @@
 
   const playSwap = () => {
     if (!soundEnabled) return;
-    const sound = new Audio(SWAP_SOURCE);
-    sound.preload = "auto";
+    // Clone the warmed-up source so consecutive project swipes can overlap
+    // cleanly without restarting an in-progress cue.
+    const sound = swapSound.cloneNode();
     sound.volume = 1;
     sound.play().catch(() => {});
   };

@@ -862,6 +862,29 @@
 
         const pauseHoverVideos = () => cards.forEach(pauseHoverVideo);
 
+        // Touch devices have no hover state. Keep the motion thumbnail of the
+        // centred card running, while stopping the cards that have moved away.
+        // This is limited to the mobile carousel breakpoint so desktop keeps
+        // its existing hover playback behaviour.
+        const syncMobileActiveVideo = () => {
+          if (!usesTouchCarouselLayout()) return;
+
+          cards.forEach((card, index) => {
+            const video = card.querySelector(".project-hover-video");
+            if (!video) return;
+
+            if (index === activeIndex && !isIntroAnimating) {
+              video.muted = true;
+              video.defaultMuted = true;
+              video.play().catch(() => {});
+              return;
+            }
+
+            video.pause();
+            video.currentTime = 0;
+          });
+        };
+
         function positionNextSwipeCue() {
           // The active card moves while a drag is in progress. Keep the cue at
           // its settled outer position until the next card has finished moving.
@@ -929,6 +952,7 @@
           });
 
           positionNextSwipeCue();
+          syncMobileActiveVideo();
 
           if (isIntroRender) stack.dataset.introConfigured = "true";
         };
@@ -1123,6 +1147,10 @@
           const video = card.querySelector(".project-hover-video");
           if (video) {
             video.addEventListener("loadeddata", () => {
+              if (usesTouchCarouselLayout() && card === cards[activeIndex]) {
+                playHoverVideo(card);
+                return;
+              }
               video.pause();
               video.currentTime = 0;
             }, { once: true });
