@@ -873,6 +873,18 @@
             const video = card.querySelector(".project-hover-video");
             if (!video) return;
 
+            // Force the centre card and its two visible neighbours to fetch on
+            // phones. Browsers may otherwise defer an off-centre video even
+            // when its preload hint is set, leaving it blank during a swipe.
+            if (
+              Math.abs(signedDistance(index)) <= 1 &&
+              video.dataset.mobilePreloaded !== "true"
+            ) {
+              video.dataset.mobilePreloaded = "true";
+              video.preload = "auto";
+              video.load();
+            }
+
             if (index === activeIndex && !isIntroAnimating) {
               video.muted = true;
               video.defaultMuted = true;
