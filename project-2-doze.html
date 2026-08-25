@@ -22,6 +22,10 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="./styles/style.css" />
+    <script src="./js/theme-toggle.js"></script>
+    <script src="./js/ambient-ribbons.js" defer></script>
+    <script src="./js/custom-cursor.js" defer></script>
+    <script src="./js/project-scroll-control.js" defer></script>
     <!-- FAVICONS -->
     <link
       rel="icon"
@@ -53,9 +57,22 @@
       href="assets/branding-images/favicon-bh-brand-brown-180.png"
     />
     <!-- END FAVICONS -->
+    <script src="./js/audio-controller.js"></script>
   </head>
 
-  <body class="project-page project-2-doze">
+  <body class="project-page project-2-doze home-page secondary-page">
+    <header class="site-navigation">
+      <a class="home-nav-logo" href="index.html" aria-label="Back to home"><span class="home-nav-logo-mark" aria-hidden="true"></span></a>
+      <ul class="nav-branding">
+        <li><a href="more-of-my-work.html" class="nav-branding-item">More Of My Work</a></li>
+        <li><a href="about.html" class="nav-branding-item">About Me</a></li>
+      </ul>
+      <div class="nav-sound-control"><label class="nav-sound-toggle" for="soundToggle"><input id="soundToggle" type="checkbox" role="switch" aria-label="Turn sound on" aria-checked="false" /><span class="nav-sound-orb" aria-hidden="true"><span class="nav-sound-icon"></span></span></label></div>
+      <nav class="project-page-navigation" aria-label="Project navigation">
+        <a class="project-nav-control project-nav-control--previous" href="project-1-milianos.html"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.5 4.5 6.5 12l11 7.5Z" /></svg><span>Previous Project</span></a>
+        <a class="project-nav-control project-nav-control--next" href="project-3-triple os.html"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.5 4.5 17.5 12 6.5 19.5Z" /></svg><span>Next Project</span></a>
+      </nav>
+    </header>
     <header class="hero-header">
       <div class="nav-wrapper">
         <ul class="nav-branding">
@@ -141,7 +158,7 @@
         <div class="project-image-container">
           <div class="project-image-container">
             <figure class="project-image no-border">
-              <div class="logo-swap">
+              <div class="logo-static">
                 <img
                   class="logo static"
                   src="assets/doze/logo/doze-logo.png"
@@ -149,17 +166,14 @@
                   height="1055"
                   alt="doze logo"
                 />
-                <img
-                  class="logo animated"
-                  src="assets/doze/logo/doze-logo-moving.gif"
-                  alt="doze logo moving"
-                />
               </div>
             </figure>
 
             <figure class="project-image">
               <img
-                src="assets/doze/doze-typography.png"
+                src="assets/doze/doze-typography-main.png"
+                data-theme-main-src="assets/doze/doze-typography-main.png"
+                data-theme-alt-src="assets/doze/doze-typography.png"
                 width="1075"
                 height="680"
                 loading="lazy"
@@ -203,16 +217,7 @@
           </p>
         </div>
 
-<div class="vimeo-gif-wrapper project-image-container" style="margin-bottom: 2rem;">
-  <iframe
-    src="https://player.vimeo.com/video/1161398799?autoplay=1&loop=1&muted=1&background=1"
-    frameborder="0"
-    allow="autoplay; fullscreen; picture-in-picture"
-    playsinline
-    title="Vimeo background video"
-    style="display: block; width: 100%; height: 100%;"
-  ></iframe>
-</div>
+
 
         <div class="project-image-container">
           <figure class="project-image border top border">
@@ -516,6 +521,7 @@
     </script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        if (document.documentElement.dataset.projectScrollControl === "enhanced") return;
         const scrollIndicator = document.querySelector(".scroll-indicator");
         const scrollTrack = document.querySelector(".scroll-track");
         const scrollProgress = document.querySelector(".scroll-progress");

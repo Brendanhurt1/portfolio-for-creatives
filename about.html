@@ -21,6 +21,9 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="./styles/style.css" />
+    <script src="./js/theme-toggle.js"></script>
+    <script src="./js/ambient-ribbons.js" defer></script>
+    <script src="./js/custom-cursor.js" defer></script>
     <!-- FAVICONS -->
     <link
       rel="icon"
@@ -52,9 +55,18 @@
       href="assets/branding-images/favicon-bh-brand-brown-180.png"
     />
     <!-- END FAVICONS -->
+    <script src="./js/audio-controller.js"></script>
   </head>
 
-  <body class="about-page">
+  <body class="about-page home-page secondary-page">
+    <header class="site-navigation">
+      <a class="home-nav-logo" href="index.html" aria-label="Back to home"><span class="home-nav-logo-mark" aria-hidden="true"></span></a>
+      <ul class="nav-branding">
+        <li><a href="more-of-my-work.html" class="nav-branding-item">More Of My Work</a></li>
+        <li><a href="about.html" class="nav-branding-item">About Me</a></li>
+      </ul>
+      <div class="nav-sound-control"><label class="nav-sound-toggle" for="soundToggle"><input id="soundToggle" type="checkbox" role="switch" aria-label="Turn sound on" aria-checked="false" /><span class="nav-sound-orb" aria-hidden="true"><span class="nav-sound-icon"></span></span></label></div>
+    </header>
     <header class="hero-header">
       <div class="nav-wrapper">
         <ul class="nav-branding">
@@ -74,7 +86,7 @@
       <li class="about-grid-image">
         <figure class="about-image">
           <img
-            src="assets/about-me/about-me-portrait.jpg"
+            src="assets/about-me/about-me-portrait-2.jpg"
             width="1160"
             height="1170"
             alt="headshot portrait of myself"
@@ -223,6 +235,7 @@
       <li class="about-extra about-extra-experience">
         <div class="about-extra-inner">
           <h2 class="project-description-title">Experience & Recognition</h2>
+                 <p class="project-description-about">Lead Illustrator / Graphic Designer for BAZOOF! | <strong>Jun 2026 - Present</strong></p>
           <p class="project-description-about">Junior Designer with PS&Co | <strong>Feb - Apr 2026</strong></p>
           <p class="project-description-about">
             Freelance Commission Illustrations | <strong>Ongoing</strong>
@@ -282,7 +295,7 @@
         <h2>Socials</h2>
         <ul class="footer-socials-list">
           <li class="footer-item">
-            <a href="https://www.instagram.com/brendanhurtart/">
+            <a href="https://www.instagram.com/brendanhurtart/" aria-label="Instagram">
               <img
                 src="assets/socials/instagram-icon.svg"
                 data-hover="assets/socials/instagram-icon-hover.svg"
@@ -294,6 +307,7 @@
           <li class="footer-item">
             <a
               href="https://www.linkedin.com/in/brendan-hurt-728262200/?originalSubdomain=ca"
+              aria-label="LinkedIn"
             >
               <img
                 src="assets/socials/linkedin-icon.svg"
@@ -304,7 +318,7 @@
             </a>
           </li>
           <li class="footer-item">
-            <a href="https://www.behance.net/brendanhurt">
+            <a href="https://www.behance.net/brendanhurt" aria-label="Behance">
               <img
                 src="assets/socials/behance-icon.svg"
                 data-hover="assets/socials/behance-icon-hover.svg"
@@ -336,7 +350,9 @@
         const original = icon.src;
         const hover = icon.dataset.hover;
 
-        icon.addEventListener("mouseenter", () => (icon.src = hover));
+        icon.addEventListener("mouseenter", () => {
+          if (document.documentElement.dataset.theme !== "coral") icon.src = hover;
+        });
         icon.addEventListener("mouseleave", () => (icon.src = original));
       });
     </script>
