@@ -153,7 +153,7 @@
                 preload="auto"
                 aria-hidden="true"
               >
-                <source src="assets/home-page/milianos-thumbnail.mp4" type="video/mp4" />
+                <source src="assets/home-page/milianos-thumbnail-web.mp4" type="video/mp4" />
               </video>
               <img
                 class="project-thumbnail-overlay"
@@ -189,7 +189,7 @@
                 preload="auto"
                 aria-hidden="true"
               >
-                <source src="assets/home-page/doze-thumbnail.mp4" type="video/mp4" />
+                <source src="assets/home-page/doze-thumbnail-web.mp4" type="video/mp4" />
               </video>
               <img
                 class="project-thumbnail-overlay"
@@ -219,7 +219,7 @@
           <li class="work-page-grid-item work-page-grid-item--tripleos">
             <figure>
               <video class="project-hover-video" muted playsinline loop preload="auto" aria-hidden="true">
-                <source src="assets/home-page/tripleos-thumbnail.mp4" type="video/mp4" />
+                <source src="assets/home-page/tripleos-thumbnail-web.mp4" type="video/mp4" />
               </video>
               <img
                 class="project-thumbnail-overlay"
@@ -248,7 +248,7 @@
           <li class="work-page-grid-item work-page-grid-item--franks-redhot">
             <figure>
               <video class="project-hover-video" muted playsinline loop preload="auto" aria-hidden="true">
-                <source src="assets/home-page/franks-redhot-thumbnail.mp4" type="video/mp4" />
+                <source src="assets/home-page/franks-redhot-thumbnail-web.mp4" type="video/mp4" />
               </video>
               <img
                 class="project-thumbnail-overlay"
@@ -277,7 +277,7 @@
           <li class="work-page-grid-item work-page-grid-item--west-point-brewing">
             <figure>
               <video class="project-hover-video" muted playsinline loop preload="auto" aria-hidden="true">
-                <source src="assets/home-page/west-point-brewing-thumbnail.mp4" type="video/mp4" />
+                <source src="assets/home-page/west-point-brewing-thumbnail-web.mp4" type="video/mp4" />
               </video>
               <img
                 class="project-thumbnail-overlay"
@@ -306,7 +306,7 @@
           <li class="work-page-grid-item work-page-grid-item--strathcona-post">
             <figure>
               <video class="project-hover-video" muted playsinline loop preload="auto" aria-hidden="true">
-                <source src="assets/home-page/strathcona-post-thumbnail.mp4" type="video/mp4" />
+                <source src="assets/home-page/strathcona-post-thumbnail-web.mp4" type="video/mp4" />
               </video>
               <img
                 class="project-thumbnail-overlay"
@@ -364,7 +364,7 @@
           <li class="work-page-grid-item work-page-grid-item--prog-rock-odyssey">
             <figure>
               <video class="project-hover-video" muted playsinline loop preload="auto" aria-hidden="true">
-                <source src="assets/home-page/prog-rock-odyssey-thumbnail.mp4" type="video/mp4" />
+                <source src="assets/home-page/prog-rock-odyssey-thumbnail-web.mp4" type="video/mp4" />
               </video>
               <img
                 class="project-thumbnail-overlay"
@@ -393,7 +393,7 @@
           <li class="work-page-grid-item work-page-grid-item--zokusha-workshop">
             <figure>
               <video class="project-hover-video" muted playsinline loop preload="auto" aria-hidden="true">
-                <source src="assets/home-page/zokusha-workshop-thumbnail.mp4" type="video/mp4" />
+                <source src="assets/home-page/zokusha-workshop-thumbnail-web.mp4" type="video/mp4" />
               </video>
               <img
                 class="project-thumbnail-overlay"
@@ -912,7 +912,9 @@
             const distance = signedDistance(index);
             const depth = Math.abs(distance);
             const isActive = distance === 0;
-            const isVisible = depth <= 2;
+            // Phone layouts show the centred card plus one card on either side.
+            // Larger layouts retain the five-card desktop stack.
+            const isVisible = depth <= (usesTouchCarouselLayout() ? 1 : 2);
             const isIncoming =
               (direction < 0 && distance === 1) ||
               (direction > 0 && distance === -1);

@@ -5001,18 +5001,20 @@ html[data-theme="coral"] .nav-sound-toggle input:checked + .nav-sound-orb .nav-s
   }
 
   .home-page .portfolio .project-card-stack {
+    --mobile-card-size: min(46vw, 12rem);
+    --mobile-detail-panel-height: clamp(8.5rem, 34vw, 9.5rem);
     width: calc(100% - 2rem);
     max-width: none;
-    height: calc(60vw - 1.2rem);
+    height: calc(var(--mobile-card-size) + var(--mobile-detail-panel-height));
     margin-inline: auto;
     padding: 0;
   }
 
   .home-page .portfolio .project-card-stack .work-page-grid-item {
-    /* Centre the card-and-panel unit, leaving the detail panel room to pull
-       out on the right without covering the thumbnail. */
-    left: calc(50% - clamp(3.4rem, 17vw, 4.35rem));
-    width: 46% !important;
+    /* Keep the active portfolio square perfectly centred on mobile. */
+    top: min(23vw, 6rem);
+    left: 50%;
+    width: var(--mobile-card-size) !important;
   }
 
   .home-page .portfolio .project-card-stack .project-swipe-cue {
@@ -5031,15 +5033,17 @@ html[data-theme="coral"] .nav-sound-toggle input:checked + .nav-sound-orb .nav-s
   }
 
   .home-page .portfolio .project-card-stack .project-details-overlay.overlay {
-    top: 0;
+    top: calc(100% - 1px);
     right: auto;
     bottom: auto;
-    left: calc(100% - 1px);
-    width: var(--detail-panel-width, 8rem);
-    height: 100%;
-    min-height: 100%;
+    left: 0;
+    width: 100%;
+    height: var(--mobile-detail-panel-height);
+    min-height: var(--mobile-detail-panel-height);
+    gap: 0.75rem;
     padding: clamp(0.7rem, 3vw, 1rem);
-    border-radius: 0 0.3rem 0.3rem 0;
+    border-radius: 0 0 0.3rem 0.3rem;
+    clip-path: inset(0 0 100% 0);
   }
 
   /* A centred mobile card has no hover state, so reveal its motion thumbnail
