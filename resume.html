@@ -22,9 +22,21 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="./styles/style.css" />
+    <script src="./js/theme-toggle.js"></script>
+    <script src="./js/ambient-ribbons.js" defer></script>
+    <script src="./js/custom-cursor.js" defer></script>
+    <script src="./js/audio-controller.js"></script>
   </head>
 
-  <body class="project-2">
+  <body class="project-2 home-page secondary-page">
+    <header class="site-navigation">
+      <a class="home-nav-logo" href="index.html" aria-label="Back to home"><span class="home-nav-logo-mark" aria-hidden="true"></span></a>
+      <ul class="nav-branding">
+        <li><a href="more-of-my-work.html" class="nav-branding-item">More Of My Work</a></li>
+        <li><a href="about.html" class="nav-branding-item">About Me</a></li>
+      </ul>
+      <div class="nav-sound-control"><label class="nav-sound-toggle" for="soundToggle"><input id="soundToggle" type="checkbox" role="switch" aria-label="Turn sound on" aria-checked="false" /><span class="nav-sound-orb" aria-hidden="true"><span class="nav-sound-icon"></span></span></label></div>
+    </header>
     <header class="hero-header">
       <ul class="nav-branding">
         <li><a href="work.html" class="custom-navigation">Work</a></li>

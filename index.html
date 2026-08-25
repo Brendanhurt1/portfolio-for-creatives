@@ -29,6 +29,7 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="./styles/style.css" />
+    <script src="./js/theme-toggle.js"></script>
     <!-- FAVICONS -->
     <link
       rel="icon"
@@ -60,74 +61,370 @@
       href="assets/branding-images/favicon-bh-brand-brown-180.png"
     />
     <!-- END FAVICONS -->
+    <script src="./js/audio-controller.js"></script>
   </head>
 
   <body class="home-page" id="top">
-    <section class="hero">
-      <style>
-        .video-container {
-          width: 100%;
-          opacity: 1; /* visible by default */
-          transition: opacity 1s ease;
-        }
-
-        .video-container.hide {
-          opacity: 0;
-          pointer-events: none;
-        }
-      </style>
-
-      <div class="video-container" id="introVideoContainer">
-        <video id="introVideo" muted playsinline preload="auto" autoplay>
-          <source src="assets/opening-video.mp4" type="video/mp4" />
-        </video>
+    <svg
+      class="ps3-ribbon-background"
+      viewBox="0 0 1200 800"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <g class="ps3-ribbon-broad-waves" fill="none" stroke="#ffefe1">
+        <path class="ps3-ribbon-wave ps3-ribbon-wave--wide" data-wave="0" opacity="0.045" stroke-width="44" />
+        <path class="ps3-ribbon-wave ps3-ribbon-wave--wide" data-wave="1" opacity="0.028" stroke-width="68" />
+      </g>
+      <g class="ps3-ribbon-waves" fill="none" stroke="#ffefe1">
+        <path class="ps3-ribbon-wave" data-wave="0" opacity="0.20" stroke-width="2.4" />
+        <path class="ps3-ribbon-wave" data-wave="1" opacity="0.14" stroke-width="1.8" />
+        <path class="ps3-ribbon-wave" data-wave="2" opacity="0.09" stroke-width="1.3" />
+        <path class="ps3-ribbon-wave" data-wave="3" opacity="0.04" stroke-width="1" />
+        <path class="ps3-ribbon-wave" data-wave="4" opacity="0.07" stroke-width="3.6" />
+      </g>
+      <g class="ps3-ribbon-particles"></g>
+    </svg>
+    <div class="custom-cursor" aria-hidden="true"></div>
+    <header class="site-navigation">
+      <a class="home-nav-logo" href="index.html" aria-label="Back to home">
+        <span class="home-nav-logo-mark"></span>
+      </a>
+      <ul class="nav-branding">
+        <li>
+          <a href="more-of-my-work.html" class="nav-branding-item">More Of My Work</a>
+        </li>
+        <li>
+          <a href="about.html" class="nav-branding-item">About Me</a>
+        </li>
+      </ul>
+      <div class="nav-sound-control">
+        <label class="nav-sound-toggle" for="soundToggle">
+          <input id="soundToggle" type="checkbox" role="switch" aria-label="Turn sound on" aria-checked="false" />
+          <span class="nav-sound-orb" aria-hidden="true"><span class="nav-sound-icon"></span></span>
+        </label>
       </div>
-
-      <div class="video-gradient"></div>
+    </header>
+    <section class="hero">
+      <!-- Hero background video intentionally disabled. -->
 
       <div class="content">
         <div class="hero-overlay"></div>
 
-        <header class="hero-header index-header index-hero-header">
-          <div class="nav-branding-logo index-logo-wrapper">
-            <a href="index.html">
-              <object
-                id="animatedLogo"
-                type="image/svg+xml"
-                data="assets/branding-images/logo-moving-forever.svg"
-                class="logo-svg"
-              ></object>
-            </a>
-          </div>
-
-          <ul class="nav-branding">
-            <li>
-              <a href="more-of-my-work.html" class="nav-branding-item"
-                >More Of My Work</a
-              >
-            </li>
-            <li>
-              <a href="about.html" class="nav-branding-item">About Me</a>
-            </li>
-          </ul>
-        </header>
+        <h1 class="hero-name" aria-label="Brendan Hurt">
+          <span class="hero-name-content">
+            <span>Brendan</span>
+            <span>Hurt</span>
+          </span>
+        </h1>
 
         <div class="hero-headline-wrapper">
-          <h3 class="hero-headline" id="typed-output"></h3>
-          <p class="hero-headline">
-            Contact Email:
-            <a href="mailto:brendanhurtt@gmail.com">brendanhurtt@gmail.com</a>
-          </p>
+          <h3 class="hero-headline"><span id="typed-output"></span><span class="typing-caret" aria-hidden="true">|</span></h3>
+          <div class="hero-actions">
+            <p class="hero-contact">
+              <a class="hero-contact-link" href="mailto:brendanhurtt@gmail.com">REACH OUT</a>
+            </p>
+            <div class="theme-switcher">
+              <label class="theme-switch" for="themeToggle">
+                <input id="themeToggle" type="checkbox" role="switch" aria-label="Change colour theme" aria-checked="false" />
+                <span class="theme-switch-track" aria-hidden="true"><span class="theme-switch-thumb"></span></span>
+              </label>
+              <span class="theme-switch-label">Change Theme</span>
+            </div>
+          </div>
         </div>
 
-        <div class="hero-arrow-container">
-          <a href="#next-section" class="hero-arrow-link">
-            <i class="fa-sharp fa-solid fa-arrow-down fa-2x"></i>
-            <span class="arrow-label">take a look around</span>
-          </a>
-        </div>
+      </div>
+    </section>
 
-        <div class="tag-scroll-bar">
+    <main id="next-section" class="main-work-section">
+      <section class="portfolio">
+        <ul
+          class="grid project-card-stack"
+          aria-label="Selected projects"
+          tabindex="0"
+        >
+          <li class="work-page-grid-item work-page-grid-item--milianos">
+            <figure>
+              <video
+                class="project-hover-video"
+                muted
+                playsinline
+                loop
+                preload="auto"
+                aria-hidden="true"
+              >
+                <source src="assets/home-page/milianos-thumbnail.mp4" type="video/mp4" />
+              </video>
+              <img
+                class="project-thumbnail-overlay"
+                src="assets/home-page/milianos-thumbnail.png"
+                width="1500"
+                height="1500"
+                alt="Miliano's Restaurant"
+              />
+            </figure>
+            <!-- Replace these three placeholder src values with Miliano's hover images. -->
+            <div class="project-hover-image-sources" hidden aria-hidden="true">
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-1.jpg" alt="" />
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-4.jpg" alt="" />
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-7.jpg" alt="" />
+            </div>
+            <a href="project-1-milianos.html">
+              <div class="project-details-overlay overlay centered-text">
+                <h1 class="work-grid-project-title">Milianos Restaurant</h1>
+                <h4 class="work-grid-project-category">
+                  Brand Identity, Packaging and Menu Design
+                </h4>
+              </div>
+            </a>
+          </li>
+
+          <li class="work-page-grid-item work-page-grid-item--doze">
+            <figure>
+              <video
+                class="project-hover-video"
+                muted
+                playsinline
+                loop
+                preload="auto"
+                aria-hidden="true"
+              >
+                <source src="assets/home-page/doze-thumbnail.mp4" type="video/mp4" />
+              </video>
+              <img
+                class="project-thumbnail-overlay"
+                src="assets/home-page/doze-thumbnail.png"
+                width="1500"
+                height="1500"
+                loading="lazy"
+                alt="Doze"
+              />
+            </figure>
+            <!-- Replace these three placeholder src values with Doze hover images. -->
+            <div class="project-hover-image-sources" hidden aria-hidden="true">
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-1.jpg" alt="" />
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-4.jpg" alt="" />
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-7.jpg" alt="" />
+            </div>
+            <a href="project-2-doze.html">
+              <div class="project-details-overlay overlay centered-text">
+                <h1 class="work-grid-project-title">Doze</h1>
+                <h4 class="work-grid-project-category">
+                  Brand Identity, Packaging, Social Media, Web Design
+                </h4>
+              </div>
+            </a>
+          </li>
+
+          <li class="work-page-grid-item work-page-grid-item--tripleos">
+            <figure>
+              <video class="project-hover-video" muted playsinline loop preload="auto" aria-hidden="true">
+                <source src="assets/home-page/tripleos-thumbnail.mp4" type="video/mp4" />
+              </video>
+              <img
+                class="project-thumbnail-overlay"
+                src="assets/home-page/tripleos-thumbnail.png"
+                width="1500"
+                height="1500"
+                loading="lazy"
+                alt="Triple O's"
+              />
+            </figure>
+            <!-- Replace these three placeholder src values with Triple O's hover images. -->
+            <div class="project-hover-image-sources" hidden aria-hidden="true">
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-1.jpg" alt="" />
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-4.jpg" alt="" />
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-7.jpg" alt="" />
+            </div>
+            <a href="project-3-triple os.html">
+              <div class="project-details-overlay overlay centered-text">
+                <h1 class="work-grid-project-title">TRIPLE O'S</h1>
+                <h4 class="work-grid-project-category">
+                  Social Media Advertising Campaign
+                </h4>
+              </div>
+            </a>
+          </li>
+          <li class="work-page-grid-item work-page-grid-item--franks-redhot">
+            <figure>
+              <video class="project-hover-video" muted playsinline loop preload="auto" aria-hidden="true">
+                <source src="assets/home-page/franks-redhot-thumbnail.mp4" type="video/mp4" />
+              </video>
+              <img
+                class="project-thumbnail-overlay"
+                src="assets/home-page/franks-redhot-thumbnail.png"
+                width="1500"
+                height="1500"
+                loading="lazy"
+                alt="Frank's RedHot"
+              />
+            </figure>
+            <!-- Replace these three placeholder src values with Frank's RedHot hover images. -->
+            <div class="project-hover-image-sources" hidden aria-hidden="true">
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-1.jpg" alt="" />
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-4.jpg" alt="" />
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-7.jpg" alt="" />
+            </div>
+            <a href="project-4-franks.html">
+              <div class="project-details-overlay overlay centered-text">
+                <h1 class="work-grid-project-title">FRANK'S REDHOT</h1>
+                <h4 class="work-grid-project-category">
+                  Brand Identity and Packaging
+                </h4>
+              </div>
+            </a>
+          </li>
+          <li class="work-page-grid-item work-page-grid-item--west-point-brewing">
+            <figure>
+              <video class="project-hover-video" muted playsinline loop preload="auto" aria-hidden="true">
+                <source src="assets/home-page/west-point-brewing-thumbnail.mp4" type="video/mp4" />
+              </video>
+              <img
+                class="project-thumbnail-overlay"
+                src="assets/home-page/west-point-brewing-thumbnail.png"
+                width="1500"
+                height="1500"
+                loading="lazy"
+                alt="West Point Brewing"
+              />
+            </figure>
+            <!-- Replace these three placeholder src values with West Point Brewing hover images. -->
+            <div class="project-hover-image-sources" hidden aria-hidden="true">
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-1.jpg" alt="" />
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-4.jpg" alt="" />
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-7.jpg" alt="" />
+            </div>
+            <a href="project-5-brewery.html">
+              <div class="project-details-overlay overlay centered-text">
+                <h1 class="work-grid-project-title">WEST POINT BREWING</h1>
+                <h4 class="work-grid-project-category">
+                  Brand Identity, Packaging, and Motion Reel
+                </h4>
+              </div>
+            </a>
+          </li>
+          <li class="work-page-grid-item work-page-grid-item--strathcona-post">
+            <figure>
+              <video class="project-hover-video" muted playsinline loop preload="auto" aria-hidden="true">
+                <source src="assets/home-page/strathcona-post-thumbnail.mp4" type="video/mp4" />
+              </video>
+              <img
+                class="project-thumbnail-overlay"
+                src="assets/home-page/strathcona-post-thumbnail.png"
+                width="1500"
+                height="1500"
+                loading="lazy"
+                alt="Strathcona Post"
+              />
+            </figure>
+            <!-- Replace these three placeholder src values with Strathcona Post hover images. -->
+            <div class="project-hover-image-sources" hidden aria-hidden="true">
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-1.jpg" alt="" />
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-4.jpg" alt="" />
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-7.jpg" alt="" />
+            </div>
+            <a href="project-6-strathcona.html">
+              <div class="project-details-overlay overlay centered-text">
+                <h1 class="work-grid-project-title">STRATHCONA POST</h1>
+                <h4 class="work-grid-project-category">
+                  Experiential Campaign and Motion Reel
+                </h4>
+              </div>
+            </a>
+          </li>
+          <li class="work-page-grid-item work-page-grid-item--spudbuds">
+            <figure>
+              <video class="project-hover-video" muted playsinline loop preload="auto" aria-hidden="true">
+                <source src="assets/home-page/spudbuds-thumbnail.mp4" type="video/mp4" />
+              </video>
+              <img
+                class="project-thumbnail-overlay"
+                src="assets/home-page/spudbuds-thumbnail.png"
+                width="1500"
+                height="1500"
+                loading="lazy"
+                alt="Spudbuds"
+              />
+            </figure>
+            <!-- Replace these three placeholder src values with Spudbuds hover images. -->
+            <div class="project-hover-image-sources" hidden aria-hidden="true">
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-1.jpg" alt="" />
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-4.jpg" alt="" />
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-7.jpg" alt="" />
+            </div>
+            <a href="project-7-spudbuds.html">
+              <div class="project-details-overlay overlay centered-text">
+                <h1 class="work-grid-project-title">SPUDBUDS</h1>
+                <h4 class="work-grid-project-category">
+                  Brand Identity, Illustration, and Product Design
+                </h4>
+              </div>
+            </a>
+          </li>
+          <li class="work-page-grid-item work-page-grid-item--prog-rock-odyssey">
+            <figure>
+              <video class="project-hover-video" muted playsinline loop preload="auto" aria-hidden="true">
+                <source src="assets/home-page/prog-rock-odyssey-thumbnail.mp4" type="video/mp4" />
+              </video>
+              <img
+                class="project-thumbnail-overlay"
+                src="assets/home-page/prog-rock-odyssey-thumbnail.png"
+                width="1500"
+                height="1500"
+                loading="lazy"
+                alt="Prog Rock Odyssey"
+              />
+            </figure>
+            <!-- Replace these three placeholder src values with Prog Rock Odyssey hover images. -->
+            <div class="project-hover-image-sources" hidden aria-hidden="true">
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-1.jpg" alt="" />
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-4.jpg" alt="" />
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-7.jpg" alt="" />
+            </div>
+            <a href="project-8-progrock.html">
+              <div class="project-details-overlay overlay centered-text">
+                <h1 class="work-grid-project-title">PROG ROCK ODYSSEY</h1>
+                <h4 class="work-grid-project-category">
+                  Interactive Motion and Social Media
+                </h4>
+              </div>
+            </a>
+          </li>
+          <li class="work-page-grid-item work-page-grid-item--zokusha-workshop">
+            <figure>
+              <video class="project-hover-video" muted playsinline loop preload="auto" aria-hidden="true">
+                <source src="assets/home-page/zokusha-workshop-thumbnail.mp4" type="video/mp4" />
+              </video>
+              <img
+                class="project-thumbnail-overlay"
+                src="assets/home-page/zokusha-workshop-thumbnail.png"
+                width="1500"
+                height="1500"
+                loading="lazy"
+                alt="Zokusha Workshop"
+              />
+            </figure>
+            <!-- Replace these three placeholder src values with Zokusha Workshop hover images. -->
+            <div class="project-hover-image-sources" hidden aria-hidden="true">
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-1.jpg" alt="" />
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-4.jpg" alt="" />
+              <img src="assets/home-page/brendan-hurt-covers-thumbnails-7.jpg" alt="" />
+            </div>
+            <a href="project-9-zokusha.html">
+              <div class="project-details-overlay overlay centered-text">
+                <h1 class="work-grid-project-title">ZOKUSHA WORKSHOP</h1>
+                <h4 class="work-grid-project-category">
+                  Brand Identity and Company Deliverables
+                </h4>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <section class="tag-scroll-section" aria-label="Design services">
+      <div class="tag-scroll-bar">
           <div class="tag-track" id="tagTrack">
             <span class="tag">Packaging Design</span>
             <span class="tag">Brand Development</span>
@@ -160,208 +457,8 @@
             <span class="tag">Ideation</span>
             <span class="tag">Traditional Illustration</span>
           </div>
-        </div>
-        <!-- ⭐ END TAG BAR ⭐ -->
       </div>
     </section>
-
-    <main id="next-section" class="main-work-section">
-      <section class="portfolio">
-        <ul class="grid">
-          <li class="work-page-grid-item">
-            <figure>
-              <img
-                src="assets/home-page/brendan-hurt-covers-thumbnails-1.jpg"
-                width="1500"
-                height="1000"
-                loading="lazy"
-                alt="Describe your project"
-              />
-            </figure>
-            <a href="project-1-milianos.html">
-              <div class="project-details-overlay overlay centered-text">
-                <h1 class="work-grid-project-title">Miliano's Restaurant</h1>
-                <h4 class="work-grid-project-category">
-                  Brand Identity, Packaging and Menu Design
-                </h4>
-              </div>
-            </a>
-          </li>
-
-          <li class="work-page-grid-item">
-            <figure class="hover-swap">
-              <img
-                class="thumb-static"
-                src="assets/home-page/brendan-hurt-covers-thumbnails-2.jpg"
-                width="1500"
-                height="1500"
-                loading="lazy"
-                alt="Describe your project"
-              />
-              <img
-                class="thumb-gif"
-                src="assets/home-page/doze-thumbnail-moving.gif"
-                width="1000"
-                height="1000"
-                alt=""
-              />
-            </figure>
-
-            <a href="project-2-doze.html">
-              <div class="project-details-overlay overlay centered-text">
-                <h1 class="work-grid-project-title">Doze</h1>
-                <h4 class="work-grid-project-category">
-                  Brand Identity, Packaging, Social Media, Web Design
-                </h4>
-              </div>
-            </a>
-          </li>
-
-                            <li class="work-page-grid-item">
-            <figure>
-              <img
-                src="assets/home-page/brendan-hurt-covers-thumbnails-3.jpg"
-                width="1000"
-                height="1500"
-                loading="lazy"
-                alt="Describe your project"
-              />
-            </figure>
-            <a href="project-3-triple os.html">
-              <div class="project-details-overlay overlay centered-text">
-                <h1 class="work-grid-project-title">TRIPLE O'S</h1>
-                <h4 class="work-grid-project-category">
-                  Social Media Advertising Campaign
-                </h4>
-              </div>
-            </a>
-          </li>
-          <li class="work-page-grid-item">
-            <figure>
-              <img
-                src="assets/home-page/brendan-hurt-covers-thumbnails-4.jpg"
-                width="1500"
-                height="1500"
-                loading="lazy"
-                alt="Describe your project"
-              />
-            </figure>
-            <a href="project-4-franks.html">
-              <div class="project-details-overlay overlay centered-text">
-                <h1 class="work-grid-project-title">FRANK'S REDHOT</h1>
-                <h4 class="work-grid-project-category">
-                  Brand Identity and Packaging
-                </h4>
-              </div>
-            </a>
-          </li>
-          <li class="work-page-grid-item">
-            <figure class="hover-swap">
-              <img
-                class="thumb-static"
-                src="assets/home-page/brendan-hurt-covers-thumbnails-5.jpg"
-                width="1500"
-                height="1500"
-                loading="lazy"
-                alt="Static image"
-              />
-              <img
-                class="thumb-gif"
-                src="assets/home-page/west-point-brewing-thumbnail-moving.gif"
-                width="1000"
-                height="1000"
-                alt="GIF"
-              />
-            </figure>
-
-            <a href="project-5-brewery.html">
-              <div class="project-details-overlay overlay centered-text">
-                <h1 class="work-grid-project-title">WEST POINT BREWING</h1>
-                <h4 class="work-grid-project-category">
-                  Brand Identity, Packaging, and Motion Reel
-                </h4>
-              </div>
-            </a>
-          </li>
-          <li class="work-page-grid-item">
-            <figure>
-              <img
-                src="assets/home-page/brendan-hurt-covers-thumbnails-6.jpg"
-                width="1500"
-                height="1500"
-                loading="lazy"
-                alt="Describe your project"
-              />
-            </figure>
-            <a href="project-6-strathcona.html">
-              <div class="project-details-overlay overlay centered-text">
-                <h1 class="work-grid-project-title">STRATHCONA POST</h1>
-                <h4 class="work-grid-project-category">
-                  Experiential Campaign and Motion Reel
-                </h4>
-              </div>
-            </a>
-          </li>
-          <li class="work-page-grid-item">
-            <figure>
-              <img
-                src="assets/home-page/brendan-hurt-covers-thumbnails-7.jpg"
-                width="1500"
-                height="1500"
-                loading="lazy"
-                alt="Describe your project"
-              />
-            </figure>
-            <a href="project-7-spudbuds.html">
-              <div class="project-details-overlay overlay centered-text">
-                <h1 class="work-grid-project-title">SPUDBUDS</h1>
-                <h4 class="work-grid-project-category">
-                  Brand Identity, Illustration, and Product Design
-                </h4>
-              </div>
-            </a>
-          </li>
-          <li class="work-page-grid-item">
-            <figure>
-              <img
-                src="assets/home-page/brendan-hurt-covers-thumbnails-8.jpg"
-                width="1000"
-                height="1500"
-                loading="lazy"
-                alt="Describe your project"
-              />
-            </figure>
-            <a href="project-8-progrock.html">
-              <div class="project-details-overlay overlay centered-text">
-                <h1 class="work-grid-project-title">PROG ROCK ODYSSEY</h1>
-                <h4 class="work-grid-project-category">
-                  Interactive Motion and Social Media
-                </h4>
-              </div>
-            </a>
-          </li>
-             <li class="work-page-grid-item">
-            <figure>
-              <img
-                src="assets/home-page/brendan-hurt-covers-thumbnails-9.jpg"
-                width="1500"
-                height="1500"
-                loading="lazy"
-                alt="Describe your project"
-              />
-            </figure>
-            <a href="project-9-zokusha.html">
-              <div class="project-details-overlay overlay centered-text">
-                <h1 class="work-grid-project-title">ZOKUSHA WORKSHOP</h1>
-                <h4 class="work-grid-project-category">
-                  Brand Identity and Company Deliverables
-                </h4>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </section>
-    </main>
     <ul class="footer-global">
       <li class="footer-tagline">
         <h2>Contact</h2>
@@ -457,20 +554,6 @@
     </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const heroArrow = document.querySelector(".hero-arrow-link");
-        if (heroArrow) {
-          heroArrow.addEventListener("click", function (e) {
-            e.preventDefault(); // prevent default jump
-            const target = document.querySelector(this.getAttribute("href"));
-            if (target) {
-              target.scrollIntoView({ behavior: "smooth" });
-            }
-          });
-        }
-      });
-    </script>
-    <script>
       const track = document.getElementById("tagTrack");
 
       // Clone content until track is > 2× screen width
@@ -484,141 +567,755 @@
       track.classList.add("ready");
     </script>
     <script>
-      document.querySelectorAll(".hover-swap").forEach((figure) => {
-        const staticImg = figure.querySelector(".thumb-static");
-        const gifImg = figure.querySelector(".thumb-gif");
-
-        figure.addEventListener("mouseenter", () => {
-          // Hide static image
-          staticImg.style.display = "none";
-
-          // Clone GIF and reset src to force reload
-          const newGif = gifImg.cloneNode(true);
-          const currentSrc = gifImg.getAttribute("src");
-          newGif.src = currentSrc + "?t=" + new Date().getTime(); // append timestamp to reload
-
-          newGif.style.display = "block";
-
-          // Replace old gif element
-          gifImg.replaceWith(newGif);
-        });
-
-        figure.addEventListener("mouseleave", () => {
-          // Reset back to static image
-          figure.querySelector(".thumb-static").style.display = "block";
-          figure.querySelector(".thumb-gif").style.display = "none";
-        });
-      });
-    </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      (() => {
         const fullText =
-          "Blending bold branding concepts and illustration into designs that truly stand out . Reach out, and we'll make something happen.";
-
+          "Blending bold branding concepts and illustration into designs that truly stand out.";
         const target = document.getElementById("typed-output");
 
-        // Define words with styles
-        const styledWords = {
-          bold: "bold-word",
-          "stand out": "standout-word",
+        const startTyping = () => {
+          if (!target || target.dataset.typingStarted === "true") return;
+          target.dataset.typingStarted = "true";
+          target.textContent = "";
+
+          const characters = Array.from(fullText);
+          let index = 0;
+
+          const type = () => {
+            if (index >= characters.length) return;
+            target.textContent += characters[index];
+            index++;
+            window.setTimeout(type, 45);
+          };
+
+          type();
         };
 
-        // Convert fullText into an array of characters with spans applied
-        const charArray = [];
-        let i = 0;
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", startTyping, { once: true });
+        } else {
+          startTyping();
+        }
+      })();
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const stack = document.querySelector(".project-card-stack");
+        if (!stack) return;
 
-        while (i < fullText.length) {
-          let matched = false;
-          for (const word in styledWords) {
-            if (fullText.slice(i, i + word.length) === word) {
-              // Push each character of the word wrapped in span
-              for (const char of word) {
-                charArray.push(
-                  `<span class="${styledWords[word]}">${char}</span>`
-                );
-              }
-              i += word.length;
-              matched = true;
-              break;
+        const cards = Array.from(stack.querySelectorAll(".work-page-grid-item"));
+        if (cards.length < 2) return;
+
+        const prepareProjectDetailPanels = () => {
+          cards.forEach((card) => {
+            const title = card.querySelector(".work-grid-project-title");
+            if (!title || title.dataset.wordsPrepared === "true") return;
+
+            const titleText = title.textContent.trim().replace(/\s+/g, " ");
+            if (!titleText) return;
+            title.dataset.wordsPrepared = "true";
+            title.setAttribute("aria-label", titleText);
+            title.replaceChildren(
+              ...titleText.split(" ").map((word) => {
+                const wordElement = document.createElement("span");
+                wordElement.className = "project-title-word";
+                wordElement.textContent = word;
+                return wordElement;
+              })
+            );
+          });
+        };
+
+        const sizeProjectDetailPanels = () => {
+          const panelWidths = [];
+          cards.forEach((card) => {
+            const panel = card.querySelector(".project-details-overlay");
+            const titleWords = card.querySelectorAll(".project-title-word");
+            if (!panel || !titleWords.length) return;
+
+            const measureWord = (word) => {
+              const wordStyles = window.getComputedStyle(word);
+              const measure = document.createElement("span");
+              measure.textContent = word.textContent;
+              Object.assign(measure.style, {
+                position: "absolute",
+                visibility: "hidden",
+                display: "inline-block",
+                width: "max-content",
+                whiteSpace: "nowrap",
+                fontFamily: wordStyles.fontFamily,
+                fontSize: wordStyles.fontSize,
+                fontWeight: wordStyles.fontWeight,
+                fontStyle: wordStyles.fontStyle,
+                letterSpacing: wordStyles.letterSpacing,
+                textTransform: wordStyles.textTransform,
+              });
+              document.body.append(measure);
+              const width = measure.getBoundingClientRect().width;
+              measure.remove();
+              return width;
+            };
+
+            const widestWord = Math.max(
+              ...Array.from(titleWords, measureWord)
+            );
+            const panelStyles = window.getComputedStyle(panel);
+            const horizontalPadding =
+              parseFloat(panelStyles.paddingLeft) + parseFloat(panelStyles.paddingRight);
+            panelWidths.push({
+              panel,
+              width: Math.ceil(widestWord + horizontalPadding),
+            });
+          });
+
+          // Keep every details panel at least as wide as Milianos, giving the
+          // carousel one deliberate, consistent expanded-card footprint.
+          const minimumPanelWidth = panelWidths[0]?.width || 0;
+          panelWidths.forEach(({ panel, width }) => {
+            panel.style.setProperty(
+              "--detail-panel-width",
+              `${Math.max(width, minimumPanelWidth)}px`
+            );
+          });
+          window.requestAnimationFrame(positionNextSwipeCue);
+        };
+
+        prepareProjectDetailPanels();
+        window.requestAnimationFrame(sizeProjectDetailPanels);
+        if (document.fonts?.ready) document.fonts.ready.then(sizeProjectDetailPanels);
+        window.addEventListener("site-theme-change", () => {
+          window.requestAnimationFrame(sizeProjectDetailPanels);
+        });
+
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        let activeIndex = 0;
+        let pointerId = null;
+        let startX = 0;
+        let startY = 0;
+        let controlSide = 0;
+        let dragOffset = 0;
+        let isDragging = false;
+        let isAnimating = false;
+        let isIntroAnimating = false;
+        let moveHistory = [];
+        let suppressClickUntil = 0;
+        let autoCycleDirection = 0;
+        let autoCycleTimer = null;
+        let lastMousePosition = null;
+        let lastHoverPosition = null;
+        let hoverSwipeDirection = 0;
+        let previewingCard = null;
+        const hoverPreviewEnabled = false;
+        const hoverPreviewDelay = 500;
+        const previewStates = new Map();
+
+        const wrap = (index) => (index + cards.length) % cards.length;
+
+        const isOverActiveCard = (target) =>
+          target instanceof Element &&
+          Boolean(target.closest(".work-page-grid-item.is-active"));
+
+        const isOverDetailsPanel = (target) =>
+          target instanceof Element &&
+          Boolean(target.closest(".project-details-overlay"));
+
+        const usesTouchCarouselLayout = () => window.matchMedia("(max-width: 600px)").matches;
+
+        const isInControlLane = (clientX) => {
+          const activeBounds = cards[activeIndex].getBoundingClientRect();
+          return clientX < activeBounds.left || clientX > activeBounds.right;
+        };
+
+        const getAutoCycleDirection = (event) => {
+          if (usesTouchCarouselLayout()) return 0;
+          if (event.pointerType !== "mouse" || isOverActiveCard(event.target)) return 0;
+          const stackBounds = stack.getBoundingClientRect();
+          if (event.clientY < stackBounds.top || event.clientY > stackBounds.bottom) return 0;
+          if (event.clientX < stackBounds.left) return -1;
+          if (event.clientX > stackBounds.right) return 1;
+          return 0;
+        };
+
+        const isInManualSwipeLane = (event) => {
+          if (usesTouchCarouselLayout()) return false;
+          if (event.pointerType !== "mouse") return false;
+          // The expanded details panel belongs to the active card visually, but
+          // remains a dedicated hover-swipe surface.
+          if (isOverDetailsPanel(event.target)) return true;
+          if (isOverActiveCard(event.target)) return false;
+          const stackBounds = stack.getBoundingClientRect();
+          const activeBounds = cards[activeIndex].getBoundingClientRect();
+          const isWithinStackHeight =
+            event.clientY >= stackBounds.top && event.clientY <= stackBounds.bottom;
+          const isWithinStackWidth =
+            event.clientX >= stackBounds.left && event.clientX <= stackBounds.right;
+          const isBesideActiveCard =
+            event.clientX < activeBounds.left || event.clientX > activeBounds.right;
+          return isWithinStackHeight && isWithinStackWidth && isBesideActiveCard;
+        };
+
+        const signedDistance = (index) => {
+          let distance = index - activeIndex;
+          const midpoint = cards.length / 2;
+          if (distance > midpoint) distance -= cards.length;
+          if (distance < -midpoint) distance += cards.length;
+          return distance;
+        };
+
+        ["previous", "next"].forEach((direction) => {
+          const swipeCue = document.createElement("div");
+          swipeCue.className = `project-swipe-cue project-swipe-cue--${direction}`;
+          swipeCue.setAttribute("aria-hidden", "true");
+          swipeCue.innerHTML = `
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="${
+                direction === "previous"
+                  ? "M17.5 4.5 6.5 12l11 7.5Z"
+                  : "M6.5 4.5 17.5 12 6.5 19.5Z"
+              }" />
+            </svg>
+            <span>Swipe</span>
+          `;
+          stack.append(swipeCue);
+        });
+
+        if (hoverPreviewEnabled) cards.forEach((card) => {
+          const figure = card.querySelector("figure");
+          if (!figure) return;
+          const previewImages = Array.from(
+            card.querySelectorAll(".project-hover-image-sources img")
+          )
+            .map((image) => image.getAttribute("src"))
+            .filter(Boolean);
+
+          const layers = [0, 1].map(() => {
+            const image = document.createElement("img");
+            image.className = "project-hover-preview";
+            image.alt = "";
+            image.setAttribute("aria-hidden", "true");
+            figure.append(image);
+            return image;
+          });
+
+          previewStates.set(card, {
+            images: previewImages,
+            layers,
+            frontLayer: 0,
+            imageIndex: 0,
+            timer: null,
+          });
+        });
+
+        const stopPreview = (card) => {
+          const state = previewStates.get(card);
+          if (!state) return;
+          if (state.timer) window.clearInterval(state.timer);
+          state.timer = null;
+          state.layers.forEach((layer) => layer.classList.remove("is-visible"));
+          card.classList.remove("is-previewing");
+          if (previewingCard === card) previewingCard = null;
+        };
+
+        const startPreview = (card) => {
+          if (!hoverPreviewEnabled) return;
+          if (isIntroAnimating || card !== cards[activeIndex] || previewingCard === card) return;
+          if (previewingCard) stopPreview(previewingCard);
+
+          const state = previewStates.get(card);
+          if (!state || !state.images.length) return;
+          state.imageIndex = 0;
+          state.frontLayer = 0;
+          state.layers[0].src = state.images[state.imageIndex];
+          state.layers[1].classList.remove("is-visible");
+          card.classList.add("is-previewing");
+          previewingCard = card;
+
+          state.timer = window.setTimeout(() => {
+            if (previewingCard !== card) return;
+            window.requestAnimationFrame(() => {
+              state.layers[0].classList.add("is-visible");
+            });
+
+            if (reducedMotion.matches) return;
+            state.timer = window.setInterval(() => {
+              const nextLayer = state.frontLayer === 0 ? 1 : 0;
+              state.imageIndex = (state.imageIndex + 1) % state.images.length;
+              state.layers[nextLayer].src = state.images[state.imageIndex];
+              state.layers[nextLayer].classList.remove("is-visible");
+              window.requestAnimationFrame(() => {
+                state.layers[nextLayer].classList.add("is-visible");
+                state.layers[state.frontLayer].classList.remove("is-visible");
+                state.frontLayer = nextLayer;
+              });
+            }, 1000);
+          }, hoverPreviewDelay);
+        };
+
+        const playHoverVideo = (card) => {
+          const video = card.querySelector(".project-hover-video");
+          if (!video || isIntroAnimating || card !== cards[activeIndex]) return;
+          video.play().catch(() => {});
+        };
+
+        const pauseHoverVideo = (card) => {
+          card.querySelector(".project-hover-video")?.pause();
+        };
+
+        const pauseHoverVideos = () => cards.forEach(pauseHoverVideo);
+
+        function positionNextSwipeCue() {
+          // The active card moves while a drag is in progress. Keep the cue at
+          // its settled outer position until the next card has finished moving.
+          if (isDragging || isAnimating) return;
+          const nextCue = stack.querySelector(".project-swipe-cue--next");
+          const activePanel = cards[activeIndex]?.querySelector(
+            ".project-details-overlay"
+          );
+          if (!nextCue || !activePanel) return;
+
+          const stackBounds = stack.getBoundingClientRect();
+          const panelBounds = activePanel.getBoundingClientRect();
+          const gap = Math.max(16, Math.min(stackBounds.width * 0.02, 32));
+          nextCue.style.left = `${panelBounds.right - stackBounds.left + gap}px`;
+          nextCue.style.right = "auto";
+        }
+
+        const render = (offset = 0) => {
+          const width = Math.max(stack.getBoundingClientRect().width, 1);
+          const pull = Math.min(Math.abs(offset) / (width * 0.3), 1);
+          const direction = Math.sign(offset);
+          const isIntroRender = !stack.dataset.introConfigured;
+
+          cards.forEach((card, index) => {
+            const distance = signedDistance(index);
+            const depth = Math.abs(distance);
+            const isActive = distance === 0;
+            const isVisible = depth <= 2;
+            const isIncoming =
+              (direction < 0 && distance === 1) ||
+              (direction > 0 && distance === -1);
+            const step = Math.min(width * 0.115, 150);
+            let x = distance * step;
+            let y = 0;
+            let scale = Math.max(0.82, 1 - depth * 0.08);
+            let opacity = isActive ? 1 : depth === 1 ? 0.56 : depth === 2 ? 0.24 : 0;
+
+            if (isIncoming) {
+              x *= 1 - pull;
+              scale += (1 - scale) * pull;
+              opacity += (1 - opacity) * pull;
+            } else if (!isActive) {
+              x += offset * 0.08;
             }
+
+            if (isActive) {
+              x += offset;
+            }
+
+            card.style.setProperty("--stack-x", `${x}px`);
+            card.style.setProperty("--stack-y", `${y}px`);
+            card.style.setProperty("--stack-scale", scale.toFixed(3));
+            card.style.setProperty("--stack-rotation", "0deg");
+            card.style.zIndex = String(isActive ? 50 : 30 - depth);
+            card.style.opacity = String(opacity);
+            card.style.visibility = isVisible ? "visible" : "hidden";
+            if (isIntroRender) {
+              card.style.setProperty("--intro-delay", `${depth * 70}ms`);
+            }
+            card.classList.toggle("is-active", isActive);
+            card.setAttribute("aria-hidden", String(!isActive));
+
+            const link = card.querySelector("a");
+            if (link) link.tabIndex = isActive ? 0 : -1;
+          });
+
+          positionNextSwipeCue();
+
+          if (isIntroRender) stack.dataset.introConfigured = "true";
+        };
+
+        const finishDrag = (direction, velocity = 0) => {
+          if (!direction || isAnimating || isIntroAnimating) return;
+          window.siteAudio?.playSwap?.();
+          if (previewingCard) stopPreview(previewingCard);
+          pauseHoverVideos();
+          isAnimating = true;
+          isDragging = false;
+          stack.classList.remove("is-dragging");
+          suppressClickUntil = Date.now() + 500;
+          const duration = reducedMotion.matches
+            ? 0
+            : Math.max(330, 400 - Math.min(Math.abs(velocity) * 28, 70));
+          stack.style.setProperty("--stack-duration", `${duration}ms`);
+          activeIndex = wrap(activeIndex + direction);
+          dragOffset = 0;
+          render();
+          window.setTimeout(() => {
+            isAnimating = false;
+            positionNextSwipeCue();
+          }, duration);
+        };
+
+        const stopAutoCycle = () => {
+          autoCycleDirection = 0;
+          if (autoCycleTimer) window.clearInterval(autoCycleTimer);
+          autoCycleTimer = null;
+        };
+
+        const updateAutoCycle = (event) => {
+          if (event.pointerType === "mouse") {
+            lastMousePosition = { x: event.clientX, y: event.clientY };
           }
-          if (!matched) {
-            charArray.push(fullText[i]);
-            i++;
+          if (pointerId !== null || isIntroAnimating) return;
+          const direction = getAutoCycleDirection(event);
+          if (direction === autoCycleDirection) return;
+
+          stopAutoCycle();
+          if (!direction) return;
+
+          autoCycleDirection = direction;
+          finishDrag(direction);
+          autoCycleTimer = window.setInterval(() => {
+            finishDrag(autoCycleDirection);
+          }, 500);
+        };
+
+        const stopAutoCycleOutsideStack = () => {
+          if (!autoCycleDirection || !lastMousePosition) return;
+          const stackBounds = stack.getBoundingClientRect();
+          const isWithinStackHeight =
+            lastMousePosition.y >= stackBounds.top &&
+            lastMousePosition.y <= stackBounds.bottom;
+
+          if (!isWithinStackHeight) stopAutoCycle();
+        };
+
+        const updateHoverSwipe = (event) => {
+          if (isIntroAnimating || pointerId !== null || !isInManualSwipeLane(event)) {
+            lastHoverPosition = null;
+            hoverSwipeDirection = 0;
+            return;
           }
+
+          if (!lastHoverPosition) {
+            lastHoverPosition = { x: event.clientX, time: event.timeStamp };
+            return;
+          }
+
+          const xDistance = event.clientX - lastHoverPosition.x;
+          const timeDistance = Math.max(event.timeStamp - lastHoverPosition.time, 1);
+          lastHoverPosition = { x: event.clientX, time: event.timeStamp };
+
+          const direction = Math.sign(xDistance);
+          const activeBounds = cards[activeIndex].getBoundingClientRect();
+          const outwardDirection = event.clientX < activeBounds.left ? -1 : 1;
+          if (
+            Math.abs(xDistance) < 4 ||
+            direction !== outwardDirection ||
+            direction === hoverSwipeDirection ||
+            isAnimating
+          ) {
+            return;
+          }
+          hoverSwipeDirection = direction;
+          finishDrag(direction, Math.abs(xDistance) / timeDistance);
+          lastHoverPosition = null;
+        };
+
+        const returnToStack = () => {
+          isDragging = false;
+          dragOffset = 0;
+          stack.classList.remove("is-dragging");
+          render();
+        };
+
+        const getVelocity = () => {
+          const latest = moveHistory[moveHistory.length - 1];
+          const earliest = moveHistory.find((point) => latest.time - point.time <= 100) || moveHistory[0];
+          return latest && earliest && latest.time !== earliest.time
+            ? (latest.x - earliest.x) / (latest.time - earliest.time)
+            : 0;
+        };
+
+        const startPointer = (event) => {
+          if (event.pointerId === pointerId) return;
+          const isTouchGesture = event.pointerType === "touch";
+          const startedOnDetailsPanel = isOverDetailsPanel(event.target);
+          if (
+            isAnimating ||
+            isIntroAnimating ||
+            event.button > 0 ||
+            (!isTouchGesture &&
+              !startedOnDetailsPanel &&
+              !isInControlLane(event.clientX))
+          ) {
+            return;
+          }
+          stopAutoCycle();
+          if (isTouchGesture) stack.classList.add("is-touch-details-visible");
+          pointerId = event.pointerId;
+          startX = event.clientX;
+          startY = event.clientY;
+          controlSide = 0;
+          dragOffset = 0;
+          isDragging = false;
+          moveHistory = [{ x: startX, time: event.timeStamp }];
+          stack.setPointerCapture?.(pointerId);
+        };
+
+        stack.addEventListener("pointerdown", startPointer);
+
+        stack.addEventListener("pointermove", (event) => {
+          if (event.pointerId !== pointerId || isAnimating) return;
+          const xDistance = event.clientX - startX;
+          const yDistance = event.clientY - startY;
+
+          if (!isDragging) {
+            if (Math.abs(yDistance) > 8 && Math.abs(yDistance) > Math.abs(xDistance)) {
+              stack.releasePointerCapture?.(pointerId);
+              pointerId = null;
+              return;
+            }
+            const horizontalDistance = Math.abs(xDistance);
+            const dragStartDistance = 5;
+            if (horizontalDistance < dragStartDistance) return;
+            isDragging = true;
+            stack.classList.add("is-dragging");
+          }
+
+          event.preventDefault();
+          dragOffset = Math.max(-stack.clientWidth * 1.1, Math.min(xDistance, stack.clientWidth * 1.1));
+          moveHistory.push({ x: event.clientX, time: event.timeStamp });
+          moveHistory = moveHistory.filter((point) => event.timeStamp - point.time < 160);
+          render(dragOffset);
+        });
+
+        const endPointer = (event) => {
+          if (event.pointerId !== pointerId) return;
+          stack.releasePointerCapture?.(pointerId);
+          pointerId = null;
+          controlSide = 0;
+          if (!isDragging) return;
+
+          suppressClickUntil = Date.now() + 500;
+
+          const velocity = getVelocity();
+          const distanceThreshold = Math.min(stack.clientWidth * 0.006, 6);
+          const shouldAdvance =
+            Math.abs(dragOffset) > distanceThreshold || Math.abs(velocity) > 0.2;
+
+          if (shouldAdvance) {
+            finishDrag(Math.sign(dragOffset || velocity), velocity);
+          } else {
+            returnToStack();
+          }
+        };
+
+        stack.addEventListener("pointerup", endPointer);
+        stack.addEventListener("pointercancel", () => {
+          pointerId = null;
+          controlSide = 0;
+          if (isDragging) returnToStack();
+        });
+        cards.forEach((card) => {
+          card
+            .querySelector(".project-details-overlay")
+            ?.addEventListener("pointerdown", startPointer);
+          const video = card.querySelector(".project-hover-video");
+          if (video) {
+            video.addEventListener("loadeddata", () => {
+              video.pause();
+              video.currentTime = 0;
+            }, { once: true });
+          }
+          card.addEventListener("mouseenter", () => {
+            startPreview(card);
+            playHoverVideo(card);
+          });
+          card.addEventListener("mouseleave", () => {
+            stopPreview(card);
+            pauseHoverVideo(card);
+          });
+        });
+        document.addEventListener("pointermove", updateAutoCycle);
+        document.addEventListener("pointermove", updateHoverSwipe);
+        window.addEventListener("scroll", stopAutoCycleOutsideStack, { passive: true });
+        window.addEventListener("resize", stopAutoCycleOutsideStack);
+        document.addEventListener("visibilitychange", () => {
+          if (document.hidden) stopAutoCycle();
+        });
+
+        window.addEventListener("pagehide", () => {
+          stopAutoCycle();
+          pauseHoverVideos();
+          if (pointerId !== null) stack.releasePointerCapture?.(pointerId);
+          pointerId = null;
+          controlSide = 0;
+          isDragging = false;
+          stack.classList.remove("is-dragging");
+        });
+
+        window.addEventListener("pageshow", (event) => {
+          // A page restored from the back/forward cache keeps its carousel state.
+          if (event.persisted && !isIntroAnimating) render();
+        });
+
+        stack.addEventListener(
+          "click",
+          (event) => {
+            if (Date.now() < suppressClickUntil) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+          },
+          true
+        );
+
+        stack.addEventListener("keydown", (event) => {
+          if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+          event.preventDefault();
+          finishDrag(event.key === "ArrowLeft" ? -1 : 1);
+        });
+
+        let resizeFrame = null;
+        const renderAfterResize = () => {
+          if (resizeFrame) window.cancelAnimationFrame(resizeFrame);
+          resizeFrame = window.requestAnimationFrame(() => {
+            resizeFrame = null;
+            sizeProjectDetailPanels();
+            if (!isIntroAnimating) render();
+          });
+        };
+
+        window.addEventListener("resize", renderAfterResize);
+        if (window.ResizeObserver) {
+          new ResizeObserver(renderAfterResize).observe(stack);
         }
 
-        let index = 0;
+        const completeIntro = () => {
+          if (!isIntroAnimating) return;
+          isIntroAnimating = false;
+          stack.classList.remove("is-intro");
+          render();
+        };
 
-        function type() {
-          if (index < charArray.length) {
-            target.innerHTML += charArray[index];
-            index++;
-            setTimeout(type, 45); // typing speed
-          }
-        }
+        const playIntroOnce = () => {
+          if (reducedMotion.matches || stack.dataset.introPlayed === "true") return;
+          stack.dataset.introPlayed = "true";
+          isIntroAnimating = true;
 
-        type();
+          // Two frames ensure the fully laid-out deck has a reliable animation start point.
+          window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => stack.classList.add("is-intro"));
+          });
+          stack.addEventListener(
+            "animationend",
+            (event) => {
+              if (event.target === stack && event.animationName === "index-carousel-expand") {
+                completeIntro();
+              }
+            },
+            { once: true }
+          );
+          window.setTimeout(completeIntro, 1100);
+        };
+
+        reducedMotion.addEventListener?.("change", () => {
+          if (reducedMotion.matches) completeIntro();
+          render();
+        });
+        render();
+        playIntroOnce();
       });
     </script>
     <script>
-      document.querySelectorAll(".hover-swap").forEach((figure) => {
-        const gif = figure.querySelector(".thumb-gif");
-        const src = gif.src;
+      (() => {
+        const backdrop = document.querySelector(".ps3-ribbon-background");
+        if (!backdrop) return;
 
-        figure.addEventListener("mouseenter", () => {
-          // Trick to restart GIF: temporarily remove src, then reset it
-          gif.style.opacity = 1; // show GIF
-          gif.src = "";
-          gif.offsetHeight; // force reflow
-          gif.src = src; // restart GIF
+        const waves = Array.from(backdrop.querySelectorAll(".ps3-ribbon-wave"));
+        const particleLayer = backdrop.querySelector(".ps3-ribbon-particles");
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        const svgNamespace = "http://www.w3.org/2000/svg";
+        const waveSettings = [
+          { baseline: 372, amplitude: 42, secondaryAmplitude: 16, speed: 0.00011, phase: 0.8 },
+          { baseline: 438, amplitude: 34, secondaryAmplitude: 18, speed: 0.00009, phase: 3.1 },
+          { baseline: 382, amplitude: 76, secondaryAmplitude: 28, speed: 0.00033, phase: 0.2 },
+          { baseline: 430, amplitude: 58, secondaryAmplitude: 24, speed: 0.00026, phase: 1.8 },
+          { baseline: 345, amplitude: 44, secondaryAmplitude: 20, speed: 0.00021, phase: 3.4 },
+          { baseline: 474, amplitude: 92, secondaryAmplitude: 18, speed: 0.00017, phase: 4.9 },
+          { baseline: 404, amplitude: 68, secondaryAmplitude: 35, speed: 0.00029, phase: 2.6 },
+        ];
+
+        const particles = Array.from({ length: 46 }, (_, index) => {
+          const particle = document.createElementNS(svgNamespace, "circle");
+          const seed = (index * 67.31) % 1;
+          const particleData = {
+            element: particle,
+            x: seed * 1200,
+            y: ((index * 41.73) % 1) * 800,
+            speed: 0.00006 + ((index * 7.19) % 1) * 0.00009,
+            drift: 7 + ((index * 19.83) % 1) * 18,
+            phase: index * 0.73,
+          };
+
+          particle.setAttribute("r", `${0.75 + ((index * 13.17) % 1) * 1.65}`);
+          particle.setAttribute("fill", "#ffefe1");
+          particle.setAttribute("opacity", `${0.05 + ((index * 11.3) % 1) * 0.15}`);
+          particleLayer.append(particle);
+          return particleData;
         });
 
-        figure.addEventListener("mouseleave", () => {
-          gif.style.opacity = 0; // hide GIF
+        const waveY = (x, time, setting) =>
+          setting.baseline +
+          Math.sin(x * 0.007 + time * setting.speed + setting.phase) * setting.amplitude +
+          Math.cos(x * 0.014 - time * setting.speed * 0.72 + setting.phase) *
+            setting.secondaryAmplitude;
+
+        const drawWave = (path, setting, time) => {
+          const points = [-140, 160, 460, 760, 1060, 1340].map((x) => [x, waveY(x, time, setting)]);
+          let pathData = `M ${points[0][0]} ${points[0][1]}`;
+
+          for (let index = 0; index < points.length - 1; index += 1) {
+            const [x0, y0] = points[index];
+            const [x1, y1] = points[index + 1];
+            const distance = x1 - x0;
+            pathData += ` C ${x0 + distance * 0.34} ${y0} ${x1 - distance * 0.34} ${y1} ${x1} ${y1}`;
+          }
+
+          path.setAttribute("d", pathData);
+        };
+
+        const render = (time) => {
+          waves.forEach((wave, index) => drawWave(wave, waveSettings[index], time));
+          particles.forEach((particle) => {
+            const drift = time * particle.speed;
+            const x = (particle.x + drift * 140) % 1240 - 20;
+            const y = particle.y + Math.sin(drift + particle.phase) * particle.drift;
+            particle.element.setAttribute("cx", `${x}`);
+            particle.element.setAttribute("cy", `${y}`);
+          });
+        };
+
+        let animationFrame;
+        const animate = (time) => {
+          render(time);
+          animationFrame = window.requestAnimationFrame(animate);
+        };
+
+        render(0);
+        if (!reducedMotion.matches) animationFrame = window.requestAnimationFrame(animate);
+        reducedMotion.addEventListener?.("change", (event) => {
+          window.cancelAnimationFrame(animationFrame);
+          if (event.matches) render(0);
+          else animationFrame = window.requestAnimationFrame(animate);
         });
-      });
+      })();
     </script>
     <script>
       const yearSpan = document.getElementById("copyright");
       const currentYear = new Date().getFullYear();
       yearSpan.textContent = `${currentYear} © Brendan Hurt`;
     </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const container = document.getElementById("introVideoContainer");
-        const video = document.getElementById("introVideo");
-
-        // Required for reliable mobile autoplay
-        video.muted = true;
-        video.playsinline = true;
-        video.loop = false;
-
-        // --- Attempt autoplay ---
-        const playPromise = video.play();
-        if (playPromise && playPromise.catch) {
-          playPromise.catch(() => {
-            // Autoplay blocked → hide intro
-            container.style.display = "none";
-          });
-        }
-
-        // --- Hide when video fully ends ---
-        video.addEventListener("ended", () => {
-          container.style.display = "none";
-        });
-
-        // --- Hide IMMEDIATELY when user leaves the app ---
-        document.addEventListener("visibilitychange", () => {
-          if (document.hidden) {
-            // User left the app or switched tabs → kill the intro
-            container.style.display = "none";
-            video.pause();
-          }
-        });
-      });
-    </script>
-
     <script>
       document.querySelectorAll(".social-icon").forEach((icon) => {
         const original = icon.src;
@@ -627,6 +1324,79 @@
         icon.addEventListener("mouseenter", () => (icon.src = hover));
         icon.addEventListener("mouseleave", () => (icon.src = original));
       });
+    </script>
+    <script>
+      (() => {
+        const syncHeroName = () => {
+          const name = document.querySelector(".hero-name");
+          const nameContent = document.querySelector(".hero-name-content");
+          const navigation = document.querySelector(".site-navigation");
+          if (!name || !nameContent || !navigation) return;
+
+          const navigationBounds = navigation.getBoundingClientRect();
+          const navigationStyles = window.getComputedStyle(navigation);
+          const leftEdge = navigationBounds.left + Number.parseFloat(navigationStyles.paddingLeft);
+          const rightEdge =
+            navigationBounds.right - Number.parseFloat(navigationStyles.paddingRight);
+
+          name.style.setProperty("--hero-name-left", `${Math.max(0, leftEdge)}px`);
+          name.style.setProperty(
+            "--hero-name-right",
+            `${Math.max(0, window.innerWidth - rightEdge)}px`
+          );
+
+          nameContent.style.fontSize = "";
+          const baseSize = Number.parseFloat(window.getComputedStyle(nameContent).fontSize);
+          const availableWidth = name.clientWidth;
+          const contentWidth = nameContent.getBoundingClientRect().width;
+          if (!baseSize || !availableWidth || !contentWidth) return;
+
+          nameContent.style.fontSize = `${baseSize * (availableWidth / contentWidth)}px`;
+        };
+
+        const queueHeroNameSync = () => window.requestAnimationFrame(syncHeroName);
+        window.addEventListener("resize", queueHeroNameSync);
+        if (document.fonts?.ready) document.fonts.ready.then(queueHeroNameSync);
+        queueHeroNameSync();
+      })();
+    </script>
+    <script>
+      (() => {
+        if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+        const cursor = document.querySelector(".custom-cursor");
+        if (!cursor) return;
+
+        const clickableSelector = [
+          "a[href]",
+          "button",
+          "input:not([type='hidden'])",
+          "select",
+          "textarea",
+          "summary",
+          "[role='button']",
+          "[onclick]",
+        ].join(",");
+
+        document.documentElement.classList.add("has-custom-cursor");
+
+        const updateCursor = (event) => {
+          if (event.pointerType && event.pointerType !== "mouse") return;
+          cursor.style.left = `${event.clientX}px`;
+          cursor.style.top = `${event.clientY}px`;
+          cursor.classList.add("is-visible");
+          cursor.classList.toggle(
+            "is-clickable",
+            event.target instanceof Element && Boolean(event.target.closest(clickableSelector))
+          );
+        };
+
+        document.addEventListener("pointermove", updateCursor);
+        document.addEventListener("pointerover", updateCursor);
+        document.documentElement.addEventListener("mouseleave", () => {
+          cursor.classList.remove("is-visible");
+        });
+      })();
     </script>
   </body>
 </html>
