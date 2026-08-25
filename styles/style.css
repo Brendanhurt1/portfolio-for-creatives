@@ -5047,7 +5047,7 @@ html[data-theme="coral"] .nav-sound-toggle input:checked + .nav-sound-orb .nav-s
   }
 
   /* A centred mobile card has no hover state, so reveal its motion thumbnail
-     directly rather than leaving the PNG layer over top of the video. */
+     beneath the PNG artwork as soon as it becomes active. */
   .home-page .portfolio .project-card-stack .project-hover-video {
     opacity: 0;
     transition: opacity 180ms ease;
@@ -5055,11 +5055,6 @@ html[data-theme="coral"] .nav-sound-toggle input:checked + .nav-sound-orb .nav-s
 
   .home-page .portfolio .project-card-stack .work-page-grid-item.is-active .project-hover-video {
     opacity: 1;
-  }
-
-  .home-page .portfolio .project-card-stack .work-page-grid-item.is-active .project-thumbnail-overlay {
-    opacity: 0;
-    transition: opacity 180ms ease;
   }
 
   .home-page .tag-scroll-section {
