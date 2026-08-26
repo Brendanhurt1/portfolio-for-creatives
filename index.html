@@ -720,6 +720,11 @@
 
         const usesTouchCarouselLayout = () => window.matchMedia("(max-width: 600px)").matches;
 
+        const collapseTouchDetails = () => {
+          if (!usesTouchCarouselLayout()) return;
+          stack.classList.remove("is-touch-details-visible");
+        };
+
         const isInControlLane = (clientX) => {
           const activeBounds = cards[activeIndex].getBoundingClientRect();
           return clientX < activeBounds.left || clientX > activeBounds.right;
@@ -1102,6 +1107,15 @@
 
         stack.addEventListener("pointerdown", startPointer);
 
+        // Let the mobile panel feel temporary: interacting with the rest of
+        // the page or resuming vertical scroll collapses it and returns the
+        // tag strip to its compact position.
+        document.addEventListener("pointerdown", (event) => {
+          if (event.target instanceof Node && !stack.contains(event.target)) {
+            collapseTouchDetails();
+          }
+        });
+
         stack.addEventListener("pointermove", (event) => {
           if (event.pointerId !== pointerId || isAnimating) return;
           const xDistance = event.clientX - startX;
@@ -1181,6 +1195,7 @@
         document.addEventListener("pointermove", updateAutoCycle);
         document.addEventListener("pointermove", updateHoverSwipe);
         window.addEventListener("scroll", stopAutoCycleOutsideStack, { passive: true });
+        window.addEventListener("scroll", collapseTouchDetails, { passive: true });
         window.addEventListener("resize", stopAutoCycleOutsideStack);
         document.addEventListener("visibilitychange", () => {
           if (document.hidden) stopAutoCycle();
