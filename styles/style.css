@@ -4898,11 +4898,15 @@ html[data-theme="coral"] .nav-sound-toggle input:checked + .nav-sound-orb .nav-s
   }
 
   .home-page .site-navigation {
-    display: flex;
+    /* Four evenly spaced items from 320px through the 600px one-column breakpoint. */
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
     align-items: center;
     justify-content: space-between;
-    gap: 0.5rem;
-    padding: 0.75rem;
+    column-gap: 0;
+    /* Match the hero copy's shared mobile gutter. */
+    padding-block: 0.875rem;
+    padding-inline: clamp(0.75rem, 4.1vw, 1rem);
   }
 
   .home-page .site-navigation > .home-nav-logo,
@@ -4951,10 +4955,15 @@ html[data-theme="coral"] .nav-sound-toggle input:checked + .nav-sound-orb .nav-s
     padding-left: 1rem;
   }
 
+  .home-page .hero-name {
+    /* Pull the intro closer without changing the desktop hero rhythm. */
+    margin-bottom: 0.75rem;
+  }
+
   .home-page .hero-headline-wrapper .hero-headline {
     width: 100%;
     max-width: none;
-    font-size: clamp(0.713rem, 3.795vw, 0.805rem);
+    font-size: clamp(0.784rem, 4.175vw, 0.886rem);
     line-height: 1.35;
   }
 
@@ -4967,9 +4976,9 @@ html[data-theme="coral"] .nav-sound-toggle input:checked + .nav-sound-orb .nav-s
   }
 
   .home-page .hero-contact-link {
-    padding: 0.403rem 0.834rem;
+    padding: 0.443rem 0.917rem;
     border-radius: 999px;
-    font-size: 0.69rem;
+    font-size: 0.759rem;
   }
 
   .home-page .theme-switcher {
@@ -4977,26 +4986,26 @@ html[data-theme="coral"] .nav-sound-toggle input:checked + .nav-sound-orb .nav-s
     width: fit-content;
     margin: 0;
     gap: 0.253rem;
-    font-size: 0.506rem;
+    font-size: 0.557rem;
   }
 
   .home-page .theme-switch-track {
-    width: 2.3rem;
-    height: 1.15rem;
-    padding: 0.127rem;
+    width: 2.53rem;
+    height: 1.265rem;
+    padding: 0.14rem;
   }
 
   .home-page .theme-switch-thumb {
-    width: 0.776rem;
-    height: 0.776rem;
+    width: 0.854rem;
+    height: 0.854rem;
   }
 
   .home-page .theme-switch input:checked + .theme-switch-track .theme-switch-thumb {
-    transform: translateX(1.133rem);
+    transform: translateX(1.246rem);
   }
 
   .home-page .portfolio {
-    padding: 0.75rem 0 1.5rem !important;
+    padding: 0.5rem 0 0.4rem !important;
     overflow: hidden;
   }
 
@@ -5005,9 +5014,15 @@ html[data-theme="coral"] .nav-sound-toggle input:checked + .nav-sound-orb .nav-s
     --mobile-detail-panel-height: clamp(8.5rem, 34vw, 9.5rem);
     width: calc(100% - 2rem);
     max-width: none;
-    height: calc(var(--mobile-card-size) + var(--mobile-detail-panel-height));
+    height: var(--mobile-card-size);
     margin-inline: auto;
     padding: 0;
+    transition: height 650ms cubic-bezier(0.22, 0.9, 0.36, 1);
+  }
+
+  /* The details panel takes up space only once a phone swipe exposes it. */
+  .home-page .portfolio .project-card-stack.is-touch-details-visible {
+    height: calc(var(--mobile-card-size) + var(--mobile-detail-panel-height));
   }
 
   .home-page .portfolio .project-card-stack .work-page-grid-item {
@@ -5044,6 +5059,7 @@ html[data-theme="coral"] .nav-sound-toggle input:checked + .nav-sound-orb .nav-s
     padding: clamp(0.7rem, 3vw, 1rem);
     border-radius: 0 0 0.3rem 0.3rem;
     clip-path: inset(0 0 100% 0);
+    transition: clip-path 650ms cubic-bezier(0.22, 0.9, 0.36, 1), opacity 220ms ease;
   }
 
   /* A centred mobile card has no hover state, so reveal its motion thumbnail
@@ -5054,7 +5070,7 @@ html[data-theme="coral"] .nav-sound-toggle input:checked + .nav-sound-orb .nav-s
   }
 
   .home-page .tag-scroll-section {
-    padding-bottom: 1.75rem;
+    padding-bottom: 0.9rem;
   }
 
   .home-page .tag-scroll-section .tag-scroll-bar {
