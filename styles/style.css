@@ -4927,10 +4927,16 @@ html[data-theme="coral"] .nav-sound-toggle input:checked + .nav-sound-orb .nav-s
   }
 
   .home-page .site-navigation .nav-branding-item {
-    padding: 0.48rem 0.45rem;
+    /* Match the mobile Reach Out pill's typography and vertical scale. */
+    padding: 0.443rem 0.917rem;
     border-radius: 999px;
-    font-size: clamp(0.56rem, 2.8vw, 0.75rem);
+    font-size: 0.759rem;
     line-height: 1;
+  }
+
+  .home-page .tag-scroll-section .tag {
+    padding: 0.443rem 0.917rem;
+    font-size: 0.759rem;
   }
 
   .home-page .site-navigation > .nav-sound-control {

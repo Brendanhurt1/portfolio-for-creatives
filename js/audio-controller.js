@@ -38,6 +38,9 @@
     }
   };
 
+  const shouldStartSoundOff = () =>
+    window.matchMedia("(max-width: 600px)").matches;
+
   const saveSoundPreference = () => {
     try {
       localStorage.setItem(SOUND_KEY, String(soundEnabled));
@@ -141,7 +144,8 @@
     if (!soundEnabled) return;
     // Clone the warmed-up source so consecutive project swipes can overlap
     // cleanly without restarting an in-progress cue.
-    const sound = swapSound.cloneNode();
+    const sound = swapSound.cloneNode(true);
+    sound.currentTime = 0;
     sound.volume = 1;
     sound.play().catch(() => {});
   };
@@ -199,7 +203,9 @@
     });
   };
 
-  soundEnabled = readSoundPreference();
+  // Phones always begin muted, avoiding a saved desktop preference attempting
+  // autoplay before the visitor has interacted with the sound control.
+  soundEnabled = shouldStartSoundOff() ? false : readSoundPreference();
   window.siteAudio = { playSwap, startMusic, saveState, setSoundEnabled };
   window.setInterval(crossfadeLoop, 150);
   window.setInterval(saveState, 1000);
