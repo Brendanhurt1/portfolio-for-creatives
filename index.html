@@ -1083,6 +1083,16 @@
           if (event.pointerId === pointerId) return;
           const isTouchGesture = event.pointerType === "touch";
           const startedOnDetailsPanel = isOverDetailsPanel(event.target);
+          const startedOnActiveCard = isOverActiveCard(event.target);
+
+          // The stack has a transparent lane around the active card. On a
+          // phone, a press in that lane dismisses the detail panel rather than
+          // reopening it, so a touch just beyond the carousel behaves like a
+          // tap elsewhere on the page.
+          if (isTouchGesture && !startedOnActiveCard && !startedOnDetailsPanel) {
+            collapseTouchDetails();
+            return;
+          }
           if (
             isAnimating ||
             isIntroAnimating ||
