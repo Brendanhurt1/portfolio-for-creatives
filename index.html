@@ -700,6 +700,7 @@
         let suppressClickUntil = 0;
         let autoCycleDirection = 0;
         let autoCycleTimer = null;
+        let touchDetailsTimer = null;
         let lastMousePosition = null;
         let lastHoverPosition = null;
         let hoverSwipeDirection = 0;
@@ -720,9 +721,25 @@
 
         const usesTouchCarouselLayout = () => window.matchMedia("(max-width: 600px)").matches;
 
-        const collapseTouchDetails = () => {
+        const clearTouchDetailsTimer = () => {
+          if (!touchDetailsTimer) return;
+          window.clearTimeout(touchDetailsTimer);
+          touchDetailsTimer = null;
+        };
+
+        const showTouchDetails = () => {
           if (!usesTouchCarouselLayout()) return;
-          stack.classList.remove("is-touch-details-visible");
+          clearTouchDetailsTimer();
+          stack.classList.add("is-touch-details-visible");
+        };
+
+        const scheduleTouchDetailsCollapse = () => {
+          if (!usesTouchCarouselLayout()) return;
+          clearTouchDetailsTimer();
+          touchDetailsTimer = window.setTimeout(() => {
+            stack.classList.remove("is-touch-details-visible");
+            touchDetailsTimer = null;
+          }, 5000);
         };
 
         const isInControlLane = (clientX) => {
@@ -992,6 +1009,7 @@
           activeIndex = wrap(activeIndex + direction);
           dragOffset = 0;
           render();
+          scheduleTouchDetailsCollapse();
           window.setTimeout(() => {
             isAnimating = false;
             positionNextSwipeCue();
@@ -1069,6 +1087,7 @@
           dragOffset = 0;
           stack.classList.remove("is-dragging");
           render();
+          scheduleTouchDetailsCollapse();
         };
 
         const getVelocity = () => {
@@ -1094,7 +1113,6 @@
             return;
           }
           stopAutoCycle();
-          if (isTouchGesture) stack.classList.add("is-touch-details-visible");
           pointerId = event.pointerId;
           startX = event.clientX;
           startY = event.clientY;
@@ -1106,15 +1124,6 @@
         };
 
         stack.addEventListener("pointerdown", startPointer);
-
-        // Let the mobile panel feel temporary: interacting with the rest of
-        // the page or resuming vertical scroll collapses it and returns the
-        // tag strip to its compact position.
-        document.addEventListener("pointerdown", (event) => {
-          if (event.target instanceof Node && !stack.contains(event.target)) {
-            collapseTouchDetails();
-          }
-        });
 
         stack.addEventListener("pointermove", (event) => {
           if (event.pointerId !== pointerId || isAnimating) return;
@@ -1132,6 +1141,7 @@
             if (horizontalDistance < dragStartDistance) return;
             isDragging = true;
             stack.classList.add("is-dragging");
+            showTouchDetails();
           }
 
           event.preventDefault();
@@ -1195,7 +1205,6 @@
         document.addEventListener("pointermove", updateAutoCycle);
         document.addEventListener("pointermove", updateHoverSwipe);
         window.addEventListener("scroll", stopAutoCycleOutsideStack, { passive: true });
-        window.addEventListener("scroll", collapseTouchDetails, { passive: true });
         window.addEventListener("resize", stopAutoCycleOutsideStack);
         document.addEventListener("visibilitychange", () => {
           if (document.hidden) stopAutoCycle();
@@ -1203,6 +1212,7 @@
 
         window.addEventListener("pagehide", () => {
           stopAutoCycle();
+          clearTouchDetailsTimer();
           pauseHoverVideos();
           if (pointerId !== null) stack.releasePointerCapture?.(pointerId);
           pointerId = null;
