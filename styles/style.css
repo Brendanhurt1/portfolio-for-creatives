@@ -3614,22 +3614,13 @@ strong {
     filter var(--stack-duration, 400ms) cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.home-page .portfolio .project-card-stack .project-hover-video {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transform: scale(1);
-  transition: transform var(--stack-duration, 400ms) cubic-bezier(0.16, 1, 0.3, 1);
-}
-
 .home-page .portfolio .project-card-stack .work-page-grid-item figure .project-thumbnail-overlay {
   position: relative;
   z-index: 3;
   transform: scale(1.1);
+  transition: transform var(--stack-duration, 400ms) cubic-bezier(0.16, 1, 0.3, 1),
+    filter var(--stack-duration, 400ms) cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 400ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Do not show a previous-theme PNG while its alternate artwork is loading. */
@@ -3658,18 +3649,8 @@ html[data-theme="coral"] .home-page .portfolio .project-card-stack .work-page-gr
   transform: scale(1.13);
 }
 
-.home-page .portfolio .project-card-stack .work-page-grid-item.is-active:hover .project-hover-video {
-  transform: scale(1.025);
-}
-
-/* West Point's motion thumbnail needs a closer, bottom-anchored crop. */
-.home-page .portfolio .project-card-stack .work-page-grid-item--west-point-brewing .project-hover-video {
-  object-position: center bottom;
-  transform: scale(1.12);
-}
-
-.home-page .portfolio .project-card-stack .work-page-grid-item--west-point-brewing.is-active:hover .project-hover-video {
-  transform: scale(1.145);
+.home-page .portfolio .project-card-stack .work-page-grid-item.is-previewing .project-thumbnail-overlay {
+  opacity: 0;
 }
 
 /* Hover-only direction cues sit just beyond the outer cards in the stack. */
@@ -3721,19 +3702,28 @@ html:not([data-theme="coral"]) .home-page .portfolio .project-card-stack .projec
 .home-page .portfolio .project-card-stack .project-hover-preview {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   opacity: 0;
   pointer-events: none;
+  transform: scale(1.1);
   transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .home-page .portfolio .project-card-stack .work-page-grid-item .project-hover-preview {
+  transform: scale(1.1);
   transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1),
     transform var(--stack-duration, 400ms) cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .home-page .portfolio .project-card-stack .project-hover-preview.is-visible {
   opacity: 1;
+}
+
+.home-page .portfolio .project-card-stack .work-page-grid-item.is-active:hover .project-hover-preview {
+  transform: scale(1.13);
 }
 
 .home-page .portfolio .project-card-stack .work-page-grid-item > a {
@@ -5068,13 +5058,6 @@ html[data-theme="coral"] .nav-sound-toggle input:checked + .nav-sound-orb .nav-s
     transition: clip-path 650ms cubic-bezier(0.22, 0.9, 0.36, 1), opacity 220ms ease;
   }
 
-  /* A centred mobile card has no hover state, so reveal its motion thumbnail
-     beneath the PNG artwork. Adjacent visible cards remain paused on frame one. */
-  .home-page .portfolio .project-card-stack .project-hover-video {
-    opacity: 1;
-    transition: opacity 180ms ease;
-  }
-
   .home-page .tag-scroll-section {
     padding-bottom: 0.9rem;
   }
@@ -5271,6 +5254,63 @@ html[data-theme="coral"] .secondary-page.project-page:not(.more-of-my-work) .div
 
 html[data-theme="coral"] .secondary-page.project-page:not(.more-of-my-work) .project-aside .project-tags::after {
   background-color: #605039 !important;
+}
+
+/* Desktop project pages use a 25/75 sidebar-to-content split. */
+@media (min-width: 1001px) {
+  .secondary-page.project-page:not(.more-of-my-work) .project-aside {
+    box-sizing: border-box;
+    flex: 0 0 25%;
+    width: 25%;
+  }
+
+  .secondary-page.project-page:not(.more-of-my-work) .project-details {
+    flex: 0 0 75%;
+    width: 75%;
+  }
+
+  .secondary-page.project-page:not(.more-of-my-work) .project-aside .project-tags .tag {
+    font-size: 13.6px;
+    padding: 0.425rem 0.6375rem;
+  }
+}
+
+@media (min-width: 1001px) and (max-width: 1400px) {
+  .secondary-page.project-page:not(.more-of-my-work) .project-aside .project-description,
+  .secondary-page.project-page:not(.more-of-my-work) .project-aside .project-description-bold {
+    font-size: 0.85rem;
+  }
+
+  .secondary-page.project-page:not(.more-of-my-work) .project-aside .project-title {
+    font-size: 1.8275rem;
+  }
+}
+
+@media (min-width: 1401px) {
+  .secondary-page.project-page:not(.more-of-my-work) .project-aside .project-description,
+  .secondary-page.project-page:not(.more-of-my-work) .project-aside .project-description-bold {
+    font-size: 1.02rem;
+  }
+
+  .secondary-page.project-page:not(.more-of-my-work) .project-aside .project-title {
+    font-size: 3.08125rem;
+  }
+}
+
+/* Direction-aware navigation: hide while moving down the page and reveal on return. */
+.site-navigation {
+  transition: transform 320ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+
+.site-navigation.is-scroll-hidden {
+  transform: translateY(-100%) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-navigation {
+    transition: none;
+  }
 }
 
 
