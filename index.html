@@ -157,9 +157,9 @@
             </figure>
             <!-- Placeholder artwork keeps the existing hover treatment in place until project-specific previews are ready. -->
             <div class="project-hover-image-sources" hidden aria-hidden="true">
-              <img src="assets/home-page/hover-placeholder.svg" alt="" />
-              <img src="assets/home-page/hover-placeholder.svg" alt="" />
-              <img src="assets/home-page/hover-placeholder.svg" alt="" />
+              <img src="assets/home-page/preview-image-milianos-1.jpg" alt="" />
+              <img src="assets/home-page/preview-image-milianos-2.jpg" alt="" />
+              <img src="assets/home-page/preview-image-milianos-3.jpg" alt="" />
             </div>
             <a href="project-1-milianos.html">
               <div class="project-details-overlay overlay centered-text">
@@ -675,7 +675,6 @@
         let hoverSwipeDirection = 0;
         let previewingCard = null;
         const hoverPreviewEnabled = true;
-        const hoverPreviewDelay = 500;
         const previewStates = new Map();
 
         const wrap = (index) => (index + cards.length) % cards.length;
@@ -819,24 +818,21 @@
           state.layers[1].classList.remove("is-visible");
           card.classList.add("is-previewing");
           previewingCard = card;
-          state.timer = window.setTimeout(() => {
-            if (previewingCard !== card) return;
+          window.requestAnimationFrame(() => {
+            if (previewingCard === card) state.layers[0].classList.add("is-visible");
+          });
+          if (reducedMotion.matches) return;
+          state.timer = window.setInterval(() => {
+            const nextLayer = state.frontLayer === 0 ? 1 : 0;
+            state.imageIndex = (state.imageIndex + 1) % state.images.length;
+            state.layers[nextLayer].src = state.images[state.imageIndex];
+            state.layers[nextLayer].classList.remove("is-visible");
             window.requestAnimationFrame(() => {
-              state.layers[0].classList.add("is-visible");
+              state.layers[nextLayer].classList.add("is-visible");
+              state.layers[state.frontLayer].classList.remove("is-visible");
+              state.frontLayer = nextLayer;
             });
-            if (reducedMotion.matches) return;
-            state.timer = window.setInterval(() => {
-              const nextLayer = state.frontLayer === 0 ? 1 : 0;
-              state.imageIndex = (state.imageIndex + 1) % state.images.length;
-              state.layers[nextLayer].src = state.images[state.imageIndex];
-              state.layers[nextLayer].classList.remove("is-visible");
-              window.requestAnimationFrame(() => {
-                state.layers[nextLayer].classList.add("is-visible");
-                state.layers[state.frontLayer].classList.remove("is-visible");
-                state.frontLayer = nextLayer;
-              });
-            }, 1000);
-          }, hoverPreviewDelay);
+          }, 1500);
         };
 
         const playHoverVideo = () => {};
