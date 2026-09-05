@@ -3618,6 +3618,12 @@ strong {
   position: relative;
   z-index: 3;
   transform: scale(1.1);
+  transition: transform var(--stack-duration, 400ms) cubic-bezier(0.16, 1, 0.3, 1),
+    filter var(--stack-duration, 400ms) cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 1;
+  transition: transform var(--stack-duration, 400ms) cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 260ms ease;
 }
 
 /* Do not show prior artwork while an explicitly supplied alternate is loading. */
