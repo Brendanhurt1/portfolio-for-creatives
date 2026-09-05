@@ -819,10 +819,11 @@
           state.layers[1].classList.remove("is-visible");
           card.classList.add("is-previewing");
           previewingCard = card;
-          window.requestAnimationFrame(() => {
-            if (previewingCard === card) state.layers[0].classList.add("is-visible");
-          });
-
+          state.timer = window.setTimeout(() => {
+            if (previewingCard !== card) return;
+            window.requestAnimationFrame(() => {
+              state.layers[0].classList.add("is-visible");
+            });
             if (reducedMotion.matches) return;
             state.timer = window.setInterval(() => {
               const nextLayer = state.frontLayer === 0 ? 1 : 0;
