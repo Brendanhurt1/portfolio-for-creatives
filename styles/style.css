@@ -3630,10 +3630,13 @@ strong {
   position: relative;
   z-index: 3;
   transform: scale(1.1);
+  opacity: 1;
+  transition: transform var(--stack-duration, 400ms) cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 260ms ease;
 }
 
-/* Do not show a previous-theme PNG while its alternate artwork is loading. */
-html[data-theme="coral"] .home-page .portfolio .project-card-stack .project-thumbnail-overlay:not([data-current-source$="-alt.png"]) {
+/* Do not show prior artwork while an explicitly supplied alternate is loading. */
+html[data-theme="coral"] .home-page .portfolio .project-card-stack .project-thumbnail-overlay[data-theme-alt-source]:not([data-current-source$="-alt.jpg"]) {
   visibility: hidden;
 }
 
@@ -3656,6 +3659,7 @@ html[data-theme="coral"] .home-page .portfolio .project-card-stack .work-page-gr
 
 .home-page .portfolio .project-card-stack .work-page-grid-item.is-active:hover .project-thumbnail-overlay {
   transform: scale(1.13);
+  opacity: 0;
 }
 
 .home-page .portfolio .project-card-stack .work-page-grid-item.is-active:hover .project-hover-video {

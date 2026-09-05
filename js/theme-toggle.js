@@ -17,9 +17,9 @@
     document.querySelectorAll(".project-thumbnail-overlay").forEach((thumbnail) => {
       const defaultSource = thumbnail.dataset.defaultSource || thumbnail.getAttribute("src");
       if (!defaultSource) return;
-      thumbnail.dataset.defaultSource = defaultSource.replace("-alt.png", ".png");
-      const nextSource = theme === "coral"
-        ? thumbnail.dataset.defaultSource.replace(/\.png$/, "-alt.png")
+      thumbnail.dataset.defaultSource = defaultSource;
+      const nextSource = theme === "coral" && thumbnail.dataset.themeAltSource
+        ? thumbnail.dataset.themeAltSource
         : thumbnail.dataset.defaultSource;
       if (thumbnail.dataset.currentSource === nextSource) return;
 
