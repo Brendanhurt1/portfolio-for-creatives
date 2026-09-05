@@ -3614,25 +3614,10 @@ strong {
     filter var(--stack-duration, 400ms) cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.home-page .portfolio .project-card-stack .project-hover-video {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transform: scale(1);
-  transition: transform var(--stack-duration, 400ms) cubic-bezier(0.16, 1, 0.3, 1);
-}
-
 .home-page .portfolio .project-card-stack .work-page-grid-item figure .project-thumbnail-overlay {
   position: relative;
   z-index: 3;
   transform: scale(1.1);
-  opacity: 1;
-  transition: transform var(--stack-duration, 400ms) cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 260ms ease;
 }
 
 /* Do not show prior artwork while an explicitly supplied alternate is loading. */
@@ -3662,18 +3647,8 @@ html[data-theme="coral"] .home-page .portfolio .project-card-stack .work-page-gr
   opacity: 0;
 }
 
-.home-page .portfolio .project-card-stack .work-page-grid-item.is-active:hover .project-hover-video {
-  transform: scale(1.025);
-}
-
-/* West Point's motion thumbnail needs a closer, bottom-anchored crop. */
-.home-page .portfolio .project-card-stack .work-page-grid-item--west-point-brewing .project-hover-video {
-  object-position: center bottom;
-  transform: scale(1.12);
-}
-
-.home-page .portfolio .project-card-stack .work-page-grid-item--west-point-brewing.is-active:hover .project-hover-video {
-  transform: scale(1.145);
+.home-page .portfolio .project-card-stack .work-page-grid-item.is-previewing .project-thumbnail-overlay {
+  opacity: 0;
 }
 
 /* Hover-only direction cues sit just beyond the outer cards in the stack. */
@@ -3725,19 +3700,28 @@ html:not([data-theme="coral"]) .home-page .portfolio .project-card-stack .projec
 .home-page .portfolio .project-card-stack .project-hover-preview {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   opacity: 0;
   pointer-events: none;
+  transform: scale(1.1);
   transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .home-page .portfolio .project-card-stack .work-page-grid-item .project-hover-preview {
+  transform: scale(1.1);
   transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1),
     transform var(--stack-duration, 400ms) cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .home-page .portfolio .project-card-stack .project-hover-preview.is-visible {
   opacity: 1;
+}
+
+.home-page .portfolio .project-card-stack .work-page-grid-item.is-active:hover .project-hover-preview {
+  transform: scale(1.13);
 }
 
 .home-page .portfolio .project-card-stack .work-page-grid-item > a {
@@ -4902,11 +4886,15 @@ html[data-theme="coral"] .nav-sound-toggle input:checked + .nav-sound-orb .nav-s
   }
 
   .home-page .site-navigation {
-    display: flex;
+    /* Four evenly spaced items from 320px through the 600px one-column breakpoint. */
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
     align-items: center;
     justify-content: space-between;
-    gap: 0.5rem;
-    padding: 0.75rem;
+    column-gap: 0;
+    /* Match the hero copy's shared mobile gutter. */
+    padding-block: 0.875rem;
+    padding-inline: clamp(0.75rem, 4.1vw, 1rem);
   }
 
   .home-page .site-navigation > .home-nav-logo,
@@ -4927,10 +4915,16 @@ html[data-theme="coral"] .nav-sound-toggle input:checked + .nav-sound-orb .nav-s
   }
 
   .home-page .site-navigation .nav-branding-item {
-    padding: 0.48rem 0.45rem;
+    /* Match the mobile Reach Out pill's typography and vertical scale. */
+    padding: 0.443rem 0.917rem;
     border-radius: 999px;
-    font-size: clamp(0.56rem, 2.8vw, 0.75rem);
+    font-size: 0.759rem;
     line-height: 1;
+  }
+
+  .home-page .tag-scroll-section .tag {
+    padding: 0.443rem 0.917rem;
+    font-size: 0.759rem;
   }
 
   .home-page .site-navigation > .nav-sound-control {
@@ -4955,10 +4949,15 @@ html[data-theme="coral"] .nav-sound-toggle input:checked + .nav-sound-orb .nav-s
     padding-left: 1rem;
   }
 
+  .home-page .hero-name {
+    /* Pull the intro closer without changing the desktop hero rhythm. */
+    margin-bottom: 0.75rem;
+  }
+
   .home-page .hero-headline-wrapper .hero-headline {
     width: 100%;
     max-width: none;
-    font-size: clamp(0.713rem, 3.795vw, 0.805rem);
+    font-size: clamp(0.784rem, 4.175vw, 0.886rem);
     line-height: 1.35;
   }
 
@@ -4971,9 +4970,9 @@ html[data-theme="coral"] .nav-sound-toggle input:checked + .nav-sound-orb .nav-s
   }
 
   .home-page .hero-contact-link {
-    padding: 0.403rem 0.834rem;
+    padding: 0.443rem 0.917rem;
     border-radius: 999px;
-    font-size: 0.69rem;
+    font-size: 0.759rem;
   }
 
   .home-page .theme-switcher {
@@ -4981,39 +4980,50 @@ html[data-theme="coral"] .nav-sound-toggle input:checked + .nav-sound-orb .nav-s
     width: fit-content;
     margin: 0;
     gap: 0.253rem;
-    font-size: 0.506rem;
+    font-size: 0.557rem;
   }
 
   .home-page .theme-switch-track {
-    width: 2.3rem;
-    height: 1.15rem;
-    padding: 0.127rem;
+    width: 2.53rem;
+    height: 1.265rem;
+    padding: 0.14rem;
   }
 
   .home-page .theme-switch-thumb {
-    width: 0.776rem;
-    height: 0.776rem;
+    width: 0.854rem;
+    height: 0.854rem;
   }
 
   .home-page .theme-switch input:checked + .theme-switch-track .theme-switch-thumb {
-    transform: translateX(1.133rem);
+    transform: translateX(1.246rem);
   }
 
   .home-page .portfolio {
-    padding: 0.75rem 0 1.5rem !important;
+    padding: 0.5rem 0 0.4rem !important;
     overflow: hidden;
   }
 
   .home-page .portfolio .project-card-stack {
+    --mobile-card-size: min(46vw, 12rem);
+    --mobile-detail-panel-height: clamp(8.5rem, 34vw, 9.5rem);
     width: calc(100% - 2rem);
     max-width: none;
-    height: calc(60vw - 1.2rem);
+    height: var(--mobile-card-size);
     margin-inline: auto;
     padding: 0;
+    transition: height 650ms cubic-bezier(0.22, 0.9, 0.36, 1);
+  }
+
+  /* The details panel takes up space only once a phone swipe exposes it. */
+  .home-page .portfolio .project-card-stack.is-touch-details-visible {
+    height: calc(var(--mobile-card-size) + var(--mobile-detail-panel-height));
   }
 
   .home-page .portfolio .project-card-stack .work-page-grid-item {
-    width: 60% !important;
+    /* Keep the active portfolio square perfectly centred on mobile. */
+    top: min(23vw, 6rem);
+    left: 50%;
+    width: var(--mobile-card-size) !important;
   }
 
   .home-page .portfolio .project-card-stack .project-swipe-cue {
@@ -5032,14 +5042,22 @@ html[data-theme="coral"] .nav-sound-toggle input:checked + .nav-sound-orb .nav-s
   }
 
   .home-page .portfolio .project-card-stack .project-details-overlay.overlay {
-    top: 0;
+    top: calc(100% - 1px);
+    right: auto;
+    bottom: auto;
     left: 0;
     width: 100%;
-    border-radius: 0.3rem;
+    height: var(--mobile-detail-panel-height);
+    min-height: var(--mobile-detail-panel-height);
+    gap: 0.75rem;
+    padding: clamp(0.7rem, 3vw, 1rem);
+    border-radius: 0 0 0.3rem 0.3rem;
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 650ms cubic-bezier(0.22, 0.9, 0.36, 1), opacity 220ms ease;
   }
 
   .home-page .tag-scroll-section {
-    padding-bottom: 1.75rem;
+    padding-bottom: 0.9rem;
   }
 
   .home-page .tag-scroll-section .tag-scroll-bar {
@@ -5052,6 +5070,24 @@ html[data-theme="coral"] .nav-sound-toggle input:checked + .nav-sound-orb .nav-s
 
   .home-page .footer-global > li {
     padding-inline: 1rem;
+  }
+}
+
+/* Mobile-only navigation icons are 10% larger on every page. */
+@media (max-width: 600px) {
+  .site-navigation .home-nav-logo-mark {
+    transform: scale(1.1);
+    transform-origin: center;
+  }
+
+  .site-navigation .nav-sound-orb {
+    transform: scale(1.1);
+    transform-origin: center;
+  }
+
+  .site-navigation .nav-sound-icon {
+    transform: scale(1.1);
+    transform-origin: center;
   }
 }
 
@@ -5216,6 +5252,63 @@ html[data-theme="coral"] .secondary-page.project-page:not(.more-of-my-work) .div
 
 html[data-theme="coral"] .secondary-page.project-page:not(.more-of-my-work) .project-aside .project-tags::after {
   background-color: #605039 !important;
+}
+
+/* Desktop project pages use a 25/75 sidebar-to-content split. */
+@media (min-width: 1001px) {
+  .secondary-page.project-page:not(.more-of-my-work) .project-aside {
+    box-sizing: border-box;
+    flex: 0 0 25%;
+    width: 25%;
+  }
+
+  .secondary-page.project-page:not(.more-of-my-work) .project-details {
+    flex: 0 0 75%;
+    width: 75%;
+  }
+
+  .secondary-page.project-page:not(.more-of-my-work) .project-aside .project-tags .tag {
+    font-size: 13.6px;
+    padding: 0.425rem 0.6375rem;
+  }
+}
+
+@media (min-width: 1001px) and (max-width: 1400px) {
+  .secondary-page.project-page:not(.more-of-my-work) .project-aside .project-description,
+  .secondary-page.project-page:not(.more-of-my-work) .project-aside .project-description-bold {
+    font-size: 0.85rem;
+  }
+
+  .secondary-page.project-page:not(.more-of-my-work) .project-aside .project-title {
+    font-size: 1.8275rem;
+  }
+}
+
+@media (min-width: 1401px) {
+  .secondary-page.project-page:not(.more-of-my-work) .project-aside .project-description,
+  .secondary-page.project-page:not(.more-of-my-work) .project-aside .project-description-bold {
+    font-size: 1.02rem;
+  }
+
+  .secondary-page.project-page:not(.more-of-my-work) .project-aside .project-title {
+    font-size: 3.08125rem;
+  }
+}
+
+/* Direction-aware navigation: hide while moving down the page and reveal on return. */
+.site-navigation {
+  transition: transform 320ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+
+.site-navigation.is-scroll-hidden {
+  transform: translateY(-100%) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-navigation {
+    transition: none;
+  }
 }
 
 

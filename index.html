@@ -30,6 +30,7 @@
     />
     <link rel="stylesheet" href="./styles/style.css" />
     <script src="./js/theme-toggle.js"></script>
+    <script src="./js/header-visibility.js" defer></script>
     <!-- FAVICONS -->
     <link
       rel="icon"
@@ -668,6 +669,7 @@
         let suppressClickUntil = 0;
         let autoCycleDirection = 0;
         let autoCycleTimer = null;
+        let touchDetailsTimer = null;
         let lastMousePosition = null;
         let lastHoverPosition = null;
         let hoverSwipeDirection = 0;
@@ -687,6 +689,27 @@
           Boolean(target.closest(".project-details-overlay"));
 
         const usesTouchCarouselLayout = () => window.matchMedia("(max-width: 600px)").matches;
+
+        const clearTouchDetailsTimer = () => {
+          if (!touchDetailsTimer) return;
+          window.clearTimeout(touchDetailsTimer);
+          touchDetailsTimer = null;
+        };
+
+        const showTouchDetails = () => {
+          if (!usesTouchCarouselLayout()) return;
+          clearTouchDetailsTimer();
+          stack.classList.add("is-touch-details-visible");
+        };
+
+        const scheduleTouchDetailsCollapse = () => {
+          if (!usesTouchCarouselLayout()) return;
+          clearTouchDetailsTimer();
+          touchDetailsTimer = window.setTimeout(() => {
+            stack.classList.remove("is-touch-details-visible");
+            touchDetailsTimer = null;
+          }, 5000);
+        };
 
         const isInControlLane = (clientX) => {
           const activeBounds = cards[activeIndex].getBoundingClientRect();
@@ -796,12 +819,9 @@
           state.layers[1].classList.remove("is-visible");
           card.classList.add("is-previewing");
           previewingCard = card;
-
-          state.timer = window.setTimeout(() => {
-            if (previewingCard !== card) return;
-            window.requestAnimationFrame(() => {
-              state.layers[0].classList.add("is-visible");
-            });
+          window.requestAnimationFrame(() => {
+            if (previewingCard === card) state.layers[0].classList.add("is-visible");
+          });
 
             if (reducedMotion.matches) return;
             state.timer = window.setInterval(() => {
@@ -853,7 +873,9 @@
             const distance = signedDistance(index);
             const depth = Math.abs(distance);
             const isActive = distance === 0;
-            const isVisible = depth <= 2;
+            // Phone layouts show the centred card plus one card on either side.
+            // Larger layouts retain the five-card desktop stack.
+            const isVisible = depth <= (usesTouchCarouselLayout() ? 1 : 2);
             const isIncoming =
               (direction < 0 && distance === 1) ||
               (direction > 0 && distance === -1);
@@ -893,7 +915,6 @@
           });
 
           positionNextSwipeCue();
-
           if (isIntroRender) stack.dataset.introConfigured = "true";
         };
 
@@ -901,7 +922,6 @@
           if (!direction || isAnimating || isIntroAnimating) return;
           window.siteAudio?.playSwap?.();
           if (previewingCard) stopPreview(previewingCard);
-          pauseHoverVideos();
           isAnimating = true;
           isDragging = false;
           stack.classList.remove("is-dragging");
@@ -913,6 +933,7 @@
           activeIndex = wrap(activeIndex + direction);
           dragOffset = 0;
           render();
+          scheduleTouchDetailsCollapse();
           window.setTimeout(() => {
             isAnimating = false;
             positionNextSwipeCue();
@@ -990,6 +1011,7 @@
           dragOffset = 0;
           stack.classList.remove("is-dragging");
           render();
+          scheduleTouchDetailsCollapse();
         };
 
         const getVelocity = () => {
@@ -1015,7 +1037,6 @@
             return;
           }
           stopAutoCycle();
-          if (isTouchGesture) stack.classList.add("is-touch-details-visible");
           pointerId = event.pointerId;
           startX = event.clientX;
           startY = event.clientY;
@@ -1044,6 +1065,7 @@
             if (horizontalDistance < dragStartDistance) return;
             isDragging = true;
             stack.classList.add("is-dragging");
+            showTouchDetails();
           }
 
           event.preventDefault();
@@ -1084,20 +1106,11 @@
           card
             .querySelector(".project-details-overlay")
             ?.addEventListener("pointerdown", startPointer);
-          const video = card.querySelector(".project-hover-video");
-          if (video) {
-            video.addEventListener("loadeddata", () => {
-              video.pause();
-              video.currentTime = 0;
-            }, { once: true });
-          }
           card.addEventListener("mouseenter", () => {
             startPreview(card);
-            playHoverVideo(card);
           });
           card.addEventListener("mouseleave", () => {
             stopPreview(card);
-            pauseHoverVideo(card);
           });
         });
         document.addEventListener("pointermove", updateAutoCycle);
@@ -1110,7 +1123,8 @@
 
         window.addEventListener("pagehide", () => {
           stopAutoCycle();
-          pauseHoverVideos();
+          clearTouchDetailsTimer();
+          if (previewingCard) stopPreview(previewingCard);
           if (pointerId !== null) stack.releasePointerCapture?.(pointerId);
           pointerId = null;
           controlSide = 0;
