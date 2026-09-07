@@ -675,6 +675,7 @@
         let hoverSwipeDirection = 0;
         let previewingCard = null;
         const hoverPreviewEnabled = true;
+        const hoverPreviewDelay = 2000;
         const previewStates = new Map();
 
         const wrap = (index) => (index + cards.length) % cards.length;
@@ -798,7 +799,10 @@
         const stopPreview = (card) => {
           const state = previewStates.get(card);
           if (!state) return;
-          if (state.timer) window.clearInterval(state.timer);
+          if (state.timer) {
+            window.clearTimeout(state.timer);
+            window.clearInterval(state.timer);
+          }
           state.timer = null;
           state.layers.forEach((layer) => layer.classList.remove("is-visible"));
           card.classList.remove("is-previewing");
@@ -814,25 +818,33 @@
           if (!state || !state.images.length) return;
           state.imageIndex = 0;
           state.frontLayer = 0;
-          state.layers[0].src = state.images[state.imageIndex];
-          state.layers[1].classList.remove("is-visible");
-          card.classList.add("is-previewing");
           previewingCard = card;
-          window.requestAnimationFrame(() => {
-            if (previewingCard === card) state.layers[0].classList.add("is-visible");
-          });
-          if (reducedMotion.matches) return;
-          state.timer = window.setInterval(() => {
-            const nextLayer = state.frontLayer === 0 ? 1 : 0;
-            state.imageIndex = (state.imageIndex + 1) % state.images.length;
-            state.layers[nextLayer].src = state.images[state.imageIndex];
-            state.layers[nextLayer].classList.remove("is-visible");
+          state.timer = window.setTimeout(() => {
+            if (previewingCard !== card || card !== cards[activeIndex]) return;
+            state.layers[0].src = state.images[state.imageIndex];
+            state.layers[1].classList.remove("is-visible");
+            card.classList.add("is-previewing");
             window.requestAnimationFrame(() => {
-              state.layers[nextLayer].classList.add("is-visible");
-              state.layers[state.frontLayer].classList.remove("is-visible");
-              state.frontLayer = nextLayer;
+              if (previewingCard === card) state.layers[0].classList.add("is-visible");
             });
-          }, 1500);
+            if (reducedMotion.matches) return;
+            state.timer = window.setInterval(() => {
+              const nextLayer = state.frontLayer === 0 ? 1 : 0;
+              state.imageIndex = (state.imageIndex + 1) % state.images.length;
+              state.layers[nextLayer].src = state.images[state.imageIndex];
+              state.layers[nextLayer].classList.remove("is-visible");
+              window.requestAnimationFrame(() => {
+                state.layers[nextLayer].classList.add("is-visible");
+                state.layers[state.frontLayer].classList.remove("is-visible");
+                state.frontLayer = nextLayer;
+              });
+            }, 1500);
+          }, hoverPreviewDelay);
+        };
+
+        const startMobilePreview = () => {
+          if (!usesTouchCarouselLayout() || isIntroAnimating || isAnimating) return;
+          startPreview(cards[activeIndex]);
         };
 
         const playHoverVideo = () => {};
@@ -934,6 +946,7 @@
           window.setTimeout(() => {
             isAnimating = false;
             positionNextSwipeCue();
+            startMobilePreview();
           }, duration);
         };
 
@@ -1171,6 +1184,7 @@
           isIntroAnimating = false;
           stack.classList.remove("is-intro");
           render();
+          startMobilePreview();
         };
 
         const playIntroOnce = () => {
@@ -1200,6 +1214,7 @@
         });
         render();
         playIntroOnce();
+        startMobilePreview();
       });
     </script>
     <script>
